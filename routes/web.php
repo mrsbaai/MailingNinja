@@ -15,20 +15,24 @@
 
 Auth::routes();
 
-
-
-Route::get('/', 'mailingNinjaController@home');
-Route::get('/home', 'homeController@redirect');
-
-
-
-Route::get('/manager', 'managerController@home');
-Route::get('/publisher', 'publisherController@home');
-
-
 Route::group(array('domain' => 'premiumbooks.net'), function()
 {
     Route::get('/', 'landingController@home');
     Route::get('/private', 'costumerController@home');
 
 });
+
+
+Route::group(array('domain' => 'mailing.ninja'), function()
+{
+    Route::get('/', 'mailingNinjaController@home');
+    Route::get('/home', 'homeController@redirect');
+
+    Route::get('/manager', 'managerController@home');
+    Route::get('/publisher', 'publisherController@home');
+
+
+});
+
+
+
