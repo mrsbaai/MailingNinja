@@ -26,7 +26,7 @@ Route::get('/manager', 'managerController@home');
 Route::get('/publisher', 'publisherController@home');
 
 
-Route::group(array('domain' => array('premiumbooks.net')), function()
+Route::group(array('domain' => 'premiumbooks.net'), function()
 {
     Route::get('/', 'landingController@home');
     Route::get('/private', 'costumerController@home');
