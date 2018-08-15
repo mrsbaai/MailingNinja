@@ -31,7 +31,7 @@ class managerController extends Controller
 
             $data = base64_decode($data);
             $image_name= time().$k.'.png';
-            $path = public_path() .'/offer_images'. $image_name;
+            $path = public_path() .'/offer_images/'. $image_name;
 
             file_put_contents($path, $data);
 
