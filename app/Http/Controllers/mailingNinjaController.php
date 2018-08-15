@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class mailingNinjaController extends Controller
 {
 
-    public function __construct()
-    {
-
-    }
 
     public function home(){
         if (Auth::check()) {
@@ -19,6 +15,14 @@ class mailingNinjaController extends Controller
         }
 
         return view('mailingNinja.home');
-}
+    }
+
+    public function contact(){
+        if (Auth::check()) {
+            return redirect("/home");
+        }
+
+        return view('mailingNinja.contact');
+    }
 
 }

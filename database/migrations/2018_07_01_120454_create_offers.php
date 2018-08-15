@@ -11,14 +11,12 @@ class CreateOffers extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('is_active')->default(false);
-            $table->boolean('is_public')->default(true);
-            $table->boolean('is_pay_per_click')->default(false);
+            $table->boolean('is_private')->default(true);
             $table->integer('payout')->default(0);
-            $table->integer('vertical_id')->default(0);
-            $table->string('email')->unique();
-            $table->string('title');
-            $table->string('description');
-
+            $table->string('title')->default('Untitled');
+            $table->longText('description');
+            $table->longText('offer');
+            $table->longText('promo');
             $table->timestamps();
         });
     }

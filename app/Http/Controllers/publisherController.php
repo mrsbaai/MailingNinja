@@ -16,4 +16,32 @@ class publisherController extends Controller
         return view('publisher.home');
     }
 
+    public function account(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.account');
+    }
+    public function dashboard(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.home');
+    }
+    public function support(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.support');
+    }
+    public function statistics(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.statistics');
+    }
+    public function offers(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.offers');
+    }
+
+    public function subscribers(Request $request){
+        $request->user()->authorizeRoles('publisher');
+        return view('publisher.subscribers');
+    }
+
+
+
 }

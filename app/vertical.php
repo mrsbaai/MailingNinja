@@ -11,21 +11,21 @@ class vertical extends Model
 
     public function offers()
     {
-        return $this->belongsToMany('app\offer', 'offer_vertical', 'vertical_id', 'offer_id');
+        return $this->belongsToMany('App\offer', 'offer_vertical', 'vertical_id', 'offer_id');
     }
 
     public function subscribes()
     {
-        return $this->hasMany('app\subscribe_log','vertical_id');
+        return $this->hasMany('App\subscribe_log','vertical_id');
     }
 
     public function sells()
     {
-        return $this->hasMany('app\sells','vertical_id');
+        return $this->hasMany('App\sells','vertical_id');
     }
     public function clicks()
     {
-        return $this->hasMany('app\clicks','vertical_id');
+        return $this->hasMany('App\clicks','vertical_id');
     }
 }
 

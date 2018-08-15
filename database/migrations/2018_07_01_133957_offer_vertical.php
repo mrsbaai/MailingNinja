@@ -10,8 +10,8 @@ class OfferVertical extends Migration
     {
         Schema::create('offer_vertical', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('offer_id');
-            $table->integer('vertical_id');
+            $table->integer('offer_id')->unsigned();
+            $table->integer('vertical_id')->unsigned();
             $table->timestamps();
 
         });

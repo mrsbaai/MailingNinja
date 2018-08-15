@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('is_active')->default(false);
             $table->integer('manager_id')->nullable()->default(null);
             $table->string('paypal')->nullable()->default(null);
             $table->string('skype')->nullable()->default(null);

@@ -30,7 +30,7 @@ class user extends Authenticatable
 
     public function offers()
     {
-        return $this->belongsToMany('app\offer', 'publisher_offers', 'user_id', 'offer_id');
+        return $this->belongsToMany('App\offer', 'publisher_offers', 'user_id', 'offer_id');
     }
 
     public function roles()
@@ -40,27 +40,27 @@ class user extends Authenticatable
 
     public function manager()
     {
-        return $this->belongsTo('app\user', 'manager_id');
+        return $this->belongsTo('App\user', 'manager_id');
     }
 
     public function subscribes()
     {
-        return $this->hasMany('app\subscribe_log','user_id');
+        return $this->hasMany('App\subscribe_log','user_id');
     }
 
     public function subscribers()
     {
-        return $this->hasMany('app\subscriber','user_id');
+        return $this->hasMany('App\subscriber','user_id');
     }
 
     public function sells()
     {
-        return $this->hasMany('app\sells','user_id');
+        return $this->hasMany('App\sells','user_id');
     }
 
     public function clicks()
     {
-        return $this->hasMany('app\clicks','user_id');
+        return $this->hasMany('App\clicks','user_id');
     }
 
     public function authorizeRoles($roles)

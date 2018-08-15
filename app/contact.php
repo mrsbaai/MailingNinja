@@ -9,7 +9,7 @@ class contact extends Model
     protected $table = 'contacts';
     public function role()
     {
-        return $this->belongsto('app\role', 'role_id');
+        return $this->belongsto('App\role', 'role_id');
     }
 
 }

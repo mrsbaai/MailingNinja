@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        <h1>Buy This Product Now!</h1>
+        <h1>Welcome!</h1>
     </div>
 @endsection

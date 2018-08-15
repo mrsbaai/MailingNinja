@@ -1,23 +1,8 @@
 @extends('layouts.manager')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    <div class="container">
+        <h1>Welcome Back {{ Auth::user()->name }}!</h1>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in to your manager account!
-                </div>
-            </div>
-        </div>
     </div>
-</div>
 @endsection
