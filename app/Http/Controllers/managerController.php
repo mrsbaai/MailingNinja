@@ -36,7 +36,7 @@ class managerController extends Controller
             file_put_contents($path, $data);
 
             $img->removeattribute('src');
-            $img->setattribute('src', $image_name);
+            $img->setattribute('src', '/offer_images/'. $image_name);
         }
 
         return $dom->savehtml();
