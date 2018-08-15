@@ -33,6 +33,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="verticals">Niches:</label>
+                    @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
                     {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'form-control long']) !!}
 
                 </div>
