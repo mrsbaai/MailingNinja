@@ -46,39 +46,66 @@ class managerController extends Controller
 
     public function storeOffer(Request $request)
     {
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destination_path = public_path('/thumbnails');
+            $image->move($destination_path, $name);
+            $thumbnail = "/thumbnails/" . $name;
+        }else{
+            $thumbnail = null;
+        }
+
         if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
 
         $offer = new offer;
-        $offer->offer = $this->prossHTML($request->offer);
-        $offer->promo = $this->prossHTML($request->promo);
         $offer->title = $request->title;
+        $offer->thumbnail = $thumbnail;
         $offer->description = $request->description;
         $offer->is_active = $is_active;
         $offer->is_private = $is_private;
         $offer->payout = $request->payout;
-        $offer->save();
+
+
+        if(!$offer->save()){
+            flash("Error creating: " . $request->title)->error();
+            return back()->withInput();
+        }else{
+            $offer->verticals()->sync($request->get('verticals'));
+            flash("Created: " . $request->title)->success();
+            return Redirect::route('offers-edit', $offer->id);
+        }
 
 
 
-        $offer->verticals()->sync($request->get('verticals'));
 
-        flash("Created:" . $request->title)->success();
-
-
-        return Redirect::route('offers-edit', $offer->id);
 
     }
 
     public function updateOffer(Request $request)
     {
+
+        $offer = offer::find($request->id);
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destination_path = public_path('/thumbnails');
+            $image->move($destination_path, $name);
+            $thumbnail = "/thumbnails/" . $name;
+        }else{
+            $thumbnail = $offer->thumbnail;
+        }
+
         if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
-        $offer = offer::find($request->id);
+
+
         $res = $offer->update([
-            'offer' => $this->prossHTML($request->offer),
-            'promo' => $this->prossHTML($request->promo),
             'title' => $request->title,
+            'thumbnail' => $thumbnail,
             'description' => $request->description,
             'is_active' => $is_active,
             'is_private' => $is_private,
@@ -89,9 +116,9 @@ class managerController extends Controller
         $offer->verticals()->sync($request->get('verticals'));
 
         if ($res){
-            flash("Updated:" . $request->title)->success();
+            flash("Updated: " . $request->title)->success();
         }else{
-            flash("Error updating" . $request->title)->error();
+            flash("Error Updating: " . $request->title)->error();
         }
 
         return Redirect::route('offers-edit', $offer->id);
@@ -165,7 +192,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 $preview_route = route('preview', ['id' => $entity->id]);
                 $preview_label = __('Preview');
-                return "<a class='btn btn-primary btn-sm' href='$preview_route'>$preview_label</a>";
+                return "<a class='btn btn-primary btn-sm' target='blank' href='$preview_route'>$preview_label</a>";
             });
         return view('manager.offers')->with('table',$table);
     }
@@ -196,14 +223,56 @@ class managerController extends Controller
 
             ->with('verticals',$verticals)
             ->with('title', $offer->title)
-            ->with('offer', $offer->offer)
             ->with('is_private', $offer->is_private)
             ->with('is_active', $offer->is_active)
             ->with('description', $offer->description)
             ->with('payout', $offer->payout)
             ->with('id', $id)
-            ->with('promo', $offer->promo)
+            ->with('thumbnail', $offer->thumbnail)
             ->with('selected_verticals', $selected_verticals);
+
+    }
+
+    public function editLanding(Request $request, $id, $n){
+
+        $request->user()->authorizeRoles('manager');
+
+        $offer = offer::all()->where('id',$id)->first();
+        if ($n == 'a'){
+            $landing = $offer->landing_a;
+        }else{
+
+            $landing = $offer->landing_b;
+        }
+        return view('manager.offer-editor-content')->with('landing', $landing)->with('n', $n)->with('id', $id);
+
+    }
+
+    public function updateLanding(Request $request)
+    {
+        $request->user()->authorizeRoles('manager');
+
+
+        $offer = offer::find($request->id);
+
+
+        if ($request->n == "a"){
+            $res = $offer->update([
+                'landing_a' => $this->prossHTML($request->landing),
+            ]);
+        }else {
+            $res = $offer->update([
+                'landing_b' => $this->prossHTML($request->landing),
+            ]);
+        }
+
+        if ($res){
+            flash("Updated")->success();
+        }else{
+            flash("Error Updating")->error();
+        }
+
+        return Redirect::route('offers-edit', $offer->id);
 
     }
     public function publishers(Request $request){

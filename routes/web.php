@@ -41,14 +41,21 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/publisher/account', 'publisherController@account')->name('publisher-account');
     Route::get('/publisher/dashboard', 'publisherController@dashboard')->name('publisher-dashboard');
     Route::get('/publisher/offers', 'publisherController@offers')->name('publisher-offers');
-    Route::get('/publisher/statistics', 'publisherController@statistics')->name('publisher-statistics');
+
+    Route::get('/publisher/offers/{id}', 'publisherController@offer')->name('promote-offer');
+
+
+    Route::get('/publisher/offers/stats/{id}', 'publisherController@offerStats')->name('offer-stats');
+
+    Route::get('/publisher/offers/subscribed/{id}', 'publisherController@offerSubscribed')->name('offer-subscribed');
+
     Route::get('/publisher/support', 'publisherController@support')->name('publisher-support');
     Route::get('/publisher/subscribers', 'publisherController@subscribers')->name('publisher-subscribers');
 
 
 
 
-    Route::get('/manager', 'managerController@home');
+    Route::get('/manager', 'managerController@home')->name('manager-home');
     Route::get('/manager/account', 'managerController@account')->name('manager-account');
     Route::get('/manager/dashboard', 'managerController@home')->name('manager-dashboard');
 
@@ -58,6 +65,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
     Route::get('/manager/offers/edit/{id}', 'managerController@edit')->name('offers-edit');
 
+    Route::get('/manager/offers/edit/{id}/landing/{n}', 'managerController@editLanding')->name('offers-edit-landing');
 
     Route::get('/manager/offers', 'managerController@offers')->name('offers-manage');
     Route::get('/manager/publishers', 'managerController@publishers')->name('manager-publishers');
@@ -66,6 +74,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 //summernote store route
     Route::post('/manager/offers/new','managerController@storeOffer')->name('store-offer');
     Route::post('/manager/offers/edit','managerController@updateOffer')->name('update-offer');
+    Route::post('/manager/offers/edit/landing','managerController@updateLanding')->name('update-landing');
 
 
 //summernote display route

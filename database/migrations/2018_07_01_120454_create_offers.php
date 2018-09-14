@@ -14,9 +14,15 @@ class CreateOffers extends Migration
             $table->boolean('is_private')->default(true);
             $table->integer('payout')->default(0);
             $table->string('title')->default('Untitled');
-            $table->longText('description');
-            $table->longText('offer');
-            $table->longText('promo');
+            $table->string('thumbnail')->nullable()->default(null);
+            $table->longText('description')->nullable();
+            $table->longText('landing_a')->nullable();
+            $table->longText('landing_b')->nullable();
+            $table->integer('profit_a')->default(0);
+            $table->integer('profit_b')->default(0);
+            $table->integer('subscribes_a')->default(0);
+            $table->integer('subscribes_b')->default(0);
+            $table->longText('promo')->nullable();
             $table->timestamps();
         });
     }

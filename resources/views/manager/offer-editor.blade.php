@@ -1,132 +1,241 @@
-@extends('layouts.manager')
+@extends('layouts.account')
 
-@section('header')
+@section('content')
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                @include('flash::message')
+            <form action="@if( ! empty($id)) {{route('update-offer')}} @else {{route('store-offer')}} @endif"  class="text-large" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="row">
+                    <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Offer</h5>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
-    <link rel="stylesheet" href="{{ URL::asset('css/account.css') }}">
+                    </div>
+                    <div class="card-body">
+                        @if( ! empty($id)) <input id="id" type="text" name="id" hidden value="{{$id}}"> @endif
+                        <div class="container">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Title: </span>
+                                        </div>
+                                        <input id="title" type="text" name="title" class="form-control"@if( ! empty($title)) value="{{$title}}" @endif required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="input-group">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+                                        <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif required>
+
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <b>$</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" data-preview="#preview" name="thumbnail" id="thumbnail">
+                                            <label class="custom-file-label" for="thumbnail">Choose Thumbnail</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="product" id="product">
+                                            <label class="custom-file-label" for="product">Choose Product PDF</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Description: </span>
+                                </div>
+                                <textarea rows="5" name="description" id="description" class="form-control" style="max-height: 100%" required>@if( ! empty($description)) {{$description}} @endif</textarea>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+
+                        <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top img-thumbnail rounded mx-auto d-block"  id="preview" >
+
+                    </div>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Content</h5>
+                            </div>
+                            <div class="card-body">
+
+                                    <a @if( ! empty($id))  href="{{$id}}/landing/a" target="BLANK" @else  href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Landing A</a>
+                                    <a @if( ! empty($id))  href="{{$id}}/landing/b" target="BLANK" @else  href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Landing B</a>
+                                    <a @if( ! empty($id))  href="{{$id}}/promo" target="BLANK" @else   href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Promotional</a>
+
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Options</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="custom-control custom-checkbox">
+
+                                    @if( ! empty($is_private))
+                                        {{ Form::checkbox('is_private', null, true, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
+                                    @else
+
+                                        {{ Form::checkbox('is_private', null, false, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
+                                    @endif
+
+                                    <label class="custom-control-label" for="is_private">Private offer</label>
+                                </div>
+                                <br/>
+                                <div class="custom-control custom-checkbox">
+
+                                    @if( ! empty($is_active))
+                                        {{ Form::checkbox('is_active', null, true, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
+                                    @else
+                                        {{ Form::checkbox('is_active', null, false, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
+                                    @endif
+                                    <label class="custom-control-label" for="is_active">Active offer</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Niches</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
+                                    {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="form-group col-md-12 text-center">
+                    <button type="submit" class="btn btn-danger btn-round">Save</button>
+                    @if( ! empty($id))
+                        <a class='btn btn-success btn-round'  target='blank' href='/preview/{{$id}}'>Preview Saved</a>
+                    @endif
+                </div>
+
+
+            </form>
+            </form>
+        </div>
+
+
+
+        </div>
+    </div>
 
 
 
 @endsection
 
-@section('content')
-<div class="container">
-    @include('flash::message')
-    <h1>Offer Builder</h1>
+@section('title')
+    @if(empty($id)) New Offer @else Edit Offer @endif
+@endsection
 
-    <form action="@if( ! empty($id)) {{route('update-offer')}} @else {{route('store-offer')}} @endif"  class="text-large" method="POST">
-        {{ csrf_field() }}
-
-        @if( ! empty($id)) <input id="id" type="text" name="id" hidden value="{{$id}}"> @endif
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="verticals">Niches:</label>
-                    @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
-                    {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'form-control long']) !!}
-
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label for="title">Title:</label>
-                        <input id="title" type="text" name="title" class="form-control" @if( ! empty($title)) value="{{$title}}" @endif>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <textarea name="description" id="description" class="form-control">@if( ! empty($description)) {{$description}} @endif</textarea>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="payout">Default Payout ($):</label>
-                        <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-
-                                @if( ! empty($is_private))
-                                    {{ Form::checkbox('is_private', null, true, array('id'=>'is_private')) }}
-                                @else
-
-                                    {{ Form::checkbox('is_private', null, false, array('id'=>'is_private')) }}
-                                @endif
-
-                                <label class="custom-control-label" for="is_private">Private offer</label>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-group ui checkbox">
-
-                                @if( ! empty($is_active))
-                                    {{ Form::checkbox('is_active', null, true, array('id'=>'is_active')) }}
-                                @else
-                                    {{ Form::checkbox('is_active', null, false, array('id'=>'is_active')) }}
-                                @endif
-                                <label class="custom-control-label" for="is_active">Active offer</label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <br/>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="content">Offer Content:</label>
-                        <textarea name="offer" id="offer">@if( ! empty($offer)) {{$offer}} @endif</textarea>
-                    </div>
-                    <br/>
-
-                    <div class="form-group">
-                        <label for="promo">Promotional tools:</label>
-                        <textarea name="promo" id="promo">@if( ! empty($promo)) {{$promo}} @endif</textarea>
-                    </div>
-                    <br/><br/>
-
-                    <div class="form-group col-md-12 text-center">
-                        <button type="submit" class="btn btn-lg btn-primary">Save</button>
-                    </div>
-                    <br>
-                </div>
-            </div>
-        </div>
-
-
-
-    </form>
-
-
-</div>
+@section('header')
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
 @endsection
 
 @section('footer')
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/core/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/core/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap-notify.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
     <script>
+
+        $(document).ready( function() {
+            $(document).on('change', '.btn-file :file', function() {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function(event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#preview').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#thumbnail").change(function(){
+                readURL(this);
+            });
+        });
+
         $(document).ready(function() {
             $('#offer').summernote({
-                height: 500,
+                height: 700,
                 toolbar: [
                     ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -135,15 +244,15 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['insert', ['table', 'picture' ,'video', 'link', 'hr']],
-					['controle', ['fullscreen', 'codeview', 'undo', 'redo']],
-                   
+                    ['controle', ['fullscreen', 'codeview', 'undo', 'redo']],
+
                 ]
             });
         });
 
         $(document).ready(function() {
             $('#promo').summernote({
-                height: 300,
+                height: 700,
                 toolbar: [
                     ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -152,7 +261,7 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['insert', ['table', 'picture' ,'video', 'link', 'hr']],
-					['controle', ['fullscreen', 'codeview', 'undo', 'redo']],
+                    ['controle', ['fullscreen', 'codeview', 'undo', 'redo']],
 
                 ]
             });

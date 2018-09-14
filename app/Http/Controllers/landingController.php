@@ -14,7 +14,41 @@ class landingController extends Controller
 
     public function preview($id){
         $offer = offer::all()->where('id',$id)->first();
-        return view('landing.preview')->with('offer',$offer->offer);
+        $price = $offer->payout;
+        $old = (($offer->payout * 40) / 100) + $price;
+
+
+        $buy ="
+        <div class='text-center'>
+            <h3><u>Download The E-book Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
+            <div class='info-form'>
+                <a href='/'><img src='/images/paypal.png' width='300px'/></a>
+            </div>
+            <br>
+        </div>
+        ";
+
+        $free = "
+        <div class='text-center'>
+            <h3><u>Download The E-book For Free</u>:</h3><br/>
+            <div class='info-form'>
+                <form action='' class='form-inline justify-content-center'>
+                    <div class='input-group'>
+                        <input type='text' class='form-control form-control-lg' id='email' name='email' placeholder='Your E-mail Here' aria-label='Please Enter Your E-mail To Receive This Product For Free.'>
+                        <div class='input-group-append'>
+                            <button type='submit' class='btn btn-success btn-lg'>Send Download Link</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+        </div>
+        ";
+
+
+        $html = str_replace("[ACTION]",$buy, $offer->offer);
+
+        return view('landing.preview')->with('offer',$html);
     }
 
     public function show(){

@@ -1,0 +1,43 @@
+
+ .text-large {
+   font-size: 120%;
+
+ }
+
+ .box {
+     border-radius:.35rem!important;
+     margin: 20px;
+     padding: 10px;
+     box-shadow: 1px 3px 6px 1px rgba(0, 0, 0, 0.2), 1px 5px 8px 1px rgba(0, 0, 0, 0.19);
+     background-color: white;
+     color: #162029;
+ }
+
+ .out {
+     width: 205px;
+     height: 205px;
+     overflow: hidden;
+ }
+ .out img {
+
+     margin-top: -23%;
+     margin-left: -30%;
+
+ }
+
+ @media (min-width: 900px) {
+     .table-responsive {
+         overflow-x: hidden;
+
+     }
+ }
+
+
+
+
+
+ .form-control {
+     height: calc(2.25rem + 4px);
+     border: 0px solid transparent;
+
+ }
