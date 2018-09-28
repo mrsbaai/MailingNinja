@@ -9,161 +9,159 @@
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Offer</h5>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Offer</h5>
 
-                    </div>
-                    <div class="card-body">
-                        @if( ! empty($id)) <input id="id" type="text" name="id" hidden value="{{$id}}"> @endif
-                        <div class="container">
+                            </div>
+                            <div class="card-body">
+                                @if( ! empty($id)) <input id="id" type="text" name="id" hidden value="{{$id}}"> @endif
+                                <div class="container">
 
-                            <div class="row">
-                                <div class="col-lg-10">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Title: </span>
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Title: </span>
+                                                </div>
+                                                <input id="title" type="text" name="title" class="form-control"@if( ! empty($title)) value="{{$title}}" @endif required>
+                                            </div>
                                         </div>
-                                        <input id="title" type="text" name="title" class="form-control"@if( ! empty($title)) value="{{$title}}" @endif required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="input-group">
+                                        <div class="col-lg-2">
+                                            <div class="input-group">
 
 
-                                        <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif required>
+                                                <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif required>
 
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">
-                                                <b>$</b>
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <b>$</b>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" data-preview="#preview" name="thumbnail" id="thumbnail">
-                                            <label class="custom-file-label" for="thumbnail">Choose Thumbnail</label>
+                                    @if( ! empty($id))
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" data-preview="#preview" name="thumbnail" id="thumbnail">
+                                                        <label class="custom-file-label" for="thumbnail">Choose Thumbnail</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" name="product" id="product">
+                                                        <label class="custom-file-label" for="product">Choose Product</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    @endif
+
+
+
+
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Description: </span>
+                                        </div>
+                                        <textarea rows="5" name="description" id="description" class="form-control" style="max-height: 100%" required>@if( ! empty($description)) {{$description}} @endif</textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
+                                        {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="custom-control custom-checkbox">
+
+                                                @if( ! empty($is_private))
+                                                    {{ Form::checkbox('is_private', null, true, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
+                                                @else
+
+                                                    {{ Form::checkbox('is_private', null, false, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
+                                                @endif
+
+                                                <label class="custom-control-label" for="is_private">Private offer</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="custom-control custom-checkbox">
+
+                                                @if( ! empty($is_active))
+                                                    {{ Form::checkbox('is_active', null, true, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
+                                                @else
+                                                    {{ Form::checkbox('is_active', null, false, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
+                                                @endif
+                                                <label class="custom-control-label" for="is_active">Active offer</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="product" id="product">
-                                            <label class="custom-file-label" for="product">Choose Product PDF</label>
-                                        </div>
+                                    <br>
+
+
+                                    <div class="form-group col-md-12 text-center">
+                                        @if( ! empty($id))
+                                            <a href="{{$id}}/landing/a" target="BLANK" class="btn btn-outline-default btn-sm">Edit A</a>
+                                            <a href="{{$id}}/landing/b" target="BLANK" class="btn btn-outline-default btn-sm">Edit  B</a>
+                                            <a class='btn btn-outline-primary btn-sm'  target='blank' href='/preview/{{$id}}/a'>Preview A</a>
+                                            <a class='btn btn-outline-primary btn-sm'  target='blank' href='/preview/{{$id}}/b'>Preview B</a>
+                                            <a href="{{$id}}/promo" target="BLANK"  class="btn btn-outline-default btn-sm">Edit Promotional Tools</a>
+                                            <br/>
+
+                                        @endif
+                                        <button type="submit" class="btn btn-danger btn-round btn-lg">Save</button>
+
                                     </div>
+
+
+
+
+
+
                                 </div>
                             </div>
 
 
 
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Description: </span>
-                                </div>
-                                <textarea rows="5" name="description" id="description" class="form-control" style="max-height: 100%" required>@if( ! empty($description)) {{$description}} @endif</textarea>
-
-                            </div>
-
-
-
-
-                        </div>
                     </div>
-                </div>
 
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card">
+                    <div class="row">
+                        <div class="card">
 
-                        <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top img-thumbnail rounded mx-auto d-block"  id="preview" >
+                            <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top img-thumbnail rounded mx-auto d-block"  id="preview" >
 
+                        </div>
                     </div>
+
+
+
+
+
                 </div>
             </div>
 
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Content</h5>
-                            </div>
-                            <div class="card-body">
-
-                                    <a @if( ! empty($id))  href="{{$id}}/landing/a" target="BLANK" @else  href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Landing A</a>
-                                    <a @if( ! empty($id))  href="{{$id}}/landing/b" target="BLANK" @else  href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Landing B</a>
-                                    <a @if( ! empty($id))  href="{{$id}}/promo" target="BLANK" @else   href="#" onclick="alert('You need to save the offer first')" @endif  class="btn btn-primary btn-sm">Edit Promotional</a>
-
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Options</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-
-                                    @if( ! empty($is_private))
-                                        {{ Form::checkbox('is_private', null, true, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
-                                    @else
-
-                                        {{ Form::checkbox('is_private', null, false, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
-                                    @endif
-
-                                    <label class="custom-control-label" for="is_private">Private offer</label>
-                                </div>
-                                <br/>
-                                <div class="custom-control custom-checkbox">
-
-                                    @if( ! empty($is_active))
-                                        {{ Form::checkbox('is_active', null, true, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
-                                    @else
-                                        {{ Form::checkbox('is_active', null, false, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
-                                    @endif
-                                    <label class="custom-control-label" for="is_active">Active offer</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Niches</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
-                                    {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
 
 
 
 
-
-                </div>
-
-                <div class="form-group col-md-12 text-center">
-                    <button type="submit" class="btn btn-danger btn-round">Save</button>
-                    @if( ! empty($id))
-                        <a class='btn btn-success btn-round'  target='blank' href='/preview/{{$id}}'>Preview Saved</a>
-                    @endif
-                </div>
-
-
-            </form>
             </form>
         </div>
 

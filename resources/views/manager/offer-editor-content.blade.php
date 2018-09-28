@@ -19,6 +19,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <br/>
+            @include('flash::message')
             <form action="{{route('update-landing')}}"  class="text-large" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input id="n" type="text" name="n" hidden value="{{$n}}">
@@ -56,7 +58,7 @@
 
     $(document).ready(function() {
         $('#landing').summernote({
-            height: 700,
+            height: 400,
             toolbar: [
                 ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
                 ['font', ['strikethrough', 'superscript', 'subscript']],

@@ -8,6 +8,7 @@ use App\user;
 use App\vertical;
 use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class managerController extends Controller
 {
@@ -24,6 +25,7 @@ class managerController extends Controller
         $images = $dom->getelementsbytagname('img');
 
         foreach($images as $k => $img){
+
             $data = $img->getattribute('src');
 
             list($type, $data) = explode(';', $data);
@@ -88,6 +90,7 @@ class managerController extends Controller
     {
 
         $offer = offer::find($request->id);
+        $product_name = $request->id . ".zip" ;
 
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
@@ -99,6 +102,15 @@ class managerController extends Controller
             $thumbnail = $offer->thumbnail;
         }
 
+        if ($request->hasFile('product')) {
+            $product = $request->file('product');
+            Storage::disk('dropbox')->delete($product_name);
+            Storage::disk('dropbox')->put($product_name, $product);
+        }
+
+
+
+
         if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
 
@@ -106,6 +118,7 @@ class managerController extends Controller
         $res = $offer->update([
             'title' => $request->title,
             'thumbnail' => $thumbnail,
+            'product' => $product_name,
             'description' => $request->description,
             'is_active' => $is_active,
             'is_private' => $is_private,
@@ -187,13 +200,13 @@ class managerController extends Controller
             ->sortByDefault()
             ->setColumnDateFormat('d/m/Y H:i:s');
 
-        $table->addColumn()
-            ->setTitle(__('preview'))
-            ->isCustomHtmlElement(function ($entity, $column) {
-                $preview_route = route('preview', ['id' => $entity->id]);
-                $preview_label = __('Preview');
-                return "<a class='btn btn-primary btn-sm' target='blank' href='$preview_route'>$preview_label</a>";
-            });
+       // $table->addColumn()
+        //    ->setTitle(__('preview'))
+        //    ->isCustomHtmlElement(function ($entity, $column) {
+        //        $preview_route = route('preview', ['id' => $entity->id]);
+        //        $preview_label = __('Preview');
+        //        return "<a class='btn btn-primary btn-sm' target='blank' href='$preview_route'>$preview_label</a>";
+         //   });
         return view('manager.offers')->with('table',$table);
     }
 
@@ -267,12 +280,13 @@ class managerController extends Controller
         }
 
         if ($res){
-            flash("Updated")->success();
+            flash("Offer 'ID: $request->id' Updated.")->success();
         }else{
-            flash("Error Updating")->error();
+            flash("Error updating offer 'ID: $request->id'.")->error();
         }
 
-        return Redirect::route('offers-edit', $offer->id);
+        return view('manager.offer-editor-content')->with('landing', $request->landing)->with('n', $request->n)->with('id', $request->id);
+
 
     }
     public function publishers(Request $request){

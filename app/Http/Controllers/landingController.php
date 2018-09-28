@@ -12,10 +12,15 @@ class landingController extends Controller
     }
 
 
-    public function preview($id){
+    public function preview($id, $n){
         $offer = offer::all()->where('id',$id)->first();
         $price = $offer->payout;
         $old = (($offer->payout * 40) / 100) + $price;
+        if ($n == "a"){
+            $landing = $offer->landing_a;
+        }else{
+            $landing = $offer->landing_b;
+        }
 
 
         $buy ="
@@ -46,7 +51,7 @@ class landingController extends Controller
         ";
 
 
-        $html = str_replace("[ACTION]",$buy, $offer->offer);
+        $html = str_replace("[ACTION]",$buy, $landing);
 
         return view('landing.preview')->with('offer',$html);
     }

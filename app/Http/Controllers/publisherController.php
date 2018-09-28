@@ -99,7 +99,7 @@ class publisherController extends Controller
             });
 
         $table->addColumn()
-            ->setTitle(__('Today'))
+            ->setTitle(__('Today $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
                 return "<b>$". $entity->id . "</b>";
@@ -107,7 +107,7 @@ class publisherController extends Controller
 
 
         $table->addColumn()
-            ->setTitle(__('Life Time'))
+            ->setTitle(__('Life Time $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
                 return "<b>$". $entity->id . "</b>";
@@ -116,7 +116,7 @@ class publisherController extends Controller
         $table->addColumn()
             ->setTitle(__(' '))
             ->isCustomHtmlElement(function ($entity, $column) {
-                $preview_route = route('preview', ['id' => $entity->id]);
+                $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
                 $promote_route = route('promote-offer', ['id' => $entity->id]);
                 $stats_route = route('offer-stats', ['id' => $entity->id]);
                 $download_route = route('offer-subscribed', ['id' => $entity->id]);

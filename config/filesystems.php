@@ -48,6 +48,12 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'app_secret' => env('DROPBOX_APP_SECRET'),
+            'token' => env('DROPBOX_TOKEN'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

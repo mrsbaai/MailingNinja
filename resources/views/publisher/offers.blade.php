@@ -15,12 +15,6 @@
                     <div class="card-body">
                         {{$table}}
                     </div>
-                    <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

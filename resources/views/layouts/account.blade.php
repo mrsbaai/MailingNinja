@@ -89,31 +89,31 @@
             @endif
             @if (Auth::user()->hasRole('publisher'))
                 <ul class="nav">
-                    <li class="active">
+                    <li @if(Route::current()->getName() == 'publisher-dashboard' or Route::current()->getName() == 'publisher-home') class="active" @endif>
                         <a href="{{ route('publisher-dashboard') }}">
                             <i class="nc-icon nc-chart-bar-32"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
+                    <li @if(Request::is('*offers*')) class="active" @endif>
                         <a href="{{ route('publisher-offers') }}">
                             <i class="nc-icon nc-shop"></i>
                             <p>Offers</p>
                         </a>
                     </li>
-                    <li>
+                    <li @if(Route::current()->getName() == 'publisher-subscribers') class="active" @endif>
                         <a href="{{ route('publisher-subscribers') }}">
                             <i class="nc-icon nc-cloud-download-93"></i>
                             <p>Subscribes</p>
                         </a>
                     </li>
-                    <li>
+                    <li @if(Route::current()->getName() == 'publisher-account') class="active" @endif>
                         <a href="{{ route('publisher-account') }}">
                             <i class="nc-icon nc-circle-10"></i>
                             <p>Account</p>
                         </a>
                     </li>
-                    <li>
+                    <li @if(Route::current()->getName() == 'publisher-support') class="active" @endif>
                         <a href="{{ route('publisher-support') }}">
                             <i class="nc-icon nc-support-17"></i>
                             <p>Support</p>
