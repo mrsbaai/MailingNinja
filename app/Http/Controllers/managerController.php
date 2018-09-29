@@ -93,6 +93,7 @@ class managerController extends Controller
         $product_name = $request->id . ".zip" ;
 
         if ($request->hasFile('thumbnail')) {
+
             $image = $request->file('thumbnail');
             $name = time().'.'.$image->getClientOriginalExtension();
             $destination_path = public_path('/thumbnails');
@@ -116,8 +117,8 @@ class managerController extends Controller
 
 
         $res = $offer->update([
-            'title' => $request->title,
             'thumbnail' => $thumbnail,
+            'title' => $request->title,
             'product' => $product_name,
             'description' => $request->description,
             'is_active' => $is_active,
@@ -158,6 +159,43 @@ class managerController extends Controller
         return view('manager.offer-editor')->with('verticals',$verticals);
     }
 
+    private function nicetime($date)
+    {
+        if(empty($date)) {
+            return "No date provided";
+        }
+
+        $periods         = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+        $lengths         = array("60","60","24","7","4.35","12","10");
+        date_default_timezone_set("UTC");
+        $now             = time();
+        $unix_date         = strtotime($date);
+
+        if(empty($unix_date)) {
+            return "Bad date";
+        }
+        if($now > $unix_date) {
+            $difference     = $now - $unix_date;
+            $tense         = "ago";
+
+        } else {
+            $difference     = $unix_date - $now;
+            $tense         = "from now";
+        }
+
+        for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+            $difference /= $lengths[$j];
+        }
+
+        $difference = round($difference);
+
+        if($difference != 1) {
+            $periods[$j].= "s";
+        }
+
+        return "$difference $periods[$j] {$tense}";
+    }
+
     public function offers(Request $request){
         $request->user()->authorizeRoles('manager');
 
@@ -186,31 +224,42 @@ class managerController extends Controller
 
         $table->addColumn('is_active')
             ->isSortable()
-            ->setTitle('Active?');
+            ->setTitle('A?');
 
         $table->addColumn('is_private')
             ->isSortable()
-            ->setTitle('Private?');
+            ->setTitle('P?');
 
+        $table->addColumn('profit_a')
+            ->isSortable()
+            ->setTitle('A($) ');
 
+        $table->addColumn('profit_b')
+            ->isSortable()
+            ->setTitle('B($) ');
+
+        $table->addColumn('subscribes_a')
+            ->isSortable()
+            ->setTitle('A(Subs) ');
+
+        $table->addColumn('subscribes_b')
+            ->isSortable()
+            ->setTitle('B(Subs) ');
 
         $table->addColumn('updated_at')
-            ->setTitle('Update date')
+            ->setTitle('Last Update')
             ->isSortable()
             ->sortByDefault()
-            ->setColumnDateFormat('d/m/Y H:i:s');
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $this->nicetime($entity->updated_at) ;
+            });
 
-       // $table->addColumn()
-        //    ->setTitle(__('preview'))
-        //    ->isCustomHtmlElement(function ($entity, $column) {
-        //        $preview_route = route('preview', ['id' => $entity->id]);
-        //        $preview_label = __('Preview');
-        //        return "<a class='btn btn-primary btn-sm' target='blank' href='$preview_route'>$preview_label</a>";
-         //   });
+
         return view('manager.offers')->with('table',$table);
     }
 
     public function destroyOffer(Request $request){
+        $request->user()->authorizeRoles('manager');
         $res = offer::where('id',$request->id)->delete();
         if ($res){
             flash("Offer deleted!")->success();
@@ -260,6 +309,16 @@ class managerController extends Controller
         return view('manager.offer-editor-content')->with('landing', $landing)->with('n', $n)->with('id', $id);
 
     }
+    public function editPromo(Request $request, $id){
+
+        $request->user()->authorizeRoles('manager');
+
+        $offer = offer::all()->where('id',$id)->first();
+        return view('manager.offer-editor-promo')->with('promo', $offer->promo)->with('id', $id);
+
+    }
+
+
 
     public function updateLanding(Request $request)
     {
@@ -272,10 +331,18 @@ class managerController extends Controller
         if ($request->n == "a"){
             $res = $offer->update([
                 'landing_a' => $this->prossHTML($request->landing),
+                'profit_a' => 0,
+                'profit_b' => 0,
+                'subscribes_a' => 0,
+                'subscribes_b' => 0,
             ]);
         }else {
             $res = $offer->update([
                 'landing_b' => $this->prossHTML($request->landing),
+                'profit_a' => 0,
+                'profit_b' => 0,
+                'subscribes_a' => 0,
+                'subscribes_b' => 0,
             ]);
         }
 
@@ -289,40 +356,112 @@ class managerController extends Controller
 
 
     }
-    public function publishers(Request $request){
-        $manager_id = Auth::user()->id;
 
-        $records = user::all()->where('manager_id',$manager_id);
-        $columns =  array("id", "name", "email", "balance");
-        $data = $this->formatData($records,$columns);
+    public function updatePromo(Request $request)
+    {
+        $request->user()->authorizeRoles('manager');
+
+
+        $offer = offer::find($request->id);
+
+
+        $res = $offer->update([
+            'promo' => $this->prossHTML($request->promo),
+        ]);
+
+
+        if ($res){
+            flash("Offer 'ID: $request->id' Updated.")->success();
+        }else{
+            flash("Error updating offer 'ID: $request->id'.")->error();
+        }
+
+        return view('manager.offer-editor-promo')->with('promo', $request->promo)->with('id', $request->id);
+
+
+    }
+
+    public function destroyPublisher(Request $request){
+        $request->user()->authorizeRoles('manager');
+        $res = user::where('id',$request->id)->delete();
+        if ($res){
+            flash("Publisher deleted!")->success();
+        }else{
+            flash("Error deleting publisher!")->error();
+        }
+
+        return $this->publishers($request);
+
+
+    }
+    public function publishers(Request $request){
+
 
         $request->user()->authorizeRoles('manager');
-        return view('manager.publishers')->with('rows', $data['rows'])->with('columns', $data['columns']);
+
+        $table = app(TableList::class)
+            ->setModel(user::class)
+            ->setRoutes([
+                'index' => ['alias' => 'manage-publishers', 'parameters' => []],
+                'edit'       => ['alias' => 'edit-publisher', 'parameters' => []],
+                'destroy'    => ['alias' => 'publisher-destroy', 'parameters' => []],
+            ])
+            ->addQueryInstructions(function ($query) {
+                $query->select('users.*')
+                    ->where('manager_id', Auth::user()->id);
+            });
+
+        $table->addColumn('id')
+            ->useForDestroyConfirmation()
+            ->sortByDefault()
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('id');
+
+        $table->addColumn()
+            ->setTitle('Status')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->is_active){
+                    $a_route = route('publisher-status', ['id' => $entity->id,'status' => "0"]);
+                    return "<a class='btn btn-danger btn-sm' href='$a_route'>Deactivate</a>";
+                }else{
+                    $a_route = route('publisher-status', ['id' => $entity->id,'status' => "1"]);
+                    return "<a class='btn btn-primary btn-sm' href='$a_route'>Activate</a>";
+                }
+
+            });
+
+
+
+        return view('manager.publishers')->with('table', $table);
+    }
+
+    public function activePublisher(Request $request, $id, $status){
+
+        $request->user()->authorizeRoles('manager');
+        $publisher= user::where('id', $id)->where('manager_id', Auth::user()->id);
+
+        $res = $publisher->update([
+            'is_active' => $status,
+        ]);
+
+        if ($res){
+            flash("Publisher status updated!")->success();
+        }else{
+            flash("Error updating publisher status!")->error();
+        }
+
+        return $this->publishers($request);
     }
 
     public function publisher(Request $request, $id){
         $request->user()->authorizeRoles('manager');
+
+
         return view('manager.publisher')->with('id',$id);
     }
 
 
-    Public function formatData($records, $columns){
-
-        $rows = [];
-        foreach($records as $index => $record) {
-            $row = [];
-            foreach($columns as $column){
-                $newRow = $record[$column];
-                if($column == "created_at"){
-                    $newRow = $this->nicetime($record[$column]);
-                }
-                array_push($row, $newRow);
-            }
-            array_push($rows, $row);
-        }
-
-        return array('rows' => $rows, 'columns' => $columns);
-    }
 
 
 }

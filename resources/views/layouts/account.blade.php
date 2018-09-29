@@ -60,7 +60,7 @@
 
 
                     <li @if(Request::is('*publishers*')) class="active" @endif>
-                        <a href="{{ route('manager-publishers') }}">
+                        <a href="{{ route('manage-publishers') }}">
                             <i class="nc-icon nc-badge"></i>
                             <p>Manage Publishers</p>
                         </a>

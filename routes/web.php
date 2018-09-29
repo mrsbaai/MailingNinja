@@ -67,14 +67,20 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
     Route::get('/manager/offers/edit/{id}/landing/{n}', 'managerController@editLanding')->name('offers-edit-landing');
 
+    Route::get('/manager/offers/edit/{id}/promo', 'managerController@editPromo')->name('offers-edit-promo');
+
     Route::get('/manager/offers', 'managerController@offers')->name('offers-manage');
-    Route::get('/manager/publishers', 'managerController@publishers')->name('manager-publishers');
-    Route::get('/manager/publishers/{id}', 'managerController@publisher')->name('manager-publisher');
+    Route::get('/manager/publishers', 'managerController@publishers')->name('manage-publishers');
+    Route::get('/manager/publishers/{id}', 'managerController@publisher')->name('edit-publisher');
+    Route::delete('/manager/publishers/destroy', 'managerController@destroyOffer')->name('publisher-destroy');
+
+    Route::get('/manager/publishers/deactivate/{id}/{status}', 'managerController@activePublisher')->name('publisher-status');
 
 //summernote store route
     Route::post('/manager/offers/new','managerController@storeOffer')->name('store-offer');
     Route::post('/manager/offers/edit','managerController@updateOffer')->name('update-offer');
     Route::post('/manager/offers/edit/landing','managerController@updateLanding')->name('update-landing');
+    Route::post('/manager/offers/edit/promo','managerController@updatePromo')->name('update-promo');
 
 
 //summernote display route

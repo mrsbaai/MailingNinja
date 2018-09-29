@@ -17,7 +17,8 @@ class CreateUsersTable extends Migration
             $table->integer('manager_id')->nullable()->default(null);
             $table->string('paypal')->nullable()->default(null);
             $table->string('skype')->nullable()->default(null);
-            $table->string('name')->nullable()->default(null);;
+            $table->string('name')->nullable()->default(null);
+
             $table->integer('balance')->default(0);
             $table->integer('life_time_profit')->default(0);
             $table->string('email')->unique();
