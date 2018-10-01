@@ -18,6 +18,22 @@ class CreateUsersTable extends Migration
             $table->string('paypal')->nullable()->default(null);
             $table->string('skype')->nullable()->default(null);
             $table->string('name')->nullable()->default(null);
+            $table->string('message')->nullable()->default(null);
+
+            $table->string('first_name')->nullable()->default(null);
+            $table->string('last_name')->nullable()->default(null);
+            $table->string('phone')->nullable()->default(null);
+            $table->string('address')->nullable()->default(null);
+            $table->string('country',2)->nullable()->default(null);
+            $table->string('city')->nullable()->default(null);
+            $table->string('postal_code')->nullable()->default(null);
+            $table->string('merchant_id')->nullable()->default(null);
+            $table->string('website')->nullable()->default(null);
+
+
+
+
+
 
             $table->integer('balance')->default(0);
             $table->integer('life_time_profit')->default(0);

@@ -13,4 +13,9 @@ class country extends Model
     {
         return $this->belongsToMany('App\offer', 'publisher_offers', 'country_id', 'offer_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

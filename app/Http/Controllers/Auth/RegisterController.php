@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use app\User;
-use app\Role;
+use App\user;
+use App\role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,6 +51,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'skype' => 'required|string|max:100',
+            'country' => 'required|string|max:2',
+            'message' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -64,14 +67,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-        $user
-            ->roles()
-            ->attach(Role::where('name', 'costumer')->first());
+        $publisher_manager = user::where('name', 'Oumayma')->first();
+
+        $user = new user();
+        $user->country = $data['country'];
+        $user->manager_id = $publisher_manager['id'];
+        $user->skype = $data['skype'];
+        $user->name = $data['name'];
+        $user->message = $data['message'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+
+        $user->save();
+
+        $user->roles()->attach(Role::where('name', 'publisher')->first());
+
+
+
 
         return $user;
     }

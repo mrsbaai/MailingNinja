@@ -55,7 +55,7 @@ class usersTableSeeder extends Seeder
         $publisher->password = $password;
         $publisher->save();
         $publisher->roles()->attach($role_publisher);
-        $publisher->manager = $publisher_manager;
+
 
 
 

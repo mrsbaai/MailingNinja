@@ -94,6 +94,7 @@
         </div>
     </div>
 </footer>
+
 </body>
 
 @yield('footer')
