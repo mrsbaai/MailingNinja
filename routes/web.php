@@ -86,7 +86,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 //summernote display route
     Route::get('/summernote_display','landingController@show')->name('summernoteDispay');
 
-
+    Route::post('/account','userController@updateInfo')->name('updateInfo');
 
 //});
 

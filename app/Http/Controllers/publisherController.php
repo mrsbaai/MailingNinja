@@ -5,6 +5,7 @@ use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Http\Request;
 
 use App\offer;
+use App\country;
 class publisherController extends Controller
 {
     public function __construct()
@@ -19,7 +20,9 @@ class publisherController extends Controller
 
     public function account(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.account');
+
+        $countries = country::pluck('name','code');
+        return view('publisher.account')->with('countries',$countries);
     }
     public function dashboard(Request $request){
         $request->user()->authorizeRoles('publisher');

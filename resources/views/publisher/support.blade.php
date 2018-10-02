@@ -6,10 +6,53 @@
     <div class="content">
         <div class="row">
 
+            <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="{{ URL::asset('images/profile_back.jpg') }}">
+                    </div>
+                    <div class="card-body">
+                        <div class="author">
+                            <a href="skype:-skype-name-?chat">
+                                <img class="avatar border-gray" src="{{ URL::asset('images/profile_image.jpg') }}">
+                                <h5 class="title">Oumaema</h5>
+                            </a>
+                        </div>
+                        <h5 class="card-text text-center">"Account Performance Manager"</h5>
+                        <div class="button-container">
+                            <a class="btn text-center btn-info btn-round" href="skype:-skype-name-?chat">Start Skype Chat</a>
+                        </div>
 
 
 
-            <div class="col-md-7">
+                        <div class="card-footer">
+
+                            <hr>
+
+                            <div class="button-container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-6 ml-auto">
+                                        <h5><i class="fas fa-phone"></i></h5>
+
+                                        <small>+212-623-5789</small>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-6 ml-auto mr-auto">
+                                        <h5><i class="fab fa-skype"></i></h5>
+
+                                        <small>skype-name</small>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Send Email</h5>
@@ -54,50 +97,7 @@
             </div>
 
 
-            <div class="col-md-5">
-                <div class="card card-user">
-                    <div class="image">
-                        <img src="{{ URL::asset('images/profile_back.jpg') }}">
-                    </div>
-                    <div class="card-body">
-                        <div class="author">
-                            <a href="skype:-skype-name-?chat">
-                                <img class="avatar border-gray" src="{{ URL::asset('images/profile_image.jpg') }}">
-                                <h5 class="title">Oumaema</h5>
-                            </a>
-                        </div>
-                        <h5 class="card-text text-center">"Account Performance Manager"</h5>
-                        <div class="button-container">
-                            <a class="btn text-center btn-info btn-round" href="skype:-skype-name-?chat">Start Skype Chat</a>
-                        </div>
 
-
-
-                        <div class="card-footer">
-
-                            <hr>
-
-                            <div class="button-container">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-6 ml-auto">
-                                        <h5><i class="fas fa-phone"></i></h5>
-
-                                        <small>+212-623-5789</small>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-6 ml-auto mr-auto">
-                                        <h5><i class="fab fa-skype"></i></h5>
-
-                                        <small>skype-name</small>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
     </div>
