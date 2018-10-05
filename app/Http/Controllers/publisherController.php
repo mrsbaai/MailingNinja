@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\offer;
 use App\country;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Sells;
+use App\clicks;
+use App\subscribe_log;
+
 class publisherController extends Controller
 {
     public function __construct()
@@ -15,7 +21,8 @@ class publisherController extends Controller
     }
     public function home(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.home');
+        return $this->dashboard($request);
+
     }
 
     public function account(Request $request){
@@ -26,7 +33,37 @@ class publisherController extends Controller
     }
     public function dashboard(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.home');
+
+        $LeadsChart7 = $this->LeadsChart(Auth::user()->id, null, null, 7);
+        $LeadsChart30 = $this->LeadsChart(Auth::user()->id, null, null, 30);
+        $LeadsChart90 = $this->LeadsChart(Auth::user()->id, null, null, 90);
+
+        $ProfitChart7 = $this->ProfitChart(Auth::user()->id, null, null, 7);
+        $ProfitChart30 = $this->ProfitChart(Auth::user()->id, null, null, 30);
+        $ProfitChart90 = $this->ProfitChart(Auth::user()->id, null, null, 90);
+
+        $ClickChart7 = $this->ClickChart(Auth::user()->id, null, null, 7);
+        $ClickChart30 = $this->ClickChart(Auth::user()->id, null, null, 30);
+        $ClickChart90 = $this->ClickChart(Auth::user()->id, null, null, 90);
+
+        $SubscribesChart7 = $this->SubscribesChart(Auth::user()->id, null, null, 7);
+        $SubscribesChart30 = $this->SubscribesChart(Auth::user()->id, null, null, 30);
+        $SubscribesChart90 = $this->SubscribesChart(Auth::user()->id, null, null, 90);
+
+        return view('publisher.home')
+            ->with('SubscribesChart7',$SubscribesChart7)
+            ->with('SubscribesChart30',$SubscribesChart30)
+            ->with('SubscribesChart90',$SubscribesChart90)
+            ->with('ClickChart7',$ClickChart7)
+            ->with('ClickChart30',$ClickChart30)
+            ->with('ClickChart90',$ClickChart90)
+            ->with('ProfitChart7',$ProfitChart7)
+            ->with('ProfitChart30',$ProfitChart30)
+            ->with('ProfitChart90',$ProfitChart90)
+            ->with('LeadsChart7',$LeadsChart7)
+            ->with('LeadsChart30',$LeadsChart30)
+            ->with('LeadsChart90',$LeadsChart90);
+
     }
     public function offerSubscribed(Request $request, $id){
         $request->user()->authorizeRoles('publisher');
@@ -144,6 +181,232 @@ class publisherController extends Controller
         return view('publisher.subscribers');
     }
 
+
+    public function test (){
+
+
+
+        $chart = $this->ClickChart(Auth::user()->id, null, null, 7);
+
+        return view('publisher.test',compact('chart'));
+    }
+
+    public function LeadsChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
+
+        $name = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+        $start = Carbon::now()->subDays($days);
+
+        for ($i = 0 ; $i <= $days; $i++) {
+            $date = $start->copy()->addDays($i);
+            $dates[] = $date->format('d/m');
+
+            $query  = Sells::latest();
+
+
+            $query->whereMonth('Created_at',$date->format('m'))
+                ->whereDay('Created_at',$date->format('d'))
+                ->where('is_refund',false)
+                ->where('is_for_host',false)
+                ->where('Status','Completed');
+            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($offer_id){$query->where('offer_id' , $offer_id);}
+            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
+            $data[] = count($query->get());
+        }
+
+        $chartjs = app()->chartjs
+            ->name($name)
+            ->type('line')
+            ->size(['width' => 400, 'height' => 150])
+            ->labels($dates)
+            ->datasets([
+                [
+                    "label" => "Lead Count",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data,
+                ],
+            ])
+            ->options([]);
+        return $chartjs;
+    }
+
+    public function clickChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
+
+        $name = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+        $start = Carbon::now()->subDays($days);
+
+        for ($i = 0 ; $i <= $days; $i++) {
+            $date = $start->copy()->addDays($i);
+            $dates[] = $date->format('d/m');
+
+            $query  = clicks::latest();
+
+
+            $query->whereMonth('Created_at',$date->format('m'))
+                ->whereDay('Created_at',$date->format('d'));
+
+            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($offer_id){$query->where('offer_id' , $offer_id);}
+            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
+            $collection = $query->get();
+            $clicks = 0;
+            foreach ($collection as $item) {
+                $clicks = $clicks + $item['count'];
+            }
+
+            $data[] = $clicks;
+        }
+
+        $chartjs = app()->chartjs
+            ->name($name)
+            ->type('line')
+            ->size(['width' => 400, 'height' => 150])
+            ->labels($dates)
+            ->datasets([
+                [
+                    "label" => "Clicks",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data,
+                ],
+            ])
+            ->options([]);
+        return $chartjs;
+    }
+
+    public function ProfitChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
+
+        $name = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+        $start = Carbon::now()->subDays($days);
+
+        for ($i = 0 ; $i <= $days; $i++) {
+            $date = $start->copy()->addDays($i);
+            $dates[] = $date->format('d/m');
+
+            $query  = Sells::latest();
+
+
+            $query->whereMonth('Created_at',$date->format('m'))
+                ->whereDay('Created_at',$date->format('d'))
+                ->where('is_refund',false)
+                ->where('is_for_host',false)
+                ->where('Status','Completed');
+            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($offer_id){$query->where('offer_id' , $offer_id);}
+            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
+            $collection = $query->get();
+            $profit = 0;
+            foreach ($collection as $item) {
+                $profit = $profit + $item['payedAmount'];
+            }
+
+            $data[] = $profit;
+        }
+
+
+        $chartjs = app()->chartjs
+            ->name($name)
+            ->type('line')
+            ->size(['width' => 400, 'height' => 150])
+            ->labels($dates)
+            ->datasets([
+                [
+                    "label" => "Profit ($)",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data,
+                ],
+            ])
+            ->options([]);
+        return $chartjs;
+    }
+
+    public function SubscribesChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
+
+        $name = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+        $start = Carbon::now()->subDays($days);
+
+        for ($i = 0 ; $i <= $days; $i++) {
+            $date = $start->copy()->addDays($i);
+            $dates[] = $date->format('d/m');
+
+            $query  = subscribe_log::latest();
+
+
+            $query->whereMonth('Created_at',$date->format('m'))
+                ->whereDay('Created_at',$date->format('d'));
+
+            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($offer_id){$query->where('offer_id' , $offer_id);}
+            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
+            $collection = $query->get();
+            $subscribes = 0;
+            $unsubscribes = 0;
+            $confirmed = 0;
+            foreach ($collection as $item) {
+                $subscribes = $subscribes + $item['subscribes'];
+                $unsubscribes = $unsubscribes + $item['unsubscribes'];
+                $confirmed = $confirmed + $item['confirmed'];
+            }
+
+            $data1[] = $subscribes;
+            $data2[] = $unsubscribes;
+            $data3[] = $confirmed;
+        }
+
+        $chartjs = app()->chartjs
+            ->name($name)
+            ->type('line')
+            ->size(['width' => 400, 'height' => 150])
+            ->labels($dates)
+            ->datasets([
+                [
+                    "label" => "Subscribes",
+                    'backgroundColor' => "rgba(200, 200, 154, 0.31)",
+                    'borderColor' => "rgba(200, 200, 154, 0.7)",
+                    "pointBorderColor" => "rgba(200, 200, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(200, 200, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data1,
+                ],
+                [
+                    "label" => "Unsubscribes",
+                    'backgroundColor' => "rgba(10, 10, 154, 0.31)",
+                    'borderColor' => "rgba(10, 10, 154, 0.7)",
+                    "pointBorderColor" => "rgba(10, 10, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(10, 10, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data2,
+                ],
+                [
+                    "label" => "Confirmed",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data3,
+                ],
+            ])
+            ->options([]);
+        return $chartjs;
+    }
 
 
 }

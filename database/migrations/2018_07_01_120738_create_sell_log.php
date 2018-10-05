@@ -10,6 +10,8 @@ class CreateSellLog extends Migration
     {
         Schema::create('sell_log', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->boolean('is_for_host')->default(false);
             $table->boolean('is_refund')->default(false);
             $table->integer('offer_id');
             $table->integer('vertical_id');

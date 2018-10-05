@@ -9,13 +9,13 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    <i class="nc-icon nc-email-85 text-primary"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Capacity</p>
-                                    <p class="card-title">150GB
+                                    <p class="card-category">Subscribes <br/>(Today)</p>
+                                    <p class="card-title">0
                                     <p>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update Now
+                            <i class="fa fa-refresh"></i> 1223 Available
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
-                                    <p class="card-title">$ 1,345
+                                    <p class="card-category">Profit <br/>(Today)</p>
+                                    <p class="card-title">$0
                                     <p>
                                 </div>
                             </div>
@@ -50,24 +50,25 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar-o"></i> Last day
+                            <i class="fa fa-refresh"></i> $0 Lifetime
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-vector text-danger"></i>
+                                    <i class="nc-icon nc-shop text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Errors</p>
-                                    <p class="card-title">23
+                                    <p class="card-category">Leads <br/>(Today)</p>
+                                    <p class="card-title">0
                                     <p>
                                 </div>
                             </div>
@@ -76,24 +77,25 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> In the last hour
+                            <i class="fa fa-refresh"></i> Paying Costumers
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-favourite-28 text-primary"></i>
+                                    <i class="nc-icon nc-tap-01 text-danger"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Followers</p>
-                                    <p class="card-title">+45K
+                                    <p class="card-category">Clicks <br/>(Today)</p>
+                                    <p class="card-title">0
                                     <p>
                                 </div>
                             </div>
@@ -102,8 +104,106 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update now
+                            <i class="fa fa-refresh"></i> Unique Visits
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header ">
+                        <h5 class="card-title">Profit</h5>
+                        <p class="card-category">Paying Costumers</p>
+                    </div>
+                    <div class="card-body ">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Profit7">7 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Profit30">30 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Profit90">90 Days</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="Profit7" class="container tab-pane active"><br>
+                                <h5>7 Days Profit</h5>
+                                {!! $ProfitChart7->render() !!}
+
+                            </div>
+                            <div id="Profit30" class="container tab-pane fade"><br>
+                                <h5>30 Days Profit</h5>
+                                {!! $ProfitChart30->render() !!}
+
+                            </div>
+                            <div id="Profit90" class="container tab-pane fade"><br>
+                                <h5>90 Days Profit</h5>
+                                {!! $ProfitChart90->render() !!}
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header ">
+                        <h5 class="card-title">Leads</h5>
+                        <p class="card-category">Paying Costumers</p>
+                    </div>
+                    <div class="card-body ">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Leads7">7 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Leads30">30 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Leads90">90 Days</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="Leads7" class="container tab-pane active"><br>
+                                <h5>7 Days Leads</h5>
+                                {!! $LeadsChart7->render() !!}
+
+
+                            </div>
+                            <div id="Leads30" class="container tab-pane fade"><br>
+                                <h5>30 Days Leads</h5>
+                                {!! $LeadsChart30->render() !!}
+
+                            </div>
+                            <div id="Leads90" class="container tab-pane fade"><br>
+                                <h5>90 Days Leads</h5>
+                                {!! $LeadsChart90->render() !!}
+
+
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -112,67 +212,100 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Users Behavior</h5>
-                        <p class="card-category">24 Hours performance</p>
+                        <h5 class="card-title">Clicks</h5>
+                        <p class="card-category">Unique Visits</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id=chartHours width="400" height="100"></canvas>
-                    </div>
-                    <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Clicks7">7 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Clicks30">30 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Clicks90">90 Days</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="Clicks7" class="container tab-pane active"><br>
+                                <h5>7 Days Clicks</h5>
+                                {!! $ClickChart7->render() !!}
+
+
+                            </div>
+                            <div id="Clicks30" class="container tab-pane fade"><br>
+                                <h5>30 Days Clicks</h5>
+                                {!! $ClickChart30->render() !!}
+
+                            </div>
+                            <div id="Clicks90" class="container tab-pane fade"><br>
+                                <h5>90 Days Clicks</h5>
+                                {!! $ClickChart90->render() !!}
+
+
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Email Statistics</h5>
-                        <p class="card-category">Last Campaign Performance</p>
+                        <h5 class="card-title">Subscribes</h5>
+                        <p class="card-category">Subscribes</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id="chartEmail"></canvas>
-                    </div>
-                    <div class="card-footer ">
-                        <div class="legend">
-                            <i class="fa fa-circle text-primary"></i> Opened
-                            <i class="fa fa-circle text-warning"></i> Read
-                            <i class="fa fa-circle text-danger"></i> Deleted
-                            <i class="fa fa-circle text-gray"></i> Unopened
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Subscribes7">7 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Subscribes30">30 Days</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Subscribes90">90 Days</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="Subscribes7" class="container tab-pane active"><br>
+                                <h5>7 Days Subscribes</h5>
+                                {!! $SubscribesChart7->render() !!}
+
+
+                            </div>
+                            <div id="Subscribes30" class="container tab-pane fade"><br>
+                                <h5>30 Days Subscribes</h5>
+                                {!! $SubscribesChart30->render() !!}
+
+                            </div>
+                            <div id="Subscribes90" class="container tab-pane fade"><br>
+                                <h5>90 Days Subscribes</h5>
+                                {!! $SubscribesChart90->render() !!}
+
+
+                            </div>
                         </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-calendar"></i> Number of emails sent
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-title">NASDAQ: AAPL</h5>
-                        <p class="card-category">Line Chart with Points</p>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="speedChart" width="400" height="100"></canvas>
-                    </div>
-                    <div class="card-footer">
-                        <div class="chart-legend">
-                            <i class="fa fa-circle text-info"></i> Tesla Model S
-                            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                        </div>
-                        <hr/>
-                        <div class="card-stats">
-                            <i class="fa fa-check"></i> Data information certified
-                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
 

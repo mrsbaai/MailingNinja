@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
+        Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class
 
     ],
 

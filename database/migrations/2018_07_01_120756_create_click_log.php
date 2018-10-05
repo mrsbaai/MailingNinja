@@ -14,7 +14,6 @@ class CreateClickLog extends Migration
             $table->integer('offer_id');
             $table->integer('vertical_id');
             $table->integer('count');
-            $table->date('day');
             $table->timestamps();
         });
     }

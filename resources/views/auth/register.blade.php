@@ -4,10 +4,12 @@
     <div class="wrapper">
         <div class="page-header" style="background-image: url('{{ URL::asset('images/10.jpg') }}');">
             <div class="filter"></div>
-            <div class="conainer">
-                <div class="row">
-                    <div class="col-lg-12 ml-auto mr-auto">
-                        <div class="card">
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+
+                        <div class="card" style="margin-top: 120px;margin-bottom: 50px;">
                         <div class="card-header">
                             <h3>Get An Account</h3>
                         </div>

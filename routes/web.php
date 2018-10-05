@@ -38,6 +38,9 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/preview/{id}/{n}', 'landingController@preview')->name('preview');
 
     Route::get('/publisher', 'publisherController@home')->name('publisher-home');
+
+    Route::get('/publisher/test', 'publisherController@test')->name('publisher-test');
+
     Route::get('/publisher/account', 'publisherController@account')->name('publisher-account');
     Route::get('/publisher/dashboard', 'publisherController@dashboard')->name('publisher-dashboard');
     Route::get('/publisher/offers', 'publisherController@offers')->name('publisher-offers');

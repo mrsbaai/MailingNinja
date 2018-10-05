@@ -73,7 +73,7 @@
         <div class="section section-dark text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="info">
                             <div class="icon icon-danger">
                                 <i class="nc-icon nc-bulb-63"></i>
@@ -85,42 +85,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="info">
                             <div class="icon icon-danger">
                                 <i class="nc-icon nc-money-coins"></i>
                             </div>
                             <div class="description">
-                                <h4 class="info-title">High Conversion</h4>
-                                <p class="description">Exclusive offers that convert high. Our commission is clear. Their is no other parties involved.</p>
+                                <h4 class="info-title">PayPal Direct</h4>
+                                <p class="description">Take advantage of our exclusive offers, and get payed directly from costumers to your PayPal account. In real time.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="info">
-                            <div class="icon icon-danger">
-                                <i class="nc-icon nc-chart-bar-32"></i>
-                            </div>
-                            <div class="description">
-                                <h4 class="info-title">Statistics</h4>
-                                <p>Track Clicks, Subscriptions, Profit... In real time, with ease.</p>
-                                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
+
+                    <div class="col-md-4">
                         <div class="info">
                             <div class="icon icon-danger">
                                 <i class="nc-icon nc-spaceship"></i>
                             </div>
                             <div class="description">
-                                <h4 class="info-title">Build Lists</h4>
-                                <p>We don't charge anything for list building. It's Free :)</p>
+                                <h4 class="info-title">Build Lists For Free</h4>
+                                <p>Give any of our digital products for free, and generate high quality lists. We don't charge anything for list building. It's free :)</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <br/><br/>
                 <div class="container">

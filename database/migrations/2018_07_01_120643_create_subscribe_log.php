@@ -13,8 +13,10 @@ class CreateSubscribeLog extends Migration
             $table->integer('user_id');
             $table->integer('offer_id');
             $table->integer('vertical_id');
-            $table->integer('count');
-            $table->date('day');
+            $table->integer('subscribes');
+            $table->integer('unsubscribes');
+            $table->integer('confirmed');
+            $table->timestamps();
         });
     }
 
