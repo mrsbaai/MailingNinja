@@ -304,7 +304,12 @@
                                     <br/>
 
 
-                                    <textarea id="message" name="message" class="form-control textarea"  placeholder="How are you planning to use our offers?"></textarea>
+                                    <textarea id="message" name="message" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"  placeholder="How are you planning to use our offers?" required>{{ old('message')}}</textarea>
+                                    @if ($errors->has('message'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('message')}}</strong>
+                                        </span>
+                                    @endif
                                     <br/>
                                     <input  placeholder="Password" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 

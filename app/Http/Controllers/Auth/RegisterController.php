@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/welcome';
 
     /**
      * Create a new controller instance.
@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'skype' => 'required|string|max:100',
             'country' => 'required|string|max:2',
-            'message' => 'required|string|max:255',
+            'message' => 'required|string|max:255|min:20',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -65,11 +65,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \app\User
      */
+
+
     protected function create(array $data)
     {
         $publisher_manager = user::where('name', 'Oumayma')->first();
 
         $user = new user();
+        $user->is_active = false;
         $user->country = $data['country'];
         $user->manager_id = $publisher_manager['id'];
         $user->skype = $data['skype'];

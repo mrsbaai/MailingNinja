@@ -27,4 +27,12 @@ class mailingNinjaController extends Controller
         return view('mailingNinja.contact');
     }
 
+    public function welcome(){
+        return ("<script LANGUAGE='JavaScript'>
+    window.alert('Thank you for your registration! Your application is now under review.');
+    window.location.href='/';
+    </script>");
+
+    }
+
 }

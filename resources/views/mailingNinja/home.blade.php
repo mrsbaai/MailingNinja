@@ -6,7 +6,7 @@
         <div class="container">
             <div class="motto text-center">
                 <h1>Mailing Ninja</h1>
-                <h3>Exclusive Offers For <b><u>Fast Profit</u></b> & <b><u>List Building</u></b></h3>
+                <h3>Exclusive Offers For <b><u>Traffic Monetization</u></b> & <b><u>E-Mail List Building</u></b></h3>
                 <br />
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round">Watch video</a>
             </div>
@@ -30,11 +30,11 @@
                             <div class="card-body">
                                 <a href="#paper-kit">
                                     <div class="author">
-                                        <h3 class="card-title">Make Money</h3>
+                                        <h3 class="card-title">Monetize Your Traffic</h3>
                                     </div>
                                 </a>
                                 <p class="card-description text-center">
-                                    <u>Sell</u> our high converting offers and generate maximum <u>profit</u> from your mailing campaigns.
+                                    Send your traffic to our high converting landing pages and get paid directly from costumers to your PayPal.
                                 </p>
                                 <br>
                                 <a href="#pkp" class="btn btn-sm btn-round btn-danger">Learn how</a>
@@ -51,11 +51,11 @@
                             <div class="card-body">
                                 <a href="#paper-kit">
                                     <div class="author">
-                                        <h3 class="card-title">Build Lists</h3>
+                                        <h3 class="card-title">Build E-Mail Lists</h3>
                                     </div>
                                 </a>
                                 <p class="card-description text-center">
-                                    <u>Giveaway</u> our quality digital products and generate well segmented <u>mailing lists</u>.
+                                    Giveaway our quality digital products and generate well segmented mailing lists.
                                 </p>
                                 <br>
                                 <a href="#pkp" class="btn btn-sm btn-round btn-danger">Learn how</a>

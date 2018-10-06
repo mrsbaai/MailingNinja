@@ -29,7 +29,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 //Route::group(array('domain' => 'mailing.ninja'), function() {
     Route::get('/home', 'homeController@redirect');
 
-
+    Route::get('/welcome', 'mailingNinjaController@welcome');
 
     Route::get('/', 'mailingNinjaController@home');
     Route::get('/contact', 'mailingNinjaController@contact')->name('contact');

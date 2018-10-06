@@ -125,20 +125,15 @@ class publisherController extends Controller
             ->setStringLimit(25)
             ->isSearchable();
 
-        $table->addColumn()
-            ->setTitle(__('Clicks'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>". $entity->id . "</b>";
-            });
-        $table->addColumn()
+
+        $table->addColumn('subscribes')
             ->setTitle(__('Subscribes'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
                 return "<b>". $entity->id . "</b>";
             });
 
-        $table->addColumn()
+        $table->addColumn('today')
             ->setTitle(__('Today $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -146,7 +141,7 @@ class publisherController extends Controller
             });
 
 
-        $table->addColumn()
+        $table->addColumn('life')
             ->setTitle(__('Life Time $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
