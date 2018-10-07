@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Http\Request;
-
 use App\offer;
 use App\country;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +10,7 @@ use Carbon\Carbon;
 use App\Sells;
 use App\clicks;
 use App\subscribe_log;
+
 
 class publisherController extends Controller
 {
@@ -126,14 +126,14 @@ class publisherController extends Controller
             ->isSearchable();
 
 
-        $table->addColumn('subscribes')
+        $table->addColumn('subscribes_a')
             ->setTitle(__('Subscribes'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
                 return "<b>". $entity->id . "</b>";
             });
 
-        $table->addColumn('today')
+        $table->addColumn('profit_a')
             ->setTitle(__('Today $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -141,7 +141,7 @@ class publisherController extends Controller
             });
 
 
-        $table->addColumn('life')
+        $table->addColumn('profit_a')
             ->setTitle(__('Life Time $'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
