@@ -145,8 +145,8 @@
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="card">
-
-                            <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top img-thumbnail rounded mx-auto d-block"  id="preview" >
+                            <img src="i.imgur.com/nLNOXMy.jpg"/>
+                            <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top img-thumbnail rounded mx-auto d-block"  id="preview" />
 
                         </div>
                     </div>

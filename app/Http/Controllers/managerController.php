@@ -66,13 +66,11 @@ class managerController extends Controller
         $product_name = $request->id . ".zip" ;
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destination_path = public_path('/thumbnails');
-            $image->move($destination_path, $name);
-            $thumbnail = "/thumbnails/" . $name;
+            $thumbnail = Imgur::upload($image);
         }else{
             $thumbnail = $offer->thumbnail;
         }
+
         if ($request->hasFile('product')) {
             $product = $request->file('product');
             Storage::disk('dropbox')->delete($product_name);

@@ -14,7 +14,7 @@ class CreateOffers extends Migration
             $table->boolean('is_private')->default(true);
             $table->integer('payout')->default(0);
             $table->string('title')->default('Untitled');
-            $table->string('thumbnail')->nullable()->default(null);
+            $table->longText('thumbnail')->nullable();
             $table->longText('description')->nullable();
             $table->longText('landing_a')->nullable();
             $table->longText('landing_b')->nullable();

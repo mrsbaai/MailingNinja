@@ -91,7 +91,7 @@ class publisherController extends Controller
         $data['price'] = $offer->payout;
         $data['title'] = $offer->title;
         $data['promo'] = $offer->promo;
-        $data['thumbnail'] = $offer->thumbnail;
+        $data['thumbnail'] = $offer->thumb;
         $data['description'] = $offer->description;
 
         return view('publisher.offer')->with('data',$data);
@@ -178,12 +178,8 @@ class publisherController extends Controller
 
 
     public function test (){
+        return "<img src='http://i.imgur.com/nLNOXMy.jpg'/>";
 
-
-
-        $chart = $this->ClickChart(Auth::user()->id, null, null, 7);
-
-        return view('publisher.test',compact('chart'));
     }
 
     public function LeadsChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
