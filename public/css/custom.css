@@ -1143,3 +1143,9 @@ pre.prettyprint{
     position: relative;
     z-index: 2;
 }
+
+.max-img{
+    margin:0 auto;
+    max-height: 250px;
+    max-width: 250px;
+}

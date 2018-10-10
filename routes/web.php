@@ -42,6 +42,10 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/publisher/test', 'publisherController@test')->name('publisher-test');
 
     Route::get('/publisher/account', 'publisherController@account')->name('publisher-account');
+
+
+    Route::get('/publisher/statistics', 'publisherController@statistics')->name('publisher-statistics');
+
     Route::get('/publisher/dashboard', 'publisherController@dashboard')->name('publisher-dashboard');
     Route::get('/publisher/offers', 'publisherController@offers')->name('publisher-offers');
 

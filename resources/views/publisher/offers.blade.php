@@ -10,7 +10,6 @@
                 <div class="card ">
                     <div class="card-header ">
                         <h5 class="card-title">Offers</h5>
-                        <p class="card-category">...</p>
                     </div>
                     <div class="card-body">
                         {{$table}}

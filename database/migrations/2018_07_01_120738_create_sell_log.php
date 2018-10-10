@@ -14,7 +14,7 @@ class CreateSellLog extends Migration
             $table->boolean('is_for_host')->default(false);
             $table->boolean('is_refund')->default(false);
             $table->integer('offer_id');
-            $table->integer('vertical_id');
+            $table->integer('operation_id');
             $table->integer('user_id');
             $table->integer('costumer_id');
 
@@ -23,7 +23,6 @@ class CreateSellLog extends Migration
             $table->string('code')->default('');
             $table->string('type')->nullable();
             $table->string('status')->nullable();
-            $table->string('source')->nullable()->default(null);
             $table->string('buyerEmail');
             $table->string('accountId');
 

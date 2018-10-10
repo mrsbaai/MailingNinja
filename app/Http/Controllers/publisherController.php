@@ -34,35 +34,71 @@ class publisherController extends Controller
     public function dashboard(Request $request){
         $request->user()->authorizeRoles('publisher');
 
-        $LeadsChart7 = $this->LeadsChart(Auth::user()->id, null, null, 7);
-        $LeadsChart30 = $this->LeadsChart(Auth::user()->id, null, null, 30);
-        $LeadsChart90 = $this->LeadsChart(Auth::user()->id, null, null, 90);
+        $table = app(TableList::class)
+            ->setModel(Offer::class)
+            ->setRoutes([
+                'index' => ['alias' => 'publisher-offers', 'parameters' => []],
+            ])
+            ->addQueryInstructions(function ($query) {
+                $query->select('offers.*')
+                    ->where('is_private', false);
+            });
 
-        $ProfitChart7 = $this->ProfitChart(Auth::user()->id, null, null, 7);
-        $ProfitChart30 = $this->ProfitChart(Auth::user()->id, null, null, 30);
-        $ProfitChart90 = $this->ProfitChart(Auth::user()->id, null, null, 90);
 
-        $ClickChart7 = $this->ClickChart(Auth::user()->id, null, null, 7);
-        $ClickChart30 = $this->ClickChart(Auth::user()->id, null, null, 30);
-        $ClickChart90 = $this->ClickChart(Auth::user()->id, null, null, 90);
+        $table->addColumn('id')
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('ID')
+            ->sortByDefault();
 
-        $SubscribesChart7 = $this->SubscribesChart(Auth::user()->id, null, null, 7);
-        $SubscribesChart30 = $this->SubscribesChart(Auth::user()->id, null, null, 30);
-        $SubscribesChart90 = $this->SubscribesChart(Auth::user()->id, null, null, 90);
+        $table->addColumn('title')
+            ->setTitle('Title')
+            ->isSortable()
+            ->setStringLimit(25)
+            ->isSearchable();
 
-        return view('publisher.home')
-            ->with('SubscribesChart7',$SubscribesChart7)
-            ->with('SubscribesChart30',$SubscribesChart30)
-            ->with('SubscribesChart90',$SubscribesChart90)
-            ->with('ClickChart7',$ClickChart7)
-            ->with('ClickChart30',$ClickChart30)
-            ->with('ClickChart90',$ClickChart90)
-            ->with('ProfitChart7',$ProfitChart7)
-            ->with('ProfitChart30',$ProfitChart30)
-            ->with('ProfitChart90',$ProfitChart90)
-            ->with('LeadsChart7',$LeadsChart7)
-            ->with('LeadsChart30',$LeadsChart30)
-            ->with('LeadsChart90',$LeadsChart90);
+
+        $table->addColumn('subscribes_a')
+            ->setTitle(__('Subscribes'))
+            ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>". $entity->id . "</b>";
+            });
+
+        $table->addColumn('profit_a')
+            ->setTitle(__('Today $'))
+            ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>$". $entity->id . "</b>";
+            });
+
+
+        $table->addColumn('profit_a')
+            ->setTitle(__('Life Time $'))
+            ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>$". $entity->id . "</b>";
+            });
+
+        $table->addColumn()
+            ->setTitle(__(' '))
+            ->isCustomHtmlElement(function ($entity, $column) {
+                $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
+                $promote_route = route('promote-offer', ['id' => $entity->id]);
+                $stats_route = route('offer-stats', ['id' => $entity->id]);
+                $download_route = route('offer-subscribed', ['id' => $entity->id]);
+
+
+                return "
+<a class='p-3' target='blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
+<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
+<a class='p-3' target='blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
+<a class='p-3' target='blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
+                        
+                        ";
+            });
+
+        return view('publisher.home')->with('table', $table);
 
     }
     public function offerSubscribed(Request $request, $id){
@@ -79,7 +115,36 @@ class publisherController extends Controller
     }
     public function statistics(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.statistics');
+
+        $LeadsChart7 = $this->LeadsChart(Auth::user()->id, null, null, 7);
+        $LeadsChart30 = $this->LeadsChart(Auth::user()->id, null, null, 30);
+        $LeadsChart90 = $this->LeadsChart(Auth::user()->id, null, null, 90);
+
+        $ProfitChart7 = $this->ProfitChart(Auth::user()->id, null, null, 7);
+        $ProfitChart30 = $this->ProfitChart(Auth::user()->id, null, null, 30);
+        $ProfitChart90 = $this->ProfitChart(Auth::user()->id, null, null, 90);
+
+        $ClickChart7 = $this->ClickChart(Auth::user()->id, null, null, 7);
+        $ClickChart30 = $this->ClickChart(Auth::user()->id, null, null, 30);
+        $ClickChart90 = $this->ClickChart(Auth::user()->id, null, null, 90);
+
+        $SubscribesChart7 = $this->SubscribesChart(Auth::user()->id, null, null, 7);
+        $SubscribesChart30 = $this->SubscribesChart(Auth::user()->id, null, null, 30);
+        $SubscribesChart90 = $this->SubscribesChart(Auth::user()->id, null, null, 90);
+
+        return view('publisher.statistics')
+            ->with('SubscribesChart7',$SubscribesChart7)
+            ->with('SubscribesChart30',$SubscribesChart30)
+            ->with('SubscribesChart90',$SubscribesChart90)
+            ->with('ClickChart7',$ClickChart7)
+            ->with('ClickChart30',$ClickChart30)
+            ->with('ClickChart90',$ClickChart90)
+            ->with('ProfitChart7',$ProfitChart7)
+            ->with('ProfitChart30',$ProfitChart30)
+            ->with('ProfitChart90',$ProfitChart90)
+            ->with('LeadsChart7',$LeadsChart7)
+            ->with('LeadsChart30',$LeadsChart30)
+            ->with('LeadsChart90',$LeadsChart90);
     }
 
 
@@ -88,12 +153,13 @@ class publisherController extends Controller
 
         $offer = offer::where('id',$id)->first();
 
+        $data['verticals'] = $offer->verticals()->get();
         $data['price'] = $offer->payout;
         $data['title'] = $offer->title;
         $data['promo'] = $offer->promo;
-        $data['thumbnail'] = $offer->thumb;
+        $data['thumbnail'] = $offer->thumbnail;
         $data['description'] = $offer->description;
-
+        $data['preview'] = route('preview', ['id' => $offer->id, 'n' => 'a']);
         return view('publisher.offer')->with('data',$data);
     }
 
@@ -177,8 +243,10 @@ class publisherController extends Controller
     }
 
 
+
+
     public function test (){
-        return "<img src='http://i.imgur.com/nLNOXMy.jpg'/>";
+        return "<img src='https://i.imgur.com/PkVkuGF.jpg'/>";
 
     }
 

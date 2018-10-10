@@ -19,10 +19,6 @@ class vertical extends Model
         return $this->hasMany('App\subscribe_log','vertical_id');
     }
 
-    public function sells()
-    {
-        return $this->hasMany('App\sells','vertical_id');
-    }
     public function clicks()
     {
         return $this->hasMany('App\clicks','vertical_id');

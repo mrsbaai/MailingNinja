@@ -12,23 +12,17 @@
             </div>
         </div>
     </div>
-    <div class="main">
+    <div class=>
         <div class="section text-center">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto">
-                        <h2 class="title">Let's Talk About Our Service</h2>
-                        <h5 class="description">We provide <b>exclusive</b> digital products, specially made for costumer <b>segmentation</b>, and generating <b>maximum profit</b> from a <b>random mailing list</b>.</h5>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card card-profile card-plain">
-                            <img class="card-img-top" src="{{ URL::asset('images/sell.png') }}" alt="Card image cap">
+                            <img class="max-img text-center" src="{{ URL::asset('images/money_ninja.png') }}" alt="Monetize Your Traffic">
 
                             <div class="card-body">
-                                <a href="#paper-kit">
+                                <a href="#">
                                     <div class="author">
                                         <h3 class="card-title">Monetize Your Traffic</h3>
                                     </div>
@@ -37,7 +31,7 @@
                                     Send your traffic to our high converting landing pages and get paid directly from costumers to your PayPal.
                                 </p>
                                 <br>
-                                <a href="#pkp" class="btn btn-sm btn-round btn-danger">Learn how</a>
+                                <a href="#" class="btn btn-sm btn-round btn-danger">Learn how</a>
                             </div>
                         </div>
                     </div>
@@ -45,20 +39,20 @@
 
                     <div class="col-md-6">
                         <div class="card card-profile card-plain">
-                            <img class="card-img-top" src="{{ URL::asset('images/build.png') }}" alt="Card image cap">
+                            <img class="max-img text-center" src="{{ URL::asset('images/world_ninja.png') }}" alt="Build Targeted E-Mail Lists">
 
 
                             <div class="card-body">
-                                <a href="#paper-kit">
+                                <a href="#">
                                     <div class="author">
-                                        <h3 class="card-title">Build E-Mail Lists</h3>
+                                        <h3 class="card-title">Build Targeted E-Mail Lists</h3>
                                     </div>
                                 </a>
                                 <p class="card-description text-center">
                                     Giveaway our quality digital products and generate well segmented mailing lists.
                                 </p>
                                 <br>
-                                <a href="#pkp" class="btn btn-sm btn-round btn-danger">Learn how</a>
+                                <a href="#" class="btn btn-sm btn-round btn-danger">Learn how</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +86,7 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">PayPal Direct</h4>
-                                <p class="description">Take advantage of our exclusive offers, and get payed directly from costumers to your PayPal account. In real time.</p>
+                                <p class="description">Get payed directly from costumers to your PayPal account. In real time.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
                             </div>
                         </div>
