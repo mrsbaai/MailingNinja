@@ -11,15 +11,18 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ URL::asset('css/paper-kit.css?v=2.1.0') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
+
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ URL::asset('css/nucleo-icons.css') }}" rel="stylesheet" />
-
-    <!-- Styles -->
-
-    <link rel="stylesheet" href="{{ URL::asset('css/paper-kit.css?v=2.1.0') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
     @yield('header')
 </head>
 <body>
