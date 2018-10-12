@@ -12,7 +12,6 @@
             </div>
         </div>
     </div>
-    <div class=>
         <div class="section text-center">
             <div class="container">
 
