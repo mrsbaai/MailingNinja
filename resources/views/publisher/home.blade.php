@@ -15,7 +15,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Subscribes <br/>(Today)</p>
-                                    <p class="card-title">0
+                                    <p class="card-title">{{$data['subscribers_today']}}
                                     <p>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> 1223 Available
+                            <i class="fa fa-refresh"></i> {{$data['subscribers_all']}} Available
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Profit <br/>(Today)</p>
-                                    <p class="card-title">$0
+                                    <p class="card-category">Net Profit <br/>(Today)</p>
+                                    <p class="card-title">${{$data['profit_today']}}
                                     <p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> $0 Lifetime
+                            <i class="fa fa-refresh"></i> ${{$data['profit_all']}} Lifetime
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Leads <br/>(Today)</p>
-                                    <p class="card-title">0
+                                    <p class="card-title">{{$data['leads_today']}}
                                     <p>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> (Paying Costumers)
+                            <i class="fa fa-refresh"></i> {{$data['leads_all']}} Lifetime
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Clicks <br/>(Today)</p>
-                                    <p class="card-title">0
+                                    <p class="card-title">{{$data['clicks_today']}}
                                     <p>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> (Unique Visits)
+                            <i class="fa fa-refresh"></i> {{$data['clicks_all']}} Lifetime
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                 @include('flash::message')
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Offers</h5>
+                        <h5 class="card-title">Sells</h5>
                     </div>
                     <div class="card-body">
                         {{$table}}

@@ -12,6 +12,7 @@ class CreateSubscribers extends Migration
             $table->increments('id');
             $table->integer('offer_id');
             $table->integer('user_id');
+            $table->string('country',2)->default('us');
             $table->boolean('is_confirmed')->default(false);
             $table->string('email')->unique();
             $table->timestamps();

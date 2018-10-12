@@ -12,7 +12,6 @@ class CreateClickLog extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('offer_id');
-            $table->integer('vertical_id');
             $table->integer('count');
             $table->timestamps();
         });

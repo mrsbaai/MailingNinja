@@ -11,6 +11,8 @@ class CreateUnsubscribes extends Migration
         Schema::create('unsubscribes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
+            $table->integer('offer_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

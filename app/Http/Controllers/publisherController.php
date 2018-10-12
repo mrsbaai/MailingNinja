@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\unsubscribes;
 use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Http\Request;
 use App\offer;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Sells;
 use App\clicks;
-use App\subscribe_log;
+use App\subscriber;
+
 
 
 class publisherController extends Controller
@@ -34,71 +36,126 @@ class publisherController extends Controller
     public function dashboard(Request $request){
         $request->user()->authorizeRoles('publisher');
 
+
+        $date = Carbon::now();
+        $query  = subscriber::latest();
+
+        $query->where('user_id', Auth::user()->id);
+        $data['subscribers_all'] = count($query->get());
+
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+        $data['subscribers_today'] = count($query->get());
+
+        $query  = sells::latest();
+        $query->where('user_id', Auth::user()->id)
+            ->where('is_for_host',false)
+            ->where('is_refund',false)
+            ->where('status','Completed');
+
+        $collection = $query->get();
+        $data['leads_all'] = count($collection);
+
+        $profit = 0;
+        foreach ($collection as $item) {
+            $profit = $profit + $item['payedAmount'];
+        }
+        $data['profit_all'] = $profit;
+
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+        $collection = $query->get();
+        $data['leads_today'] = count($collection);
+        $profit = 0;
+        foreach ($collection as $item) {
+            $profit = $profit + $item['payedAmount'];
+        }
+        $data['profit_today'] = $profit;
+
+
+
+        $query  = clicks::latest();
+        $query->where('user_id', Auth::user()->id);
+
+        $collection = $query->get();
+        $clicks = 0;
+        foreach ($collection as $item) {
+            $clicks = $clicks + $item['count'];
+        }
+        $data['clicks_all'] = $clicks;
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+
+        $collection = $query->get();
+        $clicks = 0;
+        foreach ($collection as $item) {
+            $clicks = $clicks + $item['count'];
+        }
+        $data['clicks_today'] = $clicks;
+
+
+
+
+
         $table = app(TableList::class)
-            ->setModel(Offer::class)
+            ->setModel(sells::class)
             ->setRoutes([
-                'index' => ['alias' => 'publisher-offers', 'parameters' => []],
+                'index' => ['alias' => 'publisher-home', 'parameters' => []],
             ])
             ->addQueryInstructions(function ($query) {
-                $query->select('offers.*')
-                    ->where('is_private', false);
+                $query->select('sell_log.*')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('is_for_host', false)
+                    ->where('is_refund', false)
+                    ->where('status', 'Completed');
             });
 
 
-        $table->addColumn('id')
-            ->isSearchable()
+        $table->addColumn('created_at')
             ->isSortable()
-            ->setTitle('ID')
-            ->sortByDefault();
+            ->setTitle('Date')
+            ->sortByDefault('desc')
+            ->setColumnDateFormat('d/m/Y H:i:s');
 
-        $table->addColumn('title')
-            ->setTitle('Title')
+        $table->addColumn('payedAmount')
+            ->setTitle(__('Net Amount'))
             ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>$". $entity->payedAmount. "</b>";
+            });
+
+
+        $table->addColumn('operation_id')
+            ->setTitle('Operation Id')
+            ->isSearchable();
+
+
+        $table->addColumn('offer_id')
+            ->setTitle(__('Offer Id'))
+
+            ->isSearchable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $route = route('offer-stats', ['id' => $entity->offer_id]);
+                return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->offer_id</a>";
+            });
+
+
+
+        $table->addColumn('buyerEmail')
+            ->setTitle('Buyer E-Mail')
             ->setStringLimit(25)
             ->isSearchable();
 
 
-        $table->addColumn('subscribes_a')
-            ->setTitle(__('Subscribes'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>". $entity->id . "</b>";
-            });
-
-        $table->addColumn('profit_a')
-            ->setTitle(__('Today $'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->id . "</b>";
-            });
 
 
-        $table->addColumn('profit_a')
-            ->setTitle(__('Life Time $'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->id . "</b>";
-            });
-
-        $table->addColumn()
-            ->setTitle(__(' '))
-            ->isCustomHtmlElement(function ($entity, $column) {
-                $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
-                $promote_route = route('promote-offer', ['id' => $entity->id]);
-                $stats_route = route('offer-stats', ['id' => $entity->id]);
-                $download_route = route('offer-subscribed', ['id' => $entity->id]);
 
 
-                return "
-<a class='p-3' target='blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
-<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
-<a class='p-3' target='blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
-<a class='p-3' target='blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
-                        
-                        ";
-            });
 
-        return view('publisher.home')->with('table', $table);
+
+
+        return view('publisher.home')->with('table', $table)->with('data',$data);
 
     }
     public function offerSubscribed(Request $request, $id){
@@ -167,6 +224,7 @@ class publisherController extends Controller
     public function offers(Request $request){
         $request->user()->authorizeRoles('publisher');
 
+
 // we instantiate a table list in the news controller
         $table = app(TableList::class)
             ->setModel(Offer::class)
@@ -186,33 +244,19 @@ class publisherController extends Controller
             ->sortByDefault();
 
         $table->addColumn('title')
-            ->setTitle('Title')
-            ->isSortable()
-            ->setStringLimit(25)
+            ->setTitle('Offer')
+
             ->isSearchable();
 
 
-        $table->addColumn('subscribes_a')
+        $table->addColumn('')
             ->setTitle(__('Subscribes'))
-            ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>". $entity->id . "</b>";
+                $query  = subscriber::latest();
+                $query->where('user_id', Auth::user()->id)->where('offer_id', $entity->id);
+                return "<b>".  count($query->get()) . "</b>";
             });
 
-        $table->addColumn('profit_a')
-            ->setTitle(__('Today $'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->id . "</b>";
-            });
-
-
-        $table->addColumn('profit_a')
-            ->setTitle(__('Life Time $'))
-            ->isSortable()
-            ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->id . "</b>";
-            });
 
         $table->addColumn()
             ->setTitle(__(' '))
@@ -311,7 +355,6 @@ class publisherController extends Controller
 
             if ($user_id){$query->where('user_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
-            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
             $collection = $query->get();
             $clicks = 0;
             foreach ($collection as $item) {
@@ -402,28 +445,30 @@ class publisherController extends Controller
             $date = $start->copy()->addDays($i);
             $dates[] = $date->format('d/m');
 
-            $query  = subscribe_log::latest();
+            $query1 = subscriber::latest();
+            $query2 = unsubscribes::latest();
 
 
-            $query->whereMonth('Created_at',$date->format('m'))
+            $query1->whereMonth('Created_at',$date->format('m'))
+                ->whereDay('Created_at',$date->format('d'));
+            $query2->whereMonth('Created_at',$date->format('m'))
                 ->whereDay('Created_at',$date->format('d'));
 
-            if ($user_id){$query->where('user_id' , $user_id);}
-            if ($offer_id){$query->where('offer_id' , $offer_id);}
-            if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
-            $collection = $query->get();
-            $subscribes = 0;
-            $unsubscribes = 0;
-            $confirmed = 0;
-            foreach ($collection as $item) {
-                $subscribes = $subscribes + $item['subscribes'];
-                $unsubscribes = $unsubscribes + $item['unsubscribes'];
-                $confirmed = $confirmed + $item['confirmed'];
+            if ($user_id){
+                $query1->where('user_id' , $user_id);
+                $query2->where('user_id' , $user_id);
+            }
+            if ($offer_id){
+                $query1->where('offer_id' , $offer_id);
+                $query2->where('offer_id' , $offer_id);
             }
 
-            $data1[] = $subscribes;
-            $data2[] = $unsubscribes;
-            $data3[] = $confirmed;
+            $data1[] =  count($query1->get());
+            $data2[] = count($query2->get());
+
+
+            $query3 = $query1->where('is_confirmed',true);
+            $data3[] =  count($query3->get());
         }
 
         $chartjs = app()->chartjs
