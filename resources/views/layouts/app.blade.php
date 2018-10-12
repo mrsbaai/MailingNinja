@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='{{ URL::asset('css/google-fonts.css') }}' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ URL::asset('css/nucleo-icons.css') }}" rel="stylesheet" />
     @yield('header')
