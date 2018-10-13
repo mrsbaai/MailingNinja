@@ -6,22 +6,28 @@
          <div class="col-md-12">
             <div class="card" >
                <div class="card-header ">
-                  <h5 class="card-title">Download E-mail Lists</h5>
-                  <p class="card-category">...</p>
+                  <h5 class="card-title">Download Mailing Lists</h5>
                </div>
                <div class="card-body">
+
+                  {{ Form::open(array('action' => 'publisherController@downloadSubscribers', 'id' => 'download'))}}
                   <div class="row">
-                     <div class="col-md-6">
+                     <div class="col-md-3">
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <div class="input-group-text">Country: </div>
+                           </div>
+                           {!! Form::select('country', $countries, null, ['class' => 'form-control form-control-lg custom-select', 'placeholder' => 'All']) !!}
+
+                        </div>
+                     </div>
+                     <div class="col-md-3">
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <div class="input-group-text">Vertical: </div>
                            </div>
-                           <select class="form-control form-control-lg custom-select" id="vertical" name="vertical">
-                              <option value="all" selected>All Verticals</option>
-                              <option value="1">Male Nutra</option>
-                              <option value="2">Politics</option>
-                              <option value="3">Crypto</option>
-                           </select>
+                           {!! Form::select('vertical', $verticals, null, ['class' => 'form-control form-control-lg custom-select', 'placeholder' => 'All']) !!}
+
                         </div>
                      </div>
 
@@ -31,8 +37,8 @@
                               <div class="input-group-text">Period: </div>
                            </div>
                            <select class="form-control form-control-lg custom-select" id="period" name="period">
-                              <option value="all" selected>All Time</option>
-                              <option value="1">Last Day </option>
+                              <option value="" selected>All</option>
+                              <option value="1">Today </option>
                               <option value="7">Last 7 days</option>
                               <option value="30">Last 30 days</option>
                            </select>
@@ -45,9 +51,9 @@
                               <div class="input-group-text">Confirmed: </div>
                            </div>
                            <select class="form-control form-control-lg custom-select" id="confirmed" name="confirmed">
-                              <option value="all" selected>all</option>
-                              <option value="no">No</option>
-                              <option value="yes">Yes</option>
+                              <option value="" selected>All</option>
+                              <option value="false">No</option>
+                              <option value="true">Yes</option>
                            </select>
                         </div>
                      </div>
@@ -58,12 +64,13 @@
                         <button type="submit" class="btn btn-primary btn-round">Download</button>
                      </div>
                   </div>
+                  {{Form::close()}}
                </div>
                <div class="card-footer">
                   <hr>
                   <div class="stats">
-                     <i class="fa fa-history"></i><b>125</b> New E-mails Today |
-                     <i class="fas fa-cloud-download-alt"></i><b>96617</b> Total E-mail Available
+                     <i class="fa fa-history"></i><b>{{$subscribes_today}}</b> New E-mails Today |
+                     <i class="fas fa-cloud-download-alt"></i><b>{{$all_subscribes}}</b> Total E-mail Available
                   </div>
                </div>
             </div>
@@ -74,7 +81,7 @@
 @endsection
 
 @section('title')
-   Download Mailing List
+   Subscribes
 @endsection
 
 @section('header')

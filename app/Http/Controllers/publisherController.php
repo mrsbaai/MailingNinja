@@ -11,6 +11,10 @@ use Carbon\Carbon;
 use App\Sells;
 use App\clicks;
 use App\subscriber;
+use App\vertical;
+use App\link;
+use Illuminate\Support\Facades\Input;
+use Response;
 
 
 
@@ -160,7 +164,102 @@ class publisherController extends Controller
     }
     public function offerSubscribed(Request $request, $id){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.home');
+        if ($id){
+            $query = subscriber::latest();
+            $query->where('user_id' , Auth::user()->id);
+            $query->where('offer_id' , $id);
+
+
+            $table = $query->get()->toArray();
+
+
+
+            if(count($table) === 0){
+                return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');open(location, '_self').close();</script>");
+            }
+
+
+
+
+            $offer_name = offer::where('id',$id)->pluck('title')->first();
+
+            $offer = offer::where('id',$id)->first();
+            $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+
+            $headers = [
+                'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
+                ,   'Content-type'        => 'text/csv'
+                ,   'Content-Disposition' => 'attachment;'
+                ,   'Expires'             => '0'
+                ,   'Pragma'              => 'public'
+            ];
+
+
+            $filename = "Email-List.csv";
+            $handle = fopen($filename, 'w+');
+            fputcsv($handle, array('E-mail Address', 'Country Code', 'Vertical/Niche', 'Offer Name', 'Subscription Date'));
+
+            foreach($table as $row) {
+
+                fputcsv($handle, array($row['email'], $row['country'], $verticals, $offer_name, $row['created_at']));
+            }
+
+            fclose($handle);
+
+
+            return Response::download($filename, $filename, $headers);
+        }
+        return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');history.go(-1);</script>");
+    }
+
+    public function suppressionList(Request $request, $id){
+        $request->user()->authorizeRoles('publisher');
+        if ($id){
+            $query = unsubscribes::latest();
+            $query->where('offer_id' , $id);
+
+
+            $table = $query->get()->toArray();
+
+
+
+            if(count($table) === 0){
+                return ("<script LANGUAGE='JavaScript'>window.alert('Suppression list is empty');open(location, '_self').close();</script>");
+            }
+
+
+
+
+            $offer_name = offer::where('id',$id)->pluck('title')->first();
+
+            $offer = offer::where('id',$id)->first();
+            $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+
+            $headers = [
+                'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
+                ,   'Content-type'        => 'text/csv'
+                ,   'Content-Disposition' => 'attachment;'
+                ,   'Expires'             => '0'
+                ,   'Pragma'              => 'public'
+            ];
+
+
+            $now = Carbon::now()->format('Y-m-d-H-s');;
+            $filename = "[offer-$id][Suppression][$now].csv";
+            $handle = fopen($filename, 'w+');
+            fputcsv($handle, array('E-mail Address'));
+
+            foreach($table as $row) {
+
+                fputcsv($handle, array($row['email']));
+            }
+
+            fclose($handle);
+
+
+            return Response::download($filename, $filename, $headers);
+        }
+        return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');history.go(-1);</script>");
     }
     public function offerStats(Request $request, $id){
         $request->user()->authorizeRoles('publisher');
@@ -205,18 +304,56 @@ class publisherController extends Controller
     }
 
 
+    public function offerSetPrice(Request $request){
+        $price = Input::get('price');
+        $offer_id = Input::get('offer_id');
+        $user_id = Auth::user()->id;
+
+        $link = Link::where("user_id",$user_id)->where("offer_id",$offer_id)->first();
+
+        $res = $link->update([
+            'price' => $price,
+        ]);
+
+
+        return redirect(route('promote-offer', ['id' => $offer_id]));
+    }
     public function offer(Request $request, $id){
+
         $request->user()->authorizeRoles('publisher');
+        $user_id = Auth::user()->id;
+
+        $link = Link::where("user_id",$user_id)->where("offer_id",$id)->first();
+
 
         $offer = offer::where('id',$id)->first();
 
+        if (!$link){
+            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', ceil(5/strlen($x)) )),1,5);
+            $price =  $offer->payout;
+
+            $newLink = new Link;
+            $newLink->offer_id = $id;
+            $newLink->user_id = $user_id;
+            $newLink->price = $price;
+            $newLink->link = $url;
+            $newLink->save();
+        }else{
+            $url = $link->link;
+            $price = $link->price;
+        }
+
+
         $data['verticals'] = $offer->verticals()->get();
-        $data['price'] = $offer->payout;
+        $data['price'] = $price;
+        $data['link'] = $url;
         $data['title'] = $offer->title;
         $data['promo'] = $offer->promo;
         $data['thumbnail'] = $offer->thumbnail;
         $data['description'] = $offer->description;
+        $data['offer_id'] = $id;
         $data['preview'] = route('preview', ['id' => $offer->id, 'n' => 'a']);
+        $data['suppression'] = route('suppression-list', ['id' => $offer->id]);
         return view('publisher.offer')->with('data',$data);
     }
 
@@ -224,8 +361,6 @@ class publisherController extends Controller
     public function offers(Request $request){
         $request->user()->authorizeRoles('publisher');
 
-
-// we instantiate a table list in the news controller
         $table = app(TableList::class)
             ->setModel(Offer::class)
             ->setRoutes([
@@ -245,8 +380,12 @@ class publisherController extends Controller
 
         $table->addColumn('title')
             ->setTitle('Offer')
+            ->isSearchable()
+            ->isCustomHtmlElement(function ($entity, $column) {
 
-            ->isSearchable();
+                $promote_route = route('promote-offer', ['id' => $entity->id]);
+                return "<b><a href='$promote_route' target='blank'>". $entity->title . "</a></b>";
+            });
 
 
         $table->addColumn('')
@@ -283,9 +422,115 @@ class publisherController extends Controller
 
     public function subscribers(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.subscribers');
+        $verticals = vertical::pluck('vertical', 'id');
+        $countries = country::pluck('name', 'code');
+
+
+        $query = subscriber::latest();
+        $query->where('user_id' , Auth::user()->id);
+
+        $all_subscribes =  count($query->get());
+
+        $query->whereMonth('Created_at',Carbon::now()->format('m'))
+            ->whereDay('Created_at',Carbon::now()->format('d'));
+        $subscribes_today =  count($query->get());
+
+
+        return view('publisher.subscribers')
+            ->with('verticals',$verticals)
+            ->with('countries',$countries)
+            ->with('subscribes_today',$subscribes_today)
+            ->with('all_subscribes',$all_subscribes);
     }
 
+    public function downloadSubscribers(Request $request){
+
+
+        $request->user()->authorizeRoles('publisher');
+
+
+        $now = Carbon::now()->format('Y-m-d-H-s');;
+        $filename = "[$now].CSV";
+
+        $country = Input::get('country');
+        $vertical = Input::get('vertical');
+        $period = Input::get('period');
+        $confirmed = Input::get('confirmed');
+
+        //return $country . $vertical . $period. $confirmed;
+        $query = subscriber::latest();
+
+        $query->where('user_id' , Auth::user()->id);
+
+        if ($country){
+            $query->where('country' , $country);
+            $filename = "[$country]$filename";
+        }
+        if ($confirmed){ $query->where('is_confirmed' , $confirmed);}
+
+        if ($vertical){
+
+            $query_vertical = vertical::where('id', $vertical)->first();
+            $vname =  $query_vertical['vertical'];
+
+            $filename = "[$vname]$filename";
+            $offers_ids = $query_vertical->offers()->pluck('offer_id');
+
+
+            if($offers_ids->count() !== 0){
+                $query->whereIn('offer_id' , $offers_ids);
+            }else{
+                return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this vertical.');history.go(-1);</script>");
+            }
+        }
+
+
+       if ($period){
+           $filename = "[$period Days]$filename";
+           $start = Carbon::now()->subDays($period);
+           $now = Carbon::now();
+           $query->whereBetween('Created_at', [$start, $now])->get();
+       }
+
+
+        $table = $query->get()->toArray();
+
+        if(count($table) === 0){
+            return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers with these options.');history.go(-1);</script>");
+        }
+
+
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
+            ,   'Content-type'        => 'text/csv'
+            ,   'Content-Disposition' => 'attachment;'
+            ,   'Expires'             => '0'
+            ,   'Pragma'              => 'public'
+        ];
+
+
+
+
+        $handle = fopen($filename, 'w+');
+        fputcsv($handle, array('E-mail Address', 'Country Code', 'Vertical/Niche', 'Offer Name', 'Subscription Date'));
+
+        foreach($table as $row) {
+
+            $offer_name = offer::where('id',$row['offer_id'])->pluck('title')->first();
+            $offer = offer::where('id',$row['offer_id'])->first();
+            $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+
+
+            fputcsv($handle, array($row['email'], $row['country'], $verticals, $offer_name, $row['created_at']));
+        }
+
+        fclose($handle);
+
+
+        return Response::download($filename, $filename, $headers);
+
+        //return Redirect::back();
+    }
 
 
 
@@ -511,6 +756,7 @@ class publisherController extends Controller
             ->options([]);
         return $chartjs;
     }
+
 
 
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="wrapper">
-        <div class="page-header" style="background-image: url('{{ URL::asset('images/10.jpg') }}');">
+        <div class="page-header section" style="background-image: url('{{ URL::asset('images/10.jpg') }}');">
             <div class="filter"></div>
             <div class="container">
                 <div class="row">

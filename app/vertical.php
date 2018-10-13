@@ -8,6 +8,9 @@ class vertical extends Model
 {
 
     protected $table = 'verticals';
+    protected $fillable = ['vertical', 'descrption'];
+
+
 
     public function offers()
     {

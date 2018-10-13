@@ -39,7 +39,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
     Route::get('/publisher', 'publisherController@home')->name('publisher-home');
 
-    Route::get('/publisher/test', 'publisherController@test')->name('publisher-test');
+    Route::get('/publisher/offers/download-subscribers/{id}', 'publisherController@offerSubscribers')->name('publisher-offer-subscribers');
 
     Route::get('/publisher/account', 'publisherController@account')->name('publisher-account');
 
@@ -50,14 +50,16 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/publisher/offers', 'publisherController@offers')->name('publisher-offers');
 
     Route::get('/publisher/offers/{id}', 'publisherController@offer')->name('promote-offer');
-
+    Route::post('/publisher/offers/{id?}', 'publisherController@offerSetPrice')->name('offer-set-price');
 
     Route::get('/publisher/offers/stats/{id}', 'publisherController@offerStats')->name('offer-stats');
 
     Route::get('/publisher/offers/subscribed/{id}', 'publisherController@offerSubscribed')->name('offer-subscribed');
 
+    Route::get('/publisher/suppression/{id}', 'publisherController@suppressionList')->name('suppression-list');
     Route::get('/publisher/support', 'publisherController@support')->name('publisher-support');
     Route::get('/publisher/subscribers', 'publisherController@subscribers')->name('publisher-subscribers');
+    Route::post('/publisher/subscribers', 'publisherController@downloadSubscribers')->name('download-subscribers');
 
 
 

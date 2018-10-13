@@ -40,36 +40,53 @@
 
                 <div class="card ">
                     <div class="card-header">
-                        <h5 class="card-title">Generate A Referral Link For This Offer</h5>
-                        <p class="card-category">Set the payout to <b>"0"</b> to use the offer for <b>E-mail list building</b>.</p>
+                        <h5 class="card-title">Setup A Custom Price For This Offer</h5>
+                        <p class="card-category">Set the price to <b>"0"</b> to use the offer for <b>E-mail list building</b>.</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
 
                             <div class="col-sm-4 col-centered">
 
-                                <form>
+                                {{ Form::open(array('action' => 'publisherController@offerSetPrice', 'id' => 'set_price'))}}
 
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
-                                        </div>
-                                        <input class="form-control" name="generate" value="{{$data['price']}}" placeholder="Payout" type="text" style="font-size: 300%">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
+                                    </div>
+                                    <input name="offer_id" value="{{$data['offer_id']}}" hidden>
+                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="text" style="font-size: 300%">
 
-                                        <div class="input-group-append">
+                                    <div class="input-group-append">
                                                 <span class="input-group-text p-0 ">
-                                                    <button type="submit" class="btn btn-link" title="Generate">
+                                                    <button type="submit" class="btn btn-link" title="Set the price">
                                                         <i class="nc-icon nc-minimal-right" style="font-size: 300%"></i>&nbsp;&nbsp;
                                                     </button>
                                                 </span>
-                                        </div>
-
                                     </div>
 
-                                </form>
+                                </div>
+                                {{Form::close()}}
+
                             </div>
 
                     </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card ">
+                    <div class="card-header">
+                        <h5 class="card-title">Offer Link</h5>
+                        <p class="card-category">Use this link to refer to this offer.</p>
+                    </div>
+                    <div class="card-body">
 
 
                         <div class="row">
@@ -82,7 +99,7 @@
                                             <span class="input-group-text" style="font-size: 110%">Link:</span>
                                         </div>
                                         <div class="input-group-append">
-                                            <span class="input-group-text" style="font-size: 130%"><b>http://premiumbooks.net/ssfvfed</b>&nbsp;&nbsp;</span>
+                                            <span class="input-group-text" style="font-size: 130%"><b>http://premiumbooks.net/{{$data['link']}}</b>&nbsp;&nbsp;</span>
                                         </div>
 
                                     </div>
@@ -109,7 +126,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group col-md-12 text-center">
-                                    <button type="submit" class="btn btn-warning">Download Suppression List</button>
+
+                                    <a class='p-3' target='blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
+                                        <button class="btn btn-warning">Download Suppression List</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +157,7 @@
 @endsection
 
         @section('title')
-            Offer Info
+            Promote Offer
         @endsection
 
         @section('header')
