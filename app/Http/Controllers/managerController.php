@@ -292,10 +292,23 @@ class managerController extends Controller
             });
         $table->addColumn('id')
             ->useForDestroyConfirmation()
-            ->sortByDefault()
             ->isSearchable()
             ->isSortable()
             ->setTitle('id');
+
+        $table->addColumn('name')
+            ->useForDestroyConfirmation()
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('Company');
+        $table->addColumn("created_at")
+            ->sortByDefault('desc')
+            ->isSearchable()
+            ->setTitle('signed up')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $this->nicetime($entity->created_at);
+            });
+
         $table->addColumn()
             ->setTitle('Status')
             ->isCustomHtmlElement(function ($entity, $column) {

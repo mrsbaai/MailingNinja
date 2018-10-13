@@ -8,10 +8,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Dashboard</h5>
-                        <p class="card-category">...</p>
                     </div>
                     <div class="card-body">
-                        <h5>Welcome Back {{ Auth::user()->name }}!</h5>
+
                     </div>
                 </div>
             </div>
