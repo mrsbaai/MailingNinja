@@ -25,7 +25,9 @@
                     </div>
                     <div class="card-body">
                         {{ Form::open(array('action' => 'userController@updateInfo', 'id' => 'info-form'))}}
-                            <div class="row">
+                        <input name="id" id="id" value="{{Auth::user()->id}}" hidden>
+
+                        <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">Company (disabled)</label>

@@ -9,18 +9,18 @@
             <div class="col-md-12">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="{{ URL::asset('images/profile_back.jpg') }}">
+                        <img src="{{ URL::asset('images/10.jpg') }}">
                     </div>
                     <div class="card-body">
                         <div class="author">
                             <a href="skype:-skype-name-?chat">
                                 <img class="avatar border-gray" src="{{ URL::asset('images/profile_image.jpg') }}">
-                                <h5 class="title">Oumaema</h5>
+                                <h5 class="title">{{$data['name']}}</h5>
                             </a>
                         </div>
                         <h5 class="card-text text-center">"Account Performance Manager"</h5>
                         <div class="button-container">
-                            <a class="btn text-center btn-info btn-round" href="skype:-skype-name-?chat">Start Skype Chat</a>
+                            <a class="btn text-center btn-info btn-round" href="skype:{{$data['skype']}}?chat">Start Skype Chat</a>
                         </div>
 
 
@@ -34,12 +34,12 @@
                                     <div class="col-lg-6 col-md-6 col-6 ml-auto">
                                         <h5><i class="fas fa-phone"></i></h5>
 
-                                        <small>+212-623-5789</small>
+                                        <small>{{$data['phone']}}</small>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-6 ml-auto mr-auto">
                                         <h5><i class="fab fa-skype"></i></h5>
 
-                                        <small>skype-name</small>
+                                        <small>{{$data['skype']}}</small>
 
                                     </div>
 

@@ -85,6 +85,11 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
     Route::get('/manager/publishers/deactivate/{id}/{status}', 'managerController@activePublisher')->name('publisher-status');
 
+
+    Route::get('/manager/publishers/{id}', 'managerController@publisher')->name('edit-publisher');
+    Route::get('/manager/publishers/{id}/offers', 'managerController@publisherPrivateOffers')->name('publisher-private-offers');
+    Route::get('/manager/publishers/{id}/stats', 'managerController@publisherStats')->name('publisher-stats');
+
 //summernote store route
     Route::post('/manager/offers/new','managerController@storeOffer')->name('store-offer');
     Route::post('/manager/offers/edit','managerController@updateOffer')->name('update-offer');

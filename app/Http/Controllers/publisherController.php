@@ -5,6 +5,7 @@ use App\unsubscribes;
 use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Http\Request;
 use App\offer;
+use App\user;
 use App\country;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -33,6 +34,9 @@ class publisherController extends Controller
 
     public function account(Request $request){
         $request->user()->authorizeRoles('publisher');
+
+        $user = User::find(Auth::user()->id);
+        Auth::setUser($user);
 
         $countries = country::pluck('name','code');
         return view('publisher.account')->with('countries',$countries);
@@ -267,26 +271,36 @@ class publisherController extends Controller
     }
     public function support(Request $request){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.support');
+
+        $manager_id = Auth::user()->manager_id;
+
+        $manager = User::where('id',$manager_id)->first();
+
+
+        $data['name'] = $manager->name;
+        $data['skype'] = $manager->skype;
+        $data['phone'] = $manager->phone;
+        return view('publisher.support')->with('data',$data);
     }
     public function statistics(Request $request){
         $request->user()->authorizeRoles('publisher');
 
-        $LeadsChart7 = $this->LeadsChart(Auth::user()->id, null, null, 7);
-        $LeadsChart30 = $this->LeadsChart(Auth::user()->id, null, null, 30);
-        $LeadsChart90 = $this->LeadsChart(Auth::user()->id, null, null, 90);
+        $id = Auth::user()->id;
+        $LeadsChart7 = $this->LeadsChart($id, null, null, 7);
+        $LeadsChart30 = $this->LeadsChart($id, null, null, 30);
+        $LeadsChart90 = $this->LeadsChart($id, null, null, 90);
 
-        $ProfitChart7 = $this->ProfitChart(Auth::user()->id, null, null, 7);
-        $ProfitChart30 = $this->ProfitChart(Auth::user()->id, null, null, 30);
-        $ProfitChart90 = $this->ProfitChart(Auth::user()->id, null, null, 90);
+        $ProfitChart7 = $this->ProfitChart($id, null, null, 7);
+        $ProfitChart30 = $this->ProfitChart($id, null, null, 30);
+        $ProfitChart90 = $this->ProfitChart($id, null, null, 90);
 
-        $ClickChart7 = $this->ClickChart(Auth::user()->id, null, null, 7);
-        $ClickChart30 = $this->ClickChart(Auth::user()->id, null, null, 30);
-        $ClickChart90 = $this->ClickChart(Auth::user()->id, null, null, 90);
+        $ClickChart7 = $this->ClickChart($id, null, null, 7);
+        $ClickChart30 = $this->ClickChart($id, null, null, 30);
+        $ClickChart90 = $this->ClickChart($id, null, null, 90);
 
-        $SubscribesChart7 = $this->SubscribesChart(Auth::user()->id, null, null, 7);
-        $SubscribesChart30 = $this->SubscribesChart(Auth::user()->id, null, null, 30);
-        $SubscribesChart90 = $this->SubscribesChart(Auth::user()->id, null, null, 90);
+        $SubscribesChart7 = $this->SubscribesChart($id, null, null, 7);
+        $SubscribesChart30 = $this->SubscribesChart($id, null, null, 30);
+        $SubscribesChart90 = $this->SubscribesChart($id, null, null, 90);
 
         return view('publisher.statistics')
             ->with('SubscribesChart7',$SubscribesChart7)

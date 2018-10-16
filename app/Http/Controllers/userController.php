@@ -23,7 +23,7 @@ class userController extends Controller
         }else{
 
             try {
-                $user = user::where('email', '=', Auth::user()->email);
+                $user = user::where('id', '=', $request->id);
 
                 $res = $user->update([
                     'first_name' => $request->first_name,
@@ -43,11 +43,10 @@ class userController extends Controller
 
 
             } catch(\Illuminate\Database\QueryException $ex){
-                return view('account')->with('account_form_result', '- Error!')->with('account_form_color', 'text-danger');
+                flash($ex->getMessage())->error();
+                return redirect()->back()->with('account_form_result', '- Error!')->with('account_form_color', 'text-danger');
             }
 
-            $user = User::find(Auth::user()->id);
-            Auth::setUser($user);
             flash("User info updated successfully!")->success();
             return redirect()->back();
 

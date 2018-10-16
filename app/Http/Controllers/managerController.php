@@ -8,6 +8,7 @@ use App\vertical;
 use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use App\country;
 class managerController extends Controller
 {
     public function __construct()
@@ -99,7 +100,11 @@ class managerController extends Controller
     }
     public function account(Request $request){
         $request->user()->authorizeRoles('manager');
-        return view('manager.account');
+
+        $countries = country::pluck('name','code');
+        $user = User::find(Auth::user()->id);
+        Auth::setUser($user);
+        return view('publisher.account')->with('countries',$countries);
     }
     public function new(Request $request){
         $verticals = vertical::pluck('vertical','id');
@@ -310,7 +315,7 @@ class managerController extends Controller
             });
 
         $table->addColumn()
-            ->setTitle('Status')
+            ->setTitle('Activation')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->is_active){
                     $a_route = route('publisher-status', ['id' => $entity->id,'status' => "0"]);
@@ -320,7 +325,59 @@ class managerController extends Controller
                     return "<a class='btn btn-primary btn-sm' href='$a_route'>Activate</a>";
                 }
             });
+
+        $table->addColumn()
+            ->setTitle(__('Stats/Offers'))
+            ->isCustomHtmlElement(function ($entity, $column) {
+                $offers_route = route('publisher-private-offers', ['id' => $entity->id]);
+                $stats_route = route('publisher-stats', ['id' => $entity->id]);
+
+                return "
+<a class='p-3' target='blank' href='$stats_route'  title='Show Publishers Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
+<a class='p-3' target='blank' href='$offers_route'  title='Edit Publishers Private Offers'><i class='fas fa-fw fa-link'></i></a>
+                        
+                       ";
+            });
+
+
         return view('manager.publishers')->with('table', $table);
+    }
+
+    public function publisherPrivateOffers(Request $request, $id){
+        return "nn";
+    }
+
+    public function publisherStats(Request $request, $id){
+        $publisher = new publisherController();
+        $LeadsChart7 = $publisher->LeadsChart($id, null, null, 7);
+        $LeadsChart30 = $publisher->LeadsChart($id, null, null, 30);
+        $LeadsChart90 = $publisher->LeadsChart($id, null, null, 90);
+
+        $ProfitChart7 = $publisher->ProfitChart($id, null, null, 7);
+        $ProfitChart30 = $publisher->ProfitChart($id, null, null, 30);
+        $ProfitChart90 = $publisher->ProfitChart($id, null, null, 90);
+
+        $ClickChart7 = $publisher->ClickChart($id, null, null, 7);
+        $ClickChart30 = $publisher->ClickChart($id, null, null, 30);
+        $ClickChart90 = $publisher->ClickChart($id, null, null, 90);
+
+        $SubscribesChart7 = $publisher->SubscribesChart($id, null, null, 7);
+        $SubscribesChart30 = $publisher->SubscribesChart($id, null, null, 30);
+        $SubscribesChart90 = $publisher->SubscribesChart($id, null, null, 90);
+
+        return view('publisher.statistics')
+            ->with('SubscribesChart7',$SubscribesChart7)
+            ->with('SubscribesChart30',$SubscribesChart30)
+            ->with('SubscribesChart90',$SubscribesChart90)
+            ->with('ClickChart7',$ClickChart7)
+            ->with('ClickChart30',$ClickChart30)
+            ->with('ClickChart90',$ClickChart90)
+            ->with('ProfitChart7',$ProfitChart7)
+            ->with('ProfitChart30',$ProfitChart30)
+            ->with('ProfitChart90',$ProfitChart90)
+            ->with('LeadsChart7',$LeadsChart7)
+            ->with('LeadsChart30',$LeadsChart30)
+            ->with('LeadsChart90',$LeadsChart90);
     }
     public function activePublisher(Request $request, $id, $status){
         $request->user()->authorizeRoles('manager');
@@ -337,6 +394,28 @@ class managerController extends Controller
     }
     public function publisher(Request $request, $id){
         $request->user()->authorizeRoles('manager');
-        return view('manager.publisher')->with('id',$id);
+        $countries = country::pluck('name','code');
+        $user = User::where('id',$id)->first();
+
+        $data['id'] = $id;
+        $data['name'] = $user['name'];
+        $data['first_name'] = $user['first_name'];
+        $data['last_name'] = $user['last_name'];
+        $data['email'] = $user['email'];
+        $data['skype'] = $user['skype'];
+        $data['phone'] = $user['phone'];
+        $data['address'] = $user['address'];
+        $data['city'] = $user['city'];
+        $data['country'] = $user['country'];
+        $data['postal_code'] = $user['postal_code'];
+        $data['paypal'] = $user['paypal'];
+        $data['merchant_id'] = $user['merchant_id'];
+        $data['website'] = $user['website'];
+        return view('manager.publisher-account')
+            ->with('countries',$countries)
+            ->with('data',$data);
+        //return view('manager.publisher')->with('id',$id);
     }
+
+
 }
