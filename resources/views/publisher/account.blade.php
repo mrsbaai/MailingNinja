@@ -26,19 +26,20 @@
                     <div class="card-body">
                         {{ Form::open(array('action' => 'userController@updateInfo', 'id' => 'info-form'))}}
                         <input name="id" id="id" value="{{Auth::user()->id}}" hidden>
+                        <input name="name" id="name" value="{{Auth::user()->name}}" hidden>
 
                         <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">Company (disabled)</label>
-                                        <input name="name" id="name" type="text" class="form-control" disabled="" placeholder="Company" value="{{Auth::user()->name}}">
+                                        <input name="company" id="company" type="text" class="form-control" disabled placeholder="Company" value="{{Auth::user()->name}}">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="first_name">First Name</label>
-                                        <input name="first_name" id="first_name" type="text" class="form-control" placeholder="First Name"value="{{Auth::user()->first_name}}">
+                                        <input name="first_name" id="first_name" type="text" class="form-control" placeholder="First Name" value="{{Auth::user()->first_name}}">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>

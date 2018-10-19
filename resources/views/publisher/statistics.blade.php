@@ -6,8 +6,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">Subscribes</h5>
-                  <p class="card-category">Subscribes</p>
+                  <h5 class="card-title">[Subscribes] {{ $title }} </h5>
                </div>
                <div class="card-body ">
 
@@ -55,8 +54,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">Profit</h5>
-                  <p class="card-category">Paying Costumers</p>
+                  <h5 class="card-title">[Profit] {{ $title }} </h5>
                </div>
                <div class="card-body ">
 
@@ -104,8 +102,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">Leads</h5>
-                  <p class="card-category">Paying Costumers</p>
+                  <h5 class="card-title">[Leads] {{ $title }} </h5>
                </div>
                <div class="card-body ">
 
@@ -152,8 +149,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">Clicks</h5>
-                  <p class="card-category">Unique Visits</p>
+                  <h5 class="card-title">[Clicks] {{ $title }} </h5>
                </div>
                <div class="card-body ">
 
@@ -205,7 +201,7 @@
 @endsection
 
 @section('title')
-   Statistics
+   {{ $title }} Statistics
 @endsection
 
 @section('header')

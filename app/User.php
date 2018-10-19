@@ -30,7 +30,7 @@ class user extends Authenticatable
 
     public function offers()
     {
-        return $this->belongsToMany('App\offer', 'publisher_offers', 'user_id', 'offer_id');
+        return $this->belongsToMany('App\offer', 'publisher_offers', 'publisher_id', 'offer_id')->withTimestamps();;
     }
 
     public function roles()

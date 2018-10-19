@@ -55,7 +55,7 @@
                                         <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
                                     </div>
                                     <input name="offer_id" value="{{$data['offer_id']}}" hidden>
-                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="text" style="font-size: 300%">
+                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" style="font-size: 300%" required>
 
                                     <div class="input-group-append">
                                                 <span class="input-group-text p-0 ">

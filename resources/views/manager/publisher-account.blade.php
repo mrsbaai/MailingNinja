@@ -150,12 +150,26 @@
             </div>
         </div>
 
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <h5 class="card-title">Sign up Message</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>{{$data['message']}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 @endsection
 
 @section('title')
-    Account
+    Publisher Info
 @endsection
 
 @section('header')

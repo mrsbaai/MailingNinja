@@ -9,6 +9,11 @@ use Okipa\LaravelBootstrapTableList\TableList;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use App\country;
+use App\publisherOffers;
+use Carbon\Carbon;
+use App\subscriber;
+use App\sells;
+use App\clicks;;
 class managerController extends Controller
 {
     public function __construct()
@@ -96,7 +101,132 @@ class managerController extends Controller
     }
     public function home(Request $request){
         $request->user()->authorizeRoles('manager');
-        return view('manager.home');
+        $date = Carbon::now();
+        $query  = subscriber::latest();
+
+        $data['subscribers_all'] = count($query->get());
+
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+        $data['subscribers_today'] = count($query->get());
+
+        $query  = sells::latest();
+        $query
+            ->where('is_for_host',false)
+            ->where('is_refund',false)
+            ->where('status','Completed');
+
+
+
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+        $collection = $query->get();
+        $data['leads_today'] = count($collection);
+        $profit = 0;
+        foreach ($collection as $item) {
+            $profit = $profit + $item['payedAmount'];
+        }
+        $data['profit_today'] = $profit;
+
+        $query  = sells::latest();
+        $query
+            ->where('is_for_host',true)
+            ->where('is_refund',false)
+            ->where('status','Completed');
+
+
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+        $collection = $query->get();
+        $data['leads_today_house'] = count($collection);
+        $profit = 0;
+        foreach ($collection as $item) {
+            $profit = $profit + $item['payedAmount'];
+        }
+        $data['profit_today_house'] = $profit;
+
+        $query  = clicks::latest();
+        $collection = $query->get();
+        $clicks = 0;
+        foreach ($collection as $item) {
+            $clicks = $clicks + $item['count'];
+        }
+        $data['clicks_all'] = $clicks;
+        $query->whereMonth('Created_at',$date->format('m'))
+            ->whereDay('Created_at',$date->format('d'));
+
+        $collection = $query->get();
+        $clicks = 0;
+        foreach ($collection as $item) {
+            $clicks = $clicks + $item['count'];
+        }
+        $data['clicks_today'] = $clicks;
+
+
+
+        $table = app(TableList::class)
+            ->setModel(sells::class)
+            ->setRoutes([
+                'index' => ['alias' => 'publisher-home', 'parameters' => []],
+            ])
+            ->addQueryInstructions(function ($query) {
+                $query->select('sell_log.*')
+                    ->where('is_refund', false)
+                    ->where('status', 'Completed');
+            });
+
+
+        $table->addColumn('created_at')
+            ->isSortable()
+            ->setTitle('Date')
+            ->sortByDefault('desc')
+            ->setColumnDateFormat('d/m/Y H:i:s');
+
+        $table->addColumn('payedAmount')
+            ->setTitle(__('Net Amount'))
+            ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>$". $entity->payedAmount. "</b>";
+            });
+
+
+        $table->addColumn('operation_id')
+            ->setTitle('Operation Id')
+            ->isSearchable();
+
+
+        $table->addColumn('offer_id')
+            ->setTitle(__('Offer Id'))
+
+            ->isSearchable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $route = route('global-offer-stats', ['id' => $entity->offer_id]);
+                return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->offer_id</a>";
+            });
+
+
+
+        $table->addColumn('buyerEmail')
+            ->setTitle('Buyer E-Mail')
+            ->setStringLimit(25)
+            ->isSearchable();
+
+
+        return view('manager.home')->with('table', $table)->with('data',$data);;
+    }
+
+    public function globalOfferStats(Request $request, $offer_id){
+        $request->user()->authorizeRoles('manager');
+        $publisherController = new publisherController;
+        return $publisherController->statistics($request, $offer_id,  null);
+
+    }
+    public function globalStats(Request $request){
+        $request->user()->authorizeRoles('manager');
+        $publisherController = new publisherController;
+        return $publisherController->statistics($request, null,  null);
+
     }
     public function account(Request $request){
         $request->user()->authorizeRoles('manager');
@@ -187,6 +317,15 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 return $this->nicetime($entity->updated_at) ;
             });
+
+        $table->addColumn()
+            ->setTitle(__(' '))
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $stats_route = route('global-offer-stats', ['offer_id' => $entity->id]);
+                return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
+            });
+
         return view('manager.offers')->with('table',$table);
     }
     public function destroyOffer(Request $request){
@@ -197,7 +336,20 @@ class managerController extends Controller
         }else{
             flash("Error deleting offer!")->error();
         }
+
         return $this->offers($request);
+    }
+    public function destroyPublisherOffer(Request $request, $publisher_id,$id){
+        $request->user()->authorizeRoles('manager');
+
+
+        $res = publisherOffers::where('id',$request->id)->delete();
+        if ($res){
+            flash("Offer deleted!")->success();
+        }else{
+            flash("Error deleting offer!")->error();
+        }
+        return Redirect::route('publisher-private-offers', $publisher_id);
     }
     public function edit(Request $request, $id){
         $verticals = vertical::pluck('vertical','id');
@@ -343,41 +495,65 @@ class managerController extends Controller
         return view('manager.publishers')->with('table', $table);
     }
 
+    public function assignOffer(Request $request){
+
+        if (null != Offer::find($request->offer_id)){
+            $user = User::find($request->publisher_id);
+            $user->offers()->attach($request->offer_id);
+            flash("Private offer added!")->success();
+        }else{
+            flash("Offer ID not valid!")->error();
+        }
+
+        return Redirect::route('publisher-private-offers', $request->publisher_id);
+
+    }
+
     public function publisherPrivateOffers(Request $request, $id){
-        return "nn";
+        $request->user()->authorizeRoles('manager');
+
+        $user = User::where('id',$id)->first();
+        $title = $user['name'];
+        $table = app(TableList::class)
+            ->setModel(publisherOffers::class)
+            ->setRoutes([
+                'index' => ['alias' => 'publisher-private-offers', 'parameters' => ['id' => $id]],
+                'destroy'    => ['alias' => 'publisher-offer-destroy', 'parameters' => ['id' => '', 'publisher_id' => $id]],
+            ])
+            ->addQueryInstructions(function ($query)  use ($id){
+                $query->where('publisher_id', $id);
+            });
+
+        $table->addColumn('offer_id')
+            ->isSearchable()
+            ->isSortable()
+            ->useForDestroyConfirmation()
+            ->setTitle('Offer ID');
+
+
+        $table->addColumn('offer_id')
+            ->setTitle('Offer Title')
+
+            ->isCustomHtmlElement(function ($entity, $column) {
+                $ret = Offer::where('id', $entity->offer_id)->first();
+                return $ret['title']  ;
+            });
+
+        $table->addColumn('created_at')
+            ->setTitle('Added Date')
+            ->isSortable()
+            ->sortByDefault()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $this->nicetime($entity->created_at) ;
+            });
+
+        return view('manager.publisher-offers')->with('publisher_id',$id)->with('table',$table)->with('title',$title);
     }
 
     public function publisherStats(Request $request, $id){
-        $publisher = new publisherController();
-        $LeadsChart7 = $publisher->LeadsChart($id, null, null, 7);
-        $LeadsChart30 = $publisher->LeadsChart($id, null, null, 30);
-        $LeadsChart90 = $publisher->LeadsChart($id, null, null, 90);
-
-        $ProfitChart7 = $publisher->ProfitChart($id, null, null, 7);
-        $ProfitChart30 = $publisher->ProfitChart($id, null, null, 30);
-        $ProfitChart90 = $publisher->ProfitChart($id, null, null, 90);
-
-        $ClickChart7 = $publisher->ClickChart($id, null, null, 7);
-        $ClickChart30 = $publisher->ClickChart($id, null, null, 30);
-        $ClickChart90 = $publisher->ClickChart($id, null, null, 90);
-
-        $SubscribesChart7 = $publisher->SubscribesChart($id, null, null, 7);
-        $SubscribesChart30 = $publisher->SubscribesChart($id, null, null, 30);
-        $SubscribesChart90 = $publisher->SubscribesChart($id, null, null, 90);
-
-        return view('publisher.statistics')
-            ->with('SubscribesChart7',$SubscribesChart7)
-            ->with('SubscribesChart30',$SubscribesChart30)
-            ->with('SubscribesChart90',$SubscribesChart90)
-            ->with('ClickChart7',$ClickChart7)
-            ->with('ClickChart30',$ClickChart30)
-            ->with('ClickChart90',$ClickChart90)
-            ->with('ProfitChart7',$ProfitChart7)
-            ->with('ProfitChart30',$ProfitChart30)
-            ->with('ProfitChart90',$ProfitChart90)
-            ->with('LeadsChart7',$LeadsChart7)
-            ->with('LeadsChart30',$LeadsChart30)
-            ->with('LeadsChart90',$LeadsChart90);
+        $request->user()->authorizeRoles('manager');
+        $publisherController = new publisherController;
+        return $publisherController->statistics($request, null,  $id);
     }
     public function activePublisher(Request $request, $id, $status){
         $request->user()->authorizeRoles('manager');
@@ -411,6 +587,7 @@ class managerController extends Controller
         $data['paypal'] = $user['paypal'];
         $data['merchant_id'] = $user['merchant_id'];
         $data['website'] = $user['website'];
+        $data['message'] = $user['message'];
         return view('manager.publisher-account')
             ->with('countries',$countries)
             ->with('data',$data);

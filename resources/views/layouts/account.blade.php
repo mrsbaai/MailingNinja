@@ -47,11 +47,18 @@
                 <ul class="nav">
                     <li @if(Route::current()->getName() == 'manager-dashboard' or Route::current()->getName() == 'manager-home') class="active" @endif>
                         <a href="{{ route('manager-dashboard') }}">
-                            <i class="nc-icon nc-chart-bar-32"></i>
+                            <i class="nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li @if(Request::is('*offers*')) class="active" @endif>
+
+                    <li @if(Request::is('*stat*')) class="active" @endif>
+                        <a href="{{ route('manager-statistics') }}">
+                            <i class="nc-icon nc-chart-bar-32"></i>
+                            <p>Statistics</p>
+                        </a>
+                    </li>
+                    <li @if(Route::current()->getName() == 'offers-new' or Route::current()->getName() == 'offers-destroy' or Route::current()->getName() == 'offers-edit' or Route::current()->getName() == 'offers-edit-promo' or Route::current()->getName() == 'offers-manage' or Route::current()->getName() == 'store-offer' or Route::current()->getName() == 'update-offer' or Route::current()->getName() == 'update-landing' or Route::current()->getName() == 'update-promo') class="active" @endif>
                         <a href="{{ route('offers-manage') }}">
                             <i class="nc-icon nc-bulb-63"></i>
                             <p>Manage Offers</p>
@@ -59,7 +66,7 @@
                     </li>
 
 
-                    <li @if(Request::is('*publishers*')) class="active" @endif>
+                    <li @if( Route::current()->getName() == 'manage-publishers' or Route::current()->getName() == 'edit-publisher' or  Route::current()->getName() == 'publisher-private-offers'  or Route::current()->getName() == 'publisher-offer-destroy') class="active" @endif>
                         <a href="{{ route('manage-publishers') }}">
                             <i class="nc-icon nc-badge"></i>
                             <p>Manage Publishers</p>
@@ -71,6 +78,7 @@
                             <p>Account</p>
                         </a>
                     </li>
+
 
 
                     <li class="active-pro">
@@ -96,7 +104,7 @@
                         </a>
                     </li>
 
-                    <li @if(Request::is('*statistics*')) class="active" @endif>
+                    <li @if(Request::is('*stat*')) class="active" @endif>
                         <a href="{{ route('publisher-statistics') }}">
                             <i class="nc-icon nc-chart-bar-32"></i>
                             <p>Statistics</p>

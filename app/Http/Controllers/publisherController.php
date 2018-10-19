@@ -14,6 +14,7 @@ use App\clicks;
 use App\subscriber;
 use App\vertical;
 use App\link;
+use App\publisherOffers;
 use Illuminate\Support\Facades\Input;
 use Response;
 
@@ -43,7 +44,6 @@ class publisherController extends Controller
     }
     public function dashboard(Request $request){
         $request->user()->authorizeRoles('publisher');
-
 
         $date = Carbon::now();
         $query  = subscriber::latest();
@@ -267,7 +267,7 @@ class publisherController extends Controller
     }
     public function offerStats(Request $request, $id){
         $request->user()->authorizeRoles('publisher');
-        return view('publisher.home');
+        return $this->statistics($request, $id,  null);
     }
     public function support(Request $request){
         $request->user()->authorizeRoles('publisher');
@@ -282,25 +282,39 @@ class publisherController extends Controller
         $data['phone'] = $manager->phone;
         return view('publisher.support')->with('data',$data);
     }
-    public function statistics(Request $request){
+    public function userStats(request $request){
         $request->user()->authorizeRoles('publisher');
+        return $this->statistics($request, null,  Auth::user()->id);
+    }
+    public function statistics(Request $request, $offer_id = null, $user_id = null){
 
-        $id = Auth::user()->id;
-        $LeadsChart7 = $this->LeadsChart($id, null, null, 7);
-        $LeadsChart30 = $this->LeadsChart($id, null, null, 30);
-        $LeadsChart90 = $this->LeadsChart($id, null, null, 90);
+        if ($offer_id != null){
+            $offer = offer::where('id', $offer_id)->first();
+            $title = $offer['title'];
+        }else{
+            if ($user_id != null){
+                $user = user::where('id', $user_id)->first();
+                $title = $user['name'];
+            }else{
+                $title = "All Offers";
+            }
 
-        $ProfitChart7 = $this->ProfitChart($id, null, null, 7);
-        $ProfitChart30 = $this->ProfitChart($id, null, null, 30);
-        $ProfitChart90 = $this->ProfitChart($id, null, null, 90);
+        }
+        $LeadsChart7 = $this->LeadsChart($user_id, null, $offer_id, 7);
+        $LeadsChart30 = $this->LeadsChart($user_id, null, $offer_id, 30);
+        $LeadsChart90 = $this->LeadsChart($user_id, null, $offer_id, 90);
 
-        $ClickChart7 = $this->ClickChart($id, null, null, 7);
-        $ClickChart30 = $this->ClickChart($id, null, null, 30);
-        $ClickChart90 = $this->ClickChart($id, null, null, 90);
+        $ProfitChart7 = $this->ProfitChart($user_id, null, $offer_id, 7);
+        $ProfitChart30 = $this->ProfitChart($user_id, null, $offer_id, 30);
+        $ProfitChart90 = $this->ProfitChart($user_id, null, $offer_id, 90);
 
-        $SubscribesChart7 = $this->SubscribesChart($id, null, null, 7);
-        $SubscribesChart30 = $this->SubscribesChart($id, null, null, 30);
-        $SubscribesChart90 = $this->SubscribesChart($id, null, null, 90);
+        $ClickChart7 = $this->ClickChart($user_id, null, $offer_id, 7);
+        $ClickChart30 = $this->ClickChart($user_id, null, $offer_id, 30);
+        $ClickChart90 = $this->ClickChart($user_id, null, $offer_id, 90);
+
+        $SubscribesChart7 = $this->SubscribesChart($user_id, null, $offer_id, 7);
+        $SubscribesChart30 = $this->SubscribesChart($user_id, null, $offer_id, 30);
+        $SubscribesChart90 = $this->SubscribesChart($user_id, null, $offer_id, 90);
 
         return view('publisher.statistics')
             ->with('SubscribesChart7',$SubscribesChart7)
@@ -314,7 +328,8 @@ class publisherController extends Controller
             ->with('ProfitChart90',$ProfitChart90)
             ->with('LeadsChart7',$LeadsChart7)
             ->with('LeadsChart30',$LeadsChart30)
-            ->with('LeadsChart90',$LeadsChart90);
+            ->with('LeadsChart90',$LeadsChart90)
+            ->with('title', $title);
     }
 
 
@@ -381,8 +396,9 @@ class publisherController extends Controller
                 'index' => ['alias' => 'publisher-offers', 'parameters' => []],
             ])
             ->addQueryInstructions(function ($query) {
-                $query->select('offers.*')
-                    ->where('is_private', false);
+                $query
+                    ->select('offers.*');
+
             });
 
 
@@ -390,6 +406,18 @@ class publisherController extends Controller
             ->isSearchable()
             ->isSortable()
             ->setTitle('ID')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->is_private == false){
+                    return $entity->id;
+                }else{
+                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
+                        return $entity->id;
+                    }else{
+                        return "Disabled";
+                    }
+                }
+
+            })
             ->sortByDefault();
 
         $table->addColumn('title')
@@ -398,7 +426,17 @@ class publisherController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $promote_route = route('promote-offer', ['id' => $entity->id]);
-                return "<b><a href='$promote_route' target='blank'>". $entity->title . "</a></b>";
+                $return = "<b><a href='$promote_route' target='blank'>". $entity->title . "</a></b>";
+                if ($entity->is_private == true){
+                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
+                        return $return;
+                    }else{
+                        return $entity->title;
+                    }
+                }else{
+                    return $return;
+                }
+
             });
 
 
@@ -407,26 +445,48 @@ class publisherController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 $query  = subscriber::latest();
                 $query->where('user_id', Auth::user()->id)->where('offer_id', $entity->id);
-                return "<b>".  count($query->get()) . "</b>";
+                $return = "<b>".  count($query->get()) . "</b>";
+                if ($entity->is_private == true){
+                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
+                        return $return;
+                    }else{
+                        return "Disabled";
+                    }
+                }else{
+                    return $return;
+                }
             });
 
 
         $table->addColumn()
             ->setTitle(__(' '))
             ->isCustomHtmlElement(function ($entity, $column) {
+
                 $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
                 $promote_route = route('promote-offer', ['id' => $entity->id]);
                 $stats_route = route('offer-stats', ['id' => $entity->id]);
                 $download_route = route('offer-subscribed', ['id' => $entity->id]);
 
-
-                return "
+                $return =   "
 <a class='p-3' target='blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
 <a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
 <a class='p-3' target='blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
 <a class='p-3' target='blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
                         
                         ";
+
+                if ($entity->is_private == true){
+                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
+                        return $return;
+                    }else{
+                        return "Disabled";
+                    }
+                }else{
+                    return $return;
+
+                }
+
+
             });
 
 
@@ -532,7 +592,15 @@ class publisherController extends Controller
 
             $offer_name = offer::where('id',$row['offer_id'])->pluck('title')->first();
             $offer = offer::where('id',$row['offer_id'])->first();
-            $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+
+            if ($offer != null){
+                $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+            }else{
+                $verticals = "";
+            }
+
+
+
 
 
             fputcsv($handle, array($row['email'], $row['country'], $verticals, $offer_name, $row['created_at']));

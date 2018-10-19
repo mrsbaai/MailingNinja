@@ -44,7 +44,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/publisher/account', 'publisherController@account')->name('publisher-account');
 
 
-    Route::get('/publisher/statistics', 'publisherController@statistics')->name('publisher-statistics');
+    Route::get('/publisher/statistics', 'publisherController@userStats')->name('publisher-statistics');
 
     Route::get('/publisher/dashboard', 'publisherController@dashboard')->name('publisher-dashboard');
     Route::get('/publisher/offers', 'publisherController@offers')->name('publisher-offers');
@@ -52,7 +52,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/publisher/offers/{id}', 'publisherController@offer')->name('promote-offer');
     Route::post('/publisher/offers/{id?}', 'publisherController@offerSetPrice')->name('offer-set-price');
 
-    Route::get('/publisher/offers/stats/{id}', 'publisherController@offerStats')->name('offer-stats');
+    Route::get('/publisher/offers/stats/{offer_id}', 'publisherController@offerStats')->name('offer-stats');
 
     Route::get('/publisher/offers/subscribed/{id}', 'publisherController@offerSubscribed')->name('offer-subscribed');
 
@@ -88,7 +88,12 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
     Route::get('/manager/publishers/{id}', 'managerController@publisher')->name('edit-publisher');
     Route::get('/manager/publishers/{id}/offers', 'managerController@publisherPrivateOffers')->name('publisher-private-offers');
+    Route::delete('/manager/publishers/{publisher_id}/offers/destroy/{id}', 'managerController@destroyPublisherOffer')->name('publisher-offer-destroy');
     Route::get('/manager/publishers/{id}/stats', 'managerController@publisherStats')->name('publisher-stats');
+
+    Route::post('/manager/publishers/offers', 'managerController@assignOffer')->name('assign-offers');
+    Route::get('/manager/statistics', 'managerController@globalStats')->name('manager-statistics');
+    Route::get('/manager/offers/stats/{offer_id}', 'managerController@globalOfferStats')->name('global-offer-stats');
 
 //summernote store route
     Route::post('/manager/offers/new','managerController@storeOffer')->name('store-offer');
