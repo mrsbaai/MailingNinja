@@ -25,7 +25,7 @@ class landingController extends Controller
 
         $buy ="
         <div class='text-center'>
-            <h3><u>Download The '$offer->title' Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
+            <h3><u>Download '$offer->title' Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
             <div class='info-form'>
                 <a href='/'><img src='/images/pp.png' width='300px'/></a>
             </div>
