@@ -27,7 +27,7 @@ class landingController extends Controller
         <div class='text-center'>
             <h3><u>Download The E-book Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
             <div class='info-form'>
-                <a href='/'><img src='/images/paypal.png' width='300px'/></a>
+                <a href='/'><img src='/images/PayPal.png' width='300px'/></a>
             </div>
             <br>
         </div>
