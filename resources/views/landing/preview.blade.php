@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-       dddd
+        {!!$offer!!}
     </div>
 @endsection
