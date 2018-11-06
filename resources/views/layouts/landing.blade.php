@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ Request::root() }} :: title</title>
+    <title>{{ Request::server ("SERVER_NAME") }} :: title</title>
 
     <!-- Scripts -->
 
@@ -19,7 +19,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/flaty.css') }}" rel="stylesheet">
-
     <link href="{{ asset('css/landing.css') }}" rel="stylesheet">
     @yield('header')
 </head>
@@ -28,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ Request::root() }}
+                {{ Request::server ("SERVER_NAME") }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
