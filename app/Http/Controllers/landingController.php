@@ -25,7 +25,7 @@ class landingController extends Controller
 
         $buy ="
         <div class='text-center'>
-            <h3><u>Download '$offer->title' Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
+            <h3><u>Download Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
             <div class='info-form'>
                 <a href='/'><img src='/images/pp.png' width='300px'/></a>
             </div>
@@ -35,7 +35,7 @@ class landingController extends Controller
 
         $free = "
         <div class='text-center'>
-            <h3><u>Download The E-book For Free</u>:</h3><br/>
+            <h3><u>Download For Free</u>:</h3><br/>
             <div class='info-form'>
                 <form action='' class='form-inline justify-content-center'>
                     <div class='input-group'>
