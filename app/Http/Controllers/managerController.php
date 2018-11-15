@@ -294,22 +294,10 @@ class managerController extends Controller
             ->useForDestroyConfirmation();
         $table->addColumn('is_active')
             ->isSortable()
-            ->setTitle('A?');
+            ->setTitle('Active');
         $table->addColumn('is_private')
             ->isSortable()
-            ->setTitle('P?');
-        $table->addColumn('profit_a')
-            ->isSortable()
-            ->setTitle('A($) ');
-        $table->addColumn('profit_b')
-            ->isSortable()
-            ->setTitle('B($) ');
-        $table->addColumn('subscribes_a')
-            ->isSortable()
-            ->setTitle('A(Subs) ');
-        $table->addColumn('subscribes_b')
-            ->isSortable()
-            ->setTitle('B(Subs) ');
+            ->setTitle('Private');
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
             ->isSortable()

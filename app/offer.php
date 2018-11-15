@@ -9,7 +9,7 @@ class offer extends Model
 {
 
     protected $table = 'offers';
-    protected $fillable = ['offer', 'thumbnail', 'promo', 'title', 'description' ,'landing_a' ,'landing_b', 'profit_a' ,'profit_b', 'subscribes_a' ,'subscribes_b', 'is_active', 'is_private', 'payout'];
+    protected $fillable = ['offer', 'thumbnail', 'promo', 'title', 'description', 'is_active', 'is_private', 'payout'];
 
 
 

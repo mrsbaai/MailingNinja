@@ -37,7 +37,7 @@
         #bookhold{
             width: 369px;
             height: 596px;
-            background-image: url({{ asset('landing/img/bookhold.png') }}),url(http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-);
+            background-image: url({{ asset('landing/img/bookhold.png') }}),url(https://i.imgur.com/tu0UD4d.jpg);
             background-size: 369px 596px,133px 178px;
             background-repeat: no-repeat,no-repeat;
             background-position: 0px 0px ,232px 199px;
@@ -99,7 +99,7 @@
                 <div class="intro-book" style="width: 250%;">
                     <div class="books ">
                         <div class="book">
-                            <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-" />
+                            <img src="https://i.imgur.com/tu0UD4d.jpg" />
                         </div>
                     </div>
                 </div>
@@ -534,7 +534,7 @@
     }
 
     var colorThief = new ColorThief();
-    colorThief.getpaletteAsync("http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-",function(color, element){
+    colorThief.getpaletteAsync("https://i.imgur.com/tu0UD4d.jpg",function(color, element){
 
         if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'dark')
         {
