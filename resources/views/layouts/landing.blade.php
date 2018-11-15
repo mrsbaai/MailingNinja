@@ -404,7 +404,7 @@
 
             <div class="row">
 
-                <form action="php/newMail.php" method="post" class="mail-form">
+                <form>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-sm-6">
@@ -453,7 +453,8 @@
     </ul>
 </div>
 
-<script src="js/color-thief.js"></script>
+
+<script src="{{ asset('landing/js/color-thief.js') }}"></script>
 
 <script type="text/javascript">
 
@@ -536,7 +537,7 @@
     var colorThief = new ColorThief();
     colorThief.getColorAsync("http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-",function(color, element){
 
-
+        alert(color[0][0]);
         if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'dark')
         {
             a = color[0][0];
@@ -622,13 +623,7 @@
 
 
 
-
         light = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-
-
-
-
-
         $('header').css('background-color', light);
 
         $('header').css('background-image', '-webkit-radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%);');

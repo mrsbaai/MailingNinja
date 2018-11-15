@@ -179,12 +179,12 @@ ColorThief.prototype.getColorAsync = function(imageUrl, callback, quality) {
             var dominantColor = palette[0];
             callback(dominantColor, this);
         });
-        sourceImage.src = imageData;
+        sourceImage.src = imageData;      
     });
 };
 
 ColorThief.prototype.getpaletteAsync = function(imageUrl, callback, quality) {
-    alert("vv");
+	alert("vv");
     var thief = this;
     this.getImageData(imageUrl, function(imageData){
         sourceImage = document.createElement("img");
@@ -192,7 +192,7 @@ ColorThief.prototype.getpaletteAsync = function(imageUrl, callback, quality) {
             var palette = thief.getPalette(sourceImage, 5, quality);
             callback(palette, this);
         });
-        sourceImage.src = imageData;
+        sourceImage.src = imageData;      
     });
 };
 
@@ -213,18 +213,18 @@ ColorThief.prototype.getpaletteAsync = function(imageUrl, callback, quality) {
 if (!pv) {
     var pv = {
         map: function(array, f) {
-            var o = {};
-            return f ? array.map(function(d, i) { o.index = i; return f.call(o, d); }) : array.slice();
+          var o = {};
+          return f ? array.map(function(d, i) { o.index = i; return f.call(o, d); }) : array.slice();
         },
         naturalOrder: function(a, b) {
             return (a < b) ? -1 : ((a > b) ? 1 : 0);
         },
         sum: function(array, f) {
-            var o = {};
-            return array.reduce(f ? function(p, d, i) { o.index = i; return p + f.call(o, d); } : function(p, d) { return p + d; }, 0);
+          var o = {};
+          return array.reduce(f ? function(p, d, i) { o.index = i; return p + f.call(o, d); } : function(p, d) { return p + d; }, 0);
         },
         max: function(array, f) {
-            return Math.max.apply(null, f ? pv.map(array, f) : array);
+          return Math.max.apply(null, f ? pv.map(array, f) : array);
         }
     };
 }
@@ -240,15 +240,15 @@ if (!pv) {
  * @author Nick Rabinowitz
  * @example
 
- // array of pixels as [R,G,B] arrays
- var myPixels = [[190,197,190], [202,204,200], [207,214,210], [211,214,211], [205,207,207]
- // etc
- ];
- var maxColors = 4;
+// array of pixels as [R,G,B] arrays
+var myPixels = [[190,197,190], [202,204,200], [207,214,210], [211,214,211], [205,207,207]
+                // etc
+                ];
+var maxColors = 4;
 
- var cmap = MMCQ.quantize(myPixels, maxColors);
- var newPalette = cmap.palette();
- var newPixels = myPixels.map(function(p) {
+var cmap = MMCQ.quantize(myPixels, maxColors);
+var newPalette = cmap.palette();
+var newPixels = myPixels.map(function(p) {
     return cmap.map(p);
 });
 
@@ -330,8 +330,8 @@ var MMCQ = (function() {
                 for (i = vbox.r1; i <= vbox.r2; i++) {
                     for (j = vbox.g1; j <= vbox.g2; j++) {
                         for (k = vbox.b1; k <= vbox.b2; k++) {
-                            index = getColorIndex(i,j,k);
-                            npix += (histo[index] || 0);
+                             index = getColorIndex(i,j,k);
+                             npix += (histo[index] || 0);
                         }
                     }
                 }
@@ -358,12 +358,12 @@ var MMCQ = (function() {
                 for (i = vbox.r1; i <= vbox.r2; i++) {
                     for (j = vbox.g1; j <= vbox.g2; j++) {
                         for (k = vbox.b1; k <= vbox.b2; k++) {
-                            histoindex = getColorIndex(i,j,k);
-                            hval = histo[histoindex] || 0;
-                            ntot += hval;
-                            rsum += (hval * (i + 0.5) * mult);
-                            gsum += (hval * (j + 0.5) * mult);
-                            bsum += (hval * (k + 0.5) * mult);
+                             histoindex = getColorIndex(i,j,k);
+                             hval = histo[histoindex] || 0;
+                             ntot += hval;
+                             rsum += (hval * (i + 0.5) * mult);
+                             gsum += (hval * (j + 0.5) * mult);
+                             bsum += (hval * (k + 0.5) * mult);
                         }
                     }
                 }
@@ -383,11 +383,11 @@ var MMCQ = (function() {
         contains: function(pixel) {
             var vbox = this,
                 rval = pixel[0] >> rshift;
-            gval = pixel[1] >> rshift;
-            bval = pixel[2] >> rshift;
+                gval = pixel[1] >> rshift;
+                bval = pixel[2] >> rshift;
             return (rval >= vbox.r1 && rval <= vbox.r2 &&
-                gval >= vbox.g1 && gval <= vbox.g2 &&
-                bval >= vbox.b1 && bval <= vbox.b2);
+                    gval >= vbox.g1 && gval <= vbox.g2 &&
+                    bval >= vbox.b1 && bval <= vbox.b2);
         }
     };
 
@@ -579,7 +579,7 @@ var MMCQ = (function() {
         // determine the cut planes
         return maxw == rw ? doCut('r') :
             maxw == gw ? doCut('g') :
-                doCut('b');
+            doCut('b');
     }
 
     function quantize(pixels, maxcolors) {

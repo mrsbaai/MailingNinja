@@ -26,6 +26,12 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 });
 
 
+Route::get('/test', function () {
+    return view('landing.test');
+});
+
+
+
 //Route::group(array('domain' => 'mailing.ninja'), function() {
     Route::get('/home', 'homeController@redirect');
 
