@@ -184,7 +184,6 @@ ColorThief.prototype.getColorAsync = function(imageUrl, callback, quality) {
 };
 
 ColorThief.prototype.getpaletteAsync = function(imageUrl, callback, quality) {
-	alert("vv");
     var thief = this;
     this.getImageData(imageUrl, function(imageData){
         sourceImage = document.createElement("img");

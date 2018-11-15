@@ -455,7 +455,6 @@
 
 
 <script src="{{ asset('landing/js/color-thief.js') }}"></script>
-
 <script type="text/javascript">
 
 
@@ -535,9 +534,8 @@
     }
 
     var colorThief = new ColorThief();
-    colorThief.getColorAsync("http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-",function(color, element){
+    colorThief.getpaletteAsync("http://t0.gstatic.com/images?q=tbn:ANd9GcS-yFFgpIkOE2PnvMrKsjBF_fHtR0oTfyY8OvHykhTMGvCZuM9-",function(color, element){
 
-        alert(color[0][0]);
         if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'dark')
         {
             a = color[0][0];
