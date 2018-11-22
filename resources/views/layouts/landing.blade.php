@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Peremiumbooks :: Title</title>
+    <title>{{$title}}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/bootstrap.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,27 +17,42 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/subscribe.css') }}">
     <style>
 
+        blink {
+            -webkit-animation: 1s linear infinite condemned_blink_effect;
+            animation: 1s linear infinite condemned_blink_effect;
+        }
+        @-webkit-keyframes condemned_blink_effect {
+        0% {
+            visibility: hidden;
+        }
+        10% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+        }
+        @keyframes condemned_blink_effect {
+            0% {
+                visibility: hidden;
+            }
+            10% {
+                visibility: hidden;
+            }
+            100% {
+                visibility: visible;
+            }
+        }
         header, .action-container{
-            background-image: -webkit-radial-gradient(51% 98%, #F5F5F5 7%, #CCCCCC 98%);
-            background-image: radial-gradient(51% 98%, #F5F5F5 7%, #CCCCCC 98%);
-        }
-
-        .clients{
-            margin: 50px;
-
+            background-color: #d4d9e6;
 
         }
 
-        .vcenter {
-            display: inline-block;
-            vertical-align: middle;
-            float: none;
-        }
 
         #bookhold{
             width: 369px;
             height: 596px;
-            background-image: url({{ asset('landing/img/bookhold.png') }}),url(https://i.imgur.com/tu0UD4d.jpg);
+            background-image: url({{ asset('landing/img/bookhold.png') }}),url({{ $thumbnail }});
             background-size: 369px 596px,133px 178px;
             background-repeat: no-repeat,no-repeat;
             background-position: 0px 0px ,232px 199px;
@@ -47,19 +62,26 @@
 
 
         .thumb{
-            margin:50px;
+
             box-shadow: 0 3px 5px rgba(0,0,0,.05);
 
-            max-width: 500px;
-            border: 3px solid white;
+            width: 300px;
+            height: auto;
+            border: 10px solid white;
             border-radius: 2px;
 
         }
-        .thumb img{
-            width: 100%;
-            height: auto;
+
+
+
+        .info{
+            padding: 10px;
+            padding-top: 25px;
+            padding-bottom: 25px;
 
         }
+
+
 
 
         .action-container{
@@ -93,32 +115,51 @@
 
     <header>
 
-        <div class="container" id="head">
+
+        <div class="container" >
 
             <div class="col-md-6  hidden-sm hidden-xs wow animated fadeInUp">
                 <div class="intro-book" style="width: 250%;">
                     <div class="books ">
                         <div class="book">
-                            <img src="https://i.imgur.com/tu0UD4d.jpg" />
+                            <img src="{{ $thumbnail }}" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12 intro-text  wow animated fadeInUp">
-                <h2 class="heading" >Growing Beautiful Food</h2>
-                <h4 class="subheading">A Gardener’s Guide to Cultivating Extraordinary Vegetables and Fruit</h4>
-                <p>With the paradigm shift toward local and homegrown food, gardeners and foodies have come to relish beautiful vegetable gardens and beautiful meals. Author Matthew Benson writes that beauty inspires behavior, and he believes that we can and will eat better, be healthier, and live more sustainably when we grow food that’s visually enticing.</p>
-                <br/><br/>
-                <div class="container">
-                    <div class="row">
-                        <form class="form">
-                            <input type="email" class="form__field" placeholder="Your E-Mail Address" />
-                            <button type="button" class="btn--subscribe  btn--primary btn--inside uppercase" id="action_1" >Download</button>
-                        </form>
+            <div class="col-md-6 col-sm-12 intro-text wow animated fadeInUp">
+                <h2 class="heading white" >{{$title}}</h2>
+                <h4 class="subheading white">{{$subtitle}}</h4>
+                <p class ="white justify">{!! $description !!}</p>
+
+
+                        @if ($price == 0)
+                    <br/><br/>
+                    <div class="container" style="padding-left: 15px;">
+                        <div class="row" >
+                            <form class="form" >
+                                <input id="input_1" type="email" class="form__field" placeholder="Your E-Mail Address" />
+                                <button type="button" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download E-Book</button>
+                            </form>
+
+                        </div>
                     </div>
-                </div>
+                    <center><div class="big wow animated fadeInUp check-green" style="padding-top:15px;">(Available in PDF, MOBI, and EPUB)</div></center>
+
+
+                        @else
+
+                        <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About The Book</a>
+                        <a href="#" class="btn btn-green" >Purchase eBook<span class="price">${{$price}}</span></a>
+
+
+                        @endif
+
+
+
             </div>
         </div>
+
     </header>
 
     <nav class="navbar navbar-default">
@@ -131,7 +172,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"  ><h2 class="heading uppercase" style="margin-top: -5px;">Peremiumbooks<span id="logo_span" style="font-size:200%;color:#7cc576;">.<span></h2></a>
+                <a class="navbar-brand" href="#"  ><h2 class="heading uppercase" style="margin-top: -5px;">Peremiumbooks<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -141,42 +182,59 @@
                     <li><a href="#author" class="scrollto">Author</a></li>
                     <li><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
-                    <li><a href="#" class="btn btn-green">Download Book</a></li>
+                    <li><a href="#" class="btn btn-green"> @if ($price == 0) Free Download @else Purchase eBook @endif</a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
-    <section id="book">
+    <section id="book" >
         <div class="container">
-            <div class="row">
+
+
                 <div class="col-md-6">
-                    <div class="book-preview">
+                    <br/>
+                    <div class="book-preview ">
                         <img src="{{ asset('landing/img/kindle.png') }}" class="background-device" alt="">
 
                         <div class="owl-book">
+                            @foreach($images as $image)
+                                @if($image !== null && $image !== "" )
+                                    <div class="item">
+                                        <img src="{{ $image }}" />
+                                        <div class="overlay">
+                                            <a  href="{{ $image }}" class="expand" data-lightbox="book-collection" data-title="test"><i class="fa fa-expand"></i></a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
 
-
-                            <div class="item">
-                                <img src="{{ asset('landing/img/book_page.png') }}" />
-                                <div class="overlay">
-                                    <a href="{{ asset('landing/img/book_page.png') }}" class="expand" data-lightbox="book-collection" data-title="  "><i class="fa fa-expand"></i></a>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 wide check-green">
                     <h2 class="heading wow animated fadeInUp">About The Book</h2>
-                    <p class="small wow animated fadeInUp">Benson restored a time-worn gentleman’s farm and operates a CSA on one small acre of the land, offering vegetables, orchard fruit, cut flowers, herbs, eggs, and honey from the property. His garden-to-table operation offers an edible feast of textures, colors, and aromas and has grown into a way to feed others, while pushing back against the industrial food system in a small but meaningful way.</p>
-                    <p class="small wow animated fadeInUp">Growing Beautiful Food is both inspiration and instruction, with detailed growing advice for 50 remarkable crops, a memorable narrative, and evocative imagery. It’s a photographic journey through four seasons in the garden, fueling the dream that you can connect to the land by growing your own food. Benson encourages us to start small like he did, celebrate every harvest, and understand that heartbreaking crop losses are simply part of the process. Whether gardeners, families, farmers, or chefs, readers will come to the table motivated by the flavor of homegrown, the message of self sufficiency, and the beautiful food that’s as local as their backyards.</p>
+                    @if($book_about_1 !== null && $book_about_1 !== "" )
+                        <p class="subheading big justify wow animated fadeInUp check-green">{!! $book_about_1 !!}</p>
+                    @endif
+                    @if($book_about_2 !== null && $book_about_2 !== "" )
+                        <p class="small justify wow animated fadeInUp check-green">{!! $book_about_2 !!}</p>
+                    @endif
+
 
                 </div>
+
+
             </div>
-        </div>
+
+
+
+
     </section>
+
+
 
 
     <section id="author" class="reviews">
@@ -185,53 +243,43 @@
                 <div class="col-md-7" >
                     <div class="row author" >
                         <div class="col-sm-12 author-name" >
-                            <h2 class="heading wow animated fadeInUp">Author: Nicolas Adamson</h2>
+                            <h2 class="heading wow animated fadeInUp">{{ $author_name }} (The Author)</h2>
 
-                            <p class="small muted-light wow animated fadeInUp">Nullam quis risus eget urna mollis ornare vel eu leo Praesent commodo cursus magna, ligula porta felis euismod semper.l nisl consectetur etonec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum.</p>
+                            <p class="small justify muted-light wow animated fadeInUp">{{ $author_about }}.</p>
 
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-5 text-right wow animated fadeInUp" >
+                <div class="col-md-5 wow animated fadeInUp" >
+                <br/><br/>
 
+                    <span class="pull-right ">
                     <div class="thumb">
-                        <img src="{{ asset('landing/img/writer.jpg') }}">
+                        <img src="{{ $author_image }}" style=" width: 100%;height:auto">
                     </div>
+                    </span>
 
                 </div>
             </div>
         </div>
     </section>
 
-    <aside class="clients">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="{{ asset('landing/img/asilver-author.png') }}" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="{{ asset('landing/img/agold-book.png') }}" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="{{ asset('landing/img/agold-seller.png') }}" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="{{ asset('landing/img/asilver-author.png') }}" class="img-responsive img-centered" alt="">
-                    </a>
+
+    @if($book_about_3 !== null && $book_about_3 !== "" )
+        <section class="info">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12  check-green text-center">
+                        <p class="wow animated fadeInUp check-green text-center"><em>{!! $book_about_3 !!}</em></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </aside>
+        </section>
+    @endif
 
-    <section id="reviews" class="reviews">
+    <section id="reviews" class="reviews" style="padding-bottom: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 text-left">
@@ -266,9 +314,10 @@
                             <p class="small">This book is an excellent resource for anyone who is serious about graphic layout.</p>
                         </div>
                     </div>
+                    @if($review_name_1 !== null && $review_name_1 !== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Emily Carey</h4>
+                            <h4 class="subheading reviewer-name">{{ $review_name_1 }}</h4>
                             <h6 class="subheading muted reviewer-city">Tampa, Florida</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
@@ -277,12 +326,14 @@
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
                             </div>
-                            <p class="small">Swiss Typography is a critical guide for graphic designers. I  recommend this fantastic eBook.</p>
+                            <p class="small">{{ $review_content_1 }}</p>
                         </div>
                     </div>
+                    @endif
+                    @if($review_name_2 !== null && $review_name_2 !== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Martin Doe</h4>
+                            <h4 class="subheading reviewer-name">{{ $review_name_2 }}</h4>
                             <h6 class="subheading muted reviewer-city">Los Angeles, California</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
@@ -291,12 +342,14 @@
                                 <span class="rate active"></span>
                                 <span class="rate"></span>
                             </div>
-                            <p class="small">Chock full of great photos of lettering with a little info about the artist and projects shown.</p>
+                            <p class="small">{{ $review_content_2 }}</p>
                         </div>
                     </div>
+                    @endif
+                    @if($review_name_3 !== null && $review_name_3 !== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Alfred Rudolf</h4>
+                            <h4 class="subheading reviewer-name">{{ $review_name_3 }}</h4>
                             <h6 class="subheading muted reviewer-city">Dallas, Texas</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
@@ -305,13 +358,15 @@
                                 <span class="rate active"></span>
                                 <span class="rate"></span>
                             </div>
-                            <p class="small">This book is an excellent resource for anyone who is serious about graphic layout.</p>
+                            <p class="small">{{ $review_content_3 }}</p>
                         </div>
                     </div>
+                    @endif
+                    @if($review_name_4 !== null && $review_name_4 !== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Emily Carey</h4>
-                            <h6 class="subheading muted reviewer-city">Tampa, Florida</h6>
+                            <h4 class="subheading reviewer-name">{{ $review_name_4 }}</h4>
+                            <h6 class="subheading muted reviewer-city">Tucson, Arizona</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -319,13 +374,31 @@
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
                             </div>
-                            <p class="small">Swiss Typography is a critical guide for graphic designers. I  recommend this fantastic eBook.</p>
+                            <p class="small">{{ $review_content_4 }}.</p>
                         </div>
                     </div>
+                    @endif
+                    @if($review_name_5 !== null && $review_name_5!== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Martin Doe</h4>
-                            <h6 class="subheading muted reviewer-city">Los Angeles, California</h6>
+                            <h4 class="subheading reviewer-name">{{ $review_name_5 }}</h4>
+                            <h6 class="subheading muted reviewer-city">Wichita, Kansas</h6>
+                            <div class="rating">
+                                <span class="rate active"></span>
+                                <span class="rate active"></span>
+                                <span class="rate active"></span>
+                                <span class="rate active"></span>
+                                <span class="rate active"></span>
+                            </div>
+                            <p class="small">{{ $review_content_5 }}</p>
+                        </div>
+                    </div>
+                    @endif
+                    @if($review_name_6 !== null && $review_name_6 !== "" )
+                    <div class="item">
+                        <div class="review text-center wow animated fadeInUp">
+                            <h4 class="subheading reviewer-name">{{ $review_name_6 }}</h4>
+                            <h6 class="subheading muted reviewer-city">Huntington, New York</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -333,9 +406,10 @@
                                 <span class="rate active"></span>
                                 <span class="rate"></span>
                             </div>
-                            <p class="small">Chock full of great photos of lettering with a little info about the artist and projects shown.</p>
+                            <p class="small">{{ $review_content_6 }}</p>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -363,7 +437,7 @@
 
 
 
-    <section id="action"  class="reviews" style="padding-top:0px;">
+    <section id="action"  class="reviews">
 
 
         <div class="col-md-12 wow animated fadeInUp" >
@@ -374,14 +448,34 @@
                 <div class="col-md-3 text-left  wow animated fadeInUp">
                     <img src="{{ asset('landing/img/tr.gif') }}" id="bookhold">
                 </div>
+                @if ($price == 0)
 
-                <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:160px;padding-left:150px;" >
-                    <p id="heading_1">Download Your Copy Now For <s>$26.99</s><b> FREE!</b></p><br/>
+                    <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:80px;padding-left:150px;" >
+                        <h1 style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Free Download!<br/>
+                                Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
+                            </blink></h1><br/>
+                        <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
+                    </div>
+                <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:20px;padding-left:150px;" >
                     <form class="form" >
                         <input type="email" class="form__field" placeholder="Your E-Mail Address" />
-                        <button type="button" class="btn--subscribe  btn--primary btn--inside uppercase" id="action_2">Download</button>
+                        <button type="button" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
                     </form>
+                    <span class="subheading big justify wow animated fadeInUp check-green">(Available in PDF, MOBI, and EPUB)</span>
                 </div>
+                @else
+                    <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:120px;padding-left:150px;" >
+                        <h1 style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Spacial Offer!<br/>
+                                Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
+                            </blink></h1><br/>
+                        <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
+
+                        <div class='info-form'>
+                            <a href='/'><img src='https://i.imgur.com/PO6QqRU.jpg' width='300px'/></a>
+                        </div>
+                        <span class="subheading big justify wow animated fadeInUp check-green">(Avalable in PDF, MOBI, and EPUB)</span>
+                    </div>
+                @endif
 
 
             </div>
@@ -396,16 +490,15 @@
 
     <section id="contact" >
 
-        <div class="col-sm-12  wow animated fadeInUp contact-details text-center" style = "padding-top:100px">
-            <br/><h2 class="heading">Drop Us A Message</h2><br/><br/><br/><br/>
-        </div>
+
         <div class="container ">
 
 
             <div class="row">
 
                 <form>
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="padding-top: 200px;">
+                        <h2 class="heading">Drop Us A Message</h2><br/>
                         <div class="row">
                             <div class="col-sm-6">
                                 <input name="firstname" type="text" class="form-control" placeholder="Name" data-validation="required">
@@ -534,7 +627,7 @@
     }
 
     var colorThief = new ColorThief();
-    colorThief.getpaletteAsync("https://i.imgur.com/tu0UD4d.jpg",function(color, element){
+    colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
 
         if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'dark')
         {
@@ -560,7 +653,54 @@
             c = color[0][2];
         }
 
+
         dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
+        dominant_light =  ColorLuminance(a,b,c,1);
+        if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'light')
+        {
+            a = color[0][0];
+            b = color[0][1];
+            c = color[0][2];
+
+        }
+        else if(lightOrDark('rgb('+color[1][0]+','+color[1][1]+','+color[1][2]+')') == 'light')
+        {
+            a = color[1][0];
+            b = color[1][1];
+            c = color[1][2];
+        }
+        else if(lightOrDark('rgb('+color[2][0]+','+color[2][1]+','+color[2][2]+')') == 'light')
+        {
+            a = color[2][0];
+            b = color[2][1];
+            c = color[2][2];
+        }else{
+            a = color[0][0];
+            b = color[0][1];
+            c = color[0][2];
+        }
+
+        do {
+
+            if (a < b){
+                a = parseInt((a + ((b - a) / 2)));
+            }else{
+                a = parseInt((a - ((a - b) / 2)));
+            }
+            if (c < b){
+                c = parseInt((c + ((b - c) / 2)));
+            }else{
+                c = parseInt((c - ((c - b) / 2)));
+            }
+            e = Math.abs(b - a) + Math.abs(b - c);
+
+        }
+
+        while (e > 15);
+
+        secondary = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
+
+
 
 
 
@@ -622,10 +762,15 @@
 
 
         light = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-        $('header').css('background-color', light);
+        //$('header').css('background-color', light);
 
-        $('header').css('background-image', '-webkit-radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%);');
-        $('header').css('background-image', 'radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%)');
+        $('header').css('background-color', secondary);
+        $('header').css('background-image', secondary);
+
+        //$('header').css('background-image', 'linear-gradient(to right bottom, ' + hex0 + ', ' + hex1 + ', ' + hex2 + ', ' + hex3 + ', ' + hex4 + ')');
+
+        //$('header').css('background', '-webkit-linear-gradient(to bottom, ' + dominant + ', ' + secondary + ', ' + light + ');');
+        //$('header').css('background', ' linear-gradient(to bottom, ' + dominant + ', ' + secondary + ', ' + light + ')');
 
 
         $('.action-container').css('background-image', '-webkit-radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%);');
@@ -635,19 +780,58 @@
 
         //$('#author').css('background-color', light);
         //$('footer').css('background-color', light);
-        $('.btn-green').css('color', dominant);
-
-        $('.subheading').css('color', dominant);
-        $('.btn-green').css('border-color', dominant);
         $('#action_1').css('background-color', dominant);
-        $('#action_2').css('background-color', dominant);
         $('#send_btn').css('background-color', dominant);
+        $('#input_1').css('background-color', light);
+        $('#input_1').css('color', dominant);
+
+
+        //$('.subheading').css('color', dominant);
+
+
+
+        //$('.expand').css('background-color', dominant);
+
+        $('.white').css('color', dominant);
+
+        $('.btn.btn-white').css('border', '3px solid transparent');
+        $('.btn.btn-white').css('background', dominant);
+
+        $('h1').css('font-family', 'Proxima Bold');
+        $('h2').css('color', dominant);
+        $('h4').css('color', dominant);
+        $('li').css('color', dominant);
+        $('p').css('color', dominant);
+        $('.small').css('color', dominant);
+        //$('.big').css('color', dominant);
+
+
+        $('.info').css('background-color', secondary);
+
         //$('#reviews').css('background-color',light);
-        $('#logo_span').css('color', dominant);
-        $('#purchase_btn').css('border-color',dominant);
-        $('#purchase_btn').css('color',dominant);
+        $('#logo_span').css('color', secondary);
 
 
+        document.getElementById("action_1").onmouseover = function()
+        {
+            this.style.backgroundColor = dominant_light;
+        }
+
+        document.getElementById("action_1").onmouseout = function()
+        {
+            this.style.backgroundColor = dominant;
+        }
+
+
+        document.getElementById("send_btn").onmouseover = function()
+        {
+            this.style.backgroundColor = dominant_light;
+        }
+
+        document.getElementById("send_btn").onmouseout = function()
+        {
+            this.style.backgroundColor = dominant;
+        }
 
 
 

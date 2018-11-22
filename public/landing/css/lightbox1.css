@@ -1,9 +1,7 @@
-html.lb-disable-scrolling {
-  overflow: hidden;
-  /* Position fixed required for iOS. Just putting overflow: hidden; on the body is not enough. */
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+/* Preload images */
+body:after {
+  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
+  display: none;
 }
 
 .lightboxOverlay {
@@ -11,9 +9,9 @@ html.lb-disable-scrolling {
   top: 0;
   left: 0;
   z-index: 9999;
-  background-color: black;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
+  background-color: #12151e;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: .9;
   display: none;
 }
 
@@ -31,11 +29,11 @@ html.lb-disable-scrolling {
   display: block;
   height: auto;
   max-width: inherit;
-  max-height: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
-
-  /* Image border */
-  border: 4px solid white;
 }
 
 .lightbox a img {
@@ -44,21 +42,26 @@ html.lb-disable-scrolling {
 
 .lb-outerContainer {
   position: relative;
+  background-color: white;
   *zoom: 1;
   width: 250px;
   height: 250px;
   margin: 0 auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
   border-radius: 4px;
-
-  /* Background color behind image.
-     This is visible during transitions. */
-  background-color: white;
 }
 
 .lb-outerContainer:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.lb-container {
+  padding: 4px;
 }
 
 .lb-loader {
@@ -76,7 +79,7 @@ html.lb-disable-scrolling {
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: url(../images/loading.gif) no-repeat;
+  background: url(../img/loading.gif) no-repeat;
 }
 
 .lb-nav {
@@ -98,18 +101,18 @@ html.lb-disable-scrolling {
 }
 
 .lb-prev, .lb-next {
-  height: 100%;
+  position: absolute;
+  top:calc(50% - 15px);
   cursor: pointer;
-  display: block;
+  display: inline-block;
+  font-size:52px;
+  opacity:.3;
+  color: white;
 }
 
 .lb-nav a.lb-prev {
   width: 34%;
-  left: 0;
-  float: left;
-  background: url(../images/prev.png) left 48% no-repeat;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+  left: -25%;
   -webkit-transition: opacity 0.6s;
   -moz-transition: opacity 0.6s;
   -o-transition: opacity 0.6s;
@@ -123,11 +126,7 @@ html.lb-disable-scrolling {
 
 .lb-nav a.lb-next {
   width: 64%;
-  right: 0;
-  float: right;
-  background: url(../images/next.png) right 48% no-repeat;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+  right: -40%;
   -webkit-transition: opacity 0.6s;
   -moz-transition: opacity 0.6s;
   -o-transition: opacity 0.6s;
@@ -144,7 +143,11 @@ html.lb-disable-scrolling {
   padding-top: 5px;
   *zoom: 1;
   width: 100%;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
@@ -160,47 +163,52 @@ html.lb-disable-scrolling {
 }
 
 .lb-data .lb-details {
-  width: 85%;
-  float: left;
-  text-align: left;
+  width: 100%;
+  text-align: center;
   line-height: 1.1em;
 }
 
-.lb-data .lb-caption {
-  font-size: 13px;
+.lb-caption {
+  display: block !important;
+  font-size: 24px;
+  color:white;
   font-weight: bold;
   line-height: 1em;
+  position: relative;
+  top:-40px;
+  margin-top:-30px;
 }
 
-.lb-data .lb-caption a {
-  color: #4ae;
+.lb-number {
+  display: inline-block;
+  margin-top:30px;
+  font-size: 24px;
+  color:white;
+  font-family:'Proxima Bold';
 }
 
-.lb-data .lb-number {
-  display: block;
-  clear: left;
-  padding-bottom: 1em;
-  font-size: 12px;
-  color: #999999;
+.lb-number .inactive {
+  color:#666666;
 }
 
-.lb-data .lb-close {
-  display: block;
-  float: right;
-  width: 30px;
-  height: 30px;
-  background: url(../images/close.png) top right no-repeat;
+.lb-close {
+  display: inline-block;
+  font-size:40px;
+  color:white;
   text-align: right;
   outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-  opacity: 0.7;
+  opacity: 0.3;
+  position: relative;
+  top:-90px;
+  margin-top:-120px;
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 
-.lb-data .lb-close:hover {
+.lb-close:hover {
   cursor: pointer;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;

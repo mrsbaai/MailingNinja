@@ -12,48 +12,51 @@ class landingController extends Controller
     }
 
 
-    public function preview($id, $n){
+    public function preview($id){
+
+
         $offer = offer::all()->where('id',$id)->first();
         $price = $offer->payout;
-        $old = (($offer->payout * 40) / 100) + $price;
-        if ($n == "a"){
-            $landing = $offer->landing_a;
+
+        // get from links database
+        $custom_price = $price;
+
+        if ($custom_price == 0){
+            $old_price = $price;
+
         }else{
-            $landing = $offer->landing_b;
+            $old_price = (($offer->payout * 55) / 100) + $price;
+            $old_price = intval($old_price);
         }
+        $price = $custom_price;
 
-
-        $buy ="
-        <div class='text-center'>
-            <h3><u>Download Now (<strike>$$old</strike> Only $$price)</u></h3><br/>
-            <div class='info-form'>
-                <a href='/'><img src='/images/pp.png' width='300px'/></a>
-            </div>
-            <br>
-        </div>
-        ";
-
-        $free = "
-        <div class='text-center'>
-            <h3><u>Download For Free</u>:</h3><br/>
-            <div class='info-form'>
-                <form action='' class='form-inline justify-content-center'>
-                    <div class='input-group'>
-                        <input type='text' class='form-control form-control-lg' id='email' name='email' placeholder='Your E-mail Here' aria-label='Please Enter Your E-mail To Receive This Product For Free.'>
-                        <div class='input-group-append'>
-                            <button type='submit' class='btn btn-success btn-lg'>Send Download Link</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <br>
-        </div>
-        ";
-
-
-        $html = str_replace("[ACTION]",$buy, $landing);
-
-        return view('landing.preview')->with('offer',$html);
+        $images = array($offer->thumbnail, $offer->image_1, $offer->image_2, $offer->image_3, $offer->image_4, $offer->image_5, $offer->image_6, $offer->image_7, $offer->image_8, $offer->image_9);
+        return view('landing.preview')
+            ->with('title', $offer->title)
+            ->with('description', $offer->description)
+            ->with('price', $price)
+            ->with('old_price', $old_price)
+            ->with('thumbnail', $offer->thumbnail)
+            ->with('subtitle', $offer->subtitle)
+            ->with('images', $images)
+            ->with('author_image', $offer->author_image)
+            ->with('review_name_1', $offer->review_name_1)
+            ->with('review_content_1', $offer->review_content_1)
+            ->with('review_name_2', $offer->review_name_2)
+            ->with('review_content_2', $offer->review_content_2)
+            ->with('review_name_3', $offer->review_name_3)
+            ->with('review_content_3', $offer->review_content_3)
+            ->with('review_name_4', $offer->review_name_4)
+            ->with('review_content_4', $offer->review_content_4)
+            ->with('review_name_5', $offer->review_name_5)
+            ->with('review_content_5', $offer->review_content_5)
+            ->with('review_name_6', $offer->review_name_6)
+            ->with('review_content_6', $offer->review_content_6)
+            ->with('author_name', $offer->author_name)
+            ->with('author_about', $offer->author_about)
+            ->with('book_about_1', $offer->book_about_1)
+            ->with('book_about_2', $offer->book_about_2)
+            ->with('book_about_3', $offer->book_about_3);
     }
 
     public function show(){

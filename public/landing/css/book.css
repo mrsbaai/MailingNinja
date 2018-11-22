@@ -50,7 +50,7 @@
   width: 100%;
   left: 6%;
   background-color: gray;
-  box-shadow: 5px 20px 20px #333;
+  box-shadow: 5px 20px 20px black;
 }
 
 .csstransforms3d  .book:after {

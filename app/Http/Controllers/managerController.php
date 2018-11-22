@@ -50,8 +50,8 @@ class managerController extends Controller
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
         $offer = new offer;
         $offer->title = $request->title;
+        $offer->subtitle = $request->subtitle;
         $offer->thumbnail = $thumbnail;
-        $offer->description = $request->description;
         $offer->is_active = $is_active;
         $offer->is_private = $is_private;
         $offer->payout = $request->payout;
@@ -89,7 +89,35 @@ class managerController extends Controller
             'description' => $request->description,
             'is_active' => $is_active,
             'is_private' => $is_private,
-            'payout' => $request->payout
+            'payout' => $request->payout,
+            'subtitle' =>  $request->subtitle,
+            'image_1' =>  $request->image_1,
+            'image_2' =>  $request->image_2,
+            'image_3' =>  $request->image_3,
+            'image_4' =>  $request->image_3,
+            'image_5' =>  $request->image_5,
+            'image_6' =>  $request->image_6,
+            'image_7' =>  $request->image_7,
+            'image_8' =>  $request->image_8,
+            'image_9' =>  $request->image_9,
+            'author_image' =>  $request->author_image,
+            'review_name_1' =>  $request->review_name_1,
+            'review_content_1' =>  $request->review_content_1,
+            'review_name_2' =>  $request->review_name_2,
+            'review_content_2' =>  $request->review_content_2,
+            'review_name_3' =>  $request->review_name_3,
+            'review_content_3' =>  $request->review_content_3,
+            'review_name_4' =>  $request->review_name_4,
+            'review_content_4' =>  $request->review_content_4,
+            'review_name_5' =>  $request->review_name_5,
+            'review_content_5' =>  $request->review_content_5,
+            'review_name_6' =>  $request->review_name_6,
+            'review_content_6' =>  $request->review_content_6,
+            'author_name' =>  $request->author_name,
+            'author_about' =>  $request->author_about,
+            'book_about_1' =>  $request->book_about_1,
+            'book_about_2' =>  $request->book_about_2,
+            'book_about_3' =>  $request->book_about_3,
         ]);
         $offer->verticals()->sync($request->get('verticals'));
         if ($res){
@@ -353,7 +381,37 @@ class managerController extends Controller
             ->with('payout', $offer->payout)
             ->with('id', $id)
             ->with('thumbnail', $offer->thumbnail)
-            ->with('selected_verticals', $selected_verticals);
+            ->with('selected_verticals', $selected_verticals)
+            ->with('subtitle', $offer->subtitle)
+            ->with('image_1', $offer->image_1)
+            ->with('image_2', $offer->image_2)
+            ->with('image_3', $offer->image_3)
+            ->with('image_4', $offer->image_3)
+            ->with('image_5', $offer->image_5)
+            ->with('image_6', $offer->image_6)
+            ->with('image_7', $offer->image_7)
+            ->with('image_8', $offer->image_8)
+            ->with('image_9', $offer->image_9)
+            ->with('author_image', $offer->author_image)
+            ->with('review_name_1', $offer->review_name_1)
+            ->with('review_content_1', $offer->review_content_1)
+            ->with('review_name_2', $offer->review_name_2)
+            ->with('review_content_2', $offer->review_content_2)
+            ->with('review_name_3', $offer->review_name_3)
+            ->with('review_content_3', $offer->review_content_3)
+            ->with('review_name_4', $offer->review_name_4)
+            ->with('review_content_4', $offer->review_content_4)
+            ->with('review_name_5', $offer->review_name_5)
+            ->with('review_content_5', $offer->review_content_5)
+            ->with('review_name_6', $offer->review_name_6)
+            ->with('review_content_6', $offer->review_content_6)
+            ->with('author_name', $offer->author_name)
+            ->with('author_about', $offer->author_about)
+            ->with('book_about_1', $offer->book_about_1)
+            ->with('book_about_2', $offer->book_about_2)
+            ->with('book_about_3', $offer->book_about_3)
+
+            ;
     }
     public function editLanding(Request $request, $id, $n){
         $request->user()->authorizeRoles('manager');

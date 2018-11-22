@@ -41,7 +41,7 @@ Route::get('/test', function () {
     Route::get('/contact', 'mailingNinjaController@contact')->name('contact');
 
 
-    Route::get('/preview/{id}/{n}', 'landingController@preview')->name('preview');
+    Route::get('/preview/{id}', 'landingController@preview')->name('preview');
 
     Route::get('/publisher', 'publisherController@home')->name('publisher-home');
 

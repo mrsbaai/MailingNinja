@@ -39,6 +39,7 @@ h6 {font-size:18px;}
 	color:#484d53;
 	font-family:'Proxima Bold';
 	line-height:38px;
+
 }
 
 .subheading {
@@ -62,7 +63,7 @@ a:hover {
 }
 
 .white {
-	color:white !important;
+	color:white;
 }
 
 .muted {
@@ -106,16 +107,64 @@ hr {
 	background: white;
 }
 
+
+.small li {
+	padding-left: 1.3em;
+}
+.small li:before {
+	content: "\f00c"; /* FontAwesome Unicode */
+	font-family: FontAwesome;
+	display: inline-block;
+	margin-left: -1.3em; /* same as padding-left set on li */
+	width: 1.3em; /* same as padding-left set on li */
+}
+
 p {
 	margin:20px 0;
-	font-size:30px;
+	font-size:18px;
 	line-height: 42px;
+	color:#6a727b;
+
 }
 
 p.small {
 	font-size:18px;
 	line-height: 36px;
 	color:#6a727b;
+}
+p.big {
+	font-size:30px;
+
+}
+
+span.big {
+    font-size:16px;
+
+}
+
+
+.justify{
+	text-align: justify; /* For Edge */
+	-moz-text-align-last: auto; /* For Firefox prior 58.0 */
+	text-align-last: auto;
+
+}
+
+
+
+.small span {
+	font-size:18px;
+	line-height: 36px;
+	color:#6a727b;
+}
+
+
+
+li {
+	font-size:18px;
+	line-height: 36px;
+	color:#6a727b;
+	font-family:'Proxima';
 }
 
 .navbar-filler {
@@ -156,7 +205,7 @@ header .intro-book {
 	}
 }
 
-header .intro-text { 
+header .intro-text {
 	position: relative;
 }
 
@@ -233,7 +282,7 @@ header .intro-text {
 	color: #484d53;
 }
 @media(min-width:768px) {
-	
+
 	.navbar-default .navbar-nav > li > a:hover:after, .navbar-default .navbar-nav > li.active > a:after {
 	  		width:100%;
 	}
@@ -256,12 +305,10 @@ header .intro-text {
 }
 
 .navbar-nav > li > a.btn.btn-green:hover {
-
-	color: #93cf8e;
-	border-color: #93cf8e;
-
+	background:#7cc576;
+	border:2px solid #7cc576;
+	color:white;
 }
-
 .navbar-nav > li > a.btn:after {
 	display: none;
 }
@@ -330,9 +377,9 @@ section.reviews {
 }
 
 .btn.btn-green:hover {
-	background: #96db90;
-	border-color: #96db90;
+    opacity: 0.7;
 }
+
 
 .btn.btn-white {
 	border:3px solid white;
@@ -341,8 +388,8 @@ section.reviews {
 }
 
 .btn.btn-white:hover {
-	background:white;
-	color:#7cc576;
+    opacity: 0.7;
+
 }
 
 .btn .price {
@@ -376,13 +423,13 @@ section.reviews {
 
 /* Owl Slider */
 .owl-book {
-	
+
 	width: 74%;
 
 	display: inline-block;
 	margin:0 auto;
 	margin-top:15%;
-	
+
 
 }
 
@@ -411,12 +458,12 @@ section.reviews {
 }
 
 .owl-book .item img {
-	
-	width:100%;	
+
+	width:100%;
 	transition: all 0.3s ease;
 	border-radius:4px;
-	
-	
+
+
 }
 
 
@@ -445,7 +492,7 @@ section.reviews {
 
 .owl-reviews .item {
 	padding:0 15px;
-	
+
 }
 
 .owl-reviews .owl-controls {
@@ -557,7 +604,6 @@ section.reviews {
 
 footer {
 	width: 100%;
-#484d53;
 	background:#f5f5f5;
 }
 
@@ -592,7 +638,7 @@ footer .social a:before {
 footer .social a:hover {
 	color:white;
 }
-footer .social a:hover:before { 
+footer .social a:hover:before {
 	width:100%;
  	height:100%;
  	top:0; left:0;
@@ -828,7 +874,7 @@ button:focus {
 	background: rgba(255,255,255,.95);
 	display:table;
 	opacity: 0;
-        
+
 } .mobile-nav.active{top:0;opacity:1;}
 @media(min-width:768px){
 	.mobile-nav{display:none;}
@@ -859,4 +905,24 @@ button:focus {
 	left:calc(50% - 10px);
 	color:#666;
 	font-size:24px;
+}
+.check-green ul {
+list-style-type: none;
+}
+
+.wide{
+	margin-left: -5em;
+
+}
+
+
+.check-green li:before {
+	content: "\f00c"; /* FontAwesome Unicode */
+	font-family: FontAwesome;
+	display: inline-block;
+	margin-left: -2em; /* same as padding-left set on li */
+	width: 1.3em; /* same as padding-left set on li */
+	color: #77c474;
+    text-shadow: -1px 0 #4a7847, 0 1px #4a7847, 1px 0 #4a7847, 0 -1px #4a7847;
+    opacity:0.7;
 }
