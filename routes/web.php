@@ -20,8 +20,6 @@ Route::post('saveContact', 'ContactController@saveContact');
 
 Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::get('/', 'landingController@home');
-    Route::get('/private', 'costumerController@home');
-
 
 });
 
@@ -30,6 +28,10 @@ Route::get('/test', function () {
     return view('landing.test');
 });
 
+
+//costumer
+
+Route::get('/private', 'costumerController@home');
 
 
 //Route::group(array('domain' => 'mailing.ninja'), function() {

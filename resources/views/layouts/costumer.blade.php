@@ -1,76 +1,262 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Mailing.Ninja :: @yield('title')</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- CSS Files -->
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('head')
+    @yield('header')
+
 </head>
-<body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+
+<body class="">
+<div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+      -->
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                <div class="logo-image-small">
+                    <img src="{{ URL::asset('images/logo-small.png') }}">
+                </div>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                </ul>
-            </div>
+            <a href="/" class="simple-text logo-normal">
+                Mailing Ninja
+                <!-- <div class="logo-image-big">
+                  <img src="../assets/img/logo-big.png">
+                </div> -->
+            </a>
         </div>
-    </nav>
+        <div class="sidebar-wrapper">
+            @if (Auth::user()->hasRole('manager'))
+                <ul class="nav">
+                    <li @if(Route::current()->getName() == 'manager-dashboard' or Route::current()->getName() == 'manager-home') class="active" @endif>
+                        <a href="{{ route('manager-dashboard') }}">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
 
-    <main class="py-4">
+                    <li @if(Request::is('*stat*')) class="active" @endif>
+                        <a href="{{ route('manager-statistics') }}">
+                            <i class="nc-icon nc-chart-bar-32"></i>
+                            <p>Statistics</p>
+                        </a>
+                    </li>
+                    <li @if(Route::current()->getName() == 'offers-new' or Route::current()->getName() == 'offers-destroy' or Route::current()->getName() == 'offers-edit' or Route::current()->getName() == 'offers-edit-promo' or Route::current()->getName() == 'offers-manage' or Route::current()->getName() == 'store-offer' or Route::current()->getName() == 'update-offer' or Route::current()->getName() == 'update-landing' or Route::current()->getName() == 'update-promo') class="active" @endif>
+                        <a href="{{ route('offers-manage') }}">
+                            <i class="nc-icon nc-bulb-63"></i>
+                            <p>Manage Offers</p>
+                        </a>
+                    </li>
+
+
+                    <li @if( Route::current()->getName() == 'manage-publishers' or Route::current()->getName() == 'edit-publisher' or  Route::current()->getName() == 'publisher-private-offers'  or Route::current()->getName() == 'publisher-offer-destroy') class="active" @endif>
+                        <a href="{{ route('manage-publishers') }}">
+                            <i class="nc-icon nc-badge"></i>
+                            <p>Manage Publishers</p>
+                        </a>
+                    </li>
+                    <li @if(Route::current()->getName() == 'manager-account') class="active" @endif>
+                        <a href="{{ route('manager-account') }}">
+                            <i class="nc-icon nc-circle-10"></i>
+                            <p>Account</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="active-pro">
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();"
+                        >
+                            <i class="nc-icon nc-button-power"></i>
+                            <p>{{ __('Logout') }}</p>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            @endif
+            @if (Auth::user()->hasRole('publisher'))
+                <ul class="nav">
+                    <li @if(Route::current()->getName() == 'publisher-dashboard' or Route::current()->getName() == 'publisher-home') class="active" @endif>
+                        <a href="{{ route('publisher-dashboard') }}">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <li @if(Request::is('*stat*')) class="active" @endif>
+                        <a href="{{ route('publisher-statistics') }}">
+                            <i class="nc-icon nc-chart-bar-32"></i>
+                            <p>Statistics</p>
+                        </a>
+                    </li>
+
+                    <li @if(Request::is('*offers*')) class="active" @endif>
+                        <a href="{{ route('publisher-offers') }}">
+                            <i class="nc-icon nc-shop"></i>
+                            <p>Offers</p>
+                        </a>
+                    </li>
+
+
+                    <li @if(Route::current()->getName() == 'publisher-subscribers') class="active" @endif>
+                        <a href="{{ route('publisher-subscribers') }}">
+                            <i class="nc-icon nc-cloud-download-93"></i>
+                            <p>Subscribes</p>
+                        </a>
+                    </li>
+                    <li @if(Route::current()->getName() == 'publisher-account') class="active" @endif>
+                        <a href="{{ route('publisher-account') }}">
+                            <i class="nc-icon nc-badge"></i>
+                            <p>Account</p>
+                        </a>
+                    </li>
+                    <li @if(Route::current()->getName() == 'publisher-support') class="active" @endif>
+                        <a href="{{ route('publisher-support') }}">
+                            <i class="nc-icon nc-chat-33"></i>
+                            <p>Support</p>
+                        </a>
+                    </li>
+
+                    <li class="active-pro">
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();"
+                        >
+                            <i class="nc-icon nc-button-power"></i>
+                            <p>{{ __('Logout') }}</p>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            @endif
+
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <div class="navbar-toggle">
+                        <button type="button" class="navbar-toggler">
+                            <span class="navbar-toggler-bar bar1"></span>
+                            <span class="navbar-toggler-bar bar2"></span>
+                            <span class="navbar-toggler-bar bar3"></span>
+                        </button>
+                    </div>
+
+                    <span class="navbar-brand">@yield('title')</span>
+
+
+
+
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn-rotate"
+                               href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();"
+                            >
+                                <p>{{ __('Logout') }}</p>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <!-- <div class="panel-header panel-header-lg">
+
+    <canvas id="bigDashboardChart"></canvas>
+
+
+  </div> -->
         @yield('content')
-    </main>
+
+        <footer class="footer footer-black  footer-white ">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li>
+                                <a href="https://www.fb.com" target="_blank">Facebook</a>
+                            </li>
+                            <li>
+                                <a href="http://twitter.com/" target="_blank">Twitter</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <div class="credits ml-auto">
+              <span class="copyright">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Abdelilah
+              </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
+
+@yield('footer')
+
+<!--   Core JS Files   -->
+<script type="text/javascript" src="{{ URL::asset('js/core/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/core/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/core/bootstrap.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap-notify.js') }}"></script>
+
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script type="text/javascript" src="{{ URL::asset('js/paper-dashboard.min.js?v=2.0.0') }}"></script>
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+
+<script type="text/javascript" src="{{ URL::asset('js/dashboard.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+        demo.initChartsPages();
+    });
+</script>
 </body>
+
 </html>

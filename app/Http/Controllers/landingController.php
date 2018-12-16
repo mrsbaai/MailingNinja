@@ -19,7 +19,7 @@ class landingController extends Controller
         $price = $offer->payout;
 
         // get from links database
-        $custom_price = $price;
+        $custom_price = 0;
 
         if ($custom_price == 0){
             $old_price = $price;

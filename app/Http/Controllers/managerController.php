@@ -341,6 +341,13 @@ class managerController extends Controller
                 $stats_route = route('global-offer-stats', ['offer_id' => $entity->id]);
                 return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
             });
+        $table->addColumn()
+            ->setTitle(__(' '))
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $preview_route = route('preview', ['offer_id' => $entity->id]);
+                return  "<a class='p-3' target='blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
+            });
 
         return view('manager.offers')->with('table',$table);
     }

@@ -30,7 +30,7 @@
                                     Send your traffic to our high converting landing pages and get paid directly from costumers to your PayPal.
                                 </p>
                                 <br>
-                                <a href="#" class="btn btn-sm btn-round btn-danger">Learn how</a>
+                                <a href="/register" class="btn btn-sm btn-round btn-danger">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                     Giveaway our quality digital products and generate well segmented mailing lists.
                                 </p>
                                 <br>
-                                <a href="#" class="btn btn-sm btn-round btn-danger">Learn how</a>
+                                <a href="/register" class="btn btn-sm btn-round btn-danger">Get Started</a>
                             </div>
                         </div>
                     </div>
