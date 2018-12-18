@@ -27,10 +27,10 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
         <!--
-          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | oranlogige | red | yellow"
       -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+            <a href="/" class="simple-text logo-mini">
                 <div class="logo-image-small">
                     <img src="{{ URL::asset('images/logo-small.png') }}">
                 </div>

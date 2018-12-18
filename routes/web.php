@@ -31,7 +31,8 @@ Route::get('/test', function () {
 
 //costumer
 
-Route::get('/private', 'costumerController@home');
+Route::get('/private', 'costumerController@home')->name('costumer-home');
+Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
 
 //Route::group(array('domain' => 'mailing.ninja'), function() {
@@ -40,7 +41,6 @@ Route::get('/private', 'costumerController@home');
     Route::get('/welcome', 'mailingNinjaController@welcome');
 
     Route::get('/', 'mailingNinjaController@home');
-    Route::get('/contact', 'mailingNinjaController@contact')->name('contact');
 
 
     Route::get('/preview/{id}', 'landingController@preview')->name('preview');

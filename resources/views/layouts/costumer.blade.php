@@ -23,152 +23,21 @@
 
 </head>
 
-<body class="">
-<div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-        <!--
-          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-      -->
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                <div class="logo-image-small">
-                    <img src="{{ URL::asset('images/logo-small.png') }}">
-                </div>
-            </a>
-            <a href="/" class="simple-text logo-normal">
-                Mailing Ninja
-                <!-- <div class="logo-image-big">
-                  <img src="../assets/img/logo-big.png">
-                </div> -->
-            </a>
-        </div>
-        <div class="sidebar-wrapper">
-            @if (Auth::user()->hasRole('manager'))
-                <ul class="nav">
-                    <li @if(Route::current()->getName() == 'manager-dashboard' or Route::current()->getName() == 'manager-home') class="active" @endif>
-                        <a href="{{ route('manager-dashboard') }}">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-
-                    <li @if(Request::is('*stat*')) class="active" @endif>
-                        <a href="{{ route('manager-statistics') }}">
-                            <i class="nc-icon nc-chart-bar-32"></i>
-                            <p>Statistics</p>
-                        </a>
-                    </li>
-                    <li @if(Route::current()->getName() == 'offers-new' or Route::current()->getName() == 'offers-destroy' or Route::current()->getName() == 'offers-edit' or Route::current()->getName() == 'offers-edit-promo' or Route::current()->getName() == 'offers-manage' or Route::current()->getName() == 'store-offer' or Route::current()->getName() == 'update-offer' or Route::current()->getName() == 'update-landing' or Route::current()->getName() == 'update-promo') class="active" @endif>
-                        <a href="{{ route('offers-manage') }}">
-                            <i class="nc-icon nc-bulb-63"></i>
-                            <p>Manage Offers</p>
-                        </a>
-                    </li>
-
-
-                    <li @if( Route::current()->getName() == 'manage-publishers' or Route::current()->getName() == 'edit-publisher' or  Route::current()->getName() == 'publisher-private-offers'  or Route::current()->getName() == 'publisher-offer-destroy') class="active" @endif>
-                        <a href="{{ route('manage-publishers') }}">
-                            <i class="nc-icon nc-badge"></i>
-                            <p>Manage Publishers</p>
-                        </a>
-                    </li>
-                    <li @if(Route::current()->getName() == 'manager-account') class="active" @endif>
-                        <a href="{{ route('manager-account') }}">
-                            <i class="nc-icon nc-circle-10"></i>
-                            <p>Account</p>
-                        </a>
-                    </li>
-
-
-
-                    <li class="active-pro">
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();"
-                        >
-                            <i class="nc-icon nc-button-power"></i>
-                            <p>{{ __('Logout') }}</p>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            @endif
-            @if (Auth::user()->hasRole('publisher'))
-                <ul class="nav">
-                    <li @if(Route::current()->getName() == 'publisher-dashboard' or Route::current()->getName() == 'publisher-home') class="active" @endif>
-                        <a href="{{ route('publisher-dashboard') }}">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-
-                    <li @if(Request::is('*stat*')) class="active" @endif>
-                        <a href="{{ route('publisher-statistics') }}">
-                            <i class="nc-icon nc-chart-bar-32"></i>
-                            <p>Statistics</p>
-                        </a>
-                    </li>
-
-                    <li @if(Request::is('*offers*')) class="active" @endif>
-                        <a href="{{ route('publisher-offers') }}">
-                            <i class="nc-icon nc-shop"></i>
-                            <p>Offers</p>
-                        </a>
-                    </li>
-
-
-                    <li @if(Route::current()->getName() == 'publisher-subscribers') class="active" @endif>
-                        <a href="{{ route('publisher-subscribers') }}">
-                            <i class="nc-icon nc-cloud-download-93"></i>
-                            <p>Subscribes</p>
-                        </a>
-                    </li>
-                    <li @if(Route::current()->getName() == 'publisher-account') class="active" @endif>
-                        <a href="{{ route('publisher-account') }}">
-                            <i class="nc-icon nc-badge"></i>
-                            <p>Account</p>
-                        </a>
-                    </li>
-                    <li @if(Route::current()->getName() == 'publisher-support') class="active" @endif>
-                        <a href="{{ route('publisher-support') }}">
-                            <i class="nc-icon nc-chat-33"></i>
-                            <p>Support</p>
-                        </a>
-                    </li>
-
-                    <li class="active-pro">
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();"
-                        >
-                            <i class="nc-icon nc-button-power"></i>
-                            <p>{{ __('Logout') }}</p>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            @endif
-
-        </div>
-    </div>
-    <div class="main-panel">
+<div class="wrapper " style="background-color: #F4F3EF;">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <div class="navbar-toggle">
-                        <button type="button" class="navbar-toggler">
-                            <span class="navbar-toggler-bar bar1"></span>
-                            <span class="navbar-toggler-bar bar2"></span>
-                            <span class="navbar-toggler-bar bar3"></span>
-                        </button>
-                    </div>
 
-                    <span class="navbar-brand">@yield('title')</span>
+
+                    <span class="navbar-brand">
+
+                        <span class="uppercase">
+
+                                {{explode(".", Request::getHost())[0]}}
+
+                        </span>
+                    </span>
 
 
 
@@ -182,6 +51,16 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
 
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn-rotate"
+                               href="/"
+                            >home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rotate"
+                               href="/contact"
+                            >Contact</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link btn-rotate"
                                href="{{ route('logout') }}"
@@ -205,7 +84,9 @@
 
 
   </div> -->
+    <div class="container" style="padding-top:100px;">
         @yield('content')
+    </div>
 
         <footer class="footer footer-black  footer-white ">
             <div class="container-fluid">
@@ -215,9 +96,6 @@
                             <li>
                                 <a href="https://www.fb.com" target="_blank">Facebook</a>
                             </li>
-                            <li>
-                                <a href="http://twitter.com/" target="_blank">Twitter</a>
-                            </li>
 
                         </ul>
                     </nav>
@@ -226,13 +104,13 @@
                 ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Abdelilah
+                </script>, made with <i class="fa fa-heart heart"></i> by {{explode(".", Request::getHost())[0]}}
               </span>
                     </div>
                 </div>
             </div>
         </footer>
-    </div>
+
 </div>
 
 @yield('footer')

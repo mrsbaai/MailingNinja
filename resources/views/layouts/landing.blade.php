@@ -172,7 +172,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"  ><h2 class="heading uppercase" style="margin-top: -5px;">Peremiumbooks<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
+                <a class="navbar-brand" href="#"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -531,7 +531,7 @@
     <footer>
         <div class="container " >
             <div class="col-sm-12 text-center text-center-mobile">
-                <p class="copyright small">Copyright © 2018-2019 <span class="uppercase">premiumbooks.</span> - All rights reserved!</p>
+                <p class="copyright small">Copyright © 2018-2019 <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
             </div>
 
         </div>
