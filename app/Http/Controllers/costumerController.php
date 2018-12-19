@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 use Okipa\LaravelBootstrapTableList\TableList;
 
+
+use Illuminate\Support\Facades\Storage;
+
 class costumerController extends Controller
 {
     public function __construct()
@@ -39,7 +42,7 @@ class costumerController extends Controller
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
                 $offer = Offer::where('id', $entity->offer_id)->first();
-                return '<span class="uppercase" style = "font-size: 150%">' . $offer->title . '</span>';
+                return '<span class="uppercase" style = "font-size: 150%">[' . $offer->title . ']</span>';
             });
 
         $table->addColumn('paid')
