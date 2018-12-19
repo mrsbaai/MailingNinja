@@ -33,6 +33,15 @@ class costumerController extends Controller
                 $query->where('costumer_id', Auth::user()->id);
             });
 
+
+
+        $table->addColumn('title')
+            ->setTitle('')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                $offer = Offer::where('id', $entity->offer_id)->first();
+                return '<span class="uppercase" style = "font-size: 150%">' . $offer->title . '</span>';
+            });
+
         $table->addColumn('paid')
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -42,15 +51,6 @@ class costumerController extends Controller
                     return '<span class="badge badge-warning">Unpaid</span>';
                 }
             });
-
-        $table->addColumn('title')
-            ->setTitle('')
-            ->isCustomHtmlElement(function ($entity, $column) {
-                $offer = Offer::where('id', $entity->offer_id)->first();
-                return $offer->title;
-            });
-
-
 
         $table->addColumn('price')
             ->setTitle('')
