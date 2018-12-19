@@ -32,6 +32,7 @@ Route::get('/test', function () {
 //costumer
 
 Route::get('/private', 'costumerController@home')->name('costumer-home');
+Route::get('/download/{id}', 'costumerController@download')->name('costumer-download');
 Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
 

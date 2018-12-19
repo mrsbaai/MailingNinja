@@ -22,6 +22,7 @@
     @yield('header')
 
 </head>
+<body style="background-color: #F4F3EF;">
 
 <div class="wrapper " style="background-color: #F4F3EF;">
         <!-- Navbar -->
@@ -84,11 +85,11 @@
 
 
   </div> -->
-    <div class="container" style="padding-top:100px;">
+    <div class="container" style="padding-top:100px;" >
         @yield('content')
     </div>
 
-        <footer class="footer footer-black  footer-white ">
+        <footer class="footer footer-white ">
             <div class="container-fluid">
                 <div class="row">
                     <nav class="footer-nav">

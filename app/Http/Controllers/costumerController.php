@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\costumerProducts;
+use App\costumerOffers;
+use App\Offer;
+use Illuminate\Support\Facades\Auth;
+
+use Okipa\LaravelBootstrapTableList\TableList;
 
 class costumerController extends Controller
 {
@@ -12,105 +16,52 @@ class costumerController extends Controller
         $this->middleware('auth');
 
     }
+
+    public function download(request $request, $id){
+        $file_name = $id . ".zip";
+        return Storage::disk('dropbox')->download($file_name);
+    }
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
         $table = app(TableList::class)
-            ->setModel(Offer::class)
+            ->setModel(costumerOffers::class)
             ->setRoutes([
                 'index' => ['alias' => 'publisher-offers', 'parameters' => []],
             ])
             ->addQueryInstructions(function ($query) {
-                $query->select('costumerProducts.*');
-
+                $query->select('costumer_products.*');
                 $query->where('costumer_id', Auth::user()->id);
             });
 
-
-        $table->addColumn('id')
-            ->isSearchable()
-            ->isSortable()
-            ->setTitle('ID')
+        $table->addColumn('paid')
+            ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
-                if ($entity->is_private == false){
-                    return $entity->id;
+                if ($entity->paid == true){
+                    return '<span class="badge badge-success">Paid</span>';
                 }else{
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $entity->id;
-                    }else{
-                        return "Disabled";
-                    }
+                    return '<span class="badge badge-warning">Unpaid</span>';
                 }
-
-            })
-            ->sortByDefault();
+            });
 
         $table->addColumn('title')
-            ->setTitle('Offer')
-            ->isSearchable()
+            ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
-
-                $promote_route = route('promote-offer', ['id' => $entity->id]);
-                $return = "<b><a href='$promote_route' target='blank'>". $entity->title . "</a></b>";
-                if ($entity->is_private == true){
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $return;
-                    }else{
-                        return $entity->title;
-                    }
-                }else{
-                    return $return;
-                }
-
+                $offer = Offer::where('id', $entity->offer_id)->first();
+                return $offer->title;
             });
 
 
-        $table->addColumn('')
-            ->setTitle(__('Subscribes'))
+
+        $table->addColumn('price')
+            ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
-                $query  = subscriber::latest();
-                $query->where('user_id', Auth::user()->id)->where('offer_id', $entity->id);
-                $return = "<b>".  count($query->get()) . "</b>";
-                if ($entity->is_private == true){
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $return;
-                    }else{
-                        return "Disabled";
-                    }
+                $download_url = "/download/" . $entity->id;
+                if ($entity->paid == true){
+                    return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
-                    return $return;
+                    return '<a style="margin-left: 13px;"href="' . $download_url . '" class="btn btn-danger float-right">Cancel</a>'
+                        . '<a href="/" class="btn btn-info  float-right">Pay Now (Only $' . $entity->price . ')</a>';
                 }
-            });
-
-
-        $table->addColumn()
-            ->setTitle(__(' '))
-            ->isCustomHtmlElement(function ($entity, $column) {
-
-                $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
-                $promote_route = route('promote-offer', ['id' => $entity->id]);
-                $stats_route = route('offer-stats', ['id' => $entity->id]);
-                $download_route = route('offer-subscribed', ['id' => $entity->id]);
-
-                $return =   "
-<a class='p-3' target='blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
-<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
-<a class='p-3' target='blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
-<a class='p-3' target='blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
-                        
-                        ";
-
-                if ($entity->is_private == true){
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $return;
-                    }else{
-                        return "Disabled";
-                    }
-                }else{
-                    return $return;
-
-                }
-
-
             });
 
 

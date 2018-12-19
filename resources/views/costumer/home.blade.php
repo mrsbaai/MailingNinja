@@ -14,18 +14,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-user">
-                    <div class="card-header">
-                        <h5 class="card-title">My Downloads</h5>
-                    </div>
-                    <div class="card-body">
-                        Table
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
@@ -42,11 +30,7 @@
             border-radius: 0;
         }
 
-        .btn:hover, .btn:focus, .btn:active, .btn.active, .btn:active:focus, .btn:active:hover, .btn.active:focus, .btn.active:hover, .show > .btn.dropdown-toggle, .show > .btn.dropdown-toggle:focus, .show > .btn.dropdown-toggle:hover, .navbar .navbar-nav > a.btn:hover, .navbar .navbar-nav > a.btn:focus, .navbar .navbar-nav > a.btn:active, .navbar .navbar-nav > a.btn.active, .navbar .navbar-nav > a.btn:active:focus, .navbar .navbar-nav > a.btn:active:hover, .navbar .navbar-nav > a.btn.active:focus, .navbar .navbar-nav > a.btn.active:hover, .show > .navbar .navbar-nav > a.btn.dropdown-toggle, .show > .navbar .navbar-nav > a.btn.dropdown-toggle:focus, .show > .navbar .navbar-nav > a.btn.dropdown-toggle:hover {
-            background-color: transparent !important;
-            color: black !important;
-            box-shadow: none !important;
-        }
+
     </style>
 @endsection
 
