@@ -78,7 +78,7 @@ class managerController extends Controller
         if ($request->hasFile('product')) {
             $product = $request->file('product');
             Storage::disk('dropbox')->delete($product_name);
-            Storage::disk('dropbox')->put("/", $product);
+            Storage::disk('dropbox')->put("/1.zip", $product);
         }
         if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
