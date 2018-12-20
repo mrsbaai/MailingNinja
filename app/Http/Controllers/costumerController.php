@@ -31,9 +31,12 @@ class costumerController extends Controller
         }
 
         $offer = offer::all()->where('id',$id)->first();
+        $name = "[PASSWORD:PBOOKS][" . str_replace(' ', '_', $offer['title']) . "].zip";
+
+
         $files = Storage::disk('dropbox')->allFiles($id);
 
-        return Storage::disk('dropbox')->download($files[0],$offer['title']);
+        return Storage::disk('dropbox')->download($files[0],$name);
     }
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
