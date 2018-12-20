@@ -63,12 +63,17 @@ class costumerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 $files = Storage::disk('dropbox')->allFiles($entity->offer_id);
                 $download_url = Storage::disk('dropbox')->download($files[0]);
+                
+
+                $adapter = \Storage::disk('dropbox')->getAdapter();
+                $client = $adapter->getClient();
+                $link = $client->createTemporaryDirectLink($files[0]);
 
 
                 if ($entity->paid == true){
                     return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
-                    return '<a style="margin-left: 13px;"href="' . $download_url . '" class="btn btn-danger float-right">Cancel</a>'
+                    return '<a style="margin-left: 13px;"href="' . $link[0] . '" class="btn btn-danger float-right">Cancel</a>'
                         . '<a href="/" class="btn btn-info  float-right">Pay Now (Only $' . $entity->price . ')</a>';
                 }
             });
