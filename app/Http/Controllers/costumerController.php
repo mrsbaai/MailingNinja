@@ -23,7 +23,7 @@ class costumerController extends Controller
     public function download(request $request, $id){
 
 
-        $files = Storage::allFiles($id);
+        $files = Storage::allFiles('/' . $id);
 
         return Storage::disk('dropbox')->download($files[0]);
     }
