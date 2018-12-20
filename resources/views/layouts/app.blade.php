@@ -97,7 +97,7 @@
             </nav>
             <div class="credits ml-auto">
 					<span class="copyright">
-						© <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by
+						© <script>document.write(new Date().getFullYear())</script> - 
                         @if(explode(".", Request::getHost())[0] == "mailing" or explode(".", Request::getHost())[0] == "mailingninja")
                             Mailing Ninja
                         @else
