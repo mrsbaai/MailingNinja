@@ -18,10 +18,10 @@ Auth::routes();
 Route::post('saveContact', 'ContactController@saveContact');
 
 
-//Route::group(array('domain' => 'premiumbooks.net'), function() {
- //   Route::get('/', 'landingController@home');
+Route::group(array('domain' => 'premiumbooks.net'), function() {
+    Route::get('/', 'landingController@home');
 
-//});
+});
 
 
 Route::get('/test', function () {
