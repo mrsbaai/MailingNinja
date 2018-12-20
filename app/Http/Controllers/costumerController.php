@@ -22,6 +22,7 @@ class costumerController extends Controller
 
     public function download(request $request, $id){
 
+
         $files = Storage::disk('dropbox')->allFiles($id);
 
         return Storage::disk('dropbox')->download($files[0]);
@@ -60,7 +61,10 @@ class costumerController extends Controller
         $table->addColumn('price')
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
-                $download_url = "/download/" . $entity->id;
+                $files = Storage::disk('dropbox')->allFiles($entity->offer_id);
+                $download_url = Storage::disk('dropbox')->temporaryUrl($files[0], now()->addMinutes(60));
+                
+
                 if ($entity->paid == true){
                     return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
