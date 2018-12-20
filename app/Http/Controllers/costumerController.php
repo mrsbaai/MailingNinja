@@ -30,7 +30,7 @@ class costumerController extends Controller
             abort(401);
         }
 
-        $offer = offer::all()->where('id',$id)->first;
+        $offer = offer::all()->where('id',$id)->first();
         $files = Storage::disk('dropbox')->allFiles($id);
 
         return Storage::disk('dropbox')->download($files[0],$offer['title']);
