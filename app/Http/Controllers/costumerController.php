@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\costumerOffers;
-use App\Offer;
+use App\offer;
 use Illuminate\Support\Facades\Auth;
 
 use Okipa\LaravelBootstrapTableList\TableList;
