@@ -31,7 +31,7 @@ class costumerController extends Controller
         }
 
         $offer = offer::all()->where('id',$id)->first();
-        $name = "[PASSWORD:PBOOKS][" . str_replace(' ', '_', $offer['title']) . "].zip";
+        $name = str_replace(' ', '_', $offer['title']) . "_[The_Password_Is_PBOOKS].zip";
 
 
         $files = Storage::disk('dropbox')->allFiles($id);
