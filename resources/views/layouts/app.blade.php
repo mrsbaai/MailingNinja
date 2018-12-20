@@ -39,7 +39,7 @@
                 @if(explode(".", Request::getHost())[0] == "mailing" or explode(".", Request::getHost())[0] == "mailingninja")
                     Mailing Ninja
                 @else
-                    {{strtoupper(explode(".", Request::getHost())[0])}}
+                    {{strtoupper(explode(".", Request::getHost())[0])}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
                 @endif</a>
             <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar"></span>
@@ -97,11 +97,11 @@
             </nav>
             <div class="credits ml-auto">
 					<span class="copyright">
-						© <script>document.write(new Date().getFullYear())</script> - 
+						© <script>document.write(new Date().getFullYear())</script> -
                         @if(explode(".", Request::getHost())[0] == "mailing" or explode(".", Request::getHost())[0] == "mailingninja")
                             Mailing Ninja
                         @else
-                            {{strtoupper(explode(".", Request::getHost())[0])}}
+                            {{strtoupper(explode(".", Request::getHost())[0])}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
                         @endif
 					</span>
             </div>

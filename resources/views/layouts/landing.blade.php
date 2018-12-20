@@ -531,7 +531,7 @@
     <footer>
         <div class="container " >
             <div class="col-sm-12 text-center text-center-mobile">
-                <p class="copyright small">Copyright © 2018-2019 <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
+                <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
             </div>
 
         </div>

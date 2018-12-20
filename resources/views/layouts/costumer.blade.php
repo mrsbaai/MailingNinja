@@ -105,7 +105,7 @@
                 ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by {{explode(".", Request::getHost())[0]}}
+                </script>, Made with <i class="fa fa-heart heart"></i> by <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span>
               </span>
                     </div>
                 </div>
