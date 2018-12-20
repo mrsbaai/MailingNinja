@@ -63,9 +63,9 @@ class costumerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 $files = Storage::disk('dropbox')->allFiles($entity->offer_id);
                 $download_url = Storage::disk('dropbox')->download($files[0]);
-                
 
-                $adapter = \Storage::disk('dropbox')->getAdapter();
+
+                $adapter = Storage::disk('dropbox')->getAdapter();
                 $client = $adapter->getClient();
                 $link = $client->createTemporaryDirectLink($files[0]);
 
