@@ -67,7 +67,7 @@ class managerController extends Controller
     public function updateOffer(Request $request)
     {
         $offer = offer::find($request->id);
-        $product_name = $request->id;
+        $product_name = $request->id . ".zip";
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
             $thumbnail = Imgur::upload($image);
@@ -78,7 +78,7 @@ class managerController extends Controller
         if ($request->hasFile('product')) {
             $product = $request->file('product');
             Storage::disk('dropbox')->delete($product_name);
-            Storage::disk('dropbox')->put("test.txt", "fff");
+            Storage::disk('dropbox')->put("/", $product);
         }
         if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
