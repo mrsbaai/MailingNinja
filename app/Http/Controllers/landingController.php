@@ -10,8 +10,8 @@ class landingController extends Controller
 {
 
     public function home(){
-        if (!Auth::user()){
-            return "ddd";
+        if(Auth::guest()){
+ 
             return view('landing.home');
         }else{
             return redirect("/home");
