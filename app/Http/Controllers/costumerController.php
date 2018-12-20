@@ -63,7 +63,7 @@ class costumerController extends Controller
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->paid == true){
-                    return '<span class="badge badge-info">[The Archive PASSWORD Is: PBOOKS]</span> <span class="badge badge-success">Paid</span>';
+                    return '<span class="badge badge-success">Paid</span> <span class="badge badge-info">[The Archive PASSWORD Is: PBOOKS]</span>';
                 }else{
                     return '<span class="badge badge-warning">Unpaid</span>';
                 }
