@@ -30,9 +30,10 @@ class costumerController extends Controller
             abort(401);
         }
 
+        $offer = offer::all()->where('id',$id)->first;
         $files = Storage::disk('dropbox')->allFiles($id);
 
-        return Storage::disk('dropbox')->download($files[0]);
+        return Storage::disk('dropbox')->download($files[0],$offer['title']);
     }
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
