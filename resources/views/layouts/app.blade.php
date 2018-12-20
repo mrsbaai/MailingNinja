@@ -35,7 +35,12 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="/">{{explode(".", Request::getHost())[0]}}</a>
+            <a class="navbar-brand" href="/">
+                @if(explode(".", Request::getHost())[0] == "mailing" or explode(".", Request::getHost())[0] == "mailingninja")
+                    Mailing Ninja
+                @else
+                    {{strtoupper(explode(".", Request::getHost())[0])}}
+                @endif</a>
             <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
