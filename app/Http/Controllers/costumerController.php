@@ -69,7 +69,7 @@ class costumerController extends Controller
                 if ($entity->paid == true){
                     return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
-                    return '<a style="margin-left: 13px;"href="' . $download_url . '" class="btn btn-danger float-right">Cancel</a>'
+                    return '<a style="margin-left: 13px;"href="' . $download_url[0] . '" class="btn btn-danger float-right">Cancel</a>'
                         . '<a href="/" class="btn btn-info  float-right">Pay Now (Only $' . $entity->price . ')</a>';
                 }
             });
