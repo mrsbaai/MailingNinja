@@ -21,8 +21,11 @@ class costumerController extends Controller
     }
 
     public function download(request $request, $id){
-        $file_name = $id . ".zip";
-        return Storage::disk('dropbox')->download($file_name);
+
+
+        $files = Storage::allFiles($id);
+
+        return Storage::disk('dropbox')->download($files[0]);
     }
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
