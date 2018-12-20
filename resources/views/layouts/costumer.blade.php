@@ -33,7 +33,7 @@
 
                     <span class="navbar-brand">
 
-                        <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span><span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
+                        <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span> <span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
                     </span>
 
 
@@ -101,7 +101,7 @@
                 ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, Made with <i class="fa fa-heart heart"></i> by <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span><span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
+                </script>, Made with <i class="fa fa-heart heart"></i> by <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span> <span id="logo_span" style="font-size:200%;color:#7cc576;">.</span>
               </span>
                     </div>
                 </div>
