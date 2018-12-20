@@ -21,9 +21,9 @@ class costumerController extends Controller
     }
 
     public function download(request $request, $id){
+        $directory = "1";
 
-
-        $files = Storage::allFiles('/' . $id);
+        $files = Storage::allFiles($directory);
 
         return Storage::disk('dropbox')->download($files[0]);
     }
