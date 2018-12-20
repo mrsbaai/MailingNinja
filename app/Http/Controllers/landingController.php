@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\offer;
+use Illuminate\Support\Facades\Auth;
+
 class landingController extends Controller
 {
 
     public function home(){
-        return view('landing.home');
+        if (!Auth::check()){
+            return view('landing.home');
+        }else{
+            return redirect("/home");
+        }
+
     }
 
 
