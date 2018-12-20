@@ -15,7 +15,7 @@ class homeController extends Controller
         $role = $request->user()->roles()->first()->name;
         if ( $role == "publisher"){ return redirect("/publisher");}
         if ( $role == "manager"){ return redirect("/manager");}
-        if ( $role == "costumer"){ return redirect("/private");}
+        if ( $role == "costumer"){ return redirect("/members");}
 
     }
 
