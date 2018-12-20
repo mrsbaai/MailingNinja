@@ -36,6 +36,8 @@ Route::get('/download/{id}', 'costumerController@download')->name('costumer-down
 Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
 
+
+
 //Route::group(array('domain' => 'mailing.ninja'), function() {
     Route::get('/home', 'homeController@redirect');
 

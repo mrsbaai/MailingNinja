@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Okipa\LaravelBootstrapTableList\TableList;
 
-
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 
 class costumerController extends Controller
@@ -21,7 +21,9 @@ class costumerController extends Controller
     }
 
     public function download(request $request, $id){
-
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
 
         $files = Storage::disk('dropbox')->allFiles($id);
 
@@ -63,9 +65,13 @@ class costumerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 $cancel_url = "#";
 
+                $download_url = URL::temporarySignedRoute(
+                    'costumer-download', now()->addMinutes(30), ['id' => $entity->offer_id]
+                );
+
 
                 if ($entity->paid == true){
-                    return '<a href="/download/' .  $entity->offer_id . '" class="btn btn-success float-right">Download</a>';
+                    return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
                     return '<a style="margin-left: 13px;"href="' . $cancel_url . '" class="btn btn-danger float-right">Cancel</a>'
                         . '<a href="/" class="btn btn-info  float-right">Pay Now (Only $' . $entity->price . ')</a>';
