@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Mailing Ninja</title>
+    <title class="uppercase">{{explode(".", Request::getHost())[0]}}</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -29,7 +29,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="/">Mailing Ninja</a>
+            <a class="navbar-brand" href="/">{{explode(".", Request::getHost())[0]}}</a>
             <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -81,15 +81,12 @@
                     <li>
                         <a href="https://www.fb.com" target="_blank">Facebook</a>
                     </li>
-                    <li>
-                        <a href="http://twitter.com/" target="_blank">Twitter</a>
-                    </li>
 
                 </ul>
             </nav>
             <div class="credits ml-auto">
 					<span class="copyright">
-						© <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Abdelilah
+						© <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by {{explode(".", Request::getHost())[0]}}
 					</span>
             </div>
         </div>
