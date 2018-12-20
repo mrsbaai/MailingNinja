@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card card-user">
                     <div class="card-header">
-                        <h5 class="card-title">My Products [The Archives Password Is: PBOOKS]</h5>
+                        <h5 class="card-title">My Products</h5>
                     </div>
                     <div class="card-body">
                         {{$table}}
