@@ -51,7 +51,7 @@
                         <li class="nav-item">
                             <a class="nav-link btn-rotate"
                                href="/"
-                            >home</a>
+                            >My Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-rotate"
