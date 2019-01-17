@@ -69,40 +69,13 @@ jQuery(function($) {
 		if(!$('.navbar').hasClass("nav-fixed") && loaded)
 			fixed_point = $('.navbar').offset().top;
 	}
-	
+
 	$('.sample-button').click(function(event){
 		$('#sample-form').slideDown();
 		event.preventDefault();
 	});
 
-	$('form').submit(function(event){
-		if($(this).find(".has-error").length > 0)
-			return;
-		event.preventDefault();
-		var that = $(this),
-			url = $(that).attr('action'),
-			type = $(that).attr('method'),
-			dataX = {};
-			
-		$(that).find("[name]").each(function(){
-			dataX[$(this).attr("name")] = $(this).val();
-		});
 
-		$('.notification-box').addClass('active');
-
-		$.ajax({
-			type:'POST',
-			url: url,
-			data: dataX,
-			success: function(response){
-				$('.notification-box span').html(response);
-					setTimeout(function(){
-						$('.notification-box').removeClass('active');
-						$('.notification-box span').html("Sending...");
-					}, 4000);
-				}
-		});
-	});
 
 	// Mobile Nav
 	$('.mobile-nav > ul').html($('.navbar-nav').html());

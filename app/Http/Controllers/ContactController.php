@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\contact;
+use App\contact;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller
 {
@@ -19,14 +20,14 @@ class ContactController extends Controller
         try{
 
             //$subject = "(SMS-Verification Contact From) " . $subject;
-            $to = 'support@sms-verification.net';
+            //$to = 'support@sms-verification.net';
             //Mail::send('mails.contact', ['content' => $content], function ($message) use($subject,$email, $to){
                 //$message->from($email);
                 //$message->subject($subject);
                 //$message->to($to);
             //});
 
-            $contact = new Contact();
+            $contact = new contact();
             $contact->email = $email;
             $contact->subject = $subject;
             $contact->message = $content;
@@ -34,12 +35,12 @@ class ContactController extends Controller
             $contact->created_at = Carbon::now();
             $contact->save();
 
-            flash('Thank you for your message! We will get back to you as soon as possible.')->clear();
-            return redirect()->intended('contact');
+            flash()->overlay('We have received your message and would like to thank you for writing to us. We will look over your message as soon as possible.', 'Sent!')->clear();
+            return \Redirect::back();
         }
         catch(\Exception $e){
-            flash('Something went wrong')->error();
-            return redirect()->intended('contact');
+            flash()->overlay('Something went wrong.','Error!')->error();
+            return \Redirect::back();
         }
     }
 }

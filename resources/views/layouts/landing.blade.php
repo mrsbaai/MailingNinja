@@ -119,7 +119,7 @@
         <div class="container" >
 
             <div class="col-md-6  hidden-sm hidden-xs wow animated fadeInUp">
-                <div class="intro-book" style="width: 250%;">
+                <div class="intro-book" style="width: 90%;">
                     <div class="books ">
                         <div class="book">
                             <img src="{{ $thumbnail }}" />
@@ -137,10 +137,11 @@
                     <br/><br/>
                     <div class="container" style="padding-left: 15px;">
                         <div class="row" >
-                            <form class="form" >
-                                <input id="input_1" type="email" class="form__field" placeholder="Your E-Mail Address" />
-                                <button type="button" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download E-Book</button>
-                            </form>
+                            {{ Form::open(array('action' => 'landingController@register'))}}
+                                <input name="code" value="{{$code}}" hidden>
+                                <input id="input_1" name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent to this e-mail.')" oninput="setCustomValidity('')" />
+                                <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download eBook</button>
+                            {{ Form::close()}}
 
                         </div>
                     </div>
@@ -148,9 +149,11 @@
 
 
                         @else
-
+                        {{ Form::open(array('action' => 'landingController@register'))}}
+                        <input name="code" value="{{$code}}" hidden>
                         <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About The Book</a>
-                        <a href="#" class="btn btn-green" >Purchase eBook<span class="price">${{$price}}</span></a>
+                        <button type="submit"  class="btn btn-green" >Purchase eBook<span class="price">(Only ${{$price}})</span></button>
+                        {{Form::close()}}
 
 
                         @endif
@@ -182,12 +185,14 @@
                     <li><a href="#author" class="scrollto">Author</a></li>
                     <li><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
-                    <li><a href="#" class="btn btn-green"> @if ($price == 0) Free Download @else Purchase eBook @endif</a></li>
+                    <li><a href="#contact" class="btn btn-red">Report</a></li>
+                    <li><a href="#" class="btn btn-green">@if ($price == 0) Free Download @else Purchase eBook @endif</a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+    @include('flash::message')
 
     <section id="book" >
         <div class="container">
@@ -417,23 +422,7 @@
 
 
 
-    <section id="sample-form">
-        <div class="container">
-            <form>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="firstname" placeholder="Name" data-validation="required">
-                    </div>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="email" placeholder="Email" data-validation="email">
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="submit" class="btn btn-green sign-up-button sample-button-done" value="Subscribe">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
+
 
 
 
@@ -451,16 +440,17 @@
                 @if ($price == 0)
 
                     <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:80px;padding-left:150px;" >
-                        <h1 style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Free Download!<br/>
+                        <h1 style="font-size: 40px; color: #313131; font-weight: bold;"><blink>Free Download,<br/>
                                 Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
                             </blink></h1><br/>
                         <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
                     </div>
                 <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:20px;padding-left:150px;" >
-                    <form class="form" >
-                        <input type="email" class="form__field" placeholder="Your E-Mail Address" />
-                        <button type="button" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
-                    </form>
+                    {{ Form::open(array('action' => 'landingController@register'))}}
+                        <input name="code" value="{{$code}}" hidden>
+                        <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent to this E-mail.')" oninput="setCustomValidity('')"/>
+                        <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
+                    {{ Form::close() }}
                     <span class="subheading big justify wow animated fadeInUp check-green">(Available in PDF, MOBI, and EPUB)</span>
                 </div>
                 @else
@@ -471,7 +461,10 @@
                         <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
 
                         <div class='info-form'>
-                            <a href='/'><img src='https://i.imgur.com/PO6QqRU.jpg' width='300px'/></a>
+                            {{ Form::open(array('action' => 'landingController@register'))}}
+                            <input name="code" value="{{$code}}" hidden>
+                            <button type="submit"><img src='https://i.imgur.com/PO6QqRU.jpg' width='300px'/></button>>
+                            {{Form::close()}}
                         </div>
                         <span class="subheading big justify wow animated fadeInUp check-green">(Avalable in PDF, MOBI, and EPUB)</span>
                     </div>
@@ -488,7 +481,7 @@
 
 
 
-    <section id="contact" >
+    <section  >
 
 
         <div class="container ">
@@ -496,25 +489,24 @@
 
             <div class="row">
 
-                <form>
-                    <div class="col-md-12" style="padding-top: 200px;">
-                        <h2 class="heading">Drop Us A Message</h2><br/>
+                {{ Form::open(array('action' => 'ContactController@saveContact'))}}
+                <input type="text"  id="lg_role" name="lg_role" value="unregistered_costumer" hidden>
+                    <div class="col-md-12" id="contact" style="padding-top: 200px;">
+                        <h2 class="heading">Contact Us / Report Abuse</h2><br/>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <input name="firstname" type="text" class="form-control" placeholder="Name" data-validation="required">
-                            </div>
-                            <div class="col-sm-6">
-                                <input name="email" type="text" class="form-control" placeholder="Email" data-validation="email">
+
+                            <div class="col-sm-12">
+                                <input name="lg_email" type="text" class="form-control" placeholder="Email" data-validation="email">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <input name="subject" type="text" class="form-control" placeholder="Subject" data-validation="required">
+                                <input name="lg_subject" type="text" class="form-control" placeholder="Subject" data-validation="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <textarea name="body" class="form-control" rows="10" placeholder="Message. . ." data-validation="required"></textarea>
+                                <textarea name="lg_message" class="form-control" rows="10" placeholder="Message. . ." data-validation="required"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -523,7 +515,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </section>
@@ -539,12 +531,6 @@
 
 </div>
 
-<div class="notification-box"><span>Sending...</span></div>
-<div class="mobile-nav">
-    <ul class="menu">
-
-    </ul>
-</div>
 
 
 <script src="{{ asset('landing/js/color-thief.js') }}"></script>
@@ -863,6 +849,8 @@
 <script src="{{ asset('landing/js/preloader.js') }}"></script>
 <script src="{{ asset('landing/js/main.js') }}"></script>
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
-
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
 </body>
 </html>

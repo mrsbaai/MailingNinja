@@ -23,7 +23,7 @@
                                 <p>Verticals:
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                                 </p>
-                                <span s="">
+                                <span>
                                     <a target='blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                         <button class="btn btn-danger">Preview Landing Page</button>
                                     </a>
@@ -41,7 +41,7 @@
                 <div class="card ">
                     <div class="card-header">
                         <h5 class="card-title">Setup A Custom Price For This Offer</h5>
-                        <p class="card-category">Set the price to <b>"0"</b> to use the offer for <b>E-mail list building</b>.</p>
+                        <h3>Set the price to <b>"$0"</b> For <u><b>E-mail list building</b></u> mode.</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -55,7 +55,7 @@
                                         <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
                                     </div>
                                     <input name="offer_id" value="{{$data['offer_id']}}" hidden>
-                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" style="font-size: 300%" required>
+                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 300%" required>
 
                                     <div class="input-group-append">
                                                 <span class="input-group-text p-0 ">

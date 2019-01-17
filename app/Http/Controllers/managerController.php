@@ -13,7 +13,8 @@ use App\publisherOffers;
 use Carbon\Carbon;
 use App\subscriber;
 use App\sells;
-use App\clicks;;
+use App\clicks;
+use Illuminate\Support\Facades\Log;
 class managerController extends Controller
 {
     public function __construct()
@@ -127,6 +128,7 @@ class managerController extends Controller
         return Redirect::route('offers-edit', $offer->id);
     }
     public function home(Request $request){
+        Log::notice("inside");
         $request->user()->authorizeRoles('manager');
         $date = Carbon::now();
         $query  = subscriber::latest();

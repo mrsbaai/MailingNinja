@@ -18,7 +18,7 @@ class CreateLinksTable extends Migration
             $table->string('link', 5)->unique();
             $table->integer('user_id');
             $table->integer('offer_id');
-            $table->integer('price');
+            $table->string('price');
             $table->timestamps();
         });
     }

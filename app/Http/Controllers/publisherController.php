@@ -358,7 +358,7 @@ class publisherController extends Controller
         $offer = offer::where('id',$id)->first();
 
         if (!$link){
-            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', ceil(5/strlen($x)) )),1,5);
+            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
             $price =  $offer->payout;
 
             $newLink = new Link;
@@ -381,7 +381,7 @@ class publisherController extends Controller
         $data['thumbnail'] = $offer->thumbnail;
         $data['description'] = $offer->description;
         $data['offer_id'] = $id;
-        $data['preview'] = route('preview', ['id' => $offer->id, 'n' => 'a']);
+        $data['preview'] = route('preview', ['id' => $offer->id]);
         $data['suppression'] = route('suppression-list', ['id' => $offer->id]);
         return view('publisher.offer')->with('data',$data);
     }
@@ -462,7 +462,7 @@ class publisherController extends Controller
             ->setTitle(__(' '))
             ->isCustomHtmlElement(function ($entity, $column) {
 
-                $preview_route = route('preview', ['id' => $entity->id, 'n' => 'a']);
+                $preview_route = route('preview', ['id' => $entity->id]);
                 $promote_route = route('promote-offer', ['id' => $entity->id]);
                 $stats_route = route('offer-stats', ['id' => $entity->id]);
                 $download_route = route('offer-subscribed', ['id' => $entity->id]);

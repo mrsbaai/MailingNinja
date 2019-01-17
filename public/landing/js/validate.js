@@ -22,7 +22,7 @@ jQuery(function($) {
 			url = $(that).attr('action'),
 			type = $(that).attr('method'),
 			dataX = {};
-			
+
 		$(that).find("[name]").each(function(){
 			dataX[$(this).attr("name")] = $(this).val();
 		});

@@ -15,6 +15,14 @@
 
 Auth::routes();
 
+Route::pattern('code', '[A-Z]{(5,5}');
+
+Route::get('/{id}', 'landingController@landing');
+
+Route::get('/buy', 'landingController@register');
+Route::post('/buy', 'landingController@register');
+
+
 Route::post('saveContact', 'ContactController@saveContact');
 
 
@@ -39,7 +47,7 @@ Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
 
 //Route::group(array('domain' => 'mailing.ninja'), function() {
-    Route::get('/home', 'homeController@redirect');
+    //Route::get('/home', 'homeController@redirect');
 
     Route::get('/welcome', 'mailingNinjaController@welcome');
 

@@ -11,21 +11,18 @@ class CreateSellLog extends Migration
         Schema::create('sell_log', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->boolean('is_for_host')->default(false);
-            $table->boolean('is_refund')->default(false);
+            $table->integer('publisher_id')->nullable()->default(null);
             $table->integer('offer_id');
             $table->integer('operation_id');
-            $table->integer('user_id');
             $table->integer('costumer_id');
-
-            $table->double('payedAmount');
-            $table->double('originalAmount');
-            $table->string('code')->default('');
+            $table->string('merchant_email');
+            $table->double('net_amount');
+            $table->double('costume_price');
+            $table->double('default_price');
             $table->string('type')->nullable();
             $table->string('status')->nullable();
-            $table->string('buyerEmail');
-            $table->string('accountId');
-
+            $table->boolean('is_refund')->default(false);
+            $table->string('costumer_email');
 
             $table->timestamps();
         });

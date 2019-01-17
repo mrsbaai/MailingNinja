@@ -10,18 +10,21 @@ class mailingNinjaController extends Controller
 {
 
 
-    public function home(){
+    public function home(Request $request){
         if (Auth::check()) {
-            return redirect("/home");
+            $role = $request->user()->roles()->first()->name;
+            if ( $role == "publisher"){ return redirect()->route('publisher-home');;}
+            if ( $role == "manager"){ return redirect()->route('manager-home');}
+            if ( $role == "costumer"){ return redirect()->route('costumer-home');}
+        }else{
+            return view('mailingNinja.home');
         }
 
-
-        return view('mailingNinja.home');
     }
 
     public function welcome(){
         return ("<script LANGUAGE='JavaScript'>
-    window.alert('Thank you for your registration! Your application is now under review.');
+    window.alert('Thank you for your registration!');
     window.location.href='/';
     </script>");
 

@@ -376,6 +376,23 @@ section.reviews {
 	color:white;
 }
 
+.btn.btn-red{
+	background: transparent;
+	border:3px solid #E7004F;
+}
+
+.navbar-nav > li > a.btn.btn-red:hover {
+	background:#E7004F;
+	border:2px solid #E7004F;
+	color:white;
+}
+
+.navbar-nav > li > a.btn.btn-red {
+	background:white;
+	color:#E7004F;
+	border-color:#E7004F;
+}
+
 .btn.btn-green:hover {
     opacity: 0.7;
 }
