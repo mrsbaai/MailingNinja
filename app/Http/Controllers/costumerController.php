@@ -72,7 +72,8 @@ class costumerController extends Controller
         $table->addColumn('price')
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
-                $cancel_url = "#";
+                $cancel_url = route('cancel-product', ['id' => $entity->offer_id]);
+                $paypal_url = route('paypal-invoice', ['invoice' => $entity->id]);
 
                 $download_url = URL::temporarySignedRoute(
                     'costumer-download', now()->addMinutes(30), ['id' => $entity->offer_id]
@@ -83,12 +84,21 @@ class costumerController extends Controller
                     return '<a href="' . $download_url . '" class="btn btn-success float-right">Download</a>';
                 }else{
                     return '<a style="margin-left: 13px;"href="' . $cancel_url . '" class="btn btn-danger float-right">Cancel</a>'
-                        . '<a href="/" class="btn btn-info  float-right">Pay Now (Only $' . $entity->price . ')</a>';
+                        . '<a href="' . $paypal_url . '/" class="btn btn-info  float-right">Pay Now [$' . $entity->price . '] [PayPal]</a>';
                 }
             });
 
 
         return view('costumer.home')->with('table',$table);
+    }
+    public function cancel_product(request $request, $id){
+        $res = costumerOffers::where('costumer_id',Auth::user()->id)->where('offer_id',$id)->delete();
+        if ($res){
+            flash("Product deleted!")->success();
+        }else{
+            flash("Error deleting Product!")->error();
+        }
+        return $this->home($request);
     }
     public function contact(request $request){
         $request->user()->authorizeRoles('costumer');

@@ -82,6 +82,7 @@
 
   </div> -->
     <div class="container" style="padding-top:100px;" >
+        @include('flash::message')
         @yield('content')
     </div>
 

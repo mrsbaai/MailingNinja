@@ -27,6 +27,11 @@ class rolesTableSeeder extends Seeder
         $role_manager->save();
 
         $role_publisher = new role();
+        $role_publisher->name = 'publisher';
+        $role_publisher->description = 'publisher';
+        $role_publisher->save();
+
+        $role_publisher = new role();
         $role_publisher->name = 'unregistered_costumer';
         $role_publisher->description = 'unregistered costumer';
         $role_publisher->save();

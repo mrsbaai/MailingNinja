@@ -138,7 +138,9 @@
                     <div class="container" style="padding-left: 15px;">
                         <div class="row" >
                             {{ Form::open(array('action' => 'landingController@register'))}}
-                                <input name="code" value="{{$code}}" hidden>
+                                <input name="code" value="{{
+
+                                }}" hidden>
                                 <input id="input_1" name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent to this e-mail.')" oninput="setCustomValidity('')" />
                                 <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download eBook</button>
                             {{ Form::close()}}

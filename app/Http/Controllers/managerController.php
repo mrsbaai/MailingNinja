@@ -128,7 +128,6 @@ class managerController extends Controller
         return Redirect::route('offers-edit', $offer->id);
     }
     public function home(Request $request){
-        Log::notice("inside");
         $request->user()->authorizeRoles('manager');
         $date = Carbon::now();
         $query  = subscriber::latest();
@@ -141,8 +140,8 @@ class managerController extends Controller
 
         $query  = sells::latest();
         $query
-            ->where('is_for_host',false)
-            ->where('is_refund',false)
+            ->where('publisher_id','<>','0')
+            ->where('net_amount','>','0')
             ->where('status','Completed');
 
 
@@ -159,8 +158,8 @@ class managerController extends Controller
 
         $query  = sells::latest();
         $query
-            ->where('is_for_host',true)
-            ->where('is_refund',false)
+            ->where('publisher_id','0')
+            ->where('net_amount','>','0')
             ->where('status','Completed');
 
 
@@ -236,9 +235,9 @@ class managerController extends Controller
 
 
 
-        $table->addColumn('buyerEmail')
-            ->setTitle('Buyer E-Mail')
-            ->setStringLimit(25)
+        $table->addColumn('costumer_id')
+            ->setTitle('costumer_id')
+            ->setStringLimit(10)
             ->isSearchable();
 
 

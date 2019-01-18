@@ -14,7 +14,6 @@ class CreatePaypalAccounts extends Migration
             $table->string('email');
             $table->double('balance')->nullable()->default(0);
             $table->string('notes')->nullable()->default("");
-            $table->boolean('is_disposable')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

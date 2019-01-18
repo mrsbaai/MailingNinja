@@ -2,34 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
+use Carbon\Carbon;
 
+use App\costumerOffers;
+use App\offer;
+use App\PayPal;
+use App\user;
+use App\sells;
 
 class PaymentController extends Controller
 {
 
-    public function getPrice($code){
-
-    }
-
-    public function getMerchant($code){
-
-    }
 
 
-    public function RedirectToPayment(){
+    public function RedirectToPayment(Request $request, $invoice_id){
 
-        $business =  Input::get('toemail');
-        $amount = Input::get('amount');
-        $item_name = "$" . $amount . " Balance TopUp";
-        $custom = "internal";
-        $domain = "http://premiumbooks.net/";
+        $invoice = costumerOffers::all()->where('id',$invoice_id)->first();
+        $offer = offer::all()->where('id',$invoice['offer_id'])->first();
+
+
+        if ($invoice['publisher_id'] == 0){
+            $business = $this->GetInternalPayPal();
+        }else{
+            $publisher = user::all()->where('id',$invoice['publisher_id'])->first();
+            $business =  $publisher['paypal'];
+        }
+        $amount = $invoice['price'];
+        $item_name =  "[E-Book] " . "[" . $offer['title'] . "]";
+        $custom = $invoice_id;
+
+        $return = Request::root();
+        $notify_url = Request::root(). '/ipn/paypal';
+        $cancel_return = Request::root();
+
 
         $cmd = '_xclick';
         $currency_code = 'USD';
-        $return = $domain;
-        $notify_url = $domain. '/ipn/paypal';
-        $cancel_return = $domain;
         $properties = array(
             "cmd"=>$cmd,
             "business"=>$business,
@@ -41,6 +50,8 @@ class PaymentController extends Controller
             "notify_url"=>$notify_url,
             "cancel_return"=>$cancel_return
         );
+
+
         $url = "https://www.paypal.com/cgi-bin/webscr";
         return redirect()->away($url . "?" . http_build_query($properties));
     }
@@ -55,10 +66,9 @@ class PaymentController extends Controller
 
         $earlier = Carbon::now()->subDays(25);
 
-        $paypalAccounts = paypalids::where('is_active', '=' ,true)->where('is_disposable', '=' ,false)->where('balance', '>=' ,0)->get();
+        $paypalAccounts = PayPal::where('is_active', '=' ,true)->where('balance', '>=' ,0)->get();
 
-        $logs = paymentlog::where('type', '=' ,"new_case")->where('created_at', '>', $earlier)->get();
-
+        $logs = sells::where('type', '=' ,"new_case")->where('created_at', '>', $earlier)->get();
 
         $ids = array();
         foreach($paypalAccounts as $paypalAccount){
@@ -88,8 +98,8 @@ class PaymentController extends Controller
 
 
         //shuffle($acceptable_accounts);
-        $selected_paypal_account_id = paypalids::where('email', $acceptable_accounts[0])->first();
-        return $selected_paypal_account_id['paypalid'];
+        $selected_paypal_account_id = PayPal::where('email', $acceptable_accounts[0])->first();
+        return $selected_paypal_account_id['email'];
 
 
     }
@@ -103,105 +113,45 @@ class PaymentController extends Controller
 
         $ipn = new PaypalIPN();
 
-
         $verified = $ipn->verifyIPN();
 
         if ($verified) {
 
             $payedAmount = $originalAmount = $code = $transactionType = $transactionStatus = $userEmail = $buyerEmail = $accountId = $paymentSystem = $txn_id = "";
 
-            if (isset($_POST["custom"])){$description = $_POST["custom"];}else{$description = "";}
-
+            if (isset($_POST["custom"])){$invoice_id = $_POST["custom"];}else{$invoice_id = "";}
 
             if (isset($_POST["mc_fee"])){$mc_fee = $_POST["mc_fee"];}else{$mc_fee = "0";}
-            if (isset($_POST["mc_gross"])){$payedAmount = $_POST["mc_gross"];}else{$payedAmount = "";}
-            if (isset($_POST["txn_type"])){$transactionType = $_POST["txn_type"];}else{$transactionType = "";}
+            if (isset($_POST["mc_gross"])){$mc_gross = $_POST["mc_gross"];}else{$mc_gross = "";}
+            if (isset($_POST["txn_type"])){$txn_type = $_POST["txn_type"];}else{$txn_type = "";}
             if (isset($_POST["payment_status"])){$transactionStatus = $_POST["payment_status"];}else{$transactionStatus = "";}
             if (isset($_POST["payer_email"])){$buyerEmail = $_POST["payer_email"];}else{$buyerEmail = "";}
-            if (isset($_POST["business"])){$accountId = $_POST["business"];}else{$accountId = "";}
+            if (isset($_POST["business"])){$merchant_email = $_POST["business"];}else{$merchant_email = "";}
             if (isset($_POST["payment_status"])){$payment_status = $_POST["payment_status"];}else{$payment_status = "";}
             if (isset($_POST["payment_type"])){$payment_type = $_POST["payment_type"];}else{$payment_type = "";}
             if (isset($_POST["pending_reason"])){$pending_reason = $_POST["pending_reason"];}else{$pending_reason = "";}
-
             if (isset($_POST["txn_id"])){$txn_id = $_POST["txn_id"];}else{$txn_id = null;}
 
-            $checkLog = paymentlog::where('operation_id', $txn_id)->first();
+
+
+            if ($mc_gross > 0){
+                $net_amount = $mc_gross - $mc_fee;
+            }
+            $checkLog = sells::where('operation_id', $txn_id)->first();
             if ($checkLog !== null) {
                 Log::error("PayPal operation: $txn_id Already exist");
                 return;
             }
 
-
-
-            if ($description == "SMS-Verification"){
-                $originalAmount = $payedAmount;
-                $userEmail = $buyerEmail;
-                $code = "SMS-Verification";
-            }else{
-
-
-                if ($description != "internal"){
-
-
-                    $originalAmount = $this->getDescriptionVariables("originalAmount",$description);
-                    $userEmail = $this->getDescriptionVariables("userEmail",$description);
-                    $code = $this->getDescriptionVariables("code",$description);
-
-                    if(!$this->valid_email($userEmail)) {
-                        Log::error("User email: $userEmail Not Valid");
-                        return;
-                    }
-
-                }
-
-
-                $toPaypalId = paypalids::where('email',$accountId)->first();
-                $fromPaypalId =  paypalids::where('email',$buyerEmail)->first();
-
-
-                if (!$fromPaypalId and $description != "SMS-Verification" and $description != "" and $description != "internal"){
-                    if (($payment_status == 'Completed') || ($payment_status == 'Pending' && $payment_type == 'instant' && $pending_reason == 'paymentreview')){
-                        // successful payment -> top up
-                        if ($description != "internal" and $description != ""){
-                            $this->doTopup($userEmail,$payedAmount,$originalAmount,$code, "PayPal", $txn_id);
-                        }
-
-
+                if (($payment_status == 'Completed') || ($payment_status == 'Pending' && $payment_type == 'instant' && $pending_reason == 'paymentreview')){
+                    $inv = costumerOffers::find($invoice_id);
+                    if ($inv){
+                        $inv->paid = true;
+                        $inv->save();
                     }
                 }
 
-
-            }
-
-
-
-            // loging the event
-            $amountNoFee = $payedAmount;
-            if ($payedAmount > 0){
-                $payedAmount = $payedAmount - $mc_fee;
-            }
-
-            $this->log($payedAmount, $originalAmount, $code, $transactionType, $transactionStatus, $userEmail, $buyerEmail, $accountId, "PayPal",$txn_id);
-
-            // Update balance
-
-            $oldBalance = $newBalance = $senderOldBalance = $senderNewBalance = "";
-
-            if ($transactionStatus == "Completed" or $transactionStatus == "Reversed" or $transactionStatus == "Canceled_Reversal"){
-                $oldBalance = $toPaypalId['balance'];
-                $newBalance = $oldBalance + $payedAmount;
-                paypalids::where('email', "=", $accountId)->update(['balance' => $newBalance]);
-
-                if ($fromPaypalId){
-                    $senderOldBalance = $fromPaypalId['balance'];
-                    $senderNewBalance = $senderOldBalance - $amountNoFee;
-                    paypalids::where('email', "=", $buyerEmail)->update(['balance' => $senderNewBalance]);
-                }
-
-            }
-
-            // notify
-            $this->notify($oldBalance, $newBalance, "PayPal", $transactionType, $transactionStatus, $buyerEmail, $accountId, $payedAmount, $code, $senderOldBalance, $senderNewBalance);
+            $this->log($invoice_id, $txn_id,$merchant_email,$net_amount, $txn_type, $payment_status);
 
 
         }
@@ -212,19 +162,12 @@ class PaymentController extends Controller
     Private function log($invoice_id, $operation_id,$merchant_email,$net_amount, $type, $status){
 
 
+        $invoice = costumerOffers::all()->where("id", $invoice_id)->first();
 
-        // get from costumer products table $invoice_id = id
-
-        $publisher_id = "";
-        $offer_id = "";
-        $costumer_id = "";
-        $costume_price = "";
-        // get this
-        $default_price = "";
-        $costumer_email= "";
-        $is_refund = "";
-
-
+        $publisher_id = $invoice['publisher_id'];
+        $offer_id = $invoice['offer_id'];
+        $costumer_id = $invoice['costumer_id'];
+        $costume_price = $invoice['price'];
 
             $log = array(
                 "publisher_id"=>$publisher_id,
@@ -234,11 +177,8 @@ class PaymentController extends Controller
                 "merchant_email"=>$merchant_email,
                 "net_amount"=>$net_amount,
                 "costume_price"=>$costume_price,
-                "default_price"=>$default_price,
                 "type"=>$type,
                 "status"=>$status,
-                "is_refund"=>$is_refund,
-                "costumer_email"=>$costumer_email,
                 "created_at"=>Carbon::now()
             );
 

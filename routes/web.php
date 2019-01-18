@@ -15,9 +15,14 @@
 
 Auth::routes();
 
-Route::pattern('code', '[A-Z]{(5,5}');
 
-Route::get('/{id}', 'landingController@landing');
+Route::pattern('code', '[A-Z]{5}');
+
+Route::get('/{code}', 'landingController@landing');
+
+
+Route::get('/{code}/subscribe/{email}', 'subscribeController@subscribe');
+Route::get('/unsubscribe/{email}', 'subscribeController@unsubscribe');
 
 Route::get('/buy', 'landingController@register');
 Route::post('/buy', 'landingController@register');
@@ -40,17 +45,19 @@ Route::get('/test', function () {
 //costumer
 
 Route::get('/members', 'costumerController@home')->name('costumer-home');
+Route::get('/members/cancel/{id}', 'costumerController@cancel_product')->name('cancel-product');
+Route::get('/pay/{invoice}', 'PaymentController@RedirectToPayment')->name('paypal-invoice');
 Route::get('/download/{id}', 'costumerController@download')->name('costumer-download');
 Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
+Route::post('/ipn/paypal','PaymentController@paypalIPN');
 
 
 
 //Route::group(array('domain' => 'mailing.ninja'), function() {
-    //Route::get('/home', 'homeController@redirect');
 
+    Route::get('/home', 'mailingNinjaController@home');
     Route::get('/welcome', 'mailingNinjaController@welcome');
-
     Route::get('/', 'mailingNinjaController@home');
 
 

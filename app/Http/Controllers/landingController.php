@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\offer;
 use App\link;
+use App\costumerOffers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -21,19 +22,47 @@ class landingController extends Controller
 
     }
 
-    public function Register(){
-        if (null !== Input::get('code')){
-            $code = Input::get('code');
+    public function Register(Request $request){
+
+            if (null !== Input::get('code')){
+                $code = Input::get('code');
+            }else{
+                $code = "";
+            }
+            if (null !== Input::get('email')){
+                $email = Input::get('email');
+            }else{
+                $email = "";
+            }
+
+        if(Auth::check() and $request->user()->roles()->first()->name == "costumer"){
+            $this->addProductToCostumer($code, Auth::user()->id);
+            return redirect()->route('costumer-home');
+
         }else{
-            $code = "";
-        }
-        if (null !== Input::get('email')){
-            $email = Input::get('email');
-        }else{
-            $email = "";
+
+            return view('Auth.buy')->with('code', $code)->with('email', $email);
         }
 
-        return view('Auth.buy')->with('code', $code)->with('email', $email);
+
+    }
+
+    public static function addProductToCostumer($code,$costumer_id){
+        $offer = link::all()->where('link',$code)->first();
+        $publisher_id = $offer['user_id'];
+        $offer_id = $offer['offer_id'];
+        $offer_price = $offer['price'];
+
+        $add = new costumerOffers();
+        $add->publisher_id = $publisher_id;
+        $add->costumer_id = $costumer_id;
+        $add->offer_id = $offer_id;
+        $add->price = $offer_price;
+        $add->paid = false;
+
+        return $add->save();
+
+
     }
 
 

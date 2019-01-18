@@ -56,9 +56,9 @@ class publisherController extends Controller
         $data['subscribers_today'] = count($query->get());
 
         $query  = sells::latest();
-        $query->where('user_id', Auth::user()->id)
-            ->where('is_for_host',false)
-            ->where('is_refund',false)
+        $query->where('publisher_id', Auth::user()->id)
+            ->where('net_amount','>', '0')
+            ->where('publisher_id', '<>', '0')
             ->where('status','Completed');
 
         $collection = $query->get();
@@ -112,9 +112,9 @@ class publisherController extends Controller
             ])
             ->addQueryInstructions(function ($query) {
                 $query->select('sell_log.*')
-                    ->where('user_id', Auth::user()->id)
-                    ->where('is_for_host', false)
-                    ->where('is_refund', false)
+                    ->where('publisher_id', Auth::user()->id)
+                    ->where('net_amount','>', '0')
+
                     ->where('status', 'Completed');
             });
 
@@ -149,20 +149,6 @@ class publisherController extends Controller
             });
 
 
-
-        $table->addColumn('buyerEmail')
-            ->setTitle('Buyer E-Mail')
-            ->setStringLimit(25)
-            ->isSearchable();
-
-
-
-
-
-
-
-
-
         return view('publisher.home')->with('table', $table)->with('data',$data);
 
     }
@@ -173,10 +159,7 @@ class publisherController extends Controller
             $query->where('user_id' , Auth::user()->id);
             $query->where('offer_id' , $id);
 
-
             $table = $query->get()->toArray();
-
-
 
             if(count($table) === 0){
                 return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');open(location, '_self').close();</script>");
@@ -635,10 +618,10 @@ class publisherController extends Controller
 
             $query->whereMonth('Created_at',$date->format('m'))
                 ->whereDay('Created_at',$date->format('d'))
-                ->where('is_refund',false)
-                ->where('is_for_host',false)
+                ->where('net_amount','>', '0')
+                ->where('publisher_id', '<>', '0')
                 ->where('Status','Completed');
-            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($user_id){$query->where('publisher_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
             if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
             $data[] = count($query->get());
@@ -726,10 +709,10 @@ class publisherController extends Controller
 
             $query->whereMonth('Created_at',$date->format('m'))
                 ->whereDay('Created_at',$date->format('d'))
-                ->where('is_refund',false)
-                ->where('is_for_host',false)
+                ->where('net_amount','>', '0')
+                ->where('publisher_id', '<>', '0')
                 ->where('Status','Completed');
-            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($user_id){$query->where('publisher_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
             if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
             $collection = $query->get();

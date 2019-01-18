@@ -18,11 +18,8 @@ class CreateSellLog extends Migration
             $table->string('merchant_email');
             $table->double('net_amount');
             $table->double('costume_price');
-            $table->double('default_price');
             $table->string('type')->nullable();
             $table->string('status')->nullable();
-            $table->boolean('is_refund')->default(false);
-            $table->string('costumer_email');
 
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\landingController;
 use App\user;
 use App\role;
 use App\Http\Controllers\Controller;
@@ -82,7 +83,7 @@ class RegisterController extends Controller
             $user->password = bcrypt($data['password']);
             $user->save();
             $user->roles()->attach(Role::where('name', 'costumer')->first());
-
+            landingController::addProductToCostumer($data['code'], $user['id']);
 
             return $user;
 
