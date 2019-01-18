@@ -38,8 +38,14 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
 
 Route::get('/test', function () {
+    if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+        $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+
+        $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
+    }
+    echo $_SERVER['REMOTE_ADDR'];
     echo Location::get()->countryCode;
-    echo Request::ip();
+
 
 });
 
