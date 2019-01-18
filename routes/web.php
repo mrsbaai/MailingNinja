@@ -38,7 +38,8 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
 
 Route::get('/test', function () {
-    return view('landing.test');
+    return Location::get(Request::ip())->countryCode;
+
 });
 
 

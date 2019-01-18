@@ -14,7 +14,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.6",
         "okipa/laravel-bootstrap-table-list": "^2.0",
-        "rap2hpoutre/laravel-log-viewer": "^1.0"
+        "rap2hpoutre/laravel-log-viewer": "^1.0",
+        "stevebauman/location": "^3.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
