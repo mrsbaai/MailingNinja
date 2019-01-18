@@ -59,10 +59,6 @@ class usersTableSeeder extends Seeder
 
 
 
-
-
-
-
         $costumer = new user();
         $costumer->paypal = "costumer.paypal@gmail.com";
         $costumer->name = "happy costumer";

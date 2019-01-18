@@ -199,7 +199,7 @@ class managerController extends Controller
             ])
             ->addQueryInstructions(function ($query) {
                 $query->select('sell_log.*')
-                    ->where('is_refund', false)
+                    ->where('net_amount', '>', '0')
                     ->where('status', 'Completed');
             });
 
