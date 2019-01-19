@@ -1,3 +1,4 @@
+@include('layouts.subscribe')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,10 +139,8 @@
                     <div class="container" style="padding-left: 15px;">
                         <div class="row" >
                             {{ Form::open(array('action' => 'landingController@register'))}}
-                                <input name="code" value="{{
-
-                                }}" hidden>
-                                <input id="input_1" name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent to this e-mail.')" oninput="setCustomValidity('')" />
+                                <input name="code" value="{{$code}}" hidden>
+                                <input id="input_1" name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent by e-mail.')" oninput="setCustomValidity('')" />
                                 <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download eBook</button>
                             {{ Form::close()}}
 
@@ -307,20 +306,7 @@
             </div>
             <div class="row">
                 <div class="owl-reviews">
-                    <div class="item">
-                        <div class="review text-center wow animated fadeInUp">
-                            <h4 class="subheading reviewer-name">Alfred Rudolf</h4>
-                            <h6 class="subheading muted reviewer-city">Dallas, Texas</h6>
-                            <div class="rating">
-                                <span class="rate active"></span>
-                                <span class="rate active"></span>
-                                <span class="rate active"></span>
-                                <span class="rate active"></span>
-                                <span class="rate"></span>
-                            </div>
-                            <p class="small">This book is an excellent resource for anyone who is serious about graphic layout.</p>
-                        </div>
-                    </div>
+
                     @if($review_name_1 !== null && $review_name_1 !== "" )
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
@@ -450,7 +436,7 @@
                 <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:20px;padding-left:150px;" >
                     {{ Form::open(array('action' => 'landingController@register'))}}
                         <input name="code" value="{{$code}}" hidden>
-                        <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent to this E-mail.')" oninput="setCustomValidity('')"/>
+                        <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required />
                         <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
                     {{ Form::close() }}
                     <span class="subheading big justify wow animated fadeInUp check-green">(Available in PDF, MOBI, and EPUB)</span>
@@ -523,8 +509,25 @@
     </section>
 
     <footer>
-        <div class="container " >
+        <div class="container">
             <div class="col-sm-12 text-center text-center-mobile">
+
+
+                <div id="subscribe-modal" class="modal fade flash-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                @yield('subscribe')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                @yield('subscribe')
+
                 <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
             </div>
 
@@ -823,11 +826,6 @@
 
 
 
-
-
-
-
-
     });
 </script>
 
@@ -853,6 +851,11 @@
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
+    setTimeout(function(){
+        $('#subscribe-modal').modal();
+        }, 30000);
+
+
 </script>
 </body>
 </html>

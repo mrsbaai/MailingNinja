@@ -164,6 +164,7 @@ return [
         Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -216,6 +217,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Location' => Stevebauman\Location\Facades\Location::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

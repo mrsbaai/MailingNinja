@@ -6,13 +6,13 @@
          <div class="col-md-12">
             <div class="card" >
                <div class="card-header ">
-                  <h5 class="card-title">Download Mailing Lists</h5>
+                  <h5 class="card-title">Filters</h5>
                </div>
                <div class="card-body">
 
                   {{ Form::open(array('action' => 'publisherController@downloadSubscribers', 'id' => 'download'))}}
                   <div class="row">
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <div class="input-group-text">Country: </div>
@@ -21,7 +21,7 @@
 
                         </div>
                      </div>
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <div class="input-group-text">Vertical: </div>
@@ -31,7 +31,7 @@
                         </div>
                      </div>
 
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <div class="input-group-text">Period: </div>
@@ -45,7 +45,7 @@
                         </div>
                      </div>
 
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <div class="input-group-text">Confirmed: </div>
@@ -55,6 +55,28 @@
                               <option value="false">No</option>
                               <option value="true">Yes</option>
                            </select>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <div class="input-group-text">Type: </div>
+                           </div>
+                           <select class="form-control form-control-lg custom-select" id="type" name="type">
+                              <option value="" selected>All</option>
+                              <option value="0">Subscribers</option>
+                              <option value="1">Buyers</option>
+                              <option value="2">Clickers</option>
+                              <option value="3">Openers</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <div class="input-group-text">Contains: </div>
+                           </div>
+                           <input class="form-control" id="filter" name="filter" placeholder="Ex: @gmail. ">
                         </div>
                      </div>
                   </div>
@@ -81,7 +103,7 @@
 @endsection
 
 @section('title')
-   Subscribes
+   Mailing Lists
 @endsection
 
 @section('header')

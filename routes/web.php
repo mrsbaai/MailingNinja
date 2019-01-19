@@ -15,6 +15,7 @@
 
 Auth::routes();
 
+Route::get('/{code}/tracking/{email}', 'landingController@trackOpen');
 
 Route::pattern('code', '[A-Z]{5}');
 
@@ -22,6 +23,9 @@ Route::get('/{code}', 'landingController@landing');
 
 
 Route::get('/{code}/subscribe/{email}', 'subscribeController@subscribe');
+
+Route::post('/', 'subscribeController@subscribePost');
+
 Route::get('/unsubscribe/{email}', 'subscribeController@unsubscribe');
 
 Route::get('/buy', 'landingController@register');

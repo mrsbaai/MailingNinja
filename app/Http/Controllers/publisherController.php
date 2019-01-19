@@ -184,7 +184,7 @@ class publisherController extends Controller
 
             $filename = "Email-List.csv";
             $handle = fopen($filename, 'w+');
-            fputcsv($handle, array('E-mail Address', 'Country Code', 'Vertical/Niche', 'Offer Name', 'Subscription Date'));
+            fputcsv($handle, array('E-mail Address', 'Country Code', 'Offer Vertical', 'Offer Name', 'Subscription Date'));
 
             foreach($table as $row) {
 
@@ -203,7 +203,9 @@ class publisherController extends Controller
         $request->user()->authorizeRoles('publisher');
         if ($id){
             $query = unsubscribes::latest();
-            $query->where('offer_id' , $id);
+
+            //only offer
+            //$query->where('offer_id' , $id);
 
 
             $table = $query->get()->toArray();
@@ -215,12 +217,10 @@ class publisherController extends Controller
             }
 
 
+            //$offer_name = offer::where('id',$id)->pluck('title')->first();
 
-
-            $offer_name = offer::where('id',$id)->pluck('title')->first();
-
-            $offer = offer::where('id',$id)->first();
-            $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
+            //$offer = offer::where('id',$id)->first();
+           // $verticals = implode("|",$offer->verticals()->pluck('vertical')->toArray());
 
             $headers = [
                 'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
@@ -232,7 +232,7 @@ class publisherController extends Controller
 
 
             $now = Carbon::now()->format('Y-m-d-H-s');;
-            $filename = "[offer-$id][Suppression][$now].csv";
+            $filename = "[Offer-$id][Suppression][$now].csv";
             $handle = fopen($filename, 'w+');
             fputcsv($handle, array('E-mail Address'));
 
@@ -569,7 +569,7 @@ class publisherController extends Controller
 
 
         $handle = fopen($filename, 'w+');
-        fputcsv($handle, array('E-mail Address', 'Country Code', 'Vertical/Niche', 'Offer Name', 'Subscription Date'));
+        fputcsv($handle, array('E-mail Address', 'Country Code', 'Offer Vertical', 'Offer Name', 'Subscription Date'));
 
         foreach($table as $row) {
 

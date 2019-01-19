@@ -104,7 +104,7 @@
                         </a>
                     </li>
 
-                    <li @if(Request::is('*stat*')) class="active" @endif>
+                    <li @if(Request::is('*statistics*')) class="active" @endif>
                         <a href="{{ route('publisher-statistics') }}">
                             <i class="nc-icon nc-chart-bar-32"></i>
                             <p>Statistics</p>
@@ -122,7 +122,7 @@
                     <li @if(Route::current()->getName() == 'publisher-subscribers') class="active" @endif>
                         <a href="{{ route('publisher-subscribers') }}">
                             <i class="nc-icon nc-cloud-download-93"></i>
-                            <p>Subscribes</p>
+                            <p>E-mails</p>
                         </a>
                     </li>
                     <li @if(Route::current()->getName() == 'publisher-account') class="active" @endif>

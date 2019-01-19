@@ -8,6 +8,8 @@ use App\link;
 use App\costumerOffers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+use URL;
 
 class landingController extends Controller
 {
@@ -20,6 +22,11 @@ class landingController extends Controller
             return redirect("/home");
         }
 
+    }
+
+    public function trackOpen($code, $email){
+        $storagePath = URL::asset('images/tracking.png');
+        return Image::make($storagePath)->response();
     }
 
     public function Register(Request $request){
@@ -93,6 +100,8 @@ class landingController extends Controller
         $price = $custom_price;
 
         $images = array($offer->thumbnail, $offer->image_1, $offer->image_2, $offer->image_3, $offer->image_4, $offer->image_5, $offer->image_6, $offer->image_7, $offer->image_8, $offer->image_9);
+
+
         return view('layouts.landing')
             ->with('code', $code)
             ->with('title', $offer->title)

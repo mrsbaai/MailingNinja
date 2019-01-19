@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\landingController;
+use App\Http\Controllers\subscribeController;
 use App\user;
 use App\role;
 use App\Http\Controllers\Controller;
@@ -80,9 +81,12 @@ class RegisterController extends Controller
             $user->country = $data['country'];
             $user->name = $data['name'];
             $user->email = $data['email'];
+            $user->type = 1;
             $user->password = bcrypt($data['password']);
             $user->save();
             $user->roles()->attach(Role::where('name', 'costumer')->first());
+
+            subscribeController::subscribe($data['code'], $data['email']);
             landingController::addProductToCostumer($data['code'], $user['id']);
 
             return $user;

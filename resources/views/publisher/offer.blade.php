@@ -127,7 +127,7 @@
                             <div class="col-md-12">
                                 <div class="form-group col-md-12 text-center">
 
-                                    <a class='p-3' target='blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
+                                    <a class='p-3' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
                                         <button class="btn btn-warning">Download Suppression List</button>
                                     </a>
                                 </div>
