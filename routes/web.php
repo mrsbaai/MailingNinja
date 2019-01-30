@@ -20,7 +20,7 @@ Route::get('/test','landingController@test');
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-Route::get('/l', 'landingController@home');
+Route::get('/l', 'mailingNinjaController@home');
 
 
 Route::get('/{code}/tracking/{email}', 'trackingController@open');
@@ -57,7 +57,13 @@ Route::post('saveContact', 'ContactController@saveContact');
 
 
 
-//Route::group(array('domain' => 'premiumbooks.net'), function() {});
+
+
+
+Route::group(array('domain' => 'mailing.ninja'), function() {
+    Route::get('/', 'mailingNinjaController@home');
+
+});
 
 
 
@@ -77,10 +83,10 @@ Route::post('/ipn/paypal','PaymentController@paypalIPN');
 
     Route::get('/home', 'mailingNinjaController@home');
     Route::get('/welcome', 'mailingNinjaController@welcome');
-    Route::get('/', 'mailingNinjaController@home');
 
 
-;
+
+
 
     Route::get('/publisher', 'publisherController@home')->name('publisher-home');
 
