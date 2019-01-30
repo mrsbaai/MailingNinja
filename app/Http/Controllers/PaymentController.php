@@ -117,15 +117,15 @@ class PaymentController extends Controller
 
         if ($verified) {
 
-            $payedAmount = $originalAmount = $code = $transactionType = $transactionStatus = $userEmail = $buyerEmail = $accountId = $paymentSystem = $txn_id = "";
+            $originalAmount = $code = $transactionType = $transactionStatus = $userEmail = $buyerEmail = $accountId = $paymentSystem = $txn_id = "";
 
             if (isset($_POST["custom"])){$invoice_id = $_POST["custom"];}else{$invoice_id = "";}
 
             if (isset($_POST["mc_fee"])){$mc_fee = $_POST["mc_fee"];}else{$mc_fee = "0";}
             if (isset($_POST["mc_gross"])){$mc_gross = $_POST["mc_gross"];}else{$mc_gross = "";}
             if (isset($_POST["txn_type"])){$txn_type = $_POST["txn_type"];}else{$txn_type = "";}
-            if (isset($_POST["payment_status"])){$transactionStatus = $_POST["payment_status"];}else{$transactionStatus = "";}
-            if (isset($_POST["payer_email"])){$buyerEmail = $_POST["payer_email"];}else{$buyerEmail = "";}
+            if (isset($_POST["payment_status"])){$payment_status = $_POST["payment_status"];}else{$payment_status = "";}
+            if (isset($_POST["payer_email"])){$payer_email = $_POST["payer_email"];}else{$payer_email = "";}
             if (isset($_POST["business"])){$merchant_email = $_POST["business"];}else{$merchant_email = "";}
             if (isset($_POST["payment_status"])){$payment_status = $_POST["payment_status"];}else{$payment_status = "";}
             if (isset($_POST["payment_type"])){$payment_type = $_POST["payment_type"];}else{$payment_type = "";}

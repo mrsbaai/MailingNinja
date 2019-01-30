@@ -122,9 +122,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto">
-                        <h2 class="text-center">Keep in touch?</h2>
+                        <h2 class="text-center">Keep in touch?</h2><br/>
                         @include('flash::message')
-                        <form action="{{url('saveContact')}}" method="POST" enctype="multipart/form-data" class="contact-form" id="contact-form">
+                        {{ Form::open(array('action' => 'ContactController@saveContact'))}}
+                            <input type="text"  id="lg_role" name="lg_role" value="unregistered_publisher" hidden>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Subject</label>
@@ -152,7 +153,7 @@
                                     <button class="btn btn-fill">Send Message</button>
                                 </div>
                             </div>
-                        </form>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>

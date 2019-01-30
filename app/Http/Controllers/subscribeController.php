@@ -9,6 +9,7 @@ use App\unsubscribes;
 use App\link;
 use Illuminate\Support\Facades\Input;
 use Location;
+use App\ip;
 
 class subscribeController extends Controller
 {
@@ -17,24 +18,58 @@ class subscribeController extends Controller
         return $this->subscribe(Input::get('code'), Input::get('email'));
     }
 
-    public static function subscribe ($code, $email){
+    private function valid_email($email) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            list($user, $domain ) = explode( '@', $email );
+            if(checkdnsrr( $domain, 'mx')) {
+                return true;
+            };
+        }else{
+            return false;
+        }
+    }
 
 
+    public function subscribe ($code, $email, $type = 0){
+
+        if ($this->valid_email($email) == false){
+            if($type = 0) {
+                flash()->overlay("Un-valid E-mail Address!");
+                if ($code !== "" and $code !== null){
+                    return redirect('/' . $code);
+                }else{
+                    return redirect('/');
+                }
+            }else{
+                return;
+            }
+
+        }
         if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
             $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
             $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
         }
         $country_code = Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
 
+        if ($country_code == null) {
+            $country_code = "MA";
+        }
 
         $info = link::all()->where('link', $code)->first();
+
+        if ($info){
+            $offer_id = $info['offer_id'];
+            $user_id = $info['user_id'];
+        }else{
+            $offer_id = $user_id  = 0;
+        }
 
         $check = subscriber::all()->where('email', $email)->first();
         if (!$check){
             $add = new subscriber();
-            $add->offer_id = $info['offer_id'];
-            $add->user_id = $info['user_id'];
-            $add->type = 0;
+            $add->offer_id = $offer_id;
+            $add->user_id = $user_id;
+            $add->type = $type;
             $add->country = $country_code;
             $add->is_confirmed = false;
             $add->email = $email;
@@ -46,17 +81,19 @@ class subscribeController extends Controller
         }
 
 
-        // send confirm subscription email
 
+        if ($type = 0){
+            // send confirm subscription email
 
-        flash()->overlay("You have been successfully subscribed");
+            flash()->overlay("You have been successfully subscribed");
 
-        if ($code !== "" and $code !== null){
-            return redirect('/' . $code);
-        }else{
-            return redirect('/');
+            if ($code !== "" and $code !== null){
+                return redirect('/' . $code);
+            }else{
+                return redirect('/');
+            }
+
         }
-
 
 
 

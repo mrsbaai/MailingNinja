@@ -133,6 +133,12 @@
         demo.initChartsPages();
     });
 </script>
+
+<script>
+    $('#flash-overlay-modal').modal();
+    $('div.alert').not('.alert-important').delay(15000).fadeOut(450);
+
+</script>
 </body>
 
 </html>

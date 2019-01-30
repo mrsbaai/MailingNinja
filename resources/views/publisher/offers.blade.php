@@ -6,7 +6,6 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                @include('flash::message')
                 <div class="card ">
                     <div class="card-header ">
                         <h5 class="card-title">Offers</h5>

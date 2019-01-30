@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Offers</h5>
-                        @include('flash::message')
+
                     </div>
                     <div class="card-body">
                         {{$table}}

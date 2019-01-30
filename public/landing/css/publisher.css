@@ -376,21 +376,20 @@ section.reviews {
 	color:white;
 }
 
-.btn.btn-red{
+.btn.btn-black{
 	background: transparent;
-	border:3px solid #E7004F;
+	border:3px solid black;
 }
-
-.navbar-nav > li > a.btn.btn-red:hover {
-	background:#E7004F;
-	border:2px solid #E7004F;
+.navbar-nav > li > a.btn.btn-black:hover {
+	background:black;
+	border:2px solid black;
 	color:white;
 }
 
-.navbar-nav > li > a.btn.btn-red {
+.navbar-nav > li > a.btn.btn-black {
 	background:white;
-	color:#E7004F;
-	border-color:#E7004F;
+	color:black;
+	border-color:black;
 }
 
 .btn.btn-green:hover {

@@ -1,4 +1,6 @@
-@include('layouts.subscribe')
+@include('landing.subscribe')
+@include('landing.Wall')
+@include('landing.contact')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/owl.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/animate.css') }}">
-    <link href="{{ asset('landing/font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/et-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/tooltip.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/lightbox.css') }}">
     <link id="main" rel="stylesheet" type="text/css" href="{{ asset('landing/css/publisher.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/book.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/subscribe.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <style>
 
         blink {
@@ -152,7 +155,7 @@
                         @else
                         {{ Form::open(array('action' => 'landingController@register'))}}
                         <input name="code" value="{{$code}}" hidden>
-                        <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About The Book</a>
+                        <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About Book</a>
                         <button type="submit"  class="btn btn-green" >Purchase eBook<span class="price">(Only ${{$price}})</span></button>
                         {{Form::close()}}
 
@@ -176,7 +179,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
+                <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -186,14 +189,13 @@
                     <li><a href="#author" class="scrollto">Author</a></li>
                     <li><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
-                    <li><a href="#contact" class="btn btn-red">Report</a></li>
-                    <li><a href="#" class="btn btn-green">@if ($price == 0) Free Download @else Purchase eBook @endif</a></li>
+                    <li><a href="{{$related_url}}" class="btn btn-black">Descover eBooks</a></li>
+                    <li><a href="#" class="btn btn-green">@if ($price == 0) Download @else Purchase @endif</a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    @include('flash::message')
 
     <section id="book" >
         <div class="container">
@@ -221,7 +223,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 wide check-green">
-                    <h2 class="heading wow animated fadeInUp">About The Book</h2>
+                    <h2 class="heading dominant-color wow animated fadeInUp">About The Book</h2>
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp check-green">{!! $book_about_1 !!}</p>
                     @endif
@@ -249,7 +251,7 @@
                 <div class="col-md-7" >
                     <div class="row author" >
                         <div class="col-sm-12 author-name" >
-                            <h2 class="heading wow animated fadeInUp">{{ $author_name }} (The Author)</h2>
+                            <h2 class="heading dominant-color wow animated fadeInUp">{{ $author_name }} (The Author)</h2>
 
                             <p class="small justify muted-light wow animated fadeInUp">{{ $author_about }}.</p>
 
@@ -285,11 +287,28 @@
         </section>
     @endif
 
+    <section class="about">
+
+        <div class="container">
+            <div class="row">
+                <h2 class="heading dominant-color wow animated fadeInUp">People Who Purchased This eBook Also Liked:</h2><br/><br/><br/>
+                @yield('Wall')
+                <div class="col-lg-12 wow animated fadeInUp" >
+                    <p class="text-center">
+                        <a href="{{$related_url}}" class="btn btn-green " target="_blank">Discover More eBooks...</a>
+                    </p>
+
+                </div>
+           </div>
+       </div>
+   </section>
+
+
     <section id="reviews" class="reviews" style="padding-bottom: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <h2 class="heading">Reviews</h2>
+                    <h2 class="heading dominant-color">Reviews</h2>
                 </div>
                 <div class="col-sm-6 text-right text-left-mobile">
                     <div class="rate-amount">
@@ -413,11 +432,11 @@
 
 
 
-
+@if(Route::currentRouteName() != 'host-landing')
     <section id="action"  class="reviews">
 
 
-        <div class="col-md-12 wow animated fadeInUp" >
+        <div class="col-md-12 wow animated fadeInUp" style="padding-bottom: 80px;">
 
             <div class="container action-container" >
 
@@ -451,7 +470,8 @@
                         <div class='info-form'>
                             {{ Form::open(array('action' => 'landingController@register'))}}
                             <input name="code" value="{{$code}}" hidden>
-                            <button type="submit"><img src='https://i.imgur.com/PO6QqRU.jpg' width='300px'/></button>>
+                            <input type="image" src="https://i.imgur.com/PO6QqRU.jpg" alt="Submit" width='300px'>
+
                             {{Form::close()}}
                         </div>
                         <span class="subheading big justify wow animated fadeInUp check-green">(Avalable in PDF, MOBI, and EPUB)</span>
@@ -464,46 +484,13 @@
         </div>
     </section>
 
+@endif
 
-
-
-
-
-    <section  >
-
+    <section>
 
         <div class="container ">
-
-
             <div class="row">
-
-                {{ Form::open(array('action' => 'ContactController@saveContact'))}}
-                <input type="text"  id="lg_role" name="lg_role" value="unregistered_costumer" hidden>
-                    <div class="col-md-12" id="contact" style="padding-top: 200px;">
-                        <h2 class="heading">Contact Us / Report Abuse</h2><br/>
-                        <div class="row">
-
-                            <div class="col-sm-12">
-                                <input name="lg_email" type="text" class="form-control" placeholder="Email" data-validation="email">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input name="lg_subject" type="text" class="form-control" placeholder="Subject" data-validation="required">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <textarea name="lg_message" class="form-control" rows="10" placeholder="Message. . ." data-validation="required"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 text-right" style="padding-top:18px;">
-                                <input id="send_btn" type="submit" class=" btn--subscribe  btn--primary btn--inside " value="Send">
-                            </div>
-                        </div>
-                    </div>
-                {{ Form::close() }}
+                @yield('contact')
             </div>
         </div>
     </section>
@@ -525,10 +512,29 @@
                         </div>
                     </div>
                 </div>
-                <br/>
-                @yield('subscribe')
 
-                <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
+
+
+
+                <br/><br/><br/>
+
+
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8 wow animated fadeInUp">
+                        @yield('subscribe')
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                    <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
+
+                </div>
             </div>
 
         </div>
@@ -789,7 +795,7 @@
         $('.btn.btn-white').css('background', dominant);
 
         $('h1').css('font-family', 'Proxima Bold');
-        $('h2').css('color', dominant);
+        $('.dominant-color').css('color', dominant);
         $('h4').css('color', dominant);
         $('li').css('color', dominant);
         $('p').css('color', dominant);

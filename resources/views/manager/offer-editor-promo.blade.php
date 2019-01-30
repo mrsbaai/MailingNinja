@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-12">
             <br/>
-            @include('flash::message')
+
             <form action="{{route('update-promo')}}"  class="text-large" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input id="id" type="text" name="id" hidden value="{{$id}}">

@@ -5,7 +5,6 @@
 @section('content')
 
     <div class="content">
-        @include('flash::message')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -24,8 +23,8 @@
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                                 </p>
                                 <span>
-                                    <a target='blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                        <button class="btn btn-danger">Preview Landing Page</button>
+                                    <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                        <button class="btn btn-primary btn-sm">Preview Landing Page</button>
                                     </a>
                                 </span>
                             </div>
@@ -34,19 +33,19 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-lg-6">
 
                 <div class="card ">
                     <div class="card-header">
-                        <h5 class="card-title">Setup A Custom Price For This Offer</h5>
-                        <h3>Set the price to <b>"$0"</b> For <u><b>E-mail list building</b></u> mode.</h3>
+                        <h5 class="card-title">Offer Price</h5>
+                        <p class="card-category">If you set the price to <b>$0</b> the visitors will be asked for their email to download the product for free, perfect for list building or data cleaning.</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-sm-4 col-centered">
+                            <div class="col-lg-9 col-centered">
 
                                 {{ Form::open(array('action' => 'publisherController@offerSetPrice', 'id' => 'set_price'))}}
 
@@ -77,47 +76,65 @@
                 </div>
             </div>
         </div>
-    </div>
-        <div class="row">
-            <div class="col-md-12">
+
+
+            <div class="col-lg-6">
 
                 <div class="card ">
                     <div class="card-header">
                         <h5 class="card-title">Offer Link</h5>
-                        <p class="card-category">Use this link to refer to this offer.</p>
+                        <p class="card-category">
+                            To track clicks, and download targeted clicks mailing list, replace {email} with the recipient's E-mail address.
+                            You can also refer to the offer without "/{email}".
+                        </p>
                     </div>
                     <div class="card-body">
-
-
                         <div class="row">
 
-
                             <div class="col-centered">
-
                                     <div class="input-group">
                                         <div class="input-group-prepend" >
                                             <span class="input-group-text" style="font-size: 110%">Link:</span>
                                         </div>
                                         <div class="input-group-append">
-                                            <span class="input-group-text" style="font-size: 130%"><b>http://premiumbooks.net/{{$data['link']}}</b>&nbsp;&nbsp;</span>
+                                            <span class="input-group-text" style="font-size: 100%"><b>http://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
                                         </div>
 
                                     </div>
 
                             </div>
-                    </div>
+                         </div>
 
 
                 </div>
             </div>
         </div>
-    </div>
 
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Unsubscribers (Suppression list) </h5>
+                        <h5 class="card-title">Tracking Email Opens</h5>
+                        <p class="card-category">To track email opens, and download targeted opens mailing list, add this code to your email body. Replace {email} with the recipient's E-mail address.</p>
+
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <kbd>&lt;img src="https://{{$data['domain']}}/{{$data['link']}}/tracking/{email}" width="1" height="1" border="0"&gt;</kbd>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Suppression list</h5>
                         <p class="card-category">Don't send this offer to any of these E-mails</p>
 
 
@@ -126,9 +143,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group col-md-12 text-center">
-
-                                    <a class='p-3' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
-                                        <button class="btn btn-warning">Download Suppression List</button>
+                                    <a class='btn btn-danger' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
+                                       Download Suppression List
                                     </a>
                                 </div>
                             </div>
@@ -136,10 +152,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
+
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Promotional Tools</h5>

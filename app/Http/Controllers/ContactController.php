@@ -17,6 +17,8 @@ class ContactController extends Controller
         $content = Input::get('lg_message');
         $role = Input::get('lg_role');
 
+
+
         try{
 
             //$subject = "(SMS-Verification Contact From) " . $subject;
@@ -27,6 +29,9 @@ class ContactController extends Controller
                 //$message->to($to);
             //});
 
+
+
+
             $contact = new contact();
             $contact->email = $email;
             $contact->subject = $subject;
@@ -35,11 +40,11 @@ class ContactController extends Controller
             $contact->created_at = Carbon::now();
             $contact->save();
 
-            flash()->overlay('We have received your message and would like to thank you for writing to us. We will look over your message as soon as possible.', 'Sent!')->clear();
+            flash()->message('Sent! We have received your message and would like to thank you for writing to us. We will look over your message as soon as possible.')->success();
             return \Redirect::back();
         }
         catch(\Exception $e){
-            flash()->overlay('Something went wrong.','Error!')->error();
+            flash()->message('Error! Something went wrong.')->error();
             return \Redirect::back();
         }
     }

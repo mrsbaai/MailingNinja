@@ -4,7 +4,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                @include('flash::message')
+               
             <form action="@if( ! empty($id)) {{route('update-offer')}} @else {{route('store-offer')}} @endif"  class="text-large" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 

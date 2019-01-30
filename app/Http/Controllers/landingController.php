@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\subscriber;
+use App\vertical;
 use Illuminate\Http\Request;
 use App\offer;
 use App\link;
@@ -14,20 +16,7 @@ use URL;
 class landingController extends Controller
 {
 
-    public function home(){
-        if(Auth::guest()){
 
-            return view('landing.home');
-        }else{
-            return redirect("/home");
-        }
-
-    }
-
-    public function trackOpen($code, $email){
-        $storagePath = URL::asset('images/tracking.png');
-        return Image::make($storagePath)->response();
-    }
 
     public function Register(Request $request){
 
@@ -72,11 +61,120 @@ class landingController extends Controller
 
     }
 
+    private function categories(){
+        return vertical::all()->pluck('vertical');
+    }
 
-    public function landing($code){
+    private function  subscribers_count(){
+        return subscriber::all()->count() + 1000;
+
+    }
 
 
-        $link = link::all()->where('link',$code)->first();
+    private function getRelatedBooks($offer_id){
+        $offer = offer::all()->where('id',$offer_id)->first();
+
+        $verticals = $offer->verticals()->get();
+
+
+        $relateds = offer::whereHas('verticals', function($q) use ($verticals)
+        {
+
+            $q->where('vertical', '<>','dummy');
+            foreach($verticals as $vertical){
+                $q->orWhere('vertical', $vertical['name']);
+            }
+
+
+        })->orderByDesc('cpc', 'desc')->get();
+
+        $relateds->pluck('thumbnail', 'id');
+        return $relateds;
+
+
+    }
+    public function showRelatedBooks($offer_id){
+
+        $offer = offer::all()->where('id',$offer_id)->first();
+
+
+        return view('landing.relatedWall')
+            ->with('offers', $this->getRelatedBooks($offer_id))
+            ->with('categories', $this->categories())
+            ->with('subscribers_count', $this->subscribers_count())
+            ->with('title', $offer['title']);
+
+
+    }
+ public function showVerticalBooks($category){
+
+
+
+
+        $relateds = offer::whereHas('verticals', function($q) use ($category)
+        {
+            $q->where('vertical', $category);
+        })->orderByDesc('cpc', 'desc')->get();
+
+
+
+        return view('landing.categoryWall')
+            ->with('offers', $relateds)
+            ->with('categories', $this->categories())
+            ->with('subscribers_count', $this->subscribers_count())
+            ->with('category', $category);
+
+
+
+    }
+
+    public function previewLanding($id, Request $request){
+
+        return $this->landing(null,$id,null, "preview",$request);
+    }
+    public function hostLanding($id, Request $request){
+        return $this->landing(null,$id,null, "host", $request);
+
+    }
+    public function publisherLanding($code, $email=null,Request $request){
+        return $this->landing($code,null,$email, "publisher", $request);
+
+    }
+
+
+    private function landing($code=null, $id=null, $email=null, $type, Request $request){
+
+        $link = null;
+        if ($type == "preview") {
+            $request->user()->authorizeRoles('publisher');
+            $user_id = Auth::user()->id;
+            $link = link::all()->where('offer_id',$id)->where('user_id',$user_id)->first();
+        }else{
+            $tracking = new trackingController();
+            $tracking->click($code,$email);
+            if ($email){
+                return redirect("/" . $code);
+            }
+            if ($type == "publisher") {
+                $link = link::all()->where('link',$code)->first();
+            }
+            if ($type == "host") {
+                $link = Link::where("user_id","0")->where("offer_id",$id)->first();
+                if (!$link){
+                    $offer = offer::where('id',$id)->first();
+                    $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+                    $newLink = new Link;
+                    $newLink->offer_id = $id;
+                    $newLink->user_id = 0;
+                    $newLink->price = $offer->payout;
+                    $newLink->link = $url;
+                    $newLink->save();
+                }
+            }
+
+        }
+
+
         if ($link === null){
             return redirect("/");
         }
@@ -102,9 +200,15 @@ class landingController extends Controller
         $images = array($offer->thumbnail, $offer->image_1, $offer->image_2, $offer->image_3, $offer->image_4, $offer->image_5, $offer->image_6, $offer->image_7, $offer->image_8, $offer->image_9);
 
 
+        $related_url = "/related/" . $offer->id;
+
+        $related_offers = $this->getRelatedBooks($offer->id)->take(3);
+
         return view('layouts.landing')
             ->with('code', $code)
+            ->with('offers', $related_offers)
             ->with('title', $offer->title)
+            ->with('related_url', $related_url)
             ->with('description', $offer->description)
             ->with('price', $price)
             ->with('old_price', $old_price)
@@ -128,63 +232,34 @@ class landingController extends Controller
             ->with('author_about', $offer->author_about)
             ->with('book_about_1', $offer->book_about_1)
             ->with('book_about_2', $offer->book_about_2)
-            ->with('book_about_3', $offer->book_about_3);
+            ->with('book_about_3', $offer->book_about_3)
+            ->with('subscribers_count', $this->subscribers_count());
     }
 
 
 
 
-    public function preview($id){
+    public function home(){
 
+        if(Auth::guest()){
 
-        $offer = offer::all()->where('id',$id)->first();
-        $price = $offer->payout;
+        $offers = offer::all()->sortByDesc("cpc");
 
-        // get from links database
-        $custom_price = $price;
-
-        if ($custom_price == 0){
-            $old_price = $price;
+        return view('landing.home')
+            ->with('offers', $offers)
+            ->with('categories', $this->categories())
+            ->with('subscribers_count', $this->subscribers_count());
 
         }else{
-            $old_price = (($offer->payout * 55) / 100) + $price;
-            $old_price = intval($old_price);
+            return redirect("/home");
         }
-        $price = $custom_price;
 
-        $images = array($offer->thumbnail, $offer->image_1, $offer->image_2, $offer->image_3, $offer->image_4, $offer->image_5, $offer->image_6, $offer->image_7, $offer->image_8, $offer->image_9);
-        return view('layouts.landing')
-            ->with('code', 'XXXXXX')
-            ->with('title', $offer->title)
-            ->with('description', $offer->description)
-            ->with('price', $price)
-            ->with('old_price', $old_price)
-            ->with('thumbnail', $offer->thumbnail)
-            ->with('subtitle', $offer->subtitle)
-            ->with('images', $images)
-            ->with('author_image', $offer->author_image)
-            ->with('review_name_1', $offer->review_name_1)
-            ->with('review_content_1', $offer->review_content_1)
-            ->with('review_name_2', $offer->review_name_2)
-            ->with('review_content_2', $offer->review_content_2)
-            ->with('review_name_3', $offer->review_name_3)
-            ->with('review_content_3', $offer->review_content_3)
-            ->with('review_name_4', $offer->review_name_4)
-            ->with('review_content_4', $offer->review_content_4)
-            ->with('review_name_5', $offer->review_name_5)
-            ->with('review_content_5', $offer->review_content_5)
-            ->with('review_name_6', $offer->review_name_6)
-            ->with('review_content_6', $offer->review_content_6)
-            ->with('author_name', $offer->author_name)
-            ->with('author_about', $offer->author_about)
-            ->with('book_about_1', $offer->book_about_1)
-            ->with('book_about_2', $offer->book_about_2)
-            ->with('book_about_3', $offer->book_about_3);
+
+
     }
 
-    public function show(){
-        return view('landing.home');
-    }
+
+
 
 
 

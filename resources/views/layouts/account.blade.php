@@ -19,6 +19,9 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
 
+
+
+
     @yield('header')
 
 </head>
@@ -205,7 +208,11 @@
 
 
   </div> -->
-        @yield('content')
+
+        <div class="container" style="padding-top:100px;" >
+            @include('flash::message')
+            @yield('content')
+        </div>
 
         <footer class="footer footer-black  footer-white ">
             <div class="container-fluid">
@@ -256,6 +263,13 @@
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
         demo.initChartsPages();
     });
+</script>
+<script>
+    $('#flash-overlay-modal').modal();
+    $('div.alert').not('.alert-important').delay(15000).fadeOut(450);
+
+
+
 </script>
 </body>
 

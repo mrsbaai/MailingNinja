@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Clicks <br/>(Today)</p>
+                                    <p class="card-category">Unique Clicks <br/>(Today)</p>
                                     <p class="card-title">{{$data['clicks_today']}}
                                     <p>
                                 </div>
@@ -113,7 +113,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                @include('flash::message')
+
                 <div class="card ">
                     <div class="card-header ">
                         <h5 class="card-title">Sells</h5>

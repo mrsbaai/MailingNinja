@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Sells;
 use App\clicks;
+use App\domain;
 use App\subscriber;
 use App\vertical;
 use App\link;
@@ -182,7 +183,7 @@ class publisherController extends Controller
             ];
 
 
-            $filename = "Email-List.csv";
+            $filename = "[Offer_$id].csv";
             $handle = fopen($filename, 'w+');
             fputcsv($handle, array('E-mail Address', 'Country Code', 'Offer Vertical', 'Offer Name', 'Subscription Date'));
 
@@ -194,7 +195,7 @@ class publisherController extends Controller
             fclose($handle);
 
 
-            return Response::download($filename, $filename, $headers);
+            return Response::download($filename, $filename, $headers)->deleteFileAfterSend();
         }
         return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');history.go(-1);</script>");
     }
@@ -244,7 +245,7 @@ class publisherController extends Controller
             fclose($handle);
 
 
-            return Response::download($filename, $filename, $headers);
+            return Response::download($filename, $filename, $headers)->deleteFileAfterSend();
         }
         return ("<script LANGUAGE='JavaScript'>window.alert('You have 0 subscribers to this offer.');history.go(-1);</script>");
     }
@@ -327,6 +328,19 @@ class publisherController extends Controller
             'price' => $price,
         ]);
 
+        if ($res){
+
+            if ($price == 0){
+                flash("Offer $offer_id price is set to Free. The costumers will be asked for their E-mail address to get a download link for this product.")->success();
+
+            }else{
+                flash("Offer $offer_id price is set to: $$price. The costumers will be asked to pay $$price for this product.")->success();
+
+            }
+            }else{
+            flash("Unable to change the price!")->error();
+
+        }
 
         return redirect(route('promote-offer', ['id' => $offer_id]));
     }
@@ -355,6 +369,8 @@ class publisherController extends Controller
             $price = $link->price;
         }
 
+        $domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
+        $data['domain']  = $domain["domain"];
 
         $data['verticals'] = $offer->verticals()->get();
         $data['price'] = $price;
@@ -373,6 +389,7 @@ class publisherController extends Controller
     public function offers(Request $request){
         $request->user()->authorizeRoles('publisher');
 
+        $this->refreshCPC();
         $table = app(TableList::class)
             ->setModel(Offer::class)
             ->setRoutes([
@@ -400,8 +417,7 @@ class publisherController extends Controller
                     }
                 }
 
-            })
-            ->sortByDefault();
+            });
 
         $table->addColumn('title')
             ->setTitle('Offer')
@@ -439,6 +455,13 @@ class publisherController extends Controller
                     return $return;
                 }
             });
+        $table->addColumn('cpc')
+            ->isSortable()
+            ->setTitle('CPC')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $entity->cpc;
+            })
+            ->sortByDefault('desc');
 
 
         $table->addColumn()
@@ -513,17 +536,19 @@ class publisherController extends Controller
         $vertical = Input::get('vertical');
         $period = Input::get('period');
         $confirmed = Input::get('confirmed');
+        $type = Input::get('type');
+        $filter = Input::get('filter');
 
         //return $country . $vertical . $period. $confirmed;
         $query = subscriber::latest();
 
         $query->where('user_id' , Auth::user()->id);
 
-        if ($country){
-            $query->where('country' , $country);
-            $filename = "[$country]$filename";
-        }
-        if ($confirmed){ $query->where('is_confirmed' , $confirmed);}
+        if ($type){ $query->where('type' , $type);}
+
+        if ($filter){$query->where('email', 'LIKE', '%'.$filter.'%');}
+
+
 
         if ($vertical){
 
@@ -548,6 +573,12 @@ class publisherController extends Controller
            $now = Carbon::now();
            $query->whereBetween('Created_at', [$start, $now])->get();
        }
+
+        if ($country){
+            $query->where('country' , $country);
+            $filename = "[$country]$filename";
+        }
+        if ($confirmed){ $query->where('is_confirmed' , $confirmed);}
 
 
         $table = $query->get()->toArray();
@@ -592,13 +623,45 @@ class publisherController extends Controller
         fclose($handle);
 
 
-        return Response::download($filename, $filename, $headers);
+        return Response::download($filename, $filename, $headers)->deleteFileAfterSend();
 
         //return Redirect::back();
     }
 
 
 
+    public function refreshCPC (){
+        $offers = offer::all();
+
+        foreach ($offers as $offer){
+            $offer_clicks = 0;
+            $offer_volume = 0;
+            $click_log_entries = clicks::all()->where('offer_id',$offer['id']);
+            $sell_log_entries = Sells::all()->where('offer_id',$offer['id'])->where('status','Completed');
+
+            foreach ($click_log_entries as $click_log){
+                $offer_clicks = $offer_clicks + $click_log['count'];
+            }
+
+            foreach ($sell_log_entries as $sell_log){
+                $offer_volume = $offer_volume + $sell_log['net_amount'];
+            }
+
+            if ($offer_volume !== 0 and $offer_clicks !== 0){
+                $offer_cpc = $offer_volume / $offer_clicks;
+            }else{
+                $offer_cpc = 0;
+            }
+            $offer_cpc = number_format((float)$offer_cpc, 2, '.', '');
+
+
+            $res = $offer->update([
+                'cpc' => $offer_cpc,
+            ]);
+
+        }
+
+    }
     public function test (){
         return "<img src='https://i.imgur.com/PkVkuGF.jpg'/>";
 
@@ -630,7 +693,7 @@ class publisherController extends Controller
         $chartjs = app()->chartjs
             ->name($name)
             ->type('line')
-            ->size(['width' => 400, 'height' => 150])
+            ->size(['width' => 350, 'height' => 150])
             ->labels($dates)
             ->datasets([
                 [
@@ -644,7 +707,19 @@ class publisherController extends Controller
                     'data' => $data,
                 ],
             ])
-            ->options([]);
+            ->options([
+                'scales' => [
+                    'yAxes' => [
+                        [
+                            'ticks' => [
+                                'beginAtZero' => true,
+                                'precision' => 0,
+
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
         return $chartjs;
     }
 
@@ -677,7 +752,7 @@ class publisherController extends Controller
         $chartjs = app()->chartjs
             ->name($name)
             ->type('line')
-            ->size(['width' => 400, 'height' => 150])
+            ->size(['width' => 350, 'height' => 150])
             ->labels($dates)
             ->datasets([
                 [
@@ -691,7 +766,18 @@ class publisherController extends Controller
                     'data' => $data,
                 ],
             ])
-            ->options([]);
+            ->options([
+                'scales' => [
+                    'yAxes' => [
+                        [
+                            'ticks' => [
+                                'beginAtZero' => true,
+                                'precision' => 0,
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
         return $chartjs;
     }
 
@@ -728,7 +814,7 @@ class publisherController extends Controller
         $chartjs = app()->chartjs
             ->name($name)
             ->type('line')
-            ->size(['width' => 400, 'height' => 150])
+            ->size(['width' => 350, 'height' => 150])
             ->labels($dates)
             ->datasets([
                 [
@@ -742,7 +828,18 @@ class publisherController extends Controller
                     'data' => $data,
                 ],
             ])
-            ->options([]);
+            ->options([
+                'scales' => [
+                    'yAxes' => [
+                        [
+                            'ticks' => [
+                                'beginAtZero' => true,
+                                'precision' => 0,
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
         return $chartjs;
     }
 
@@ -784,7 +881,7 @@ class publisherController extends Controller
         $chartjs = app()->chartjs
             ->name($name)
             ->type('line')
-            ->size(['width' => 400, 'height' => 150])
+            ->size(['width' => 350, 'height' => 150])
             ->labels($dates)
             ->datasets([
                 [
@@ -818,7 +915,19 @@ class publisherController extends Controller
                     'data' => $data3,
                 ],
             ])
-            ->options([]);
+            ->options([
+                'scales' => [
+                    'yAxes' => [
+                        [
+                            'ticks' => [
+                                'beginAtZero' => true,
+                                'precision' => 0,
+
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
         return $chartjs;
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLinksTable extends Migration
+class CreateIpTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('link', 5)->unique();
-            $table->integer('user_id');
-            $table->integer('offer_id');
-            $table->decimal('price',6,2)->default(0);
+        Schema::create('ip', function (Blueprint $table) {
+            $table->string('ip', 39);
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('ip');
     }
 }

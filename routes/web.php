@@ -15,11 +15,32 @@
 
 Auth::routes();
 
-Route::get('/{code}/tracking/{email}', 'landingController@trackOpen');
+Route::get('/test','landingController@test');
+
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+Route::get('/l', 'landingController@home');
+
+
+Route::get('/{code}/tracking/{email}', 'trackingController@open');
 
 Route::pattern('code', '[A-Z]{5}');
+Route::get('/{code}/{email?}', 'landingController@publisherLanding')->name('publisher-landing');
 
-Route::get('/{code}', 'landingController@landing');
+Route::pattern('id', '[0-9]');
+
+Route::get('/preview/{id}', 'landingController@previewLanding')->name('preview');
+Route::get('/ebook/{id}', 'landingController@hostLanding')->name('host-landing');
+
+
+Route::get('/related/{offer_id}', 'landingController@showRelatedBooks');
+Route::get('/books/{category}', 'landingController@showVerticalBooks');
+
+
+
+
+Route::get('/check', 'publisherController@refreshCPC');
 
 
 Route::get('/{code}/subscribe/{email}', 'subscribeController@subscribe');
@@ -35,22 +56,27 @@ Route::post('/buy', 'landingController@register');
 Route::post('saveContact', 'ContactController@saveContact');
 
 
-Route::group(array('domain' => 'premiumbooks.net'), function() {
-    Route::get('/', 'landingController@home');
+$domains = \App\Domain::where('status', 'Active')->where('type', 'Promotional')->get();
 
-});
+foreach ($domains as $domain) {
+    Route::group(['domain' => $domain], function () {
+        Route::get('/', 'landingController@home');
+
+    });
+}
+$domains = \App\Domain::where('status', 'Dead')->where('type', 'Promotional')->get();
+
+foreach ($domains as $domain) {
+    Route::group(['domain' => $domain], function () {
+        Route::get('/', function () {
+            abort(404);
+        });
+    });
+}
 
 
-Route::get('/test', function () {
+//Route::group(array('domain' => 'premiumbooks.net'), function() {});
 
-    if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-        $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
-        $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
-    }
-    echo Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
-
-
-});
 
 
 //costumer
@@ -72,7 +98,7 @@ Route::post('/ipn/paypal','PaymentController@paypalIPN');
     Route::get('/', 'mailingNinjaController@home');
 
 
-    Route::get('/preview/{id}', 'landingController@preview')->name('preview');
+;
 
     Route::get('/publisher', 'publisherController@home')->name('publisher-home');
 

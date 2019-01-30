@@ -12,7 +12,7 @@ class CreateOffers extends Migration
             $table->increments('id');
             $table->boolean('is_active')->default(false);
             $table->boolean('is_private')->default(true);
-            $table->string('payout')->default(0);
+            $table->decimal('payout',6,2)->default(0);
 
             $table->longText('landing_a')->nullable();
             $table->longText('landing_b')->nullable();

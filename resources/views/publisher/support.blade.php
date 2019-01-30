@@ -6,7 +6,7 @@
     <div class="content">
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <div class="card card-user">
                     <div class="image">
                         <img src="{{ URL::asset('images/10.jpg') }}">
@@ -52,7 +52,7 @@
             </div>
 
 
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Send Email</h5>
@@ -62,7 +62,7 @@
                         {{ Form::open(array('action' => 'ContactController@saveContact', 'id' => 'contact-form', 'class' => 'text-left'))}}
 
                         <div class="main-login-form">
-                            @include('flash::message')
+
                             <input type="text" id="lg_role" name="lg_role" value="publisher" hidden>
                             <input type="email" id="lg_email" name="lg_email" value="{{Auth::user()->email}}" hidden>
 
@@ -77,7 +77,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Message: </div>
                                 </div>
-                                <textarea class="form-control" id="lg_message" name="lg_message" required></textarea>
+                                <textarea rows="5" class="form-control" id="lg_message" name="lg_message" style="max-height: 100%"  required></textarea>
                             </div>
 
 

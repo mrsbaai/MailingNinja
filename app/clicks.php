@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class clicks extends Model
 {
     protected $table = 'click_log';
+    protected $fillable = ['count'];
 }

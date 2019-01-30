@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLinksTable extends Migration
+class CreateDomainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link', 5)->unique();
-            $table->integer('user_id');
-            $table->integer('offer_id');
-            $table->decimal('price',6,2)->default(0);
+            $table->string('domain');
+            $table->string('status')->default('Active');
+            $table->string('type')->default('Promotional');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('domains');
     }
 }

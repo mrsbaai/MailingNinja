@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             rolesTableSeeder::class,
             usersTableSeeder::class,
             verticalsTableSeeder::class,
+            DomainsTableSeeder::class,
             countriesTableSeeder::class
 
         ]);

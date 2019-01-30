@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container">
-        @include('flash::message')
         <h1>Subscribers (Email list building)</h1>
         <div class="container">
             <p>This offer has generated a total of <u><b>1223</b> subscribers</u>.</p>

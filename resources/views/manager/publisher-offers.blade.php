@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="content">
-        @include('flash::message')
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
