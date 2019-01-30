@@ -15,6 +15,8 @@
 
 Auth::routes();
 
+Route::get('/', 'landingController@home');
+
 Route::get('/test','landingController@test');
 
 
