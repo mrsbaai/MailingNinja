@@ -56,24 +56,6 @@ Route::post('/buy', 'landingController@register');
 Route::post('saveContact', 'ContactController@saveContact');
 
 
-$domains = \App\domain::where('status', 'Active')->where('type', 'Promotional')->get();
-
-foreach ($domains as $domain) {
-    Route::group(['domain' => $domain], function () {
-        Route::get('/', 'landingController@home');
-
-    });
-}
-$domains = \App\Domain::where('status', 'Dead')->where('type', 'Promotional')->get();
-
-foreach ($domains as $domain) {
-    Route::group(['domain' => $domain], function () {
-        Route::get('/', function () {
-            abort(404);
-        });
-    });
-}
-
 
 //Route::group(array('domain' => 'premiumbooks.net'), function() {});
 
