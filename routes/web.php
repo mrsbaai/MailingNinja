@@ -56,7 +56,7 @@ Route::post('/buy', 'landingController@register');
 Route::post('saveContact', 'ContactController@saveContact');
 
 
-$domains = \App\Domain::where('status', 'Active')->where('type', 'Promotional')->get();
+$domains = \App\domain::where('status', 'Active')->where('type', 'Promotional')->get();
 
 foreach ($domains as $domain) {
     Route::group(['domain' => $domain], function () {
