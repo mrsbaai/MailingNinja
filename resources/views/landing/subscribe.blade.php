@@ -26,7 +26,7 @@
 
         setTimeout(function(){
             $('#subscribe-modal').modal();
-        }, 3000);
+        }, 30000);
 
     </script>
 @endsection

@@ -150,7 +150,7 @@
 
 
 
-<body style = "	visibility : hidden;">
+<body >
 
 
 <div id="wrapper" class="behind">
