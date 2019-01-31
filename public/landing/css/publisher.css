@@ -388,7 +388,7 @@ section.reviews {
 
 .navbar-nav > li > a.btn.btn-black {
 	background:white;
-	color:black;
+	color:#E7004F;
 	border-color:black;
 }
 
@@ -863,17 +863,20 @@ button:focus {
 /* Content Wrapper */
 
 #wrapper {
-	transition: all 0.3s ease;
+
+
 	width:100%;
+	height:100%;
 	top:0;
 	left:0;
     display:inline-block;
     overflow:hidden;
+
 }
 
 #wrapper.behind {
-	position: relative;
-	transform: scale(0.8) translateY(-5%);
+
+
 }
 
 /* Mobile Navigation */

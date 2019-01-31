@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right" style="padding-top:18px;">
-                <input id="send_btn" type="submit" class=" btn--subscribe  btn--primary btn--inside " value="Send">
+                <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" value="Send">
             </div>
         </div>
     </div>

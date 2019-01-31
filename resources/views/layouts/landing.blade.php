@@ -1,25 +1,12 @@
-@include('landing.subscribe')
-@include('landing.Wall')
-@include('landing.contact')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{{$title}}</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/normalize.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/bootstrap.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/owl.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/et-icons.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/tooltip.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/lightbox.css') }}">
-    <link id="main" rel="stylesheet" type="text/css" href="{{ asset('landing/css/publisher.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/book.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/subscribe.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 
     <style>
+
+
 
         blink {
             -webkit-animation: 1s linear infinite condemned_blink_effect;
@@ -47,10 +34,29 @@
                 visibility: visible;
             }
         }
-        header, .action-container{
-            background-color: #d4d9e6;
+        header{
+            background-color: #F5F5F5;
+        }
+        #headerContainer{
+            background-image: linear-gradient(to right top, #212120, #1f1f1e, #1d1c1c, #1a1a1a, #181818);
+        }
+
+        .action-container{
+
+            background-image: radial-gradient(circle, #f5f5f5, #f6f7f6, #f8f8f8, #f9faf9, #fbfbfb);
+            -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
+            box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
+            padding-top: 20px;
+            border: 10px solid white;
+            border-radius: 2px;
+
 
         }
+        .white{
+            text-transform: capitalize;
+        }
+
+
 
 
         #bookhold{
@@ -68,34 +74,32 @@
         .thumb{
 
             box-shadow: 0 3px 5px rgba(0,0,0,.05);
-
             width: 300px;
             height: auto;
-            border: 10px solid white;
+            border: 5px solid white;
             border-radius: 2px;
 
         }
 
 
 
-        .info{
+        .infobook{
             padding: 10px;
             padding-top: 25px;
             padding-bottom: 25px;
+            margin: 0px;
+            background-image: linear-gradient(to right top, #212120, #1f1f1e, #1d1c1c, #1a1a1a, #181818);
+
+
+        }
+        .infobook p{
+
+            color: white;
 
         }
 
 
 
-
-        .action-container{
-            -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
-            box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
-            padding-top: 20px;
-            border: 10px solid white;
-            border-radius: 2px;
-
-        }
 
 
         .csstransforms3d .book::before {
@@ -111,18 +115,51 @@
             background:#484d53;
         }
 
+
+
     </style>
+
+    <noscript>
+        <style type="text/css">
+            body {visibility : visible;}
+        </style>
+    </noscript>
+
+
+
+    @include('landing.subscribe')
+    @include('landing.Wall')
+    @include('landing.contact')
+
+    <meta charset="UTF-8">
+    <title>{{$title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/bootstrap.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/owl.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/et-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/tooltip.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/lightbox.css') }}">
+    <link id="main" rel="stylesheet" type="text/css" href="{{ asset('landing/css/publisher.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/book.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/subscribe.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 </head>
-<body>
+
+
+
+<body style = "	visibility : hidden;">
+
 
 <div id="wrapper" class="behind">
 
-    <header>
+    <header >
 
+        <div class="container" id="headerContainer" >
 
-        <div class="container" >
-
-            <div class="col-md-6  hidden-sm hidden-xs wow animated fadeInUp">
+            <div class="col-md-6  hidden-sm hidden-xs">
                 <div class="intro-book" style="width: 90%;">
                     <div class="books ">
                         <div class="book">
@@ -131,36 +168,35 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12 intro-text wow animated fadeInUp">
+            <div class="col-md-6 col-sm-12 intro-text">
                 <h2 class="heading white" >{{$title}}</h2>
-                <h4 class="subheading white">{{$subtitle}}</h4>
+                <h4 class="white">{{$subtitle}}</h4>
                 <p class ="white justify">{!! $description !!}</p>
 
 
                         @if ($price == 0)
-                    <br/><br/>
+                    <br/>
                     <div class="container" style="padding-left: 15px;">
                         <div class="row" >
                             {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
-                                <input id="input_1" name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent by e-mail.')" oninput="setCustomValidity('')" />
+                                <input name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent by e-mail.')" oninput="setCustomValidity('')" />
                                 <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download eBook</button>
                             {{ Form::close()}}
 
                         </div>
                     </div>
-                    <center><div class="big wow animated fadeInUp check-green" style="padding-top:15px;">(Available in PDF, MOBI, and EPUB)</div></center>
-
 
                         @else
                         {{ Form::open(array('action' => 'landingController@register'))}}
                         <input name="code" value="{{$code}}" hidden>
-                        <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About Book</a>
-                        <button type="submit"  class="btn btn-green" >Purchase eBook<span class="price">(Only ${{$price}})</span></button>
+                    <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About <span class=" hidden-md hidden-sm hidden-xs"> Book</span></a>
+                        <button type="submit" class="btn btn-green purchase" >Purchase<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
                         {{Form::close()}}
 
 
                         @endif
+                <br/><br/><br/><br/><br/>
 
 
 
@@ -179,7 +215,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h2></a>
+                <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -189,7 +225,6 @@
                     <li><a href="#author" class="scrollto">Author</a></li>
                     <li><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
-                    <li><a href="{{$related_url}}" class="btn btn-black">Descover eBooks</a></li>
                     <li><a href="#" class="btn btn-green">@if ($price == 0) Download @else Purchase @endif</a></li>
 
                 </ul>
@@ -275,11 +310,11 @@
 
 
     @if($book_about_3 !== null && $book_about_3 !== "" )
-        <section class="info">
+        <section class="infobook">
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12  check-green text-center">
+                    <div class="col-md-12 check-green text-center">
                         <p class="wow animated fadeInUp check-green text-center"><em>{!! $book_about_3 !!}</em></p>
                     </div>
                 </div>
@@ -295,7 +330,7 @@
                 @yield('Wall')
                 <div class="col-lg-12 wow animated fadeInUp" >
                     <p class="text-center">
-                        <a href="{{$related_url}}" class="btn btn-green " target="_blank">Discover More eBooks...</a>
+                        <a id="discover_button" href="{{$related_url}}" class="btn btn-green " target="_blank">More eBooks...</a>
                     </p>
 
                 </div>
@@ -428,44 +463,40 @@
     </section>
 
 
-
-
-
-
 @if(Route::currentRouteName() != 'host-landing')
-    <section id="action"  class="reviews">
+    <section id="action"  class="reviews text-center wow animated fadeInUp">
 
 
-        <div class="col-md-12 wow animated fadeInUp" style="padding-bottom: 80px;">
+        <div class="col-md-12" style="padding-bottom: 80px;">
 
             <div class="container action-container" >
 
 
-                <div class="col-md-3 text-left  wow animated fadeInUp">
+                <div class="col-md-3 text-left  h2">
                     <img src="{{ asset('landing/img/tr.gif') }}" id="bookhold">
                 </div>
                 @if ($price == 0)
 
-                    <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:80px;padding-left:150px;" >
-                        <h1 style="font-size: 40px; color: #313131; font-weight: bold;"><blink>Free Download,<br/>
+                    <div class="col-md-9 text-center h2" style="padding-top:80px;padding-left:150px;" >
+                        <h1 class="heading" style="font-size: 40px; color: #313131; font-weight: bold;"><blink>Free Download,<br/>
                                 Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
                             </blink></h1><br/>
-                        <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
+                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
                     </div>
-                <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:20px;padding-left:150px;" >
+                <div class="col-md-9 text-center h2" style="padding-top:20px;padding-left:150px;" >
                     {{ Form::open(array('action' => 'landingController@register'))}}
                         <input name="code" value="{{$code}}" hidden>
                         <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required />
                         <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
                     {{ Form::close() }}
-                    <span class="subheading big justify wow animated fadeInUp check-green">(Available in PDF, MOBI, and EPUB)</span>
+                    <span class="subheading big justify h2 check-green">(Available in PDF, MOBI, and EPUB)</span>
                 </div>
                 @else
-                    <div class="col-md-9 text-center wow animated fadeInUp" style="padding-top:120px;padding-left:150px;" >
-                        <h1 style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Spacial Offer!<br/>
+                    <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
+                        <h1 class="heading"style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Spacial Offer!<br/>
                                 Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
                             </blink></h1><br/>
-                        <h1>Price: <span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
+                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
 
                         <div class='info-form'>
                             {{ Form::open(array('action' => 'landingController@register'))}}
@@ -474,7 +505,7 @@
 
                             {{Form::close()}}
                         </div>
-                        <span class="subheading big justify wow animated fadeInUp check-green">(Avalable in PDF, MOBI, and EPUB)</span>
+                        <span class="subheading big justify h2 check-green">(Avalable in PDF, MOBI, and EPUB)</span>
                     </div>
                 @endif
 
@@ -544,8 +575,7 @@
 
 
 
-<script src="{{ asset('landing/js/color-thief.js') }}"></script>
-<script type="text/javascript">
+<script src="{{ asset('landing/js/color-thief.js') }}"></script><script type="text/javascript">
 
 
     function ColorLuminance(r, g, b, lum) {
@@ -700,135 +730,20 @@
 
 
 
-
-        do {
-
-
-            if (a < b){
-                a = parseInt((a + ((b - a) / 2)));
-            }else{
-                a = parseInt((a - ((a - b) / 2)));
-            }
-            if (c < b){
-                c = parseInt((c + ((b - c) / 2)));
-            }else{
-                c = parseInt((c - ((c - b) / 2)));
-            }
-            e = Math.abs(b - a) + Math.abs(b - c);
-
-
-        }
-
-        while (e > 20);
-
-
-
-        var i = a + b + c;
-        do {
-
-            if (i > 400){light1 = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);}
-            light =  ColorLuminance(a,b,c,0.05)
-
-            a = hexToRgb(light).r;
-            b = hexToRgb(light).g;
-            c = hexToRgb(light).b;
-            i = a + b + c;
-        }
-        while (i < 700);
-
-
-        do {
-
-            if (a < b){
-                a = parseInt((a + ((b - a) / 2)));
-            }else{
-                a = parseInt((a - ((a - b) / 2)));
-            }
-            if (c < b){
-                c = parseInt((c + ((b - c) / 2)));
-            }else{
-                c = parseInt((c - ((c - b) / 2)));
-            }
-            e = Math.abs(b - a) + Math.abs(b - c);
-
-
-        }
-
-        while (e > 20);
-
-
-
-        light = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-        //$('header').css('background-color', light);
-
-        $('header').css('background-color', secondary);
-        $('header').css('background-image', secondary);
-
-        //$('header').css('background-image', 'linear-gradient(to right bottom, ' + hex0 + ', ' + hex1 + ', ' + hex2 + ', ' + hex3 + ', ' + hex4 + ')');
-
-        //$('header').css('background', '-webkit-linear-gradient(to bottom, ' + dominant + ', ' + secondary + ', ' + light + ');');
-        //$('header').css('background', ' linear-gradient(to bottom, ' + dominant + ', ' + secondary + ', ' + light + ')');
-
-
-        $('.action-container').css('background-image', '-webkit-radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%);');
-        $('.action-container').css('background-image', 'radial-gradient(51% 98%, #F5F5F5 7%, ' + light + ' 98%)');
-
-
-
-        //$('#author').css('background-color', light);
-        //$('footer').css('background-color', light);
         $('#action_1').css('background-color', dominant);
         $('#send_btn').css('background-color', dominant);
-        $('#input_1').css('background-color', light);
-        $('#input_1').css('color', dominant);
+        $('#send_btn').css('border-color', dominant);
+        $('#discover_button').css('background-color', dominant);
+        $('#discover_button').css('border-color', dominant);
 
 
-        //$('.subheading').css('color', dominant);
+        $('.purchase').css('border', '3px solid transparent');
+        $('.purchase').css('background', dominant);
+
+        //$('.dominant-color').css('color', dominant);
 
 
 
-        //$('.expand').css('background-color', dominant);
-
-        $('.white').css('color', dominant);
-
-        $('.btn.btn-white').css('border', '3px solid transparent');
-        $('.btn.btn-white').css('background', dominant);
-
-        $('h1').css('font-family', 'Proxima Bold');
-        $('.dominant-color').css('color', dominant);
-        $('h4').css('color', dominant);
-        $('li').css('color', dominant);
-        $('p').css('color', dominant);
-        $('.small').css('color', dominant);
-        //$('.big').css('color', dominant);
-
-
-        $('.info').css('background-color', secondary);
-
-        //$('#reviews').css('background-color',light);
-        $('#logo_span').css('color', secondary);
-
-
-        document.getElementById("action_1").onmouseover = function()
-        {
-            this.style.backgroundColor = dominant_light;
-        }
-
-        document.getElementById("action_1").onmouseout = function()
-        {
-            this.style.backgroundColor = dominant;
-        }
-
-
-        document.getElementById("send_btn").onmouseover = function()
-        {
-            this.style.backgroundColor = dominant_light;
-        }
-
-        document.getElementById("send_btn").onmouseout = function()
-        {
-            this.style.backgroundColor = dominant;
-        }
 
 
 
@@ -857,11 +772,8 @@
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
-    setTimeout(function(){
-        $('#subscribe-modal').modal();
-        }, 30000);
-
 
 </script>
 </body>
+
 </html>

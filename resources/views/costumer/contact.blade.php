@@ -35,7 +35,7 @@
 
                             <div class="row">
                                 <div class="update ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-round">send</button>
+                                    <input  class="btn btn-round " alt="Submit" value="Send">
                                 </div>
                             </div>
 

@@ -22,9 +22,7 @@
             }
         }
 
-        .img-responsive {
-            margin-bottom:30px;
-        }
+
 
         .hovereffect {
             width: 100%;
@@ -32,7 +30,7 @@
             float: left;
             overflow: hidden;
             position: relative;
-            text-align: center;
+
             cursor: default;
 
         }
@@ -52,60 +50,69 @@
             height: 100%;
             display: block;
             position: relative;
-            -webkit-transition: all 0.4s ease-in;
-            transition: all 0.4s ease-in;
+            -webkit-transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in;
         }
 
         .hovereffect:hover img {
             filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /><feGaussianBlur stdDeviation="3" /></filter></svg>#filter');
-            filter: grayscale(1) blur(3px);
-            -webkit-filter: grayscale(1) blur(3px);
+            filter: grayscale(1) blur(5px);
+            -webkit-filter: grayscale(5) blur(10px);
             -webkit-transform: scale(1.1);
             -ms-transform: scale(1.1);
             transform: scale(1.1);
-            margin: -1px;
+            overflow:hidden;
+
         }
 
 
         .hovereffect h2{
-            text-transform: capitalize;
-            text-align: center;
+
+            margin-top: 0px;
+
             position: relative;
-            font-size: 17px;
+            font-size: 20px;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            font-color: white;
+            background: white;
+
         }
 
 
 
 
         .hovereffect a.info:hover {
-            box-shadow: 0 0 5px #fff;
+            background-color: white !important;
+            color: black !important;
         }
 
         .hovereffect a.info, .hovereffect h2 {
             -webkit-transform: scale(0.7);
             -ms-transform: scale(0.7);
             transform: scale(0.7);
-            -webkit-transition: all 0.4s ease-in;
-            transition: all 0.4s ease-in;
+            -webkit-transition: all 0.1s ease-in;
+            transition: all 0.1s ease-in;
             opacity: 0;
             filter: alpha(opacity=0);
-            color: #fff;
-            text-transform: uppercase;
+            color: white;
+            font-family: 'Proxima';
+            text-transform: capitalize;
             padding: 5px;
 
 
         }
 
-        .info {
+        .hovereffect h2 {
+            color: #1E1D1D;
+            line-height: 30px;
+        }
 
+        .info {
+            font-size: 20px;
             text-decoration: none;
             padding: 7px 14px;
-            border: 1px solid #fff;
+            border: 2px solid #fff;
             margin: 50px 0 0;
-            border-radius: 0;
+            border-radius: 2px;
             background-color: transparent !important;
 
         }
@@ -117,30 +124,44 @@
             -ms-transform: scale(1);
             transform: scale(1);
         }
+
+        .wallthumb{
+
+            box-shadow: 0 3px 5px rgba(0,0,0,.05);
+            width: auto;
+            height: auto;
+
+            border-radius: 2px;
+            margin-bottom: 30px;
+
+            border: 10px solid white;
+            -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
+            box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
+
+        }
+
+
     </style>
     <div class="row row-fix" >
         @foreach ($offers as $offer)
 
             <div class="col-lg-4 col-md-6 col-sm-6" style="">
-                <a href="/ebook/{{$offer->id}}" target="_blank">
 
-                    <div class="hovereffect">
 
-                        <img class="img-responsive img-fluid img-thumbnail center-block" src="@if ($offer->thumbnail){{$offer->thumbnail}}@else /images/empty.png @endif" alt="Read: {{$offer->title}}">
-                        <div class="overlay ">
-                            <h2>{{$offer->title}}:<br/>
-                                <span style="font-size: 80%">{{$offer->subtitle}}</span><br/>
 
-                            </h2>
-                            <h2>
-                                <span style="font-size: 70%">{{$offer->description}}</span>
-                            </h2>
+                        <div class="hovereffect wallthumb">
 
-                            <a class="info" href="/ebook/{{$offer->id}}" target="_blank">Discover</a>
+                            <img class="img-responsive img-fluid center-block" src="@if ($offer->thumbnail){{$offer->thumbnail}}@else /images/empty.png @endif" alt="Read: {{$offer->title}}">
+                            <div class="overlay ">
+                                <h2>{{$offer->description}}</h2>
+                                <center><a class="info" href="/ebook/{{$offer->id}}" target="_blank"><b>Discover</b></a></center>
+
+
+                            </div>
+
+
                         </div>
 
-                    </div>
-                </a>
             </div>
 
         @endforeach

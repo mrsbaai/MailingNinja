@@ -3,10 +3,10 @@
   display: inline-block;
   box-shadow: 5px 5px 20px #333;
   margin: 20px;
-  height:550px;
+  height:500px;
 }
 
-.book img { vertical-align: middle; height:550px;}
+.book img { vertical-align: middle; height:500px;}
 
 /*
  *  In order for this to work, you must use Modernizer
