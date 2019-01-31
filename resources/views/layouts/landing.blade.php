@@ -3,10 +3,9 @@
 <html lang="en">
 <head>
 
-
     <style>
 
-
+        html { visibility:hidden; }
 
         blink {
             -webkit-animation: 1s linear infinite condemned_blink_effect;
@@ -121,7 +120,7 @@
 
     <noscript>
         <style type="text/css">
-            body {visibility : visible;}
+            html {visibility : visible;}
         </style>
     </noscript>
 
@@ -150,7 +149,7 @@
 
 
 
-<body style = "	visibility : hidden;">
+<body>
 
 
 <div id="wrapper" class="behind">
