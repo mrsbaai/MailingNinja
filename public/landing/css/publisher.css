@@ -873,9 +873,14 @@ button:focus {
     overflow:hidden;
 
 }
-
+#load {
+	background-color: #1b6d85;
+	width:100%;
+	height:2000px;
+}
 #wrapper.behind {
-
+	position: relative;
+	transform: scale(0.8) translateY(-5%);
 
 }
 
