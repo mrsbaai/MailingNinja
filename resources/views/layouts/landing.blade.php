@@ -5,7 +5,11 @@
 
     <style>
 
-
+        #load {
+            background-color: #F5F5F5;
+            width:100%;
+            height:2000px;
+        }
 
         blink {
             -webkit-animation: 1s linear infinite condemned_blink_effect;
@@ -168,7 +172,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 intro-text">
-                <h2 class="heading white" >dddddd{{$title}}</h2>
+                <h2 class="heading white" >{{$title}}</h2>
                 <h4 class="white">{{$subtitle}}</h4>
                 <p class ="white justify">{!! $description !!}</p>
 
