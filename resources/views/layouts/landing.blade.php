@@ -776,6 +776,10 @@
 <script>
     $('#flash-overlay-modal').modal();
 
+    $(document).ready(function(){
+        document.getElementById("load").remove();
+    });
+
 </script>
 </body>
 
