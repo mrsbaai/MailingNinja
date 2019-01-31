@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 intro-text">
-                <h2 class="heading white" >{{$title}}</h2>
+                <h2 class="heading white" >dddddd{{$title}}</h2>
                 <h4 class="white">{{$subtitle}}</h4>
                 <p class ="white justify">{!! $description !!}</p>
 
