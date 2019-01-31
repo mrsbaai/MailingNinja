@@ -135,10 +135,12 @@
             margin-bottom: 30px;
 
             border: 10px solid white;
-            -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
-            box-shadow: 0px 10px 13px -7px #000000, inset 0px 2px 8px 4px rgba(0,0,0,0);
+            -webkit-box-shadow: 0px 8px 12px -3px rgba(0,0,0,0.53);
+            -moz-box-shadow: 0px 8px 12px -3px rgba(0,0,0,0.53);
+            box-shadow: 0px 8px 12px -3px rgba(0,0,0,0.53);
 
         }
+
 
 
     </style>
@@ -146,7 +148,6 @@
         @foreach ($offers as $offer)
 
             <div class="col-lg-4 col-md-6 col-sm-6" style="">
-
 
 
                         <div class="hovereffect wallthumb">
@@ -161,8 +162,8 @@
 
 
                         </div>
-
             </div>
+
 
         @endforeach
 
