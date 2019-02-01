@@ -333,7 +333,7 @@
                 @yield('Wall')
                 <div class="col-lg-12 wow animated fadeInUp" >
                     <p class="text-center">
-                        <a id="discover_button" href="{{$related_url}}" class="btn btn-green " target="_blank">More eBooks...</a>
+                        <a id="discover_button" href="{{$related_url}}" class="btn btn-green "  style="background-color: #4C4A48;border-color:#4C4A48; padding: 0px 10px 0px 10px;"  target="_blank">More eBooks...</a>
                     </p>
 
                 </div>
@@ -734,12 +734,13 @@
 
 
         $('#action_1').css('background-color', dominant);
-        $('#send_btn').css('background-color', dominant);
-        $('#send_btn').css('border-color', dominant);
-        $('#discover_button').css('background-color', dominant);
-        $('#discover_button').css('border-color', dominant);
 
 
+
+
+
+
+        $('.subs').css('background-color', dominant);
         $('.purchase').css('border', '3px solid transparent');
         $('.purchase').css('background', dominant);
 

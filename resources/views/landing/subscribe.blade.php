@@ -16,7 +16,7 @@
     {{ Form::open(array('action' => 'subscribeController@subscribePost'))}}
     <input name="code" value="@if(!empty($code)){{$code}}@endif" hidden>
     <input name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Please enter your real e-mail.')" oninput="setCustomValidity('')" />
-    <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase">Subscribe</button>
+    <button type="submit" class="btn--subscribe btn--primary btn--inside subs uppercase">Subscribe</button>
     {{ Form::close()}}
     <br/>
     <h4><span class="label label-info"><i class="fas fa-envelope fa-md"></i> {{$subscribers_count}} Subscribed</span></h4>
