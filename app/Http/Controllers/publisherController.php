@@ -369,8 +369,8 @@ class publisherController extends Controller
             $price = $link->price;
         }
 
-        $domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
-        $data['domain']  = $domain["domain"];
+        //$domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
+        $data['domain']  = config('app.promote_url');
 
         $data['verticals'] = $offer->verticals()->get();
         $data['price'] = $price;
