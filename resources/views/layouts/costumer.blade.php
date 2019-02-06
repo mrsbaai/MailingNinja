@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>{{strtoupper(explode(".", Request::getHost())[0])}}</title>
+    <title>{{ config('app.name') }}.</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -33,7 +33,7 @@
 
                     <span class="navbar-brand">
 
-                        <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
+                        <span class="uppercase">{{ config('app.name') }}.</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
                     </span>
 
 
@@ -102,7 +102,7 @@
                 ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, Made With <i class="fa fa-heart heart"></i> By <span class="uppercase">{{explode(".", Request::getHost())[0]}}</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
+                </script>, Made With <i class="fa fa-heart heart"></i> By <span class="uppercase">{{ config('app.name') }}</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
               </span>
                     </div>
                 </div>

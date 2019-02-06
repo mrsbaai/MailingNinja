@@ -2,6 +2,12 @@
 
 return [
 
+    'promote_url' => env('PROMOTE_URL', 'Mailing Ninja'),
+    'internal_url' => env('INTERNAL_URL', 'Mailing Ninja'),
+    'home_url' => env('HOME_URL', 'Mailing Ninja'),
+    'home_name' => env('HOME_NAME', 'Mailing Ninja'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -13,7 +19,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Mailing Ninja'),
+    'name' => env('APP_NAME', ''),
 
     /*
     |--------------------------------------------------------------------------

@@ -218,7 +218,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{explode(".", Request::getHost())[0]}}<span style="font-size:200%;color:#7cc576;">.</span></h2></a>
+                <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{ config('app.name') }}<span style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -566,7 +566,7 @@
 
 
                 <div class="col-md-12">
-                    <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{explode(".", Request::getHost())[0]}}.</span> - All rights reserved!</p>
+                    <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{ config('app.name') }}.</span> - All rights reserved!</p>
 
                 </div>
             </div>

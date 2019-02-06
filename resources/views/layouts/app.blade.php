@@ -10,7 +10,7 @@
         @if(explode(".", Request::getHost())[0] == "mailing" or explode(".", Request::getHost())[0] == "mailingninja")
             Mailing Ninja
         @else
-            {{strtoupper(explode(".", Request::getHost())[0])}}
+            {{ config('app.name') }}
         @endif
     </title>
 
