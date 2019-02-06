@@ -11,6 +11,7 @@ class mailingNinjaController extends Controller
 
 
     public function home(Request $request){
+        return "tst";
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;
             if ( $role == "publisher"){ return redirect()->route('publisher-home');}

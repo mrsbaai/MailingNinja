@@ -62,7 +62,7 @@ Route::post('saveContact', 'ContactController@saveContact');
 
 
 
-Route::group(array('domain' => 'prembooks.io'), function() {
+Route::group(array('domain' => 'mailing.ninja'), function() {
     Route::get('/', 'mailingNinjaController@home');
 
 });
