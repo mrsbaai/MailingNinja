@@ -474,10 +474,10 @@ class publisherController extends Controller
                 $download_route = route('offer-subscribed', ['id' => $entity->id]);
 
                 $return =   "
-<a class='p-3' target='blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
-<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
-<a class='p-3' target='blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
-<a class='p-3' target='blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
+<a class='p-3' target='_blank' href='$preview_route' title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>
+<a class='p-3' target='_blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
+<a class='p-3' target='_blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>
+<a class='p-3' target='_blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>
                         
                         ";
 
