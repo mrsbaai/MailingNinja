@@ -146,7 +146,7 @@ class landingController extends Controller
 
         $link = null;
         if ($type == "preview") {
-            $request->user()->authorizeRoles('publisher');
+            $request->user()->authorizeRoles('publisher','manager','admin');
             $user_id = Auth::user()->id;
             $link = link::all()->where('offer_id',$id)->where('user_id',$user_id)->first();
         }else{
