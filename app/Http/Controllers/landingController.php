@@ -146,6 +146,7 @@ class landingController extends Controller
 
         $link = null;
         if ($type == "preview") {
+            if (config('app.internal_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
             $request->user()->authorizeRoles('publisher','manager','admin');
             $user_id = Auth::user()->id;
             $link = link::all()->where('offer_id',$id)->where('user_id',$user_id)->first();
@@ -156,6 +157,7 @@ class landingController extends Controller
                 return redirect("/" . $code);
             }
             if ($type == "publisher") {
+                if (config('app.internal_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
                 $link = link::all()->where('link',$code)->first();
             }
             if ($type == "host") {
