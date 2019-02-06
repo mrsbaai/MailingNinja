@@ -11,14 +11,20 @@ class mailingNinjaController extends Controller
 
 
     public function home(Request $request){
-        return Request::getHost();
+
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;
             if ( $role == "publisher"){ return redirect()->route('publisher-home');}
             if ( $role == "manager"){ return redirect()->route('manager-home');}
             if ( $role == "costumer"){ return redirect()->route('costumer-home');}
         }else{
-            return view('mailingNinja.home');
+            if ($request->getHttpHost() == "mailing.ninja"){
+                return view('mailingNinja.home');
+            }else{
+                return view('landing.home');
+
+            }
+
         }
 
     }
