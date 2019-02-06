@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\landingController;
 
 
 class mailingNinjaController extends Controller
@@ -21,8 +22,8 @@ class mailingNinjaController extends Controller
             if ($request->getHttpHost() == "mailing.ninja"){
                 return view('mailingNinja.home');
             }else{
-                return view('landing.home');
-
+                $landing = new landingController();
+                return $landing->home();
             }
 
         }
