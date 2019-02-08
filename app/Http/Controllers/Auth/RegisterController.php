@@ -92,7 +92,7 @@ class RegisterController extends Controller
             return $user;
 
         }else{
-            $publisher_manager = user::where('name', 'Oumayma')->first();
+            $publisher_manager = user::where('id', '2')->first();
             $user = new user();
             $user->is_active = false;
             $user->country = $data['country'];

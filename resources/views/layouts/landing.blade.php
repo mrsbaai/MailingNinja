@@ -158,9 +158,9 @@
 <div id="load"></div>
 <div id="wrapper" class="behind">
 
-    <header >
+    <header  id="headerContainer">
 
-        <div class="container" id="headerContainer" >
+        <div class="container" >
 
             <div class="col-md-6  hidden-sm hidden-xs">
                 <div class="intro-book" style="width: 90%;">
