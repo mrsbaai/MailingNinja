@@ -20,6 +20,8 @@
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
 
+                                        <input  id="manager" type="text" name="manager" value="@if (isset($manager_id)) {{$manager_id}} @else {{ config('app.main_manager') }} @endif" required hidden>
+
                                         <input  placeholder="Company Name (or your name)" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                         @if ($errors->has('name'))

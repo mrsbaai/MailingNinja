@@ -61,7 +61,7 @@ class subscribeController extends Controller
             $offer_id = $info['offer_id'];
             $user_id = $info['user_id'];
         }else{
-            $offer_id = $user_id  = 0;
+            $offer_id = $user_id  = config('app.main_publisher');
         }
 
         $check = subscriber::all()->where('email', $email)->first();

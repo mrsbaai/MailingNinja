@@ -6,6 +6,10 @@ return [
     'internal_url' => env('INTERNAL_URL', 'Mailing Ninja'),
     'home_url' => env('HOME_URL', 'Mailing Ninja'),
     'home_name' => env('HOME_NAME', 'Mailing Ninja'),
+    'main_publisher' => env('MAIN_PUBLISHER', '0'),
+    'main_manager' => env('MAIN_MANAGER', '2'),
+    'manager_commission' => env('MANAGER_COMMISSION', '10'),
+    'host_commission' => env('HOST_COMMISSION', '5'),
 
 
     /*

@@ -149,10 +149,12 @@ class landingController extends Controller
             if (config('app.internal_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
             if(Auth::check()){
                 $user_id = Auth::user()->id;
-                $link = link::all()->where('offer_id',$id)->where('user_id',$user_id)->first();
+                $link = link::all()->where('offer_id',$id)->where('user_id',config('app.main_publisher'))->first();
+
             }else{
                 return abort(403, 'You need to be logged in to preview offers');
             }
+
 
         }else{
             $tracking = new trackingController();
@@ -165,19 +167,22 @@ class landingController extends Controller
                 $link = link::all()->where('link',$code)->first();
             }
             if ($type == "host") {
-                $link = Link::where("user_id","0")->where("offer_id",$id)->first();
-                if (!$link){
-                    $offer = offer::where('id',$id)->first();
-                    $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
-                    $newLink = new Link;
-                    $newLink->offer_id = $id;
-                    $newLink->user_id = 0;
-                    $newLink->price = $offer->payout;
-                    $newLink->link = $url;
-                    $newLink->save();
-                }
+                $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
             }
 
+        }
+
+        if (!$link){
+            $offer = offer::where('id',$id)->first();
+
+            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+            $newLink = new Link;
+            $newLink->offer_id = $id;
+            $newLink->user_id = config('app.main_publisher');
+            $newLink->price = $offer->payout;
+            $newLink->link = $url;
+            $newLink->save();
+            $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
         }
 
 

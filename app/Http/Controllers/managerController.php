@@ -140,7 +140,7 @@ class managerController extends Controller
 
         $query  = sells::latest();
         $query
-            ->where('publisher_id','<>','0')
+            ->where('publisher_id','<>',config('app.main_publisher'))
             ->where('net_amount','>','0')
             ->where('status','Completed');
 
@@ -158,7 +158,7 @@ class managerController extends Controller
 
         $query  = sells::latest();
         $query
-            ->where('publisher_id','0')
+            ->where('publisher_id',config('app.main_publisher'))
             ->where('net_amount','>','0')
             ->where('status','Completed');
 

@@ -14,6 +14,7 @@
 
 
 Auth::routes();
+Route::get('getstarted/{manager_id}', 'Auth\RegisterController@showRegistrationForm');
 
 Route::get('/', 'mailingNinjaController@home');
 

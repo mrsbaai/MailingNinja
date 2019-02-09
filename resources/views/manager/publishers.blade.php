@@ -2,6 +2,44 @@
 
 
 @section('content')
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-header">
+                        <h5 class="card-title">Refer publishers</h5>
+                        <p class="card-category">
+                            Refer publishers thrue this link, and get <b>"{{ config('app.manager_commission') }}%"</b> net commission from every publisher's total income.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="col-centered" >
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" >
+                                            <span class="input-group-text" style="font-size: 110%">Link:</span>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="font-size: 100%; text-transform: lowercase;"><b>https://{{ config('app.home_url') }}/getstarted/{{Auth::user()->id}}</b>&nbsp;&nbsp;</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
     <div class="content">
         <div class="row">

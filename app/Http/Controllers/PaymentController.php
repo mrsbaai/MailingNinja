@@ -22,7 +22,7 @@ class PaymentController extends Controller
         $offer = offer::all()->where('id',$invoice['offer_id'])->first();
 
 
-        if ($invoice['publisher_id'] == 0){
+        if ($invoice['publisher_id'] == config('app.main_publisher')){
             $business = $this->GetInternalPayPal();
         }else{
             $publisher = user::all()->where('id',$invoice['publisher_id'])->first();

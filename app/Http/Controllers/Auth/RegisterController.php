@@ -74,7 +74,7 @@ class RegisterController extends Controller
     {
 
 
-        if (null !== $data['code']){
+        if (isset ($data['code'])){
 
             $user = new user();
             $user->is_active = true;
@@ -92,7 +92,7 @@ class RegisterController extends Controller
             return $user;
 
         }else{
-            $publisher_manager = user::where('id', '2')->first();
+            $publisher_manager = user::where('id', $data['manager'])->first();
             $user = new user();
             $user->is_active = false;
             $user->country = $data['country'];
