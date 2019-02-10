@@ -19,7 +19,7 @@ class ContactController extends Controller
         $subject = "(Contact Test)";
         $host_email = config('app.contact_costumers');
         $view = 'emails.contacts.received';
-        Mail::to($email)->from($host_email)->subject($subject)->send(new ContactReceived());
+        Mail::to($email)->send(new ContactReceived());
     }
     public function saveContact(){
         $email = Input::get('lg_email');
