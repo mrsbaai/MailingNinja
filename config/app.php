@@ -10,6 +10,8 @@ return [
     'main_manager' => env('MAIN_MANAGER', '2'),
     'manager_commission' => env('MANAGER_COMMISSION', '10'),
     'host_commission' => env('HOST_COMMISSION', '5'),
+    'contact_publishers' => env('CONTACT_PUBLISHERS', 'mailingninja@gmail.com'),
+    'contact_costumers' => env('CONTACT_COSTUMERS', 'premiumbooks.net@gmail.com'),
 
 
     /*
