@@ -87,6 +87,8 @@
                      </div>
                   </div>
                   {{Form::close()}}
+                  <br/>
+                  <p><b>Privacy Statement:</b> E-mail addresses are stored in an encrypted format. No one have access to use or sell your generated mailing lists.</p>
                </div>
                <div class="card-footer">
                   <hr>

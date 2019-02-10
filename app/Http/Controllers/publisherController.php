@@ -239,7 +239,7 @@ class publisherController extends Controller
 
             foreach($table as $row) {
 
-                fputcsv($handle, array($row['email']));
+                fputcsv($handle, array(md5($row['email'])));
             }
 
             fclose($handle);
