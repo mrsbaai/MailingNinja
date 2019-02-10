@@ -1,8 +1,7 @@
 @component('mail::message')
 # Introduction
 
-{{$content}}
-
+sss
 @component('mail::button', ['url' => ''])
 Button Text
 @endcomponent

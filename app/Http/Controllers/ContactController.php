@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\contact;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactReceived;
 
 class ContactController extends Controller
 {
@@ -18,12 +19,7 @@ class ContactController extends Controller
         $subject = "(Contact Test)";
         $host_email = config('app.contact_costumers');
         $view = 'emails.contacts.received';
-
-        Mail::send($view, ['content' => $content], function ($message) use($subject,$email,$host_email){
-            $message->from($email);
-            $message->to($host_email);
-            $message->subject($subject);
-        });
+        Mail::to($email)->from($host_email)->subject($subject)->send(new ContactReceived());
     }
     public function saveContact(){
         $email = Input::get('lg_email');
