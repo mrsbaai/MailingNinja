@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\toCostumer;
 use Illuminate\Http\Request;
 use App\contact;
 use Carbon\Carbon;
@@ -19,21 +20,14 @@ class ContactController extends Controller
         $subject = "(Contact Test)";
         $we_email = config('app.contact_costumers');
         $we_name = config('app.app_name');
-        $view = 'emails.contacts.received';
+        $markdown= 'emails.contacts.received';
         $data = array('name'=>$we_name, 'email'=>$we_email, 'message'=>$content);
 
-
-        //Mail::to($email)->send(new ContactReceived())->with('site_title','title here');
-
+        Mail::to($user_email)->send(new toCostumer())->markdown($markdown);
 
 
 
 
-        Mail::send($view, $data, function($message) use ($we_email, $we_name, $subject, $user_email)
-        {
-            $message->from($we_email, $we_name);
-            $message->to($user_email)->subject($subject);
-        });
     }
     public function saveContact(){
         $email = Input::get('lg_email');
