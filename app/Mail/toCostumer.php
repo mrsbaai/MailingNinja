@@ -31,7 +31,9 @@ class toCostumer extends Mailable
      */
     public function build()
     {
-        return $this->from( config('app.contact_costumers'), config('app.app_name'))
+
+
+        return $this->from( config('app.contact_costumers'), config('app.home_name'))
             ->markdown($this->markdown)
             ->subject($this->subject)
             ->with('data', $this->data);
