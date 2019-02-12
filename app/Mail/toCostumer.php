@@ -37,9 +37,9 @@ class toCostumer extends Mailable
 
             App::forgetInstance('mailer');
             Mail::clearResolvedInstance('mailer');
-            Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
-            Config::set('services.mail.username', config('app.mail_username_publishers'));
-            Config::set('services.mail.password', config('app.mail_password_publishers'));
+            Config::set('services.mailgun.domain', config('app.mailgun_domain_costumers'));
+            Config::set('services.mail.username', config('app.mail_username_costumers'));
+            Config::set('services.mail.password', config('app.mail_password_costumers'));
 
         return $this->from( config('app.contact_costumers'), config('app.app_name'))
             ->markdown($this->markdown)

@@ -15,6 +15,7 @@ class ContactController extends Controller
 
 
     public function test(){
+
         $user_email = "abdelilah.sbaai@gmail.com";
         $content = "Whatever";
         $subject = "special test";
