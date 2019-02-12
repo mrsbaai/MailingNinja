@@ -28,6 +28,7 @@ class toCostumer extends Mailable
         Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
         Config::set('services.mail.username', config('app.mail_username_publishers'));
         Config::set('services.mail.password', config('app.mail_password_publishers'));
+        (new \Illuminate\Mail\MailServiceProvider(app()))->register();
 
 
 
