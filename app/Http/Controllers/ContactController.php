@@ -29,7 +29,7 @@ class ContactController extends Controller
 
 
 
-        Mail::send(new ContactReceived(), $data, function($message) use ($we_email, $we_name, $subject, $user_email)
+        Mail::send($view, $data, function($message) use ($we_email, $we_name, $subject, $user_email)
         {
             $message->from($we_email, $we_name);
             $message->to($user_email)->subject($subject);
