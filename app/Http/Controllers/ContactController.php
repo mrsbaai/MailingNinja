@@ -23,7 +23,7 @@ class ContactController extends Controller
         $markdown= 'emails.contacts.received';
         $data = array('name'=>$we_name, 'email'=>$we_email, 'message'=>$content);
 
-        Mail::to($user_email)->send(new toCostumer())->markdown($markdown);
+        Mail::to($user_email)->send(new toCostumer());
 
 
 

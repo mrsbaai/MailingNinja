@@ -28,6 +28,6 @@ class toCostumer extends Mailable
      */
     public function build()
     {
-        return $this;
+        return $this->markdown('emails.contacts.received');
     }
 }
