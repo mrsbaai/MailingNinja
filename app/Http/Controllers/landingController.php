@@ -146,10 +146,10 @@ class landingController extends Controller
 
         $link = null;
         if ($type == "preview") {
-            if (config('app.internal_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
+            if (config('app.app_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
             if(Auth::check()){
                 $user_id = Auth::user()->id;
-                $link = link::all()->where('offer_id',$id)->where('user_id',config('app.main_publisher'))->first();
+                $link = link::all()->where('offer_id',$id)->where('user_id',$user_id)->first();
 
             }else{
                 return abort(403, 'You need to be logged in to preview offers');
@@ -163,7 +163,7 @@ class landingController extends Controller
                 return redirect("/" . $code);
             }
             if ($type == "publisher") {
-                if (config('app.internal_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
+                if (config('app.app_url') == $request->getHttpHost()){return abort(403, 'This domain name is not allowed for publishers!');}
                 $link = link::all()->where('link',$code)->first();
             }
             if ($type == "host") {
@@ -185,7 +185,7 @@ class landingController extends Controller
             $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
         }
 
-
+        return;
         if ($link === null){
             return redirect("/");
         }

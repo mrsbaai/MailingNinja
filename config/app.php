@@ -2,16 +2,23 @@
 
 return [
 
-    'promote_url' => env('PROMOTE_URL', 'Mailing Ninja'),
-    'internal_url' => env('INTERNAL_URL', 'Mailing Ninja'),
-    'home_url' => env('HOME_URL', 'Mailing Ninja'),
-    'home_name' => env('HOME_NAME', 'Mailing Ninja'),
+    'promote_url' => env('PROMOTE_URL'),
+    'home_url' => env('HOME_URL'),
+    'home_name' => env('HOME_NAME'),
     'main_publisher' => env('MAIN_PUBLISHER', '0'),
     'main_manager' => env('MAIN_MANAGER', '2'),
     'manager_commission' => env('MANAGER_COMMISSION', '10'),
     'host_commission' => env('HOST_COMMISSION', '5'),
     'contact_publishers' => env('CONTACT_PUBLISHERS', 'mailingninja@gmail.com'),
     'contact_costumers' => env('CONTACT_COSTUMERS', 'premiumbooks.net@gmail.com'),
+
+    'mail_username_costumers' => env('MAIL_USERNAME_COSTUMERS'),
+    'mail_password_costumers' => env('MAIL_PASSWORD_COSTUMERS'),
+    'mailgun_domain_costumers' => env('MAILGUN_DOMAIN_COSTUMERS'),
+
+    'mail_username_publishers' => env('MAIL_USERNAME_PUBLISHERS'),
+    'mail_password_publishers' => env('MAIL_PASSWORD_PUBLISHERS'),
+    'mailgun_domain_publishers' => env('MAILGUN_DOMAIN_PUBLISHERS'),
 
 
     /*
