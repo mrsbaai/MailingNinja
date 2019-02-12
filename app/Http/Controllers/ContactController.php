@@ -14,12 +14,26 @@ class ContactController extends Controller
 
 
     public function test(){
-        $email = "abdelilah.sbaai@gmail.com";
+        $user_email = "abdelilah.sbaai@gmail.com";
         $content = "Whatever";
         $subject = "(Contact Test)";
-        $host_email = config('app.contact_costumers');
+        $we_email = config('app.contact_costumers');
+        $we_name = config('app.app_name');
         $view = 'emails.contacts.received';
-        Mail::to($email)->send(new ContactReceived())->with('site_title','title here');
+        $data = array('name'=>$we_name, 'email'=>$we_email, 'message'=>$content);
+
+
+        //Mail::to($email)->send(new ContactReceived())->with('site_title','title here');
+
+
+
+
+
+        Mail::send($view, $data, function($message) use ($we_email, $we_name, $subject, $user_email)
+        {
+            $message->from($we_email, $we_name);
+            $message->to($user_email)->subject($subject);
+        });
     }
     public function saveContact(){
         $email = Input::get('lg_email');
