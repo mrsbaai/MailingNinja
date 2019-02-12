@@ -16,9 +16,12 @@ class toCostumer extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data, $markdown, $subject)
     {
-        //
+
+        $this->markdown = $markdown;
+        $this->subject = $subject;
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +31,9 @@ class toCostumer extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contacts.received');
+        return $this->from( config('app.contact_costumers'), config('app.app_name'))
+            ->markdown($this->markdown)
+            ->subject($this->subject)
+            ->with('data', $this->data);
     }
 }

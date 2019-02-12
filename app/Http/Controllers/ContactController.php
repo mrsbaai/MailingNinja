@@ -18,15 +18,11 @@ class ContactController extends Controller
         $user_email = "abdelilah.sbaai@gmail.com";
         $content = "Whatever";
         $subject = "(Contact Test)";
-        $we_email = config('app.contact_costumers');
-        $we_name = config('app.app_name');
+
         $markdown= 'emails.contacts.received';
-        $data = array('name'=>$we_name, 'email'=>$we_email, 'message'=>$content);
+        $data = array('content'=>$content);
 
-        Mail::to($user_email)->send(new toCostumer());
-
-
-
+        Mail::to($user_email)->send(new toCostumer($data,$markdown,$subject));
 
     }
     public function saveContact(){

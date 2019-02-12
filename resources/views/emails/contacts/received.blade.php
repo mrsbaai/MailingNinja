@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-ddd
+{{$data['content']}}
 
 
 @component('mail::button', ['url' => ''])
