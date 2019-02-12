@@ -1,7 +1,7 @@
 <tr>
     <td class="header">
         <a href="{{ $url }}">
-            {{ $slot }} This is a  test
+            {{ $slot }} {{$site_title}}
         </a>
     </td>
 </tr>
