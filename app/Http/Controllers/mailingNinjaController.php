@@ -31,8 +31,18 @@ class mailingNinjaController extends Controller
     }
 
     public function welcome(){
+        if (Auth::check()) {
+            if(Auth::user()->is_active !== 1){
+                Auth::logout();
+                return ("<script LANGUAGE='JavaScript'>
+    window.alert('Thank you for your registration! Your Application is currently under review.')
+    window.location.href='/';
+    </script>");
+            }
+        }
+
         return ("<script LANGUAGE='JavaScript'>
-    window.alert('Thank you for your registration!');
+    window.alert('Thank you for your registration!')
     window.location.href='/';
     </script>");
 
