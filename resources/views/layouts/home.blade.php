@@ -46,7 +46,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="/" class="scrollto">Top e-Books</a></li>
+
                 <li>
                     <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categories <span class="caret"></span>
@@ -65,11 +65,7 @@
                 </li>
 
                 <li><a href="#contact" class="scrollto">Contact</a></li>
-
-
-
-
-
+                <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
 
 
             </ul>
