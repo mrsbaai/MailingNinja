@@ -228,7 +228,7 @@
                     <li><a href="#author" class="scrollto">Author</a></li>
                     <li><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
-                    
+                    <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
 
                     <li><a href="#" class="btn btn-green">@if ($price == 0) Download @else Purchase @endif</a></li>
 
