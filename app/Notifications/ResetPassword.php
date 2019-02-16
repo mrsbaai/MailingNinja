@@ -24,9 +24,10 @@ class ResetPassword extends ResetPasswordNotification
      */
     public static $toMailCallback;
 
-    public function __construct($token)
+    public function __construct($token, $email)
     {
         $this->token = $token;
+        $this->email = $email;
     }
 
     /**
@@ -54,18 +55,6 @@ class ResetPassword extends ResetPasswordNotification
 
 
 
-        $passwordReset = passwordReset::where('token', md5($this->token))->first();
-        $user = user::all()->first();
-
-        $role = "unknown";
-
-        if ($user->hasRole("publisher") == true){
-            $role = "publisher";
-        }
-
-        if ($user->hasRole("publisher") == false){
-            $role = "not publisher";
-        }
 
 
 
@@ -78,7 +67,7 @@ class ResetPassword extends ResetPasswordNotification
         return (new MailMessage)
             ->from($from_e,$from_n)
             ->subject('Reset Password')
-            ->line($passwordReset['email'] . 'You are receiving this email because we received a password reset request for your account.')
+            ->line($this->email . 'You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', $ur.route('password.reset', md5($this->token), false))
             ->line('If you did not request a password reset, no further action is required.');
 
