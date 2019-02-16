@@ -60,28 +60,27 @@ class ResetPassword extends ResetPasswordNotification
 
         $user = user::where('email', $this->email)->first();
 
-        $role = "unknown";
 
-        if ($user->hasRole("publisher") == true){
-            $role = "publisher";
+
+        if ($user->hasRole("publisher") == true or $user->hasRole("manager") == true){
+            Config::set('app.name', config('app.home_name'));
+            Config::set('app.url', config('app.home_url'));
+            $from_e = config('app.contact_publishers');
+            $from_n = config('app.home_name');
+            $ur = 'https://' . config('app.home_url');
+
+        }else{
+
+            $from_e = config('app.contact_costumers');
+            $from_n = config('app.promote_url');
         }
 
-        if ($user->hasRole("publisher") == false){
-            $role = "not publisher";
-        }
 
-
-
-        Config::set('app.name', config('app.home_name'));
-        Config::set('app.url', config('app.home_url'));
-        $from_e = config('app.contact_publishers');
-        $from_n = config('app.home_name');
-        $ur = 'https://' . config('app.home_url');
 
         return (new MailMessage)
             ->from($from_e,$from_n)
             ->subject('Reset Password')
-            ->line($role . 'You are receiving this email because we received a password reset request for your account.')
+            ->line( 'You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', $ur.route('password.reset', md5($this->token), false))
             ->line('If you did not request a password reset, no further action is required.');
 
