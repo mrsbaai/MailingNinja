@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactReceived;
 
+use Illuminate\Support\Facades\Config;
+
 class ContactController extends Controller
 {
 
@@ -22,6 +24,16 @@ class ContactController extends Controller
 
         $markdown= 'emails.contacts.received';
         $data = array('content'=>$content);
+
+
+        app()->forgetInstance('swift.transport');
+        app()->forgetInstance('swift.mailer');
+        app()->forgetInstance('mailer');
+        Mail::clearResolvedInstance('mailer');
+        Config::set('services.mailgun.domain', config('app.mailgun_domain_costumers'));
+        Config::set('services.mail.username', config('app.mail_username_costumers'));
+        Config::set('services.mail.password', config('app.mail_password_costumers'));
+
 
         Mail::to($user_email)->send(new toCostumer($data,$markdown,$subject));
 
