@@ -50,18 +50,15 @@ class ResetPassword extends ResetPasswordNotification
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
-        $appName = config('app.name');
-        $appURL = config('app.url');
         Config::set('app.name', config('app.home_name'));
         Config::set('app.url', config('app.home_url'));
 
-        (new MailMessage)
+        return (new MailMessage)
             ->subject('Reset Password')
             ->line('You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', 'https://'.config('app.url').route('password.reset', $this->token, false))
             ->line('If you did not request a password reset, no further action is required.');
-        Config::set('app.name', $appName);
-        Config::set('app.url', $appURL);
+
     }
 
     /**
