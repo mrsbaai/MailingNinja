@@ -25,10 +25,14 @@ class toCostumer extends Mailable
         $this->subject = $subject;
         $this->data = $data;
 
-        Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
-        Config::set('services.mail.username', config('app.mail_username_publishers'));
-        Config::set('services.mail.password', config('app.mail_password_publishers'));
-        (new \Illuminate\Mail\MailServiceProvider(app()))->register();
+
+                App::forgetInstance('mailer');
+                Mail::clearResolvedInstance('mailer');
+                Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
+                Config::set('services.mail.username', config('app.mail_username_publishers'));
+                Config::set('services.mail.password', config('app.mail_password_publishers'));
+
+
 
 
 
