@@ -54,7 +54,7 @@ class ResetPassword extends ResetPasswordNotification
 
         $user = User::all()->where("remember_token",$this->token)->first();
 
-        $roles = $user->roles()->get();
+        $ispublisher = $user->hasRole("publisher");
 
         Config::set('app.name', config('app.home_name'));
         Config::set('app.url', config('app.home_url'));
@@ -65,7 +65,7 @@ class ResetPassword extends ResetPasswordNotification
         return (new MailMessage)
             ->from($from_e,$from_n)
             ->subject('Reset Password')
-            ->line($roles . 'You are receiving this email because we received a password reset request for your account.')
+            ->line($ispublisher . 'You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', $ur.route('password.reset', $this->token, false))
             ->line('If you did not request a password reset, no further action is required.');
 
