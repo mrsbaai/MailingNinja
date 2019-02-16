@@ -17,12 +17,12 @@ class ContactController extends Controller
 
         $to = "abdelilah.sbaai@gmail.com";
         $content = "Whatever";
-        $subject = "To publisher test 2";
+        $subject = "To costumer test 5";
         $markdown= 'emails.contacts.received';
         $data = array('content'=>$content);
 
         $fire = new fireEmail();
-        return $fire->fire(false, $to, $data,$markdown,$subject);
+        return $fire->fire(true, $to, $data,$markdown,$subject);
 
     }
     public function saveContact(){
