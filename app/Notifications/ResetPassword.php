@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Config;
 
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use App\user;
+use App\passwordReset;
 
 class ResetPassword extends ResetPasswordNotification
 {
@@ -52,7 +53,10 @@ class ResetPassword extends ResetPasswordNotification
         }
 
 
+
+        $passwordReset = passwordReset::where('token', md5($this->token));
         $user = user::all()->first();
+
         $role = "unknown";
 
         if ($user->hasRole("publisher") == true){
@@ -74,7 +78,7 @@ class ResetPassword extends ResetPasswordNotification
         return (new MailMessage)
             ->from($from_e,$from_n)
             ->subject('Reset Password')
-            ->line($role . 'You are receiving this email because we received a password reset request for your account.')
+            ->line($passwordReset['email'] . 'You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', $ur.route('password.reset', $this->token, false))
             ->line('If you did not request a password reset, no further action is required.');
 
