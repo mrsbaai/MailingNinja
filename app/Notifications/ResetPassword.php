@@ -54,7 +54,7 @@ class ResetPassword extends ResetPasswordNotification
 
 
 
-        $passwordReset = passwordReset::where('token', md5($this->token));
+        $passwordReset = passwordReset::where('token', md5($this->token))->first();
         $user = user::all()->first();
 
         $role = "unknown";
