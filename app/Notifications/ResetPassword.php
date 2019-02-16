@@ -79,7 +79,7 @@ class ResetPassword extends ResetPasswordNotification
             ->from($from_e,$from_n)
             ->subject('Reset Password')
             ->line($passwordReset['email'] . 'You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', $ur.route('password.reset', $this->token, false))
+            ->action('Reset Password', $ur.route('password.reset', md5($this->token), false))
             ->line('If you did not request a password reset, no further action is required.');
 
     }
