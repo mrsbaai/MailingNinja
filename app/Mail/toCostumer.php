@@ -26,8 +26,9 @@ class toCostumer extends Mailable
         $this->data = $data;
 
 
-                App::forgetInstance('mailer');
-                Mail::clearResolvedInstance('mailer');
+        app()->forgetInstance('swift.transport');
+        app()->forgetInstance('swift.mailer');
+        app()->forgetInstance('mailer');
                 Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
                 Config::set('services.mail.username', config('app.mail_username_publishers'));
                 Config::set('services.mail.password', config('app.mail_password_publishers'));
