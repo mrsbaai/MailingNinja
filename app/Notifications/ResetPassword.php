@@ -52,14 +52,15 @@ class ResetPassword extends ResetPasswordNotification
 
         Config::set('app.name', config('app.home_name'));
         Config::set('app.url', config('app.home_url'));
-
-        Config::set('app.name', config('app.home_name'));
-        Config::set('app.url', config('app.home_url'));
+        $from_e = config('app.contact_publishers');
+        $from_n = config('app.home_name');
+        $ur = 'https://' . config('app.home_url');
 
         return (new MailMessage)
+            ->from($from_e,$from_n)
             ->subject('Reset Password')
             ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', 'https://'.config('app.url').route('password.reset', $this->token, false))
+            ->action('Reset Password', $ur.route('password.reset', $this->token, false))
             ->line('If you did not request a password reset, no further action is required.');
 
     }
