@@ -12,7 +12,15 @@ use Illuminate\Support\Facades\Config;
 
 class fireEmail extends Controller
 {
-    public function fire($is_costumer = true, $to = null, $data = null,$markdown = null, $subject = null){
+    /**
+     * @param bool $is_costumer
+     * @param null $to
+     * @param null $data
+     * @param null $markdown
+     * @param null $subject
+     * @return mixed
+     */
+    public function fire($is_costumer = true, $to = null, $data = null, $markdown = null, $subject = null){
         app()->forgetInstance('swift.transport');
         app()->forgetInstance('swift.mailer');
         app()->forgetInstance('mailer');
