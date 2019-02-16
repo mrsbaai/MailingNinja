@@ -27,9 +27,9 @@ class fireEmail extends Controller
         Mail::clearResolvedInstance('mailer');
 
         if ($is_costumer == true){
-            Config::set('services.mailgun.domain', config('app.mailgun_domain_costumer'));
-            Config::set('services.mail.username', config('app.mail_username_costumer'));
-            Config::set('services.mail.password', config('app.mail_password_costumer'));
+            Config::set('services.mailgun.domain', config('app.mailgun_domain_costumers'));
+            Config::set('services.mail.username', config('app.mail_username_costumers'));
+            Config::set('services.mail.password', config('app.mail_password_costumers'));
             return Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
         }else{
             Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
