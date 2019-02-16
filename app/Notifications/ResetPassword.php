@@ -57,8 +57,8 @@ class ResetPassword extends ResetPasswordNotification
 
 
 
-    
-        $user = user::all()->first();
+
+        $user = user::where('email', $this->email)->first();
 
         $role = "unknown";
 
@@ -81,7 +81,7 @@ class ResetPassword extends ResetPasswordNotification
         return (new MailMessage)
             ->from($from_e,$from_n)
             ->subject('Reset Password')
-            ->line($this->email . 'You are receiving this email because we received a password reset request for your account.')
+            ->line($role . 'You are receiving this email because we received a password reset request for your account.')
             ->action('Reset Password', $ur.route('password.reset', md5($this->token), false))
             ->line('If you did not request a password reset, no further action is required.');
 
