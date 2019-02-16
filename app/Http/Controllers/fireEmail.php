@@ -31,12 +31,10 @@ class fireEmail extends Controller
             Config::set('services.mail.username', config('app.mail_username_costumers'));
             Config::set('services.mail.password', config('app.mail_password_costumers'));
             $appName = config('app.name');
-            $appURL = config('app.url');
             Config::set('app.name', $appName . ".");
-            Config::set('app.url', $appURL . ".");
             Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
             Config::set('app.name', $appName);
-            Config::set('app.url', $appURL);
+
         }else{
             Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
             Config::set('services.mail.username', config('app.mail_username_publishers'));
