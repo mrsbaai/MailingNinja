@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 use Illuminate\Support\Facades\Config;
 
-use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification
+use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use App\user;
 
 class ResetPassword extends ResetPasswordNotification
