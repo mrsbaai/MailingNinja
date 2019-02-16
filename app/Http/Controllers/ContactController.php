@@ -16,14 +16,14 @@ class ContactController extends Controller
     public function test(){
 
         $to = "abdelilah.sbaai@gmail.com";
-        $subject = "To costumer test 6";
+        $subject = "To publisher test 6";
         $markdown= 'emails.contacts.test';
-        $content = "testing";
+        $content = "testing to publisher";
         $data = array('content'=>$content);
 
 
         $fire = new fireEmail();
-        $fire->fire(true, $to, $data,$markdown,$subject);
+        $fire->fire(fale, $to, $data,$markdown,$subject);
 
     }
     public function saveContact(){
