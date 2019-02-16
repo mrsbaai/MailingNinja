@@ -23,7 +23,7 @@ class ContactController extends Controller
 
 
         $fire = new fireEmail();
-        $fire->fire(fale, $to, $data,$markdown,$subject);
+        $fire->fire(false, $to, $data,$markdown,$subject);
 
     }
     public function saveContact(){
