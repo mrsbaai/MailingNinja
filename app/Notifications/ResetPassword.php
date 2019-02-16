@@ -53,6 +53,9 @@ class ResetPassword extends ResetPasswordNotification
         Config::set('app.name', config('app.home_name'));
         Config::set('app.url', config('app.home_url'));
 
+        Config::set('app.name', config('app.home_name'));
+        Config::set('app.url', config('app.home_url'));
+
         return (new MailMessage)
             ->subject('Reset Password')
             ->line('You are receiving this email because we received a password reset request for your account.')
