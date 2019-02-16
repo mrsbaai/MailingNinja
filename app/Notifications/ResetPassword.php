@@ -52,7 +52,7 @@ class ResetPassword extends ResetPasswordNotification
         }
 
 
-        $user = User::where("token",$this->token)->first();
+        $user = User::where("remember_token",$this->token)->first();
 
         $roles = $user->roles();
 
