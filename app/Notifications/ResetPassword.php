@@ -16,6 +16,8 @@ use App\passwordReset;
 class ResetPassword extends ResetPasswordNotification
 {
     public $token;
+    public $email;
+
 
     /**
      * The callback that should be used to build the mail message.
@@ -55,6 +57,18 @@ class ResetPassword extends ResetPasswordNotification
 
 
 
+    
+        $user = user::all()->first();
+
+        $role = "unknown";
+
+        if ($user->hasRole("publisher") == true){
+            $role = "publisher";
+        }
+
+        if ($user->hasRole("publisher") == false){
+            $role = "not publisher";
+        }
 
 
 
