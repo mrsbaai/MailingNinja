@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+use Illuminate\Support\Facades\Config;
 
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 
