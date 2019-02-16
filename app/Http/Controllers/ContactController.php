@@ -24,8 +24,6 @@ class ContactController extends Controller
         $fire = new fireEmail();
         return $fire->fire(true, $to, $data,$markdown,$subject);
 
-
-
     }
     public function saveContact(){
         $email = Input::get('lg_email');
