@@ -53,7 +53,7 @@ class toCostumer extends Mailable
 
         return $this->from( config('app.contact_costumers'), config('app.app_name'))
             ->markdown($this->markdown)
-            ->subject(config('app.mailgun_domain_publishers'))
+            ->subject(config('services.mailgun.domain'))
             ->with('data', $this->data);
     }
 }
