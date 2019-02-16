@@ -6,6 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
+
+
+use Illuminate\Support\Facades\Config;
 
 
 class toCostumer extends Mailable
@@ -19,6 +23,15 @@ class toCostumer extends Mailable
      */
     public function __construct($data, $markdown, $subject)
     {
+
+
+        app()->forgetInstance('swift.transport');
+        app()->forgetInstance('swift.mailer');
+        app()->forgetInstance('mailer');
+        Mail::clearResolvedInstance('mailer');
+        Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
+        Config::set('services.mail.username', config('app.mail_username_publishers'));
+        Config::set('services.mail.password', config('app.mail_password_publishers'));
 
         $this->markdown = $markdown;
         $this->subject = $subject;
