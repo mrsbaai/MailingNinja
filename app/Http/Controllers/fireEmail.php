@@ -30,12 +30,15 @@ class fireEmail extends Controller
             Config::set('services.mailgun.domain', config('app.mailgun_domain_costumers'));
             Config::set('services.mail.username', config('app.mail_username_costumers'));
             Config::set('services.mail.password', config('app.mail_password_costumers'));
-            return Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
+            Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
         }else{
             Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
             Config::set('services.mail.username', config('app.mail_username_publishers'));
             Config::set('services.mail.password', config('app.mail_password_publishers'));
-            return Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
+            $appName = config('home.name');
+            Config::set('app.name', config('home.name'));
+            Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
+            Config::set('app.name', $appName);
         }
 
 
