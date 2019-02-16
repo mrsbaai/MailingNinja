@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\toCostumer;
 use Illuminate\Http\Request;
 use App\contact;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactReceived;
+
+
 
 class ContactController extends Controller
 {
@@ -16,16 +15,16 @@ class ContactController extends Controller
 
     public function test(){
 
-        $user_email = "abdelilah.sbaai@gmail.com";
+        $to = "abdelilah.sbaai@gmail.com";
         $content = "Whatever";
         $subject = "3 special test";
         $markdown= 'emails.contacts.received';
         $data = array('content'=>$content);
 
+        $fire = new fireEmail();
+        $fire->fire(true, $to, $data,$markdown,$subject);
 
 
-
-        Mail::to($user_email)->send(new toCostumer($data,$markdown,$subject));
 
     }
     public function saveContact(){

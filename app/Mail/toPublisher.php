@@ -7,9 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-
-
-class toCostumer extends Mailable
+class toPublisher extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -37,7 +35,7 @@ class toCostumer extends Mailable
     {
 
 
-        return $this->from( config('app.contact_costumers'), config('app.app_name'))
+        return $this->from( config('app.contact_publishers'), config('app.home_name'))
             ->markdown($this->markdown)
             ->subject($this->subject)
             ->with('data', $this->data);
