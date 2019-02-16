@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Config;
+use Mail;
 
 
 class toCostumer extends Mailable
@@ -29,7 +30,7 @@ class toCostumer extends Mailable
         app()->forgetInstance('swift.transport');
         app()->forgetInstance('swift.mailer');
         app()->forgetInstance('mailer');
-        mail()->clearResolvedInstance('mailer');
+        Mail::clearResolvedInstance('mailer');
                 Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
                 Config::set('services.mail.username', config('app.mail_username_publishers'));
                 Config::set('services.mail.password', config('app.mail_password_publishers'));
