@@ -76,7 +76,7 @@ class ResetPassword extends ResetPasswordNotification
 
             $from_e = config('app.contact_costumers');
             $from_n = config('app.promote_url');
-            $ur = 'https://' . config('app.app_url');
+            $ur = config('app.url');
         }
 
 
@@ -85,7 +85,7 @@ class ResetPassword extends ResetPasswordNotification
             ->from($from_e,$from_n)
             ->subject('Reset Password')
             ->line( 'You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', $ur.route('password.reset', md5($this->token), false))
+            ->action('Reset Password', $ur.route('password.reset', $this->token, false))
             ->line('If you did not request a password reset, no further action is required.');
 
     }
