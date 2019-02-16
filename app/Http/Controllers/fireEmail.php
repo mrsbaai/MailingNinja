@@ -36,9 +36,12 @@ class fireEmail extends Controller
             Config::set('services.mail.username', config('app.mail_username_publishers'));
             Config::set('services.mail.password', config('app.mail_password_publishers'));
             $appName = config('app.name');
+            $appURL = config('app.url');
             Config::set('app.name', config('app.home_name'));
+            Config::set('app.url', config('app.home_url'));
             Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
             Config::set('app.name', $appName);
+            Config::set('app.url', $appURL);
         }
 
 
