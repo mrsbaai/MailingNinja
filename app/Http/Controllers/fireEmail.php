@@ -25,8 +25,9 @@ class fireEmail extends Controller
         app()->forgetInstance('swift.mailer');
         app()->forgetInstance('mailer');
         Mail::clearResolvedInstance('mailer');
-        return "bb";
+
         if ($is_costumer == true){
+            return "cc";
             Config::set('services.mailgun.domain', config('app.mailgun_domain_costumer'));
             Config::set('services.mail.username', config('app.mail_username_costumer'));
             Config::set('services.mail.password', config('app.mail_password_costumer'));
