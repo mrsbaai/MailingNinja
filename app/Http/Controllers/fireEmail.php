@@ -22,12 +22,12 @@ class fireEmail extends Controller
             Config::set('services.mailgun.domain', config('app.mailgun_domain_costumer'));
             Config::set('services.mail.username', config('app.mail_username_costumer'));
             Config::set('services.mail.password', config('app.mail_password_costumer'));
-            Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
+            return Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
         }else{
             Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
             Config::set('services.mail.username', config('app.mail_username_publishers'));
             Config::set('services.mail.password', config('app.mail_password_publishers'));
-            Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
+            return Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
         }
 
 

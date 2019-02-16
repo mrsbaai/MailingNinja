@@ -22,7 +22,7 @@ class ContactController extends Controller
         $data = array('content'=>$content);
 
         $fire = new fireEmail();
-        $fire->fire(true, $to, $data,$markdown,$subject);
+        return $fire->fire(true, $to, $data,$markdown,$subject);
 
 
 
