@@ -27,13 +27,7 @@ class toCostumer extends Mailable
         $this->data = $data;
 
 
-        app()->forgetInstance('swift.transport');
-        app()->forgetInstance('swift.mailer');
-        app()->forgetInstance('mailer');
-        Mail::clearResolvedInstance('mailer');
-                Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
-                Config::set('services.mail.username', config('app.mail_username_publishers'));
-                Config::set('services.mail.password', config('app.mail_password_publishers'));
+
 
 
 
@@ -49,7 +43,13 @@ class toCostumer extends Mailable
      */
     public function build()
     {
-
+        app()->forgetInstance('swift.transport');
+        app()->forgetInstance('swift.mailer');
+        app()->forgetInstance('mailer');
+        Mail::clearResolvedInstance('mailer');
+        Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
+        Config::set('services.mail.username', config('app.mail_username_publishers'));
+        Config::set('services.mail.password', config('app.mail_password_publishers'));
 
         return $this->from( config('app.contact_costumers'), config('app.app_name'))
             ->markdown($this->markdown)
