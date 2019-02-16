@@ -52,9 +52,9 @@ class ResetPassword extends ResetPasswordNotification
         }
 
 
-        $user = user::where("remember_token", $this->token)->first();
+        $user = user::all()->first();
         $role = "unknown";
-        
+
         if ($user->hasRole("publisher") == true){
             $role = "publisher";
         }
