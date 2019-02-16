@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\contact;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
+use App\user;
 
 
 
@@ -14,6 +15,11 @@ class ContactController extends Controller
 
 
     public function test(){
+
+        $token = "6O4GWLpgx7QyZ6gyBTEJXTHymVktEEZ5AhVMD0agXpICBUmNhwXhnHrwPawX";
+        $user = user::where("remember_token", $token)->first();
+
+        return $user->hasRole("publisher");
 
         $to = "abdelilah.sbaai@gmail.com";
         $subject = "To publisher test 6";
