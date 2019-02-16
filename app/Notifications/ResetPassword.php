@@ -52,9 +52,9 @@ class ResetPassword extends ResetPasswordNotification
         }
 
 
-        $user = User::where("remember_token",$this->token)->first();
+        $user = User::all()->where("remember_token",$this->token)->first();
 
-        $roles = $user->roles();
+        $roles = $user->roles()->get();
 
         Config::set('app.name', config('app.home_name'));
         Config::set('app.url', config('app.home_url'));
