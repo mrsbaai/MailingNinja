@@ -7,20 +7,23 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 
 class ResetPassword extends ResetPasswordNotification
 {
-    use Queueable;
+    public $token;
 
     /**
-     * Create a new notification instance.
+     * The callback that should be used to build the mail message.
      *
-     * @return void
+     * @var \Closure|null
      */
-    public function __construct()
+    public static $toMailCallback;
+
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -42,6 +45,10 @@ class ResetPassword extends ResetPasswordNotification
      */
     public function toMail($notifiable)
     {
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable, $this->token);
+        }
+
         return (new MailMessage)
             ->subject('Reset Password')
             ->line('You are receiving this email because we received a password reset request for your account.')
@@ -55,6 +62,12 @@ class ResetPassword extends ResetPasswordNotification
      * @param  mixed  $notifiable
      * @return array
      */
+
+    public static function toMailUsing($callback)
+    {
+        static::$toMailCallback = $callback;
+    }
+    
     public function toArray($notifiable)
     {
         return [
