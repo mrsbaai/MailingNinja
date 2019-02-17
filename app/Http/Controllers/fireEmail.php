@@ -32,7 +32,7 @@ class fireEmail extends Controller
             Config::set('services.mail.password', config('app.mail_password_costumers'));
             $appName = config('app.name');
             Config::set('app.name', $appName . ".");
-            if ($from){
+            if ($from != null){
                 Mail::to($to)->send(new toCostumer($data,$markdown,$subject))->from($from);
             }else{
                 Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
@@ -48,8 +48,8 @@ class fireEmail extends Controller
             $appURL = config('app.url');
             Config::set('app.name', config('app.home_name'));
             Config::set('app.url', config('app.home_url'));
-            if ($from){
-                Mail::to($to)->send(new toPublisher($data,$markdown,$subject))->from($from);;
+            if ($from != null){
+                Mail::to($to)->send(new toPublisher($data,$markdown,$subject))->from($from);
             }else{
                 Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
             }
