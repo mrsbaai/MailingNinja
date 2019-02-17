@@ -16,10 +16,7 @@ class ContactController extends Controller
 
     public function test(){
 
-        $token = "6O4GWLpgx7QyZ6gyBTEJXTHymVktEEZ5AhVMD0agXpICBUmNhwXhnHrwPawX";
-        $user = user::where("remember_token", $token)->first();
 
-        return $user->hasRole("publisher");
 
         $to = "abdelilah.sbaai@gmail.com";
         $subject = "To publisher test 6";
@@ -30,7 +27,7 @@ class ContactController extends Controller
 
         $fire = new fireEmail();
         $fire->fire(false, $to, $data,$markdown,'publisher');
-        $fire->fire(true, $to, $data,$markdown,'costumer');
+
 
     }
     public function saveContact(){
@@ -38,18 +35,30 @@ class ContactController extends Controller
         $subject = Input::get('lg_subject');
         $content = Input::get('lg_message');
         $role = Input::get('lg_role');
+        $markdown= 'emails.contactReceived';
+        $markdown2= 'emails.contactToSupport';
+
+        $data = array('subject'=>$subject);
+        $data2 = array('role'=>$role, 'content'=>$content);
+
 
 
 
         try{
 
-            //$subject = "(SMS-Verification Contact From) " . $subject;
-            //$to = 'support@sms-verification.net';
-            //Mail::send('mails.contact', ['content' => $content], function ($message) use($subject,$email, $to){
-                //$message->from($email);
-                //$message->subject($subject);
-                //$message->to($to);
-            //});
+            $fire = new fireEmail();
+            if ($role == "unregistered_costumer" or $role == "costumer"){
+                $is_costumer = true;
+                $to = config('app.contact_costumers');
+
+            }else{
+                $is_costumer = false;
+                $to = config('app.contact_publishers');
+            }
+
+            $fire->fire($is_costumer, $email, $data,$markdown,"Contact: " . $subject);
+
+            $fire->fire(false, $to, $data2,$markdown2, $subject, $email);
 
             //$contact = new contact();
             //$contact->email = $email;
@@ -59,7 +68,7 @@ class ContactController extends Controller
             //$contact->created_at = Carbon::now();
             //$contact->save();
 
-            flash()->message('Sent! We have received your message and would like to thank you for writing to us. We will look over your message as soon as possible.')->success();
+            flash()->message('Sent!')->success();
             return \Redirect::back();
         }
         catch(\Exception $e){

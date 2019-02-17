@@ -63,9 +63,6 @@ class ResetPassword extends ResetPasswordNotification
 
 
         if ($user->hasRole("publisher") == true or $user->hasRole("manager") == true){
-            Config::set('services.mailgun.domain', config('app.mailgun_domain_publishers'));
-            Config::set('services.mail.username', config('app.mail_username_publishers'));
-            Config::set('services.mail.password', config('app.mail_password_publishers'));
             Config::set('app.name', config('app.home_name'));
             Config::set('app.url', config('app.home_url'));
             $from_e = config('app.contact_publishers');
@@ -76,7 +73,7 @@ class ResetPassword extends ResetPasswordNotification
 
             $from_e = config('app.contact_costumers');
             $from_n = config('app.promote_url');
-            $ur = config('app.url');
+            $ur = 'https://' . config('app.url');
         }
 
 

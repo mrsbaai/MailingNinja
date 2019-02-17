@@ -1,5 +1,5 @@
 @component('mail::message')
-# Thank you
+# Introduction
 
 {{$data['content']}}
 
