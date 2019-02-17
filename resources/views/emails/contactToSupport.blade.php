@@ -2,6 +2,4 @@
 
 {{$data['content']}}
 
-From {{$data['content']}}.
-
 @endcomponent

@@ -39,7 +39,7 @@ class ContactController extends Controller
         $markdown2= 'emails.contactToSupport';
 
         $data = array('subject'=>$subject);
-        $data2 = array('role'=>$role, 'content'=>$content, 'from'=>$email);
+        $data2 = array('content'=>$content, 'from_email'=>$email, 'from_name'=>$role);
 
 
 
@@ -58,7 +58,7 @@ class ContactController extends Controller
 
             $fire->fire($is_costumer, $email, $data,$markdown,"Contact: " . $subject);
 
-            $fire->fire(false, $to, $data2,$markdown2, $subject);
+            $fire->fire($is_costumer, $to, $data2,$markdown2, $subject);
 
             //$contact = new contact();
             //$contact->email = $email;
@@ -68,7 +68,7 @@ class ContactController extends Controller
             //$contact->created_at = Carbon::now();
             //$contact->save();
 
-            flash()->message('Sent!')->success();
+            flash()->message('Thank you! Message sent.')->success();
             return \Redirect::back();
         }
         catch(\Exception $e){

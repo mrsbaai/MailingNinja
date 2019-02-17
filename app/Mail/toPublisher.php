@@ -35,8 +35,8 @@ class toPublisher extends Mailable
     {
 
 
-        if (isset ($this->data['from'])){
-            return $this->from( $this->data['from'])
+        if (isset ($this->data['from_email'])){
+            return $this->from( $this->data['from_email'], $this->data['from_name'])
                 ->markdown($this->markdown)
                 ->subject($this->subject)
                 ->with('data', $this->data);
