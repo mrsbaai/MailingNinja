@@ -20,7 +20,7 @@ class fireEmail extends Controller
      * @param null $subject
      * @return mixed
      */
-    public function fire($is_costumer = true, $to = null, $data = null, $markdown = null, $subject = null, $from = null){
+    public function fire($is_costumer = true, $to = null, $data = null, $markdown = null, $subject = null){
         app()->forgetInstance('swift.transport');
         app()->forgetInstance('swift.mailer');
         app()->forgetInstance('mailer');
@@ -32,11 +32,7 @@ class fireEmail extends Controller
             Config::set('services.mail.password', config('app.mail_password_costumers'));
             $appName = config('app.name');
             Config::set('app.name', $appName . ".");
-            if ($from != null){
-                Mail::to($to)->send(new toCostumer($data,$markdown,$subject))->from($from);
-            }else{
-                Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
-            }
+            Mail::to($to)->send(new toCostumer($data,$markdown,$subject));
 
             Config::set('app.name', $appName);
 
@@ -48,11 +44,7 @@ class fireEmail extends Controller
             $appURL = config('app.url');
             Config::set('app.name', config('app.home_name'));
             Config::set('app.url', config('app.home_url'));
-            if ($from != null){
-                Mail::to($to)->send(new toPublisher($data,$markdown,$subject))->from($from);
-            }else{
-                Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
-            }
+            Mail::to($to)->send(new toPublisher($data,$markdown,$subject));
             Config::set('app.name', $appName);
             Config::set('app.url', $appURL);
         }

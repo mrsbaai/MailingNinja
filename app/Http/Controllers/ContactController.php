@@ -39,7 +39,7 @@ class ContactController extends Controller
         $markdown2= 'emails.contactToSupport';
 
         $data = array('subject'=>$subject);
-        $data2 = array('role'=>$role, 'content'=>$content);
+        $data2 = array('role'=>$role, 'content'=>$content, 'from'=>$email);
 
 
 
@@ -58,7 +58,7 @@ class ContactController extends Controller
 
             $fire->fire($is_costumer, $email, $data,$markdown,"Contact: " . $subject);
 
-            $fire->fire(false, $to, $data2,$markdown2, $subject, $email);
+            $fire->fire(false, $to, $data2,$markdown2, $subject);
 
             //$contact = new contact();
             //$contact->email = $email;

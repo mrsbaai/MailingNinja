@@ -35,9 +35,17 @@ class toPublisher extends Mailable
     {
 
 
-        return $this->from( config('app.contact_publishers'), config('app.home_name'))
-            ->markdown($this->markdown)
-            ->subject($this->subject)
-            ->with('data', $this->data);
+        if (isset ($this->data['from'])){
+            return $this->from( $this->data['from'])
+                ->markdown($this->markdown)
+                ->subject($this->subject)
+                ->with('data', $this->data);
+        }else{
+            return $this->from( config('app.contact_publishers'), config('app.home_name'))
+                ->markdown($this->markdown)
+                ->subject($this->subject)
+                ->with('data', $this->data);
+        }
+
     }
 }
