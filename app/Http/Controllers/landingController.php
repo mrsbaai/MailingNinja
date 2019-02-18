@@ -133,7 +133,7 @@ class landingController extends Controller
         return $this->landing(null,$id,null, "preview",$request);
     }
     public function hostLanding($id, Request $request){
-        return $id;
+
         return $this->landing(null,$id,null, "host", $request);
 
     }
@@ -168,6 +168,7 @@ class landingController extends Controller
                 $link = link::all()->where('link',$code)->first();
             }
             if ($type == "host") {
+                return "dddd";
                 $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
             }
 
