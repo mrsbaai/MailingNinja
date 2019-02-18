@@ -21,7 +21,7 @@
                                         @csrf
                                         <input name="code" id="code" type="text" value="{{$code}}" hidden>
 
-                                        <input  placeholder="Full Name" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                        <input  placeholder="Name" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback">
