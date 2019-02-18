@@ -1,17 +1,14 @@
 @component('mail::message')
-Hey {{$data['name']}},
+Hello {{$data['name']}},
 
-Thank you for signing up. You can login at the following link:
+Thank you for signing up. Your application is received and currently under review.
 
-@component('mail::button', ['url' => $data['url']])
-   Login
-@endcomponent
+You will be notified by email when/if your application is approved.
 
-You registered with this email: {{$data['name']}}.
+If you have any questions or concerns throughout this application process, please feel free to contact us.
 
-If you forgot your password, simply hit "Forgot password" and you'll be prompted to reset it.
-
+Your account manager is: "{{$data['manager_name']}}". Contact your account manager via e-mail at "{{$data['manager_email']}}", or Skype at "{{$data['manager_skype']}}".
 
 Best,<br>
-{{ config('app.name') }} Support Team
+{{ config('app.name') }} Team
 @endcomponent

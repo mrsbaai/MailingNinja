@@ -94,7 +94,7 @@ class RegisterController extends Controller
             $emailData = array('name'=>$data['name'], 'email'=>$data['email']);
             $subject = "Welcome to " . config('app.name');
             $fire = new fireEmail();
-            $fire->fire(false, $data['email'], $emailData,'emails.userRegistred', $subject);
+            $fire->fire(true, $data['email'], $emailData,'emails.userRegistred', $subject);
 
             return $user;
 
@@ -111,6 +111,12 @@ class RegisterController extends Controller
             $user->password = bcrypt($data['password']);
             $user->save();
             $user->roles()->attach(Role::where('name', 'publisher')->first());
+
+            $emailData = array('name'=>$data['name'], 'manager_name'=>$publisher_manager['name'], 'manager_email'=>$publisher_manager['email'], 'manager_skype'=>$publisher_manager['skype']);
+            $subject = "Welcome to " . config('app.home_name');
+            $fire = new fireEmail();
+            $fire->fire(false, $data['email'], $emailData,'emails.publisherRegistred', $subject);
+
             return $user;
         }
 

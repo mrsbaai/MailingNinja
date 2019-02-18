@@ -11,6 +11,7 @@ You registered with this email: {{$data['email']}}.
 
 If you forgot your password, simply hit "Forgot password" and you'll be prompted to reset it.
 
+If you have any questions, please let us know!
 
 Best,<br>
 {{ config('app.name') }} Support Team
