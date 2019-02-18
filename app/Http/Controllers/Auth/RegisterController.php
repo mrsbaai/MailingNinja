@@ -117,6 +117,13 @@ class RegisterController extends Controller
             $fire = new fireEmail();
             $fire->fire(false, $data['email'], $emailData,'emails.publisherRegistred', $subject);
 
+            $emailData = array('name'=>$data['name'],
+                'country'=>$data['country'],
+                'skype'=>$data['skype'],
+                'email'=>$data['email'],
+                'message'=>$data['message']);
+
+            $fire->fire(false, $publisher_manager['email'], $emailData,'emails.registredToManager', "[New Publisher]");
             return $user;
         }
 
