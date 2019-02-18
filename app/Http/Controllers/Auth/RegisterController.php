@@ -86,7 +86,8 @@ class RegisterController extends Controller
             $user->save();
             $user->roles()->attach(Role::where('name', 'costumer')->first());
 
-            subscribeController::subscribe($data['code'], $data['email']);
+            $subscribe = new subscribeController();
+            $subscribe->subscribe($data['code'], $data['email']);
             landingController::addProductToCostumer($data['code'], $user['id']);
 
 
