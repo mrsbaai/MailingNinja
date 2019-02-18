@@ -82,7 +82,6 @@ class RegisterController extends Controller
             $user->country = $data['country'];
             $user->name = $data['name'];
             $user->email = $data['email'];
-            $user->type = 1;
             $user->password = bcrypt($data['password']);
             $user->save();
             $user->roles()->attach(Role::where('name', 'costumer')->first());
