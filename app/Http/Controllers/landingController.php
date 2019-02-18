@@ -168,7 +168,6 @@ class landingController extends Controller
                 $link = link::all()->where('link',$code)->first();
             }
             if ($type == "host") {
-                return "dddd";
                 $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
             }
 
@@ -187,7 +186,7 @@ class landingController extends Controller
             $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
         }
 
-        return;
+
         if ($link === null){
             return redirect("/");
         }
