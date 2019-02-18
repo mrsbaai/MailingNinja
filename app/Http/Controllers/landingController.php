@@ -37,7 +37,7 @@ class landingController extends Controller
 
         }else{
 
-            return view('Auth.buy')->with('code', $code)->with('email', $email);
+            return view('auth.buy')->with('code', $code)->with('email', $email);
         }
 
 
