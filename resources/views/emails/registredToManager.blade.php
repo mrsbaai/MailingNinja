@@ -1,13 +1,12 @@
 @component('mail::message')
-# Introduction
+# Publisher ID: {{$data['id']}}
 
-{{$data['content']}}
+Name : {{$data['name']}}
+Country: {{$data['country']}}
+Skype: {{$data['skype']}}
+E-mail: {{$data['email']}}
 
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+Message: {{$data['message']}}
 
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent
