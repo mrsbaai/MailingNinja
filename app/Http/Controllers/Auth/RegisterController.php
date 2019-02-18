@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\fireEmail;
 
 class RegisterController extends Controller
 {
@@ -88,6 +89,12 @@ class RegisterController extends Controller
 
             subscribeController::subscribe($data['code'], $data['email']);
             landingController::addProductToCostumer($data['code'], $user['id']);
+
+
+            $emailData = array('name'=>$data['name'], 'email'=>$data['email']);
+            $subject = "Welcome to " . config('app.name');
+            $fire = new fireEmail();
+            $fire->fire(false, $data['email'], $emailData,'emails.userRegistred', $subject);
 
             return $user;
 
