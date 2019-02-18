@@ -133,6 +133,7 @@ class landingController extends Controller
         return $this->landing(null,$id,null, "preview",$request);
     }
     public function hostLanding($id, Request $request){
+        return $id;
         return $this->landing(null,$id,null, "host", $request);
 
     }
