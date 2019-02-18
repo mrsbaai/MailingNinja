@@ -185,6 +185,7 @@ class landingController extends Controller
             $newLink->save();
             $link = Link::where("user_id",config('app.main_publisher'))->where("offer_id",$id)->first();
             $code = $link->link;
+            return $code;
         }
 
 
