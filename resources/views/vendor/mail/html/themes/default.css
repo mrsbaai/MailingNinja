@@ -104,9 +104,9 @@ img {
 
 .header {
     padding: 25px;
-
+    margin: 25px;
     text-align: center;
-    background-image: url("https://mailing.ninja/images/3.jpg")
+    background-image: url("https://mailing.ninja/images/11.jpg")
 }
 
 .header a {
