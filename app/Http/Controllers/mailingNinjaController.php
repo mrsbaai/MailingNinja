@@ -14,7 +14,7 @@ class mailingNinjaController extends Controller
     public function home(Request $request){
 
         if (strpos($request->fullUrl(), "premiumbooks.net") !== false){
-            if ($request->path() != "/test"){
+            if ($request->path() != "/vv"){
                 return "<h1>This domain name has been permanently disabled!</h1>";
             }
 
