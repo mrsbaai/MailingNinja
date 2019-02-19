@@ -41,7 +41,7 @@ class subscribeController extends Controller
                     return redirect('/');
                 }
             }else{
-                return;
+                return "type not 0" . $type;
             }
 
         }
