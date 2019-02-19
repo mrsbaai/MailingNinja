@@ -306,15 +306,6 @@
                                         </span>
                                         @endif
                                         <br/>
-
-
-                                        <textarea id="message" name="message" rows="10" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"  placeholder="Tell us about you, and how are you planning to use our offers?" required>{{ old('message')}}</textarea>
-                                        @if ($errors->has('message'))
-                                            <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('message')}}</strong>
-                                        </span>
-                                        @endif
-                                        <br/>
                                         <input  placeholder="Password" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                         @if ($errors->has('password'))
@@ -326,6 +317,15 @@
 
 
                                         <input  placeholder="Confirm Password" id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                        <br/>
+
+                                        <p>Tell us about you, the volume of the traffic you're planning to send, and how you're going to use our offers?</p>
+                                        <textarea id="message" name="message" rows="10" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"  placeholder="Your message here." required>{{ old('message')}}</textarea>
+                                        @if ($errors->has('message'))
+                                            <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('message')}}</strong>
+                                        </span>
+                                        @endif
                                         <br/>
 
                                         <button class="btn btn-success btn-block btn-round">Send Request</button>
