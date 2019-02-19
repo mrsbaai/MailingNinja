@@ -68,14 +68,6 @@ Route::get('/ipn/paypal','PaymentController@paypalIPN');
 
 
 
-
-Route::group(array('domain' => 'premiumbooks.net'), function() {
-    Route::any( '(.*)', 'mailingNinjaController@home');
-    Route::post('/ipn/paypal','PaymentController@paypalIPN');
-    Route::get('/ipn/paypal','PaymentController@paypalIPN');
-
-});
-
     Route::get('/home', 'mailingNinjaController@home');
     Route::get('/welcome', 'mailingNinjaController@welcome');
 
