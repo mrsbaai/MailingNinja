@@ -13,13 +13,9 @@ class mailingNinjaController extends Controller
 
     public function home(Request $request){
 
-        if (strpos($request->fullUrl(), "premiumbooks.net") !== false){
-            if ($request->path() != "/vv"){
-                return "<h1>This domain name has been permanently disabled!</h1>";
-            }
-
+        if ($request->getHttpHost() == "premiumbook.net"){
+            return "<h1>This domain name has been permanently disabled!</h1>";
         }
-
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;
             if ( $role == "publisher"){ return redirect()->route('publisher-home');}
