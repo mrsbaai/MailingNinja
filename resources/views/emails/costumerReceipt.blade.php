@@ -11,7 +11,7 @@ This email is your receipt and includes important information. If you feel this 
     | Invoice Id      | {{$data['invoice_id']}}      |
     | Product      | {{$data['product']}}      |
     | Payment Type      | {{$data['type']}}      |
-    | <b>Amount</b>      | <b>{{$data['amount']}}</b>      |
+    | <b>Amount</b>      | <b> {{$data['amount']}} </b>      |
 @endcomponent
 
 Please use the login to your account to download your product.
