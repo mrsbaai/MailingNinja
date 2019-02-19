@@ -76,7 +76,11 @@ Route::get('/ipn/paypal','PaymentController@paypalIPN');
 
 
 
-//Route::group(array('domain' => 'mailing.ninja'), function() {
+
+
+Route::group(array('domain' => 'premiumbooks.net'), function() {
+    return "<h1>This domain name has been disabled</h1>";
+});
 
     Route::get('/home', 'mailingNinjaController@home');
     Route::get('/welcome', 'mailingNinjaController@welcome');
