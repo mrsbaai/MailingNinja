@@ -72,6 +72,7 @@ Route::get('/download/{id}', 'costumerController@download')->name('costumer-down
 Route::get('/contact', 'costumerController@contact')->name('costumer-contact');
 
 Route::post('/ipn/paypal','PaymentController@paypalIPN');
+Route::get('/ipn/paypal','PaymentController@paypalIPN');
 
 
 
