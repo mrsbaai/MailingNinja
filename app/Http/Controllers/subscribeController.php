@@ -138,8 +138,11 @@ class subscribeController extends Controller
             $subscriber->save();
         }
 
-        flash()->overlay("Your subscription has been confirmed", "Thank you!");
-        return redirect('/');
+        return ("<script LANGUAGE='JavaScript'>
+    window.alert('Thank you! Your subscription has been confirmed')
+    window.location.href='/';
+    </script>");
+
 
 
     }
