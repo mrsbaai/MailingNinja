@@ -35,7 +35,7 @@ class mailingNinjaController extends Controller
             if(Auth::user()->is_active !== 1){
                 Auth::logout();
                 return ("<script LANGUAGE='JavaScript'>
-    window.alert('Thank you for your registration! Your Application is currently under review.')
+    window.alert('Thank you for your registration! Your application is currently under review.')
     window.location.href='/';
     </script>");
             }
