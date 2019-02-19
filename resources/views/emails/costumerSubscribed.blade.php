@@ -4,7 +4,7 @@ Hi there,
 
 Thanks for subscribing to the {{ config('app.name') }} Newsletter!
 
-#Get Notifications About The Latest {{$data['niche']}} E-books, And Special Offers.
+#Get Notifications About The Latest {{$data['niche']}} E-books.
 
 To confirm your subscription, please follow the link:
 

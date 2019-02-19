@@ -19,14 +19,13 @@ class ContactController extends Controller
 
 
         $to = "abdelilah.sbaai@gmail.com";
-        $subject = "To publisher test 6";
-        $markdown= 'emails.contacts.test';
-        $content = "testing to publisher";
-        $data = array('content'=>$content);
+        $markdown= 'emails.costumerReceipt';
+      
+        $data = array('email'=>$to);
 
 
         $fire = new fireEmail();
-        $fire->fire(false, $to, $data,$markdown,'publisher');
+        $fire->fire(true, $to, $data,$markdown,'Payment Received');
 
 
     }
