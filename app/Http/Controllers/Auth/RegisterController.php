@@ -112,7 +112,7 @@ class RegisterController extends Controller
             $user->save();
             $user->roles()->attach(Role::where('name', 'publisher')->first());
 
-            $emailData = array('name'=>$data['name'], 'manager_name'=>$publisher_manager['name'], 'manager_email'=>$publisher_manager['email'], 'manager_skype'=>$publisher_manager['skype']);
+            $emailData = array('name'=>$data['name']);
             $subject = "Welcome to " . config('app.home_name');
             $fire = new fireEmail();
             $fire->fire(false, $data['email'], $emailData,'emails.publisherRegistred', $subject);

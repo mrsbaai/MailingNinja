@@ -3,7 +3,7 @@ Hey {{$data['name']}},
 
 Thank you for signing up. You can login at the following link:
 
-@component('mail::button', ['url' => config('app.app_url')])
+@component('mail::button', ['url' => config('app.app_url') .'/login'])
    Login
 @endcomponent
 
