@@ -89,7 +89,7 @@ class subscribeController extends Controller
             $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
             $data = array('email'=>$email, 'niche'=>$verticals);
             $fire = new fireEmail();
-            $fire->fire(false, $email, $data,"costumerSubscribed",'Welcome To Our Newsletter 🎉');
+            $fire->fire(false, $email, $data,"emails.costumerSubscribed",'Welcome To Our Newsletter 🎉');
 
 
             flash()->overlay("You have been successfully subscribed");
