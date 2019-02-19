@@ -148,6 +148,7 @@ class PaymentController extends Controller
                     if ($inv){
                         $inv->paid = true;
                         $inv->save();
+
                     }
                 }
 

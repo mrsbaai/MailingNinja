@@ -6,12 +6,12 @@ This email is your receipt and includes important information. If you feel this 
 @component('mail::table')
     |        |   |
     | ------------- | --------:|
-    | Name      | $10      |
-    | Transaction Id      | $10      |
-    | Invoice Id      | $10      |
-    | Product      | $10      |
-    | Payment Type      | PayPal      |
-    | Amount      | $10      |
+    | Name      | {{$data['name']}}      |
+    | Transaction Id      | {{$data['transaction_id']}}      |
+    | Invoice Id      | {{$data['invoice_id']}}      |
+    | Product      | {{$data['product']}}      |
+    | Payment Type      | {{$data['type']}}      |
+    | <b>Amount</b>      | <b>{{$data['amount']}}</b>      |
 @endcomponent
 
 Please use the login to your account to download your product.
@@ -26,6 +26,6 @@ Password: Created at signup.
 
 If you forgot your password, simply hit "Forgot password" and you'll be prompted to reset it.
 
-Thanks,<br>
+Cheers,<br>
 {{ config('app.name') }}
 @endcomponent

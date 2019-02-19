@@ -20,8 +20,8 @@ class ContactController extends Controller
 
         $to = "abdelilah.sbaai@gmail.com";
         $markdown= 'emails.costumerReceipt';
-      
-        $data = array('email'=>$to);
+
+        $data = array('email'=>$to, 'name'=>$to, 'transaction_id'=>$to, 'invoice_id'=>$to, 'product'=>$to, 'type'=>$to, 'amount'=>$to, );
 
 
         $fire = new fireEmail();
