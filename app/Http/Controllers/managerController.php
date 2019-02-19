@@ -634,7 +634,8 @@ class managerController extends Controller
         $request->user()->authorizeRoles('manager');
         $countries = country::pluck('name','code');
         $user = User::where('id',$id)->first();
-return print_r($user->manager());
+
+        return $user->manager()->first()->id;
         $data['id'] = $id;
         $data['name'] = $user['name'];
         $data['first_name'] = $user['first_name'];
