@@ -130,7 +130,7 @@ class subscribeController extends Controller
     }
 
 
-    public function confirm ($email){
+    public function confirmSub ($email){
 
         $subscriber = subscriber::all()->where('email', $email)->first();
         if ($subscriber){

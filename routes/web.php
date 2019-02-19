@@ -48,7 +48,7 @@ Route::get('/check', 'publisherController@refreshCPC');
 Route::get('/{code}/subscribe/{email}', 'subscribeController@subscribe');
 
 
-Route::get('/confirm/{email}', 'subscribeController@confirm');
+Route::get('/confirm/{email}', 'subscribeController@confirmSub');
 
 Route::post('/', 'subscribeController@subscribePost');
 
