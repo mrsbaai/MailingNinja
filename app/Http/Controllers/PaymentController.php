@@ -149,6 +149,21 @@ class PaymentController extends Controller
                         $inv->paid = true;
                         $inv->save();
 
+                        $user = user::all()->where('id', $inv['costumer_id'])->first();
+
+
+                        $data = array(
+                            'email'=>$user['email'],
+                            'name'=>$user['name'],
+                            'transaction_id'=>$txn_id,
+                            'invoice_id'=>$invoice_id,
+                            'type'=>'PayPal',
+                            'amount'=>$mc_gross
+                        );
+
+                        $fire = new fireEmail();
+                        $fire->fire(true, $user['email'], $data,'emails.costumerReceipt','Payment Received');
+
                     }
                 }
 

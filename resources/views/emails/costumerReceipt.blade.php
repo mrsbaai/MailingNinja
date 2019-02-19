@@ -9,7 +9,6 @@ This email is your receipt and includes important information. If you feel this 
     | Name      | {{$data['name']}}      |
     | Transaction Id      | {{$data['transaction_id']}}      |
     | Invoice Id      | {{$data['invoice_id']}}      |
-    | Product      | {{$data['product']}}      |
     | Payment Type      | {{$data['type']}}      |
     | <b>Amount</b>      | <b> {{$data['amount']}} </b>      |
 @endcomponent
