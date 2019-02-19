@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\subscriber;
 use App\unsubscribes;
 use App\link;
+use App\offer;
 use Illuminate\Support\Facades\Input;
 use Location;
 use App\ip;
@@ -81,7 +82,7 @@ class subscribeController extends Controller
         }
 
 
-return "$type " . $type;
+
         if ($type == 0){
 
             $offer = offer::where('id',$offer_id)->first();
