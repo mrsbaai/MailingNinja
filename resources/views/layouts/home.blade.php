@@ -3,6 +3,9 @@
 <html lang="en">
 <head>
 
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}.</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/normalize.css') }}">
@@ -140,7 +143,9 @@
 <script src="{{ asset('landing/js/main.js') }}"></script>
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
-    $('#flash-overlay-modal').modal();
+
+
+
     setTimeout(function(){
         $('#subscribe-modal').modal();
     }, 30000);
