@@ -621,7 +621,7 @@ class managerController extends Controller
                 $fire->fire(false, $publisher['email'], $data,'emails.userBlocked','Your account has been blocked.');
             }else{
                 $data = array('email'=>$publisher['email'], 'name'=>$publisher['name'], 'manager_name'=>$request->user()->name, 'manager_email'=>$request->user()->email, 'manager_skype'=>$request->user()->skype);
-                $fire->fire(false, $publisher['email'], $data,'emails.approved','Application Approved!');
+                $fire->fire(false, $publisher['email'], $data,'emails.approved','Application Approved 🚀');
 
             }
             flash("Publisher status updated!")->success();
