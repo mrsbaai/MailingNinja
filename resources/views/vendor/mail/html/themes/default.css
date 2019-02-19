@@ -82,7 +82,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: #F5F5F5;
+    background-color: #55212B;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -108,7 +108,7 @@ img {
 }
 
 .header a {
-    color: #262524;
+    color: white;
     font-size: 25px;
     font-weight: bold;
     text-decoration: none;
