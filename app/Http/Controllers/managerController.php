@@ -658,10 +658,10 @@ class managerController extends Controller
                 ->with('data',$data);
             //return view('manager.publisher')->with('id',$id);
         }else{
-            return back();
+            return "/";
 
         }
-            return back();
+            return "/";
         }
 
 
