@@ -1,13 +1,27 @@
 @component('mail::message')
-# Introduction
 
-{{$data['content']}}
+Hi there,
 
+Thanks for subscribing to the {{ config('app.name') }} Newsletter!
 
-@component('mail::button', ['url' => ''])
-Button Text
+#Get Notifications About The Latest {{$data['niche']}} E-books, And Special Offers.
+
+To confirm your subscription, please follow the link:
+
+@component('mail::button', ['url' => "https://" . config('app.url') . "/confirm/" . $data['email']])
+    Confirm
 @endcomponent
 
+Or copy and paste this link in a browser:
+
+{{"https://" . config('app.url') . "/confirm/" . $data['email']}}
+
+
+
+If you received this email by mistake, simply delete it. You won't be subscribed if you don't click the confirmation link above.
+
+If you have any questions please contact us.
+
 Thanks,<br>
-{{ config('app.name') }}
+{{ config('app.name') }} Team
 @endcomponent

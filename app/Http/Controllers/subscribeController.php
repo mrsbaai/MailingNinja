@@ -83,8 +83,13 @@ class subscribeController extends Controller
 
 
         if ($type = 0){
-            // send confirm subscription email
 
+
+            $offer = offer::where('id',$offer_id)->first();
+            $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
+            $data = array('email'=>$email, 'niche'=>$verticals);
+            $fire = new fireEmail();
+            $fire->fire(false, $email, $data,"costumerSubscribed",'Welcome To Our Newsletter 🎉');
             flash()->overlay("You have been successfully subscribed");
 
             if ($code !== "" and $code !== null){
@@ -98,6 +103,7 @@ class subscribeController extends Controller
 
 
     }
+
 
     public function unsubscribe ($email){
 
@@ -122,4 +128,18 @@ class subscribeController extends Controller
 
 
     }
+
+
+    public function confirm ($email){
+
+        $subscriber = subscriber::all()->where('email', $email)->first();
+        $subscriber->confirmed = true;
+    
+
+        flash()->overlay("Your subscription has been confirmed", "Thank you!");
+        return redirect('/');
+
+
+    }
+
 }
