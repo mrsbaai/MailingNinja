@@ -134,7 +134,7 @@ class subscribeController extends Controller
 
         $subscriber = subscriber::all()->where('email', $email)->first();
         if ($subscriber){
-            $subscriber->confirmed = true;
+            $subscriber->is_confirmed = true;
             $subscriber->save();
         }
 
