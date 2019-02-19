@@ -635,26 +635,31 @@ class managerController extends Controller
         $countries = country::pluck('name','code');
         $user = User::where('id',$id)->first();
 
-        return $user->manager()->first()->id;
-        $data['id'] = $id;
-        $data['name'] = $user['name'];
-        $data['first_name'] = $user['first_name'];
-        $data['last_name'] = $user['last_name'];
-        $data['email'] = $user['email'];
-        $data['skype'] = $user['skype'];
-        $data['phone'] = $user['phone'];
-        $data['address'] = $user['address'];
-        $data['city'] = $user['city'];
-        $data['country'] = $user['country'];
-        $data['postal_code'] = $user['postal_code'];
-        $data['paypal'] = $user['paypal'];
-        $data['merchant_id'] = $user['merchant_id'];
-        $data['website'] = $user['website'];
-        $data['message'] = $user['message'];
-        return view('manager.publisher-account')
-            ->with('countries',$countries)
-            ->with('data',$data);
-        //return view('manager.publisher')->with('id',$id);
+        if ($user->manager()->first()->id == Auth::user()->id){
+            $data['id'] = $id;
+            $data['name'] = $user['name'];
+            $data['first_name'] = $user['first_name'];
+            $data['last_name'] = $user['last_name'];
+            $data['email'] = $user['email'];
+            $data['skype'] = $user['skype'];
+            $data['phone'] = $user['phone'];
+            $data['address'] = $user['address'];
+            $data['city'] = $user['city'];
+            $data['country'] = $user['country'];
+            $data['postal_code'] = $user['postal_code'];
+            $data['paypal'] = $user['paypal'];
+            $data['merchant_id'] = $user['merchant_id'];
+            $data['website'] = $user['website'];
+            $data['message'] = $user['message'];
+            return view('manager.publisher-account')
+                ->with('countries',$countries)
+                ->with('data',$data);
+            //return view('manager.publisher')->with('id',$id);
+        }else{
+            return back();
+
+        }
+
     }
 
 

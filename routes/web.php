@@ -30,7 +30,7 @@ Route::get('/{code}/tracking/{email}', 'trackingController@open');
 Route::pattern('code', '[A-Z]{5}');
 Route::get('/{code}/{email?}', 'landingController@publisherLanding')->name('publisher-landing');
 
-Route::pattern('id', '[0-9]');
+Route::pattern('id', '[0-9]+');
 
 Route::get('/preview/{id}', 'landingController@previewLanding')->name('preview');
 Route::get('/ebook/{id}', 'landingController@hostLanding')->name('host-landing');
