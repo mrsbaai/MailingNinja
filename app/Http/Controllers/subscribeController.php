@@ -41,7 +41,7 @@ class subscribeController extends Controller
                     return redirect('/');
                 }
             }else{
-                return "type not 0" . $type;
+                return;
             }
 
         }
@@ -82,7 +82,7 @@ class subscribeController extends Controller
 
 
 
-        if ($type = 0){
+        if ($type == 0){
 
 
             $offer = offer::where('id',$offer_id)->first();
