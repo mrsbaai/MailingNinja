@@ -81,15 +81,16 @@ class subscribeController extends Controller
         }
 
 
-
+return "$type " . $type;
         if ($type == 0){
-
 
             $offer = offer::where('id',$offer_id)->first();
             $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
             $data = array('email'=>$email, 'niche'=>$verticals);
             $fire = new fireEmail();
             $fire->fire(false, $email, $data,"costumerSubscribed",'Welcome To Our Newsletter 🎉');
+
+
             flash()->overlay("You have been successfully subscribed");
 
             if ($code !== "" and $code !== null){
@@ -122,8 +123,11 @@ class subscribeController extends Controller
         }
 
 
-        flash()->overlay("We're sorry to see you go :(", "You have been unsubscribed.");
-        return redirect('/');
+        return ("<script LANGUAGE='JavaScript'>
+    window.alert('You have been unsubscribed. We are sorry to see you go :(')
+    window.location.href='/';
+    </script>");
+
 
 
 
