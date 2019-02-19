@@ -635,7 +635,7 @@ class managerController extends Controller
         $countries = country::pluck('name','code');
         $user = User::where('id',$id)->first();
 
-        if ($user->manager()->manager_id == Auth::user()->id){
+        if ($user->manager->id == Auth::user()->id){
             $data['id'] = $id;
             $data['name'] = $user['name'];
             $data['first_name'] = $user['first_name'];
