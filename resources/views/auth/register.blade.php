@@ -308,7 +308,7 @@
                                         <br/>
 
 
-                                        <textarea id="message" name="message" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"  placeholder="How are you planning to use our offers?" required>{{ old('message')}}</textarea>
+                                        <textarea id="message" name="message" rows="20" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"  placeholder="Tell us about you, and how are you planning to use our offers?" required>{{ old('message')}}</textarea>
                                         @if ($errors->has('message'))
                                             <span class="invalid-feedback">
                                             <strong>{{ $errors->first('message')}}</strong>
