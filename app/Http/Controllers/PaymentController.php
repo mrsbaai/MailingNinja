@@ -10,6 +10,8 @@ use App\offer;
 use App\PayPal;
 use App\user;
 use App\sells;
+use DB;
+use App\Quotation;
 
 class PaymentController extends Controller
 {
