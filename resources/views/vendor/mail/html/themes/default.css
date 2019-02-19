@@ -104,16 +104,17 @@ img {
 
 .header {
     padding: 0px;
-    margin: 0px;
     text-align: center;
     background-image: url("https://mailing.ninja/images/3.jpg")
 }
 
 .header a {
+    font-weight: 300;
+
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
     padding: 25px 0;
     color: white;
     font-size: 25px;
-    font-weight: bold;
     text-decoration: none;
     text-shadow: 0 1px 0 white;
 }
