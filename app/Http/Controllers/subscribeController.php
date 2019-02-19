@@ -86,10 +86,15 @@ class subscribeController extends Controller
         if ($type == 0){
 
             $offer = offer::where('id',$offer_id)->first();
-            $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
+            if ( $offer->verticals()){
+                $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
+            }else{
+                $verticals = "";
+            }
+
             $data = array('email'=>$email, 'niche'=>$verticals);
             $fire = new fireEmail();
-            $fire->fire(false, $email, $data,"emails.costumerSubscribed",'Welcome To Our Newsletter 🎉');
+            $fire->fire(true, $email, $data,"emails.costumerSubscribed",'Welcome To Our Newsletter 🎉');
 
 
 
