@@ -86,7 +86,7 @@ class subscribeController extends Controller
         if ($type == 0){
 
             $offer = offer::where('id',$offer_id)->first();
-            if ( $offer->verticals()){
+            if ( $offer){
                 $verticals = implode(" & ",$offer->verticals()->pluck('vertical')->toArray());
             }else{
                 $verticals = "";
