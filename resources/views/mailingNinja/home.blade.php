@@ -8,7 +8,7 @@
                 <h1>Mailing Ninja</h1>
                 <h3>Exclusive Offers For <b><u>Traffic Monetization</u></b> & <b><u>E-Mail List Building</u></b></h3>
                 <br />
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round">Watch video</a>
+                <a href="/register" class="btn btn-outline-neutral btn-round">Request An Account</a>
             </div>
         </div>
     </div>
