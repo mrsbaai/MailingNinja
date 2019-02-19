@@ -33,7 +33,7 @@ class PaymentController extends Controller
         $custom = $invoice_id;
 
         $return = Request::root();
-        $notify_url = 'http://premiumbooks.net/ipn/paypal';
+        $notify_url = Request::root() . '/ipn/paypal';
         $cancel_return = Request::root();
 
 
