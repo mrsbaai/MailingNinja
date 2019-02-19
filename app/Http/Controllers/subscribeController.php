@@ -135,6 +135,7 @@ class subscribeController extends Controller
         $subscriber = subscriber::all()->where('email', $email)->first();
         if ($subscriber){
             $subscriber->confirmed = true;
+            $subscriber->save();
         }
 
         flash()->overlay("Your subscription has been confirmed", "Thank you!");
