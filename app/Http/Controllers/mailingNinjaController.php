@@ -13,6 +13,15 @@ class mailingNinjaController extends Controller
 
     public function home(Request $request){
 
+        if ($request->getHttpHost() == "premiumbooks.net"){
+            if ($request->path() != "/ipn/paypal"){
+                return "<h1>This domain name has been permanently disabled</h1>";
+            }else{
+                return "cool";
+            }
+
+
+        }
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;
             if ( $role == "publisher"){ return redirect()->route('publisher-home');}
