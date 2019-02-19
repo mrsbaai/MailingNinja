@@ -14,5 +14,8 @@ class VerifyCsrfToken extends Middleware
         protected $except = [
         'stripe/*',
         'paypal/*',
+        '/ipn/paypal/',
+
+
     ];
 }
