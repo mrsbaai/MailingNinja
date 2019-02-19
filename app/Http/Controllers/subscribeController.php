@@ -92,13 +92,17 @@ class subscribeController extends Controller
             $fire->fire(false, $email, $data,"emails.costumerSubscribed",'Welcome To Our Newsletter 🎉');
 
 
-            flash()->overlay("You have been successfully subscribed");
 
             if ($code !== "" and $code !== null){
-                return redirect('/' . $code);
+                $url = "/" . $code;
             }else{
-                return redirect('/');
+                $url = "/";
             }
+
+            return ("<script LANGUAGE='JavaScript'>
+    window.alert('Thank you! A confirmation link has been sent to your email.')
+    window.location.href='" . $url . "';</script>");
+
 
         }
 
