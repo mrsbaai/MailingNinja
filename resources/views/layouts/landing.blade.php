@@ -144,7 +144,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/et-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/tooltip.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/lightbox.css') }}">
-    <link id="main" rel="stylesheet" type="text/css" href="{{ asset('landing/css/publisher1.css') }}">
+    <link id="main" rel="stylesheet" type="text/css" href="{{ asset('landing/css/publisher.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/book.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/subscribe.css') }}">
 
