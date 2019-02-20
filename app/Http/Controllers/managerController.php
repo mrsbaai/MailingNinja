@@ -94,7 +94,7 @@ class managerController extends Controller
             'image_1' =>  $request->image_1,
             'image_2' =>  $request->image_2,
             'image_3' =>  $request->image_3,
-            'image_4' =>  $request->image_3,
+            'image_4' =>  $request->image_4,
             'image_5' =>  $request->image_5,
             'image_6' =>  $request->image_6,
             'image_7' =>  $request->image_7,
@@ -393,7 +393,7 @@ class managerController extends Controller
             ->with('image_1', $offer->image_1)
             ->with('image_2', $offer->image_2)
             ->with('image_3', $offer->image_3)
-            ->with('image_4', $offer->image_3)
+            ->with('image_4', $offer->image_4)
             ->with('image_5', $offer->image_5)
             ->with('image_6', $offer->image_6)
             ->with('image_7', $offer->image_7)
