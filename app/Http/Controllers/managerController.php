@@ -524,10 +524,10 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->is_active){
                     $a_route = route('publisher-status', ['id' => $entity->id,'status' => "0"]);
-                    return "<a class='btn btn-danger btn-sm' href='$a_route' onclick='return confirm(\"Are you sure you want to BLOCK this publisher and send an automatic e-mail? \")'>Deactivate</a>";
+                    return "<a class='btn btn-danger btn-sm' href='$a_route' onclick='return confirm(\"Are you sure you want to BLOCK this publisher and send an AUTOMATIC EMAIL? \")'>Deactivate</a>";
                 }else{
                     $a_route = route('publisher-status', ['id' => $entity->id,'status' => "1"]);
-                    return "<a class='btn btn-primary btn-sm' href='$a_route' onclick='return confirm(\"Are you sure you want to ACTIVATE this publisher and send an automatic e-mail? \")'>Activate</a>";
+                    return "<a class='btn btn-primary btn-sm' href='$a_route' onclick='return confirm(\"Are you sure you want to ACTIVATE this publisher and send an AUTOMATIC EMAIL? \")'>Activate</a>";
                 }
             });
 

@@ -31,7 +31,7 @@ class costumerController extends Controller
         }
 
         $offer = offer::all()->where('id',$id)->first();
-        $name = str_replace(' ', '_', $offer['title']) . "_[The_Password_Is_PBOOKS].zip";
+        $name = str_replace(' ', '_', $offer['title']) . "_[The_Password_Is_pbooks].zip";
 
 
         $files = Storage::disk('dropbox')->allFiles($id);
@@ -63,7 +63,7 @@ class costumerController extends Controller
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->paid == true){
-                    return '<span class="badge badge-success">Paid</span> <span class="badge badge-info">[The Archive PASSWORD Is: PBOOKS]</span>';
+                    return '<span class="badge badge-success">Paid</span> <span class="badge badge-info">[The Archive PASSWORD Is: pbooks]</span>';
                 }else{
                     return '<span class="badge badge-warning">Unpaid</span>';
                 }

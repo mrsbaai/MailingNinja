@@ -494,7 +494,7 @@
                         <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required />
                         <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
                     {{ Form::close() }}
-                    <span class="subheading big justify h2 check-green">(Available in PDF, MOBI, and EPUB)</span>
+                    <span class="subheading big justify h2 check-green">(Available in PDF & EPUB)</span>
                 </div>
                 @else
                     <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
@@ -510,7 +510,7 @@
 
                             {{Form::close()}}
                         </div>
-                        <span class="subheading big justify h2 check-green">(Avalable in PDF, MOBI, and EPUB)</span>
+                        <span class="subheading big justify h2 check-green">(Available in PDF & EPUB)</span>
                     </div>
                 @endif
 
