@@ -937,8 +937,8 @@ list-style-type: none;
 
 
 .check-green li:before {
-	content: "\f00c"; /* FontAwesome Unicode */
-	font-family: FontAwesome;
+	content: "\2713"; /* FontAwesome Unicode */
+
 	display: inline-block;
 	margin-left: -2em; /* same as padding-left set on li */
 	width: 1.3em; /* same as padding-left set on li */
