@@ -263,7 +263,6 @@
                     </div>
                 </div>
                 <div class="col-md-6 wide check-green">
-                    <h2 class="heading dominant-color wow animated fadeInUp">About The Book</h2>
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp check-green">{!! $book_about_1 !!}</p>
                     @endif
