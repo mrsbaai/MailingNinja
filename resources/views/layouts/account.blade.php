@@ -209,7 +209,7 @@
 
   </div> -->
 
-        <div class="container" style="padding-top:100px;" >
+        <div class="container-fluid" style="padding-top:100px;padding-right:30px;">
             @include('flash::message')
             @yield('content')
         </div>
