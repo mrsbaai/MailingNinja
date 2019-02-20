@@ -937,8 +937,7 @@ list-style-type: none;
 
 
 .check-green li:before {
-	content: "\2713"; /* FontAwesome Unicode */
-
+	content: '✓';
 	display: inline-block;
 	margin-left: -2em; /* same as padding-left set on li */
 	width: 1.3em; /* same as padding-left set on li */
