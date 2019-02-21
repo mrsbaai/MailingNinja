@@ -130,7 +130,7 @@
             box-shadow: 0 3px 5px rgba(0,0,0,.05);
             width: auto;
             height: auto;
-            max-height: 500px;
+
 
             border-radius: 2px;
             margin-bottom: 30px;
@@ -153,7 +153,7 @@
 
                         <div class="hovereffect wallthumb">
 
-                            <img class="img-responsive img-fluid center-block" src="@if ($offer->thumbnail){{$offer->thumbnail}}@else /images/empty.png @endif" alt="Read: {{$offer->title}}">
+                            <img class="img-responsive img-fluid center-block" style = "max-height: 500px;" src="@if ($offer->thumbnail){{$offer->thumbnail}}@else /images/empty.png @endif" alt="Read: {{$offer->title}}">
                             <div class="overlay ">
                                 <h2>{{$offer->description}}</h2>
                                 <center><a class="info" href="/ebook/{{$offer->id}}" target="_blank"><b>Discover</b></a></center>
