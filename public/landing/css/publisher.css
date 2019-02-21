@@ -937,7 +937,9 @@ color: white;
 	margin-left: -5em;
 
 }
-
+.check-green ul li{
+	color: white;
+}
 
 .check-green li:before {
 	content: '✓';
