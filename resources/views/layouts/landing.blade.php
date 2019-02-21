@@ -290,7 +290,7 @@
                 <div class="col-md-7" >
                     <div class="row author" >
                         <div class="col-sm-12 author-name" >
-                            <h2 class="heading dominant-color wow animated fadeInUp">{{ $author_name }} (The Author)</h2>
+                            <h2 class="heading dominant-color wow animated fadeInUp">{{ $author_name }}</h2>
 
                             <p class="small justify muted-light wow animated fadeInUp">{{ $author_about }}.</p>
 
