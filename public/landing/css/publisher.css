@@ -929,6 +929,9 @@ button:focus {
 .check-green ul {
 list-style-type: none;
 }
+.check-green {
+color: white;
+}
 
 .wide{
 	margin-left: -5em;
