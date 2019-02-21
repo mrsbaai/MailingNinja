@@ -137,7 +137,7 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <p><b>Important!</b> PayPal Email is required to receive payments from costumers.</p>
+                                <p style="padding-left: 20x;"><b>Important!</b> PayPal Email is required to receive payments from costumers.</p>
 
                             </div>
 
