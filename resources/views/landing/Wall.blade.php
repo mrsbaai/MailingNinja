@@ -130,6 +130,7 @@
             box-shadow: 0 3px 5px rgba(0,0,0,.05);
             width: auto;
             height: auto;
+            max-height: 50px;
 
             border-radius: 2px;
             margin-bottom: 30px;
