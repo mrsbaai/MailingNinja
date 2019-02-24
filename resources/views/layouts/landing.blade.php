@@ -262,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 wide check-green wow animated fadeInUp">
+                <div class="col-md-6 wide wow animated fadeInUp">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify check-green wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
@@ -493,7 +493,7 @@
                         <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required />
                         <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
                     {{ Form::close() }}
-                    <span class="subheading big justify h2 check-green">(Available in PDF & EPUB)</span>
+                    <span class="subheading big justify h2">(Available in PDF & EPUB)</span>
                 </div>
                 @else
                     <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
@@ -509,7 +509,7 @@
 
                             {{Form::close()}}
                         </div>
-                        <span class="subheading big justify h2 check-green">(Available in PDF & EPUB)</span>
+                        <span class="subheading big justify h2">(Available in PDF & EPUB)</span>
                     </div>
                 @endif
 
