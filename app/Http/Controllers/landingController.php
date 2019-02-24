@@ -80,7 +80,7 @@ class landingController extends Controller
         $relateds = offer::whereHas('verticals', function($q) use ($verticals, $offer_id)
         {
 
-            $q->where('id', '<>',$offer_id;
+            $q->where('id', '<>',$offer_id);
             foreach($verticals as $vertical){
                 $q->orWhere('vertical', $vertical['vertical']);
             }
