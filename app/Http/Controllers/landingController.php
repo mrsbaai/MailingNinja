@@ -88,7 +88,7 @@ class landingController extends Controller
         $relateds = offer::with('verticals')
             ->whereHas('verticals', function($q) use ($verticals) {
                 foreach ($verticals as $vertical){
-                    $q->orwhere('vertical', $vertical['vertical']);
+                    $q->where('vertical', $vertical['vertical']);
                 }
 
             })->orderByDesc('cpc', 'desc')->get();
