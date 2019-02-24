@@ -81,12 +81,10 @@ $v= "Cookbooks";
 
 
 
-        $relateds = offer::with('verticals');
-
-
-        $relateds->whereHas('verticals', function($q) use ($v) {
+        $relateds = offer::with('verticals')
+            ->whereHas('verticals', function($q) use ($v) {
                 $q->where('vertical', $v);
-        });
+            });
 
 
 
