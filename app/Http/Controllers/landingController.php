@@ -94,9 +94,7 @@ class landingController extends Controller
 
             })->orderByDesc('cpc', 'desc')->get()->pluck('thumbnail', 'id');
 
-        if (count($relateds) == 0 ){
-            $relateds = offer::all()->orderByDesc('cpc', 'desc')->get()->pluck('thumbnail', 'id');
-        }
+        
 
         return $relateds;
 
