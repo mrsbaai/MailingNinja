@@ -78,7 +78,8 @@ class landingController extends Controller
 
 
 
-
+print_r($verticals);
+return;
 
 
         $relateds = offer::with('verticals')
