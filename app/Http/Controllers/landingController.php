@@ -71,7 +71,7 @@ class landingController extends Controller
     }
 
     public function test(){
-        getRelatedBooks(2);
+        $this->getRelatedBooks(2);
     }
 
     private function getRelatedBooks($offer_id){
