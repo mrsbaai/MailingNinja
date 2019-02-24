@@ -937,8 +937,12 @@ button:focus {
 	margin-left: -5em;
 
 }
-.check-green ul li{
+.check-green p h1 h2 h3 h4 h5{
 	color: white;
+}
+
+.check-green ul li{
+	color: #F5F5F5;
 }
 
 .check-green li:before {
