@@ -78,7 +78,7 @@ class landingController extends Controller
         $offer = offer::all()->where('id',$offer_id)->first();
 
         $verticals = $offer->verticals()->get();
-
+        $verticals->pluck('title');
 
 
 print_r($verticals);
