@@ -70,6 +70,9 @@ class landingController extends Controller
 
     }
 
+    public function test(){
+        getRelatedBooks(2);
+    }
 
     private function getRelatedBooks($offer_id){
         $offer = offer::all()->where('id',$offer_id)->first();

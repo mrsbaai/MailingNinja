@@ -9,7 +9,7 @@ Route::get('getstarted/{manager_id}', 'Auth\RegisterController@showRegistrationF
 
 Route::get('/', 'mailingNinjaController@home');
 
-Route::get('/test','ContactController@test');
+Route::get('/test','landingController@test');
 
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
