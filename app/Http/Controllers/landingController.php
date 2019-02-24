@@ -71,7 +71,7 @@ class landingController extends Controller
     }
 
     public function test(){
-        $this->getRelatedBooks(3);
+        $this->getRelatedBooks(10);
     }
 
     private function getRelatedBooks($offer_id){
@@ -85,7 +85,7 @@ class landingController extends Controller
             echo $vertical['vertical'];
         }
 
-        
+
 return;
 
 
