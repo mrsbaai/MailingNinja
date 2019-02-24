@@ -264,10 +264,10 @@
                 </div>
                 <div class="col-md-6 wide wow animated fadeInUp">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
-                        <p class="subheading big justify check-green wow animated fadeInUp ">{!! $book_about_1 !!}</p>
+                        <p class="subheading big justify wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
                     @if($book_about_2 !== null && $book_about_2 !== "" )
-                        <p class="small justify check-green wow animated fadeInUp ">{!! $book_about_2 !!}</p>
+                        <p class="small justify wow animated fadeInUp ">{!! $book_about_2 !!}</p>
                     @endif
 
 
