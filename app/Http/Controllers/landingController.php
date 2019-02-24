@@ -92,12 +92,12 @@ class landingController extends Controller
                     $q->orwhere('vertical', $vertical['vertical']);
                 }
 
-            })->orderByDesc('cpc', 'desc')->get();
+            })->orderByDesc('cpc', 'desc')->get()->pluck('thumbnail', 'id');
 
+        if (count($relateds) == 0 ){
+            $relateds = offer::all()->orderByDesc('cpc', 'desc')->get()->pluck('thumbnail', 'id');
+        }
 
-
-
-        $relateds->pluck('thumbnail', 'id');
         return $relateds;
 
 
