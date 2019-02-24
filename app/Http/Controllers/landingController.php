@@ -82,12 +82,12 @@ $v= "Cookbooks";
 
 
         $relateds = offer::with('verticals')
-            ->whereHas('vericals', function($q) use ($v) {
+            ->whereHas('verticals', function($q) use ($v) {
                 $q->where('vertical', $v);
             })->orderByDesc('cpc', 'desc')->get();
 
 
-        
+
 
         $relateds->pluck('thumbnail', 'id');
         return $relateds;
