@@ -77,19 +77,22 @@ class landingController extends Controller
         $verticals = $offer->verticals()->get();
 
 
-$v= "Cookbooks";
+
 
 
 
         $relateds = offer::with('verticals')
-            ->whereHas('verticals', function($q) use ($v) {
-                $q->where('vertical', $v);
-            });
+            ->whereHas('verticals', function($q) use ($verticals) {
+                foreach ($verticals as $vertical){
+                    $q->orwhere('vertical', $vertical);
+                }
+
+            })->orderByDesc('cpc', 'desc')->get();
 
 
 
 
-        $relateds->orderByDesc('cpc', 'desc')->get()->pluck('thumbnail', 'id');
+        $relateds->pluck('thumbnail', 'id');
         return $relateds;
 
 
