@@ -457,7 +457,7 @@ class publisherController extends Controller
             });
         $table->addColumn('cpc')
             ->isSortable()
-            ->setTitle('CPC')
+            ->setTitle('EPC')
             ->isCustomHtmlElement(function ($entity, $column) {
                 return $entity->cpc;
             })
