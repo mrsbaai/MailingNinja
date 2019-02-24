@@ -75,13 +75,17 @@ class landingController extends Controller
     }
 
     private function getRelatedBooks($offer_id){
+
+
         $offer = offer::all()->where('id',$offer_id)->first();
 
         $verticals = $offer->verticals()->get();
-        $verticals->pluck('vertical');
 
+        foreach ($verticals as $vertical){
+            echo $vertical['vertical'];
+        }
 
-print_r($verticals);
+        
 return;
 
 
