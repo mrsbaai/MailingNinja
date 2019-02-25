@@ -67,7 +67,7 @@ class publisherController extends Controller
 
         $profit = 0;
         foreach ($collection as $item) {
-            $profit = $profit + $item['payedAmount'];
+            $profit = $profit + $item['net_amount'];
         }
         $data['profit_all'] = $profit;
 
@@ -77,7 +77,7 @@ class publisherController extends Controller
         $data['leads_today'] = count($collection);
         $profit = 0;
         foreach ($collection as $item) {
-            $profit = $profit + $item['payedAmount'];
+            $profit = $profit + $item['net_amount'];
         }
         $data['profit_today'] = $profit;
 
@@ -126,11 +126,11 @@ class publisherController extends Controller
             ->sortByDefault('desc')
             ->setColumnDateFormat('d/m/Y H:i:s');
 
-        $table->addColumn('payedAmount')
+        $table->addColumn('net_amount')
             ->setTitle(__('Net Amount'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->payedAmount. "</b>";
+                return "<b>$". $entity->net_amount. "</b>";
             });
 
 
@@ -804,7 +804,7 @@ class publisherController extends Controller
             $collection = $query->get();
             $profit = 0;
             foreach ($collection as $item) {
-                $profit = $profit + $item['payedAmount'];
+                $profit = $profit + $item['net_amount'];
             }
 
             $data[] = $profit;

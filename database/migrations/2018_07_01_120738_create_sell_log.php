@@ -13,7 +13,7 @@ class CreateSellLog extends Migration
 
             $table->integer('publisher_id')->nullable()->default(null);
             $table->integer('offer_id');
-            $table->integer('operation_id');
+            $table->string('operation_id');
             $table->integer('costumer_id');
             $table->string('merchant_email');
             $table->double('net_amount');
