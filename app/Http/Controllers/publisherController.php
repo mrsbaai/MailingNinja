@@ -795,7 +795,7 @@ class publisherController extends Controller
                 ->whereDay('created_at',$date->format('d'))
                 ->where('net_amount','>', '0')
                 ->where('publisher_id', '<>', config('app.main_publisher'))
-                ->where('Status','Completed');
+                ->where('status','Completed');
             if ($user_id){$query->where('publisher_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
             if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
