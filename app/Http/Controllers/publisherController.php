@@ -52,8 +52,8 @@ class publisherController extends Controller
         $query->where('user_id', Auth::user()->id);
         $data['subscribers_all'] = count($query->get());
 
-        $query->whereMonth('Created_at',$date->format('m'))
-            ->whereDay('Created_at',$date->format('d'));
+        $query->whereMonth('created_at',$date->format('m'))
+            ->whereDay('created_at',$date->format('d'));
         $data['subscribers_today'] = count($query->get());
 
         $query  = sells::latest();
@@ -70,8 +70,8 @@ class publisherController extends Controller
         }
         $data['profit_all'] = $profit;
 
-        $query->whereMonth('Created_at',$date->format('m'))
-            ->whereDay('Created_at',$date->format('d'));
+        $query->whereMonth('created_at',$date->format('m'))
+            ->whereDay('created_at',$date->format('d'));
         $collection = $query->get();
         $data['leads_today'] = count($collection);
         $profit = 0;
@@ -91,8 +91,8 @@ class publisherController extends Controller
             $clicks = $clicks + $item['count'];
         }
         $data['clicks_all'] = $clicks;
-        $query->whereMonth('Created_at',$date->format('m'))
-            ->whereDay('Created_at',$date->format('d'));
+        $query->whereMonth('created_at',$date->format('m'))
+            ->whereDay('created_at',$date->format('d'));
 
         $collection = $query->get();
         $clicks = 0;
@@ -510,8 +510,8 @@ class publisherController extends Controller
 
         $all_subscribes =  count($query->get());
 
-        $query->whereMonth('Created_at',Carbon::now()->format('m'))
-            ->whereDay('Created_at',Carbon::now()->format('d'));
+        $query->whereMonth('created_at',Carbon::now()->format('m'))
+            ->whereDay('created_at',Carbon::now()->format('d'));
         $subscribes_today =  count($query->get());
 
 
@@ -570,7 +570,7 @@ class publisherController extends Controller
            $filename = "[$period Days]$filename";
            $start = Carbon::now()->subDays($period);
            $now = Carbon::now();
-           $query->whereBetween('Created_at', [$start, $now])->get();
+           $query->whereBetween('created_at', [$start, $now])->get();
        }
 
         if ($country){
@@ -678,11 +678,10 @@ class publisherController extends Controller
             $query  = Sells::latest();
 
 
-            $query->whereMonth('Created_at',$date->format('m'))
-                ->whereDay('Created_at',$date->format('d'))
+            $query->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'))
                 ->where('net_amount','>', '0')
-                ->where('publisher_id', '<>', config('app.main_publisher'))
-                ->where('Status','Completed');
+                ->where('status','Completed');
             if ($user_id){$query->where('publisher_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
             if ($vertical_id){$query->where('vertical_id' , $vertical_id);}
@@ -734,8 +733,8 @@ class publisherController extends Controller
             $query  = clicks::latest();
 
 
-            $query->whereMonth('Created_at',$date->format('m'))
-                ->whereDay('Created_at',$date->format('d'));
+            $query->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'));
 
             if ($user_id){$query->where('user_id' , $user_id);}
             if ($offer_id){$query->where('offer_id' , $offer_id);}
@@ -792,8 +791,8 @@ class publisherController extends Controller
             $query  = Sells::latest();
 
 
-            $query->whereMonth('Created_at',$date->format('m'))
-                ->whereDay('Created_at',$date->format('d'))
+            $query->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'))
                 ->where('net_amount','>', '0')
                 ->where('publisher_id', '<>', config('app.main_publisher'))
                 ->where('Status','Completed');
@@ -855,10 +854,10 @@ class publisherController extends Controller
             $query2 = unsubscribes::latest();
 
 
-            $query1->whereMonth('Created_at',$date->format('m'))
-                ->whereDay('Created_at',$date->format('d'));
-            $query2->whereMonth('Created_at',$date->format('m'))
-                ->whereDay('Created_at',$date->format('d'));
+            $query1->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'));
+            $query2->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'));
 
             if ($user_id){
                 $query1->where('user_id' , $user_id);
