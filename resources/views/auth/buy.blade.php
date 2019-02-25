@@ -19,7 +19,7 @@
 
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
-                                        <input name="code" id="code" type="text" value="{{$code}}" hidden>
+                                        <input name="code" id="code" type="text" value="@if($code !== ""){{$code}}@else{{ old('code') }}@endif" hidden>
 
                                         <input  placeholder="Name" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
