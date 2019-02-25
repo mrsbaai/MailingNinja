@@ -59,7 +59,6 @@ class publisherController extends Controller
         $query  = sells::latest();
         $query->where('publisher_id', Auth::user()->id)
             ->where('net_amount','>', '0')
-            ->where('publisher_id', '<>', config('app.main_publisher'))
             ->where('status','Completed');
 
         $collection = $query->get();
