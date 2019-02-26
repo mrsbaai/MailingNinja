@@ -31,7 +31,11 @@
         <div class = "col-12"><h2 class="title">Do you want to unsubscribe?</h2></div>
         <div class = "col-6"> <input name="email" type="text"  class="form-control" style="max-width: 350px;" placeholder="Email to unsubscribe"></div>
         <div class = "col-6"> <input class="btn btn-danger"  type="submit" value="Unsubscribe"></div>
-
+        <br/>
+        <br/>
+        <br/>
+        <img src="https://c1.staticflickr.com/8/7312/8929493443_55740a7a3e_b.jpg" style="max-width: 500px;"></center>
+    </center>
 
 
 
