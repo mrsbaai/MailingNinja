@@ -14,15 +14,19 @@
 
                 <div><h2 class="title">Do you want to unsubscribe?</h2></div>
             {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
-                <div class="row text-center">
+                <div class="row">
+                    <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
+                </div>
+            <div class="row">
+                <input class="btn btn-danger"  type="submit" value="Unsubscribe">
+
+                </div>
 
 
-                        <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe"><br/><br/><br/>
-                        <input class="btn btn-danger"  type="submit" value="Unsubscribe">
+
 
 
                     {{ Form::close()}}
-                </div>
 
 
 

@@ -88,10 +88,20 @@
         @yield('content')
     </div>
 
-        <footer class="footer footer-white text-center">
+        <footer class="footer footer-white ">
             <div class="container-fluid">
-                <div class="row text-center">
+                <div class="row ">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li>
+                                <a href="https://www.fb.com" target="_blank">Facebook</a>
+                            </li>
+                            <li>
+                                <a href="http://twitter.com/" target="_blank">Twitter</a>
+                            </li>
 
+                        </ul>
+                    </nav>
                     <div class="credits ml-auto">
               <span class="copyright">
                 ©
