@@ -24,9 +24,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-12 text-right" style="padding-top:18px;">
                         <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" style="background-color: #4C4A48;border-color:#4C4A48;"value="Unsubscribe">
-                    </div>
+
                 </div>
 
             {{ Form::close()}}

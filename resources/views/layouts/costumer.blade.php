@@ -90,15 +90,8 @@
 
         <footer class="footer footer-white ">
             <div class="container-fluid">
-                <div class="row">
-                    <nav class="footer-nav">
-                        <ul>
-                            <li>
-                                <a href="https://www.fb.com" target="_blank">Facebook</a>
-                            </li>
+                <div class="row text-center">
 
-                        </ul>
-                    </nav>
                     <div class="credits ml-auto">
               <span class="copyright">
                 ©
