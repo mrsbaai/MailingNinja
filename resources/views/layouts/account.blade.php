@@ -222,9 +222,7 @@
                             <li>
                                 <a href="https://www.fb.com" target="_blank">Facebook</a>
                             </li>
-                            <li>
-                                <a href="http://twitter.com/" target="_blank">Twitter</a>
-                            </li>
+                            
 
                         </ul>
                     </nav>
