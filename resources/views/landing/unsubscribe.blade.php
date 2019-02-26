@@ -9,19 +9,22 @@
 
 <center>
     <section class="text-center">
-        <div class="row text-center">
 
 
-                <div><h2 class="title">Do you want to unsubscribe?</h2></div>
+
+
             {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
-            <div class = "col-12"></div>
-                <div class="row">
+            <div class = "col-12">
+                <div class="row"><h2 class="title">Do you want to unsubscribe?</h2></div>
+                <div >
                     <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
                 </div>
-            <div class="row">
-                <input class="btn btn-danger"  type="submit" value="Unsubscribe">
+                <div class="row">
+                    <input class="btn btn-danger"  type="submit" value="Unsubscribe">
 
                 </div>
+
+            </div>
 
 
 
@@ -31,8 +34,6 @@
 
 
 
-
-        </div>
     </section>
 
 </center>
