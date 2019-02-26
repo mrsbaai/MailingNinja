@@ -43,7 +43,9 @@ Route::get('/confirm/{email}', 'subscribeController@confirmSub');
 
 Route::post('/', 'subscribeController@subscribePost');
 
-Route::get('/unsubscribe/{email}', 'subscribeController@unsubscribe');
+Route::get('/unsubscribe/{email?}', 'subscribeController@unsubscribe');
+
+Route::post('/unsubscribe', 'subscribeController@unsubscribe');
 
 Route::get('/buy', 'landingController@register');
 Route::post('/buy', 'landingController@register');

@@ -116,7 +116,16 @@ class subscribeController extends Controller
     }
 
 
-    public function unsubscribe ($email){
+    public function unsubscribe ($email = null){
+
+        if ($email == "{email}" or $email == null){
+            if(Input::get('email')){
+                $email = Input::get('email');
+            }else{
+                return view('landing.unsubscribe');
+            }
+
+        }
 
         $info = subscriber::all()->where('email', $email)->first();
 

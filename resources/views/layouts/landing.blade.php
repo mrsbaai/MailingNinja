@@ -330,7 +330,7 @@
 
         <div class="container">
             <div class="row">
-                <h2 class="heading dominant-color wow animated fadeInUp">People Who Purchased This eBook Also Liked:</h2><br/><br/><br/>
+                <h2 class="heading dominant-color wow animated fadeInUp">People Who Purchased This E-book Also Liked:</h2><br/><br/><br/>
                 @yield('Wall')
                 <div class="col-lg-12 wow animated fadeInUp" >
                     <p class="text-center">
