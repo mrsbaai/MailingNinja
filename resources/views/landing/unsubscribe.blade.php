@@ -9,7 +9,7 @@
 
 <center>
     <section class="text-center">
-        <div class="text-center">
+        <div class="row text-center">
 
 
                 <div><h2 class="title">Do you want to unsubscribe?</h2></div>
