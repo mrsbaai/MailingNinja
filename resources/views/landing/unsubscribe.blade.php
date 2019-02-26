@@ -4,23 +4,32 @@
 @section('content')
 
 
-
-    <h1 class="heading uppercase" style="margin-top: -70px; font-size: 500%">{{ config('app.name') }}<span id="logo_span" style="font-size:200%;color:#7cc576;">.</span></h1>
-    <h3 class="heading">“Latest Bestseller eBooks.”</h3>
-    <br/><br/><br/><br/>
+<br/><br/>
 
 
 
     <section>
-        <div class=" ">
+        <div class="text-center">
             <div class="row">
                 {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
                     <div><h2 class="title">Do you want to unsubscribe?</h2></div>
-                    <div><label class="title">Email to unsubscribe:</label><input autocomplete="on" type="text" name="email" value=""></div>
 
-                    <div><input type="submit" name="unsubscribe" value="Unsubscribe"></div>
+                <div class="row">
 
-            {{ Form::open(array('action' => 'subscribeController@subscribePost'))}}
+                    <div class="col-sm-12">
+                        <input name="lgemail" type="text" class="form-control" placeholder="Email" data-validation="email">
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 text-right" style="padding-top:18px;">
+                        <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" style="background-color: #4C4A48;border-color:#4C4A48;"value="Unsubscribe">
+                    </div>
+                </div>
+
+            {{ Form::close()}}
             </div>
         </div>
     </section>
