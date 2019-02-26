@@ -16,10 +16,10 @@
             {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
                 <div class="row text-center">
 
-                    <div class="col-sm-12 text-center">
+
                         <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
-                        <input href="#" class="btn btn-danger"  type="submit">Unsubscribe</input>
-                    </div>
+                        <input class="btn btn-danger"  type="submit">Unsubscribe</input>
+                   
 
                     {{ Form::close()}}
                 </div>
