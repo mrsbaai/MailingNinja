@@ -24,7 +24,8 @@
                 </div>
 
                 <div class="row">
-                        <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" style="background-color: #4C4A48;border-color:#4C4A48;"value="Unsubscribe">
+                    <a href="#" class="btn btn-danger"  type="submit">Unsubscribe</a>
+
 
                 </div>
 
