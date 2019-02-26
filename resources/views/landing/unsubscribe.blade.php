@@ -17,7 +17,7 @@
                 <div class="row text-center">
 
                     <div class="col-sm-12 text-center">
-                        <input name="email" type="text" class="form-control" placeholder="Email to unsubscribe">
+                        <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
                         <a href="#" class="btn btn-danger"  type="submit">Unsubscribe</a>
                     </div>
 

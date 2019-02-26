@@ -131,13 +131,16 @@ class subscribeController extends Controller
 
         $check = unsubscribes::all()->where('email', $email)->first();
         if (!$check){
-            $add = new unsubscribes();
-            if ($info){
-                $add->offer_id = $info['offer_id'];
-                $add->user_id = $info['user_id'];
+            if ($this->valid_email($email)){
+                $add = new unsubscribes();
+                if ($info){
+                    $add->offer_id = $info['offer_id'];
+                    $add->user_id = $info['user_id'];
+                }
+                $add->email = $email;
+                $add->save();
             }
-            $add->email = $email;
-            $add->save();
+
 
         }
 
