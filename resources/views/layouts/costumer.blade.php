@@ -33,7 +33,7 @@
 
                     <span class="navbar-brand">
 
-                        <span class="uppercase">{{ config('app.name') }}.</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
+                        <span class="uppercase">{{ config('app.name') }}</span><span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
                     </span>
 
 
