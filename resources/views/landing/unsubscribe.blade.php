@@ -14,6 +14,7 @@
 
                 <div><h2 class="title">Do you want to unsubscribe?</h2></div>
             {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
+            <div class = "col-12"></div>
                 <div class="row">
                     <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
                 </div>
