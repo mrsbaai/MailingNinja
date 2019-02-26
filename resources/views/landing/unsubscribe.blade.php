@@ -17,7 +17,7 @@
                 <div class="row">
 
                     <div class="col-sm-12">
-                        <input name="lgemail" type="text" class="form-control" placeholder="Email" data-validation="email">
+                        <input name="email" type="text" class="form-control" placeholder="Email to unsubscribe">
                     </div>
 
 
