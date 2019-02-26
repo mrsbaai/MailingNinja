@@ -143,7 +143,7 @@ class subscribeController extends Controller
 
 
         return ("<script LANGUAGE='JavaScript'>
-    window.alert('You have been unsubscribed. We are sorry to see you go :(')
+    window.alert('Your email $email been unsubscribed. We are sorry to see you go :(')
     window.location.href='/';
     </script>");
 
