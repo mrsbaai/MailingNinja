@@ -14,7 +14,7 @@
     <section>
         <div class=" ">
             <div class="row">
-                {{ Form::open(array('action' => 'subscribeController@subscribePost'))}}
+                {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
                     <div><h2 class="title">Do you want to unsubscribe?</h2></div>
                     <div><label class="title">Email to unsubscribe:</label><input autocomplete="on" type="text" name="email" value=""></div>
 
