@@ -7,32 +7,34 @@
 <br/><br/>
 
 
-
-    <section>
+<center>
+    <section class="text-center">
         <div class="text-center">
             <div class="row">
                 {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
-                    <div><h2 class="title">Do you want to unsubscribe?</h2></div>
+                <div><h2 class="title">Do you want to unsubscribe?</h2></div>
 
-                <div class="row">
+                <div class="row text-center">
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 text-center">
                         <input name="email" type="text" class="form-control" placeholder="Email to unsubscribe">
                     </div>
 
 
                 </div>
 
-                <div class="row">
+                <div class="row text-center">
                     <a href="#" class="btn btn-danger"  type="submit">Unsubscribe</a>
 
 
                 </div>
 
-            {{ Form::close()}}
+                {{ Form::close()}}
             </div>
         </div>
     </section>
+
+</center>
 
 
 
