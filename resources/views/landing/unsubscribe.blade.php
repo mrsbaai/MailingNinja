@@ -18,8 +18,8 @@
 
 
                         <input name="email" type="text" style="max-width: 400px;" class="form-control" placeholder="Email to unsubscribe">
-                        <input class="btn btn-danger"  type="submit">Unsubscribe</input>
-                   
+                        <input class="btn btn-danger"  type="submit" value="Unsubscribe">
+
 
                     {{ Form::close()}}
                 </div>
