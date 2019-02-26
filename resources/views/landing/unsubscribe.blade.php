@@ -18,17 +18,13 @@
 
                     <div class="col-sm-12 text-center">
                         <input name="email" type="text" class="form-control" placeholder="Email to unsubscribe">
+                        <a href="#" class="btn btn-danger"  type="submit">Unsubscribe</a>
                     </div>
 
 
                 </div>
 
-                <div class="row text-center">
-                    <a href="#" class="btn btn-danger"  type="submit">Unsubscribe</a>
-
-
-                </div>
-
+  
                 {{ Form::close()}}
             </div>
         </div>
