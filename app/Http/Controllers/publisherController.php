@@ -385,7 +385,7 @@ class publisherController extends Controller
 
     public function getEmailData($code=null,$id=null){
 
-        if($code){
+        if($code !== null){
             $link = link::all()->where('link',$code)->first();
             $offer = offer::where('id', $link['offer_id'])->first();
             $data['price'] = $link['price'];
@@ -410,7 +410,7 @@ class publisherController extends Controller
     }
     public function previewEmail($code=null,$id=null){
 
-        if($code){
+        if($code !== null){
             $data = $this->getEmailData($code,null);
         }else{
             $data = $this->getEmailData(null,$id);
