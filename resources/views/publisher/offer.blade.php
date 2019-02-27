@@ -62,7 +62,7 @@
 
                                 <div class="form-group">
                                     <h6>Suggested Subjects</h6>
-                                    <div class="card-body bg-light">
+                                    <div class="card-body bg-light rounded border border-info">
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
