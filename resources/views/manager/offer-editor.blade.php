@@ -619,7 +619,7 @@
 
         $('#getcolor').click(function(){ getColor(); return false; });
         function getColor() {
-            alert ("ok");
+
             var colorThief = new ColorThief();
             colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
 
@@ -648,6 +648,7 @@
                 }
 
                 dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
+                alert (dominant);
                 document.getElementById("color").value = dominant;
                 document.getElementById("color").css('background-color', dominant);
 
