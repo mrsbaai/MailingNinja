@@ -349,27 +349,25 @@ class publisherController extends Controller
         $subjects = array();
 
         if ($price == 0){
-            array_push($subjects,"Free Ebook: $subtitle.");
-            array_push($subjects,"Free Ebook: $title.");
-            array_push($subjects,"[Free Ebook] $title.");
-            array_push($subjects,"[Free Ebook] $title: $subtitle.");
+            array_push($subjects,"Free Ebook: $title");
+            array_push($subjects,"Get Free Ebook: $title");
+            array_push($subjects,"[Free Ebook] $title");
+            array_push($subjects,"[Free Ebook] $title: $subtitle");
+            array_push($subjects,"[Get Free Ebook] $title: $subtitle");
             array_push($subjects,"$title [Only 1 Day Left... Get Your Free Ebook!]");
-            array_push($subjects,"$subtitle. [Only 1 Day Left... Get Your Free Ebook!]");
-            array_push($subjects,"$title: $subtitle. [Only 1 Day Left... Get Your Free Ebook!]");
+            array_push($subjects,"$title: $subtitle [Only 1 Day Left... Get Your Free Ebook!]");
             array_push($subjects,"$title [The Early Bird Gets the Worm... Get Your Free Ebook!]");
-            array_push($subjects,"$subtitle. [The Early Bird Gets the Worm... Get Your Free Ebook!]");
-            array_push($subjects,"$title: $subtitle. [The Early Bird Gets the Worm... Get Your Free Ebook!]");
+            array_push($subjects,"$title: $subtitle [The Early Bird Gets the Worm... Get Your Free Ebook!]");
         }else{
-            array_push($subjects,"Ebook: $subtitle.");
             array_push($subjects,"Ebook: $title.");
             array_push($subjects,"[Ebook Download] $title.");
-            array_push($subjects,"[Ebook] $title: $subtitle.");
+            array_push($subjects,"[Ebook] $title: $subtitle");
             array_push($subjects,"Ebook: $title [Special Offer 40% OFF!]");
-            array_push($subjects,"Ebook:  $subtitle. [Special Offer 40% OFF!]");
-            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF!]");
+            array_push($subjects,"[Ebook] $title: $subtitle [Special Offer 40% OFF!]");
+            array_push($subjects,"Ebook: $title [Special Offer, Only $$ptice!]");
+            array_push($subjects,"[Ebook] $title: $subtitle [Special Offer, Only $$ptice!]");
             array_push($subjects,"Ebook: $title [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
-            array_push($subjects,"Ebook:  $subtitle. [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
-            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF, The Early Bird Gets the Worm!]");
+            array_push($subjects,"[Ebook] $title: $subtitle [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
 
         }
 
