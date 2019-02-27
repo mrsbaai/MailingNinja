@@ -119,7 +119,18 @@
         }
 
 
+        #action_1{
+        background-color: {{$color}};
 
+        }
+        .subs{
+            background-color: {{$color}};
+        }
+        .purchase{
+            background: {{$color}};
+            border: 3px solid transparent;
+
+        }
     </style>
 
     <noscript>
@@ -606,11 +617,6 @@
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){
-        dominant = {{$color}}
-        $('#action_1').css('background-color', dominant);
-        $('.subs').css('background-color', dominant);
-        $('.purchase').css('border', '3px solid transparent');
-        $('.purchase').css('background', dominant);
         document.getElementById("load").remove();
     });
 
