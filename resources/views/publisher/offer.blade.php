@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <p>Desctiption: {{$data['description']}}</p>
+                            <p class="card-container">Desctiption: {{$data['description']}}</p>
                             <h5>Verticals:
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
