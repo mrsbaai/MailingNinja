@@ -16,16 +16,21 @@
                             <p><b>Desctiption:</b> {{$data['description']}}</p>
                             <p>
                                 <br/>
+                            <center>
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <button class="btn btn-primary btn-sm">Preview Landing Page</button>
                                 </a>
+                            </center>
+
                             </p>
                             <h5>Verticals:
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
 
                             <br/>
-                            <p><center>
+                            <p>
+                                <br/><br/>
+                            <center>
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
                                 </a>
