@@ -79,6 +79,8 @@ class landingController extends Controller
 
     }
 
+
+
     private function getRelatedBooks($offer_id){
 
 

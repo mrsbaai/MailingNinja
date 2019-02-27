@@ -137,7 +137,7 @@
                                             Cheers,<br/>
                                             {{ config('app.name') }}.<br/><br/>
 
-                                            To unsubscribe from this mailing list: https://{{$data['domain']}}/unsubscribe
+                                            To unsubscribe please follow this link: https://{{$data['domain']}}/unsubscribe
 
                                         @else
                                             Hello {name},<br/><br/>
@@ -280,7 +280,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
     </div>
