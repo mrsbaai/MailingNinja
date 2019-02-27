@@ -382,6 +382,36 @@ class publisherController extends Controller
 
 
     }
+
+    public function getEmailData($code){
+        $link = link::all()->where('link',$code)->first();
+        $offer = offer::where('id', $link['offer_id'])->first();
+
+        $data['price'] = $link['price'];
+        $data['app_name'] = config('app.name');
+        $data['description'] = $offer['description'];
+        $data['about_1'] = $offer['book_about_1'];
+        $data['about_2'] = $offer['book_about_2'];
+        $data['about_2'] = $offer['book_about_3'];
+        $data['title'] = $offer['title'];
+        $data['subtitle'] = $offer['subtitle'];
+
+        return $data;
+    }
+    public function previewEmail($code){
+
+        $data = $this->getEmailData($code);
+        return view('emails.promote')->with('data',$data);
+    }
+
+    public function test(){
+        $view = view('publisher.test')->render();
+        header("Content-type: text/html");
+        header("Content-Disposition: attachment; filename=creative.htm");
+        return $view;
+
+    }
+
     public function offer(Request $request, $id){
 
         $request->user()->authorizeRoles('publisher');
@@ -706,10 +736,7 @@ class publisherController extends Controller
         }
 
     }
-    public function test (){
-        return "<img src='https://i.imgur.com/PkVkuGF.jpg'/>";
 
-    }
 
     public function LeadsChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
 
