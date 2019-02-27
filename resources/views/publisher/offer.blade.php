@@ -31,24 +31,16 @@
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
 
-
-                                <br/> <br/>
-                            <p>
-                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <div class="text-center " style="padding-top: 50px;">
-                                        <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
-                                    </div>
-                                </a>
-                                <br/>
-
-                            </p>
+                        </div>
 
 
-
-
-
-
-
+                        <div class="row px-4">
+                            <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                <div class="text-center " style="padding-top: 50px;">
+                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
+                                </div>
+                            </a>
+                            <br/>
 
                         </div>
 
