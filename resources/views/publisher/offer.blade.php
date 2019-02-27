@@ -33,10 +33,10 @@
 
                             <br/>
                             <p>
-                                <br/> <br/> <br/> <br/>
+                                <br/> <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="300" alt="{{$data['title']}}">
+                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block" width="300" alt="{{$data['title']}}">
                                 </a>
                                 <br/>
 
