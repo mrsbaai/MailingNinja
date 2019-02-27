@@ -79,12 +79,12 @@
 
                                             Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            The Free Ebook:<br/>
+                                            Free E-book:<br/>
                                             {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
 
-                                            To Download This FREE, Please Follow This Link:<br/><br/>
+                                            To Download This E-book for FREE, Please Follow This Link:<br/><br/>
 
                                             https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
@@ -100,7 +100,7 @@
 
                                             Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            The Ebook:<br/>
+                                            E-book:<br/>
                                             {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
