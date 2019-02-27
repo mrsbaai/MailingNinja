@@ -79,13 +79,15 @@
 
                                             Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            FREE Ebook:<br/>
-                                            {{$data['title']}} [{{$data['subtitle']}}]<br/><br/>
+                                            The Free Ebook:<br/>
+                                            {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
+
+                                            {{$data['about_1']}}<br/><br/>
 
                                             To Download This FREE, Please Follow This Link:<br/><br/>
 
                                             https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
-                                        
+
                                             Cheers,<br/>
                                             {{ config('app.name') }}.<br/><br/>
 
@@ -99,7 +101,9 @@
                                             Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
                                             The Ebook:<br/>
-                                            {{$data['title']}} [{{$data['subtitle']}}]<br/><br/>
+                                            {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
+
+                                            {{$data['about_1']}}<br/><br/>
 
                                             To Download This E-book With %40 Discount, Please Follow This Link:<br/><br/>
 

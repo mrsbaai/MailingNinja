@@ -422,6 +422,7 @@ class publisherController extends Controller
         $data['promo'] = $offer->promo;
         $data['thumbnail'] = $offer->thumbnail;
         $data['description'] = $offer->description;
+        $data['about_1'] = $offer->about_1;
         $data['offer_id'] = $id;
         $data['preview'] = route('preview', ['id' => $offer->id]);
         $data['suppression'] = route('suppression-list', ['id' => $offer->id]);
