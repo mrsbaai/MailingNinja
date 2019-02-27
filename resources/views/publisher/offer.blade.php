@@ -32,20 +32,22 @@
                             </h5>
 
                             <br/>
-                            <p>
+                            <div class="  px-5">
                                 <br/> <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <div class="text-center  px-5">
-                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block" width="300" alt="{{$data['title']}}">
+                                    <div class="text-center">
+                                        <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block" width="300" alt="{{$data['title']}}">
                                     </div>
                                 </a>
                                 <br/>
+                            </div>
 
 
 
 
-                            </p>
+
+
                         </div>
 
 
