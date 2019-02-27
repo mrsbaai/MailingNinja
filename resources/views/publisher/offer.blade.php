@@ -61,13 +61,32 @@
                             <div class="col-md-12">
 
                                 <div class="form-group">
-                                    <h6>Suggested Subjects</h6>
-                                    <div class="card-body bg-light rounded border border-info">
+                                    <h6>Subjects:</h6>
+                                    <div class="card-body bg-light rounded border border-dark">
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                     </div>
+                                    <h6>Froms:</h6>
+                                    <div class="card-body bg-light rounded border border-dark">
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                    </div>
+                                    <h6>Text E-mail:</h6>
+                                    <div class="card-body bg-light rounded border border-dark">
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                    </div>
+                                    <h6>Html E-mail:</h6>
+                                    <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                        <button class="btn btn-primary btn-sm">Preview Html Email</button>
+                                    </a>
 
+                                    <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                        <button class="btn btn-primary btn-sm">Download Html Email</button>
+                                    </a>
 
                                 </div>
 
