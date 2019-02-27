@@ -34,7 +34,7 @@
                         </div>
 
 
-                        <div class="row px-4">
+                        <div class="row px-4 text-center ">
                             <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                 <div class="text-center " style="padding-top: 50px;">
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
