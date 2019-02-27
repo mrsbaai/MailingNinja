@@ -175,7 +175,7 @@
 
     </style>
 </head>
-<body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #507935">
+<body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: {{$data['primary_color']}}">
 <style type="text/css" id="media-query-bodytag">
     @media (max-width: 520px) {
         .block-grid {
@@ -233,11 +233,11 @@
 </style>
 <!--[if IE]><div class="ie-browser"><![endif]-->
 <!--[if mso]><div class="mso-container"><![endif]-->
-<table class="nl-container" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #507935;width: 100%" cellpadding="0" cellspacing="0">
+<table class="nl-container" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: {{$data['primary_color']}};width: 100%" cellpadding="0" cellspacing="0">
     <tbody>
     <tr style="vertical-align: top">
         <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #507935;"><![endif]-->
+            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: {{$data['primary_color']}};"><![endif]-->
 
             <div style="background-color:transparent;">
                 <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
@@ -351,8 +351,8 @@
 
 
                                     <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;">
-                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="#507935" fillcolor="#507935"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
-                                        <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #507935; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
+                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="{{$data['primary_color']}}" fillcolor="{{$data['primary_color']}}"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
+                                        <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: {{$data['primary_color']}}; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
                                             <span style="font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 28px; line-height: 56px;"><strong> @if($data['price'] == 0) FREE Download @else Download E-Book @endif </strong></span></span>
                                         </a>
                                         <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
@@ -544,8 +544,8 @@
                                     </div>
 
                                     <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;">
-                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="#507935" fillcolor="#507935"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
-                                        <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #507935; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
+                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="{{$data['primary_color']}}" fillcolor="{{$data['primary_color']}}"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
+                                        <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: {{$data['primary_color']}}; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
                                             <span style="font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 28px; line-height: 56px;"><strong> @if($data['price'] == 0) FREE Download @else Download E-Book @endif </strong></span></span>
                                         </a>
                                         <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
