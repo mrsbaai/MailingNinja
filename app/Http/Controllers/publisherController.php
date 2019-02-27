@@ -344,11 +344,44 @@ class publisherController extends Controller
         return redirect(route('promote-offer', ['id' => $offer_id]));
     }
 
-    public function offerSubjects ($id){
-        $offer = offer::where('id',$id)->first();
+    public function offerSubjects ($title, $subtitle, $price){
+
+        $subjects = array();
+
+        if ($price == 0){
+            array_push($subjects,"Free Ebook: $subtitle.");
+            array_push($subjects,"Free Ebook: $title.");
+            array_push($subjects,"[Free Ebook] $title.");
+            array_push($subjects,"[Free Ebook] $title: $subtitle.");
+            array_push($subjects,"$title [Only 1 Day Left... Get Your Free Ebook!]");
+            array_push($subjects,"$subtitle. [Only 1 Day Left... Get Your Free Ebook!]");
+            array_push($subjects,"$title: $subtitle. [Only 1 Day Left... Get Your Free Ebook!]");
+            array_push($subjects,"$title [The Early Bird Gets the Worm... Get Your Free Ebook!]");
+            array_push($subjects,"$subtitle. [The Early Bird Gets the Worm... Get Your Free Ebook!]");
+            array_push($subjects,"$title: $subtitle. [The Early Bird Gets the Worm... Get Your Free Ebook!]");
+        }else{
+            array_push($subjects,"Ebook: $subtitle.");
+            array_push($subjects,"Ebook: $title.");
+            array_push($subjects,"[Ebook Download] $title.");
+            array_push($subjects,"[Ebook] $title: $subtitle.");
+            array_push($subjects,"Ebook: $title [Special Offer 40% OFF!]");
+            array_push($subjects,"Ebook:  $subtitle. [Special Offer 40% OFF!]");
+            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF!]");
+            array_push($subjects,"Ebook: $title [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
+            array_push($subjects,"Ebook:  $subtitle. [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
+            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF, The Early Bird Gets the Worm!]"
+
+        }
 
 
-        $subjects = "";
+
+        $return_subjects = array();
+        foreach ($subjects as $subject){
+        if(strlen($subject) < 78){array_push($return_subjects,$subject);}
+        }
+
+        return $return_subjects;
+
 
     }
     public function offer(Request $request, $id){
@@ -377,6 +410,9 @@ class publisherController extends Controller
         }
 
         //$domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
+
+
+        $data['subjects']  = $this->offerSubjects($offer->title, $offer->subtitle, $price);
         $data['domain']  = config('app.promote_url');
 
         $data['verticals'] = $offer->verticals()->get();

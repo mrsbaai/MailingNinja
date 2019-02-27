@@ -147,7 +147,7 @@
                     <div class="card-header">
                         <h5 class="card-title">Offer Link</h5>
                         <p class="card-category">
-                            To track clicks, and download targeted clicks mailing list, replace {email} with the recipient's E-mail address.
+                            To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
                             You can also refer to the offer without "/{email}".
                         </p>
                     </div>
@@ -177,7 +177,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Tracking Email Opens</h5>
-                        <p class="card-category">To track email opens, and download targeted opens mailing list, add this code to your email body. Replace {email} with the recipient's E-mail address.</p>
+                        <p class="card-category">To track email opens, and <b>download targeted opens mailing list</b>, add this code to your email body. Replace {email} with the recipient's E-mail address.</p>
 
 
                     </div>
