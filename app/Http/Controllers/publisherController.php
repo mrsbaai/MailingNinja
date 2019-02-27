@@ -388,7 +388,7 @@ class publisherController extends Controller
         $offer = offer::where('id', $link['offer_id'])->first();
 
         $data['price'] = $link['price'];
-        $data['app_name'] = config('app.name');
+        $data['app_name'] = config('app.name') .".";
         $data['unsubscribe'] = "https://" . config('app.promote_url') . "/unsubscribe";
         $data['description'] = $offer['description'];
         $data['about_1'] = $offer['book_about_1'];

@@ -23,6 +23,7 @@
                                 <h6>Verticals:
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                                 </h6>
+                                <br/>
 
                             </div>
 
