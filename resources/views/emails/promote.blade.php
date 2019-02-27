@@ -12,6 +12,25 @@
 
 
     <style type="text/css" id="media-query">
+
+        ul{
+            list-style-type: none;
+        }
+
+        ul li{
+            color: #F5F5F5;
+        }
+
+        li:before {
+            content: '✓';
+            display: inline-block;
+            margin-left: -2em; /* same as padding-left set on li */
+            width: 1.3em; /* same as padding-left set on li */
+            color: #77c474;
+            text-shadow: -1px 0 #4a7847, 0 1px #4a7847, 1px 0 #4a7847, 0 -1px #4a7847;
+            opacity:0.7;
+        }
+
         body {
             margin: 0;
             padding: 0; }

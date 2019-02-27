@@ -926,9 +926,6 @@ button:focus {
 	color:#666;
 	font-size:24px;
 }
-.check-green ul{
-	list-style-type: none;
-}
 
 
 
@@ -939,6 +936,10 @@ button:focus {
 }
 .check-green{
 	color: white;
+}
+
+.check-green ul{
+	list-style-type: none;
 }
 
 .check-green ul li{
