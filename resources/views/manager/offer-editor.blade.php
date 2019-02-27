@@ -444,7 +444,7 @@
                     <div class="input-group">
 
 
-                        <input class="form-control" name="primary_color" value="{{$color}}" placeholder="Primary Coloe ex {{$color}}" style="background-color: {{$color}};color:white;">
+                        <input class="form-control" name="color" value="{{$color}}" placeholder="Primary Coloe ex {{$color}}" style="background-color: {{$color}};color:white;">
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
@@ -646,8 +646,8 @@
                 }
 
                 dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-                document.getElementById("primary_color").value = dominant;
-                document.getElementById("primary_color").css('background-color', dominant);
+                document.getElementById("color").value = dominant;
+                document.getElementById("color").css('background-color', dominant);
 
 
             });
