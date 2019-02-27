@@ -631,8 +631,7 @@
 
         $("#color").change(function(){
             color = document.getElementById("color").value;
-            alert(color);
-            document.getElementById("color").css('background-color', color);
+            document.getElementById("color").style.backgroundColor = color;
         });
 
 
