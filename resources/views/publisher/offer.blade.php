@@ -77,10 +77,7 @@
 
                                             {{$data['description']}}<br/><br/>
 
-                                            Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
-
-                                            Free E-book:<br/>
-                                            {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
+                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
 
@@ -98,10 +95,7 @@
 
                                             {{$data['description']}}<br/><br/>
 
-                                            Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
-
-                                            E-book:<br/>
-                                            {{$data['title']}} ({{$data['subtitle']}})<br/><br/>
+                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
 
