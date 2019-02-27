@@ -35,13 +35,13 @@
                             <br/>
                             <p>
                                 <br/><br/>
-                            <center>
+
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
+                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="300" alt="{{$data['title']}}">
                                 </a>
                                 <br/>
 
-                            </center>
+
 
 
                             </p>
