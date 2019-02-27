@@ -618,6 +618,13 @@
         }
 
         $('#getcolor').click(function(){ getColor(); return false; });
+
+        $(document).ready(function(){
+            $('#color').change(function(){
+                document.getElementById("color").css('background-color', document.getElementById("color").value);
+            });
+        });
+
         function getColor() {
 
             var colorThief = new ColorThief();
@@ -648,7 +655,7 @@
                 }
 
                 dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-                alert (dominant);
+       
                 document.getElementById("color").value = dominant;
                 document.getElementById("color").css('background-color', dominant);
 
