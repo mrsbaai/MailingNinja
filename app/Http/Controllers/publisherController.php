@@ -408,14 +408,12 @@ class publisherController extends Controller
 
         return $data;
     }
-    public function previewEmail($code=null,$id=null){
-
-        if($code !== null){
+    public function previewEmail($code){
             $data = $this->getEmailData($code,null);
-        }else{
+        return view('emails.promote')->with('data',$data);
+    }
+    public function previewEmailId($id=null){
             $data = $this->getEmailData(null,$id);
-        }
-return print_r($data);
         return view('emails.promote')->with('data',$data);
     }
 
