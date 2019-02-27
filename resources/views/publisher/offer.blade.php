@@ -10,17 +10,18 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{$data['title']}}</h5>
+                        <span style="float: right">
+                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                    <button class="btn btn-primary btn-sm">Preview Landing Page</button>
+                                </a>
+                            </span>
                     </div>
                     <div class="card-body">
                         <div class="row px-4">
                             <p><b>Desctiption:</b> {{$data['description']}}</p>
                             <p>
                                 <br/>
-                            <center>
-                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <button class="btn btn-primary btn-sm">Preview Landing Page</button>
-                                </a>
-                            </center>
+
 
                             </p>
                             <h5>Verticals:
