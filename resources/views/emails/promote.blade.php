@@ -441,7 +441,7 @@
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 25px; padding-left: 25px; padding-top: 25px; padding-bottom: 25px;"><![endif]-->
                                         <div style="color:#F9FBFB;font-family:Verdana, Geneva, sans-serif;line-height:200%; padding-right: 25px; padding-left: 25px; padding-top: 25px; padding-bottom: 25px;">
                                             <div style="font-size:12px;line-height:24px;font-family:Verdana, Geneva, sans-serif;text-align:center;color:#F9FBFB;">
-                                                {{$data['about_3']}}
+                                                {!! $data['about_3'] !!}
                                             </div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
