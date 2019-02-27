@@ -441,6 +441,20 @@
                             <img @if( ! empty($thumbnail)) src="{{$thumbnail}}" @else src="/images/ebook.jpg" @endif class="card-img-top rounded mx-auto d-block"  id="preview" />
                             </div>
                         </div>
+                    <div class="input-group">
+
+
+                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="font-size: 300%">
+
+                        <div class="input-group-append">
+                                                <span class="input-group-text p-0 ">
+                                                    <button type="submit" class="btn btn-link" title="Automatically generate primary color from image">
+                                                        Generate
+                                                    </button>
+                                                </span>
+                        </div>
+
+                    </div>
 
 
                 </div>
