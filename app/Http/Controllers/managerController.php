@@ -86,6 +86,7 @@ class managerController extends Controller
         $res = $offer->update([
             'thumbnail' => $thumbnail,
             'title' => $request->title,
+            'color' => $request->color,
             'description' => $request->description,
             'is_active' => $is_active,
             'is_private' => $is_private,
@@ -381,6 +382,7 @@ class managerController extends Controller
         $selected_verticals = $offer->verticals()->get();
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
+            ->with('color',$offer->color)
             ->with('title', $offer->title)
             ->with('is_private', $offer->is_private)
             ->with('is_active', $offer->is_active)

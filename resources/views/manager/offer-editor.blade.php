@@ -444,13 +444,13 @@
                     <div class="input-group">
 
 
-                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="color:white;">
+                        <input class="form-control" name="primary_color" value="{{$color}}" placeholder="Primary Coloe ex {{$color}}" style="background-color: {{$color}};color:white;">
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
-                                <a onclick="getColor()" href="#" class="btn btn-link" title="Automatically generate primary color from image">
+                                <button onclick="getColor()"  class="btn btn-link" title="Automatically generate primary color from image">
                                     Generate
-                                </a>
+                                </button>
                             </span>
                         </div>
 
