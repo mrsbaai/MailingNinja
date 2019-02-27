@@ -32,7 +32,7 @@
                             </h5>
 
                             <br/>
-                            <div class="  px-5">
+                            <div class="row  px-5">
                                 <br/> <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
