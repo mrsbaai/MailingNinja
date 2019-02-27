@@ -21,6 +21,7 @@
 
 
 </head>
+<body style="background-color: #F4F3EF">
     <center>
 
         {{ Form::open(array('action' => 'subscribeController@unsubscribe'))}}
@@ -34,7 +35,7 @@
         <br/>
         <br/>
         <br/>
-        <img src="https://i.imgur.com/ybBBfvt.jpg" style="max-width: 500px;"></center>
+        <img src="https://i.imgur.com/ybBBfvt.jpg" style="max-width: 500px;">
     </center>
 
 
@@ -42,7 +43,7 @@
 
 
         {{ Form::close()}}
-    </center>
+    </body>
 
 
 
