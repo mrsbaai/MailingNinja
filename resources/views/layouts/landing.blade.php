@@ -580,30 +580,7 @@
 
 
 <script src="{{ asset('landing/js/color-thief.js') }}"></script><script type="text/javascript">
-
-
-    function ColorLuminance(r, g, b, lum) {
-
-        hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-        // validate hex string
-        hex = String(hex).replace(/[^0-9a-f]/gi, '');
-        if (hex.length < 6) {
-            hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-        }
-        lum = lum || 0;
-
-        // convert to decimal and change luminosity
-        var rgb = "#", c, i;
-        for (i = 0; i < 3; i++) {
-            c = parseInt(hex.substr(i*2,2), 16);
-            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-            rgb += ("00"+c).substr(c.length);
-        }
-
-        return rgb;
-    }
-
-
+    
 
     function lightOrDark(color) {
 
@@ -648,14 +625,6 @@
         }
     }
 
-    function hexToRgb(hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
-    }
 
     var colorThief = new ColorThief();
     colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
@@ -684,68 +653,19 @@
             c = color[0][2];
         }
 
-
         dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-        dominant_light =  ColorLuminance(a,b,c,1);
-        if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'light')
-        {
-            a = color[0][0];
-            b = color[0][1];
-            c = color[0][2];
 
-        }
-        else if(lightOrDark('rgb('+color[1][0]+','+color[1][1]+','+color[1][2]+')') == 'light')
-        {
-            a = color[1][0];
-            b = color[1][1];
-            c = color[1][2];
-        }
-        else if(lightOrDark('rgb('+color[2][0]+','+color[2][1]+','+color[2][2]+')') == 'light')
-        {
-            a = color[2][0];
-            b = color[2][1];
-            c = color[2][2];
-        }else{
-            a = color[0][0];
-            b = color[0][1];
-            c = color[0][2];
-        }
-
-        do {
-
-            if (a < b){
-                a = parseInt((a + ((b - a) / 2)));
-            }else{
-                a = parseInt((a - ((a - b) / 2)));
-            }
-            if (c < b){
-                c = parseInt((c + ((b - c) / 2)));
-            }else{
-                c = parseInt((c - ((c - b) / 2)));
-            }
-            e = Math.abs(b - a) + Math.abs(b - c);
-
-        }
-
-        while (e > 15);
-
-        secondary = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
 
 
 
 
         $('#action_1').css('background-color', dominant);
 
-
-
-
-
-
         $('.subs').css('background-color', dominant);
         $('.purchase').css('border', '3px solid transparent');
         $('.purchase').css('background', dominant);
 
-        //$('.dominant-color').css('color', dominant);
+
 
 
 
