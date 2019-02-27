@@ -73,7 +73,7 @@
                                     <h6>Text E-mail:</h6>
                                     <div class="card-body bg-light rounded border border-light">
                                         @if( $data['price'] == 0)
-                                            Hello {name}!<br/><br/>
+                                            Hello {name},<br/><br/>
 
                                             {{$data['description']}}<br/><br/>
 
@@ -94,7 +94,7 @@
                                             To unsubscribe from this mailing list: https://{{$data['domain']}}/unsubscribe
 
                                         @else
-                                            Hello {name}!<br/><br/>
+                                            Hello {name},<br/><br/>
 
                                             {{$data['description']}}<br/><br/>
 
