@@ -36,7 +36,7 @@
 
                         <div class="row px-4 text-center ">
                             <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                <div class="text-center " style="padding-top: 20px;">
+                                <div class="text-center " style="padding-top: 20px;padding-bottom: 20px;">
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
                                 </div>
                             </a>
@@ -72,9 +72,31 @@
                                     </div><br/><br/>
                                     <h6>Text E-mail:</h6>
                                     <div class="card-body bg-light rounded border border-light">
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
+                                        @if($price == 0)
+
+                                        @else
+                                            Hello {name}!
+
+                                            {description}
+
+                                            Read More Here: {link}
+
+                                            Ebook:
+                                            {title} [{Subtitle}]
+
+                                            To download this e-book with %40 discount, please follow this link:
+
+                                            {link}
+
+                                            See you in the other side.
+                                            Cheers,
+                                            {from}
+
+                                            To UNSUBSCRIBE from this mailing list, please follow this link:
+
+                                            {unsubscribe}
+
+                                        @endif
                                     </div><br/><br/>
                                     <h6>Html E-mail:</h6>
                                     <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
@@ -208,6 +230,27 @@
                                        Download Suppression List
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <h5 class="card-title">Unsubscribe Link</h5>
+                        <p class="card-category">/{email} is optional</p>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-centered">
+                                <div class="input-group">
+                                    <div class="input-group-prepend" >
+                                        <span class="input-group-text" style="font-size: 110%">Unsubscribe:</span>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" style="font-size: 100%"><b>http://{{$data['domain']}}/unsubscribe/{email}</b>&nbsp;&nbsp;</span>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
