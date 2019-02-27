@@ -63,9 +63,11 @@
                                 <div class="form-group">
                                     <h6>Suggested Subjects</h6>
 
-                                    <textarea class="form-control" readonly >{{$data['title']}}
-                                    {{$data['title']}}
-                                    {{$data['title']}}</textarea>
+                                    <div class="border border-light rounded-sm" >
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                        {{$data['title']}}<br/>
+                                    </div>
 
 
                                 </div>
