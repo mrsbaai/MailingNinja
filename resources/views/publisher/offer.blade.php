@@ -36,7 +36,7 @@
                                 <br/> <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <div class="text-center">
+                                    <div class="text-center  px-5">
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block" width="300" alt="{{$data['title']}}">
                                     </div>
                                 </a>
