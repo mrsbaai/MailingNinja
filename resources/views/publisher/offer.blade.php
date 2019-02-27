@@ -13,23 +13,27 @@
                     </div>
                     <div class="card-body">
                         <div class="row px-4">
-                            <p class="">Desctiption: {{$data['description']}}</p>
+                            <p><b>>Desctiption:</b> {{$data['description']}}</p>
+                            <p class="text-center">
+                                <br/>
+                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                    <button class="btn btn-primary btn-sm">Preview Landing Page</button>
+                                </a>
+                            </p>
                             <h5>Verticals:
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
 
                             <br/>
-                            <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
-                            </a>
+                            <p class="text-center">
+                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
+                                </a>
+
+                            </p>
                         </div>
 
-                        <div class="row px-4">
-                            <br/>
-                            <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                <button class="btn btn-primary btn-sm">Preview Landing Page</button>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
