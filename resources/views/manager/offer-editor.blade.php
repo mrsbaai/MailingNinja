@@ -448,9 +448,9 @@
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
-                                <button onclick="getColor()" class="btn btn-link" title="Automatically generate primary color from image">
+                                <a onclick="getColor()" href="#" class="btn btn-link" title="Automatically generate primary color from image">
                                     Generate
-                                </button>
+                                </a>
                             </span>
                         </div>
 
