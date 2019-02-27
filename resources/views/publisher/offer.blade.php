@@ -62,14 +62,10 @@
 
                                 <div class="form-group">
                                     <h6>Suggested Subjects</h6>
-                                    <textarea class="form-control rounded-0"  rows="10" readonly>
+                                    <textarea class="form-control "  rows="10" >
                                         {{$data['title']}}
                                         {{$data['title']}}
-                                        
                                         {{$data['title']}}
-
-
-
                                     </textarea>
                                 </div>
 
