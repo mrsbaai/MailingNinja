@@ -388,12 +388,13 @@ class publisherController extends Controller
         $offer = offer::where('id', $link['offer_id'])->first();
 
         $data['price'] = $link['price'];
+        $data['cover'] = $offer['thumbnail'];
         $data['app_name'] = config('app.name') .".";
         $data['unsubscribe'] = "https://" . config('app.promote_url') . "/unsubscribe";
         $data['description'] = $offer['description'];
         $data['about_1'] = $offer['book_about_1'];
         $data['about_2'] = $offer['book_about_2'];
-        $data['about_2'] = $offer['book_about_3'];
+        $data['about_3'] = $offer['book_about_3'];
         $data['title'] = $offer['title'];
         $data['subtitle'] = $offer['subtitle'];
         $data['primary_color'] = "#232525";
