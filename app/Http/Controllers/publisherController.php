@@ -396,7 +396,7 @@ class publisherController extends Controller
         $data['about_3'] = $offer['book_about_3'];
         $data['title'] = $offer['title'];
         $data['subtitle'] = $offer['subtitle'];
-        $data['primary_color'] = "#232525";
+        $data['primary_color'] = "#267BB1";
 
         return $data;
     }
