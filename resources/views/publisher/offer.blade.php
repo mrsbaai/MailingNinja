@@ -13,16 +13,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                        <span style="float: right">
-                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <button class="btn btn-primary btn-sm">Preview Landing Page</button>
-                                </a>
-                            </span>
-                            <span style="float: left">
-
-                        <h5 class="card-title">About: {{$data['title']}}</h5>
-                        </span>
-
+                            <h5 class="card-title">About: {{$data['title']}}</h5>
                         </div>
                         <div class="card-body">
                             <div class="row px-4">
@@ -38,14 +29,24 @@
                             </div>
 
 
-                            <div class="row px-4 text-center ">
+                            <div class="row">
+                                <br/>
+                                <div class="col-centered">
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                    <div class="text-center " style="padding-top: 20px;padding-bottom: 20px;">
                                         <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
-                                    </div>
                                 </a>
+                                </div>
                                 <br/>
 
+                            </div>
+
+                            <div class="row">
+                                <br/>
+                                <div class="col-centered">
+                                    <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                        <button class="btn btn-primary btn-sm">Preview Landing Page</button>
+                                    </a>
+                                </div>
                             </div>
 
 
