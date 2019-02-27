@@ -389,13 +389,12 @@ class publisherController extends Controller
             $link = link::all()->where('link',$code)->first();
             $offer = offer::where('id', $link['offer_id'])->first();
             $data['price'] = $link['price'];
-        }
-        if($id){
+        }else{
             $offer = offer::where('id', $id)->first();
             $data['price'] = $offer['price'];
         }
 
-        
+
 
         $data['cover'] = $offer['thumbnail'];
         $data['app_name'] = config('app.name') .".";
@@ -413,8 +412,7 @@ class publisherController extends Controller
 
         if($code){
             $data = $this->getEmailData($code,null);
-        }
-        if($id){
+        }else{
             $data = $this->getEmailData(null,$id);
         }
 
