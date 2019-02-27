@@ -9,6 +9,7 @@ use App\offer;
 use App\link;
 use App\costumerOffers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use URL;
@@ -71,7 +72,11 @@ class landingController extends Controller
     }
 
     public function test(){
-        $this->getRelatedBooks(10);
+        $view = view('publisher.test')->render();
+        header("Content-type: text/html");
+        header("Content-Disposition: attachment; filename=creative");
+        return $view;
+
     }
 
     private function getRelatedBooks($offer_id){

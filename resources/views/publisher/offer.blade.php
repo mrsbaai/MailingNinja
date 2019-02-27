@@ -6,28 +6,27 @@
 
     <div class="content">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">About The Product</h5>
+                        <h5 class="card-title">{{$data['title']}}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
-                                <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
-                            </div>
-                            <div class="col-md-7">
-                                <h6>{{$data['title']}}</h6>
-                                <p>{{$data['description']}}</p>
-                                <p>Verticals:
-                                    @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
-                                </p>
-                                <span>
+                            <p>Desctiption: {{$data['description']}}</p>
+                            <h5>Verticals:
+                                @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
+                            </h5>
+                            <span>
                                     <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                         <button class="btn btn-primary btn-sm">Preview Landing Page</button>
                                     </a>
-                                </span>
-                            </div>
+                                </span><br/>
+                                <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}"><br/>
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -164,6 +163,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
+                                <h6></h6>
                                 <p>{!! $data['promo'] !!}</p>
                             </div>
                         </div>
