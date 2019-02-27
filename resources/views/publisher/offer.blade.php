@@ -13,8 +13,8 @@
                     </div>
                     <div class="card-body">
                         <div class="row px-4">
-                            <p><b>>Desctiption:</b> {{$data['description']}}</p>
-                            <p class="text-center">
+                            <p><b>Desctiption:</b> {{$data['description']}}</p>
+                            <p>
                                 <br/>
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <button class="btn btn-primary btn-sm">Preview Landing Page</button>
@@ -25,10 +25,13 @@
                             </h5>
 
                             <br/>
-                            <p class="text-center">
+                            <p><center>
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
                                 </a>
+
+                            </center>
+
 
                             </p>
                         </div>
