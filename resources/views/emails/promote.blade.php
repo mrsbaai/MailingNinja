@@ -399,7 +399,7 @@
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;"><![endif]-->
                                         <div style="color:#F9FBFB;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:#F9FBFB;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 46px; line-height: 55px;"><strong>Vegetarian Keto</strong></span></p></div>
+                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:#F9FBFB;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 46px; line-height: 55px;"><strong>{{$data['title']}}</strong></span></p></div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
@@ -411,7 +411,7 @@
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;"><![endif]-->
                                         <div style="color:#F9FBFB;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:#F9FBFB;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>The Low Carb Vegetarian Cookbook for Ketotarians</strong></span></p></div>
+                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:#F9FBFB;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>{{$data['subtitle']}}</strong></span></p></div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
@@ -440,7 +440,9 @@
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 25px; padding-left: 25px; padding-top: 25px; padding-bottom: 25px;"><![endif]-->
                                         <div style="color:#F9FBFB;font-family:Verdana, Geneva, sans-serif;line-height:200%; padding-right: 25px; padding-left: 25px; padding-top: 25px; padding-bottom: 25px;">
-                                            <div style="font-size:12px;line-height:24px;font-family:Verdana, Geneva, sans-serif;text-align:center;color:#F9FBFB;"><strong><span style="font-size: 14px; line-height: 28px;">Inside you’ll find:</span></strong><br><strong><span style="font-size: 14px; line-height: 28px;">The Basics - Vegan Keto Diet Overview, simple shopping List, substitute Tips</span></strong><br><strong><span style="font-size: 14px; line-height: 28px;">7 Day Vegan Keto Meal Plan to help you get <span style="line-height: 28px; font-size: 14px;">started</span></span></strong><br><strong><span style="font-size: 14px; line-height: 28px;"><span style="line-height: 28px; font-size: 14px;">Easy</span> Recipes - all meatless, but do make use of eggs and dairy products</span></strong><br><strong><span style="font-size: 14px; line-height: 28px;">Special Chapter with Dairy-Free Vegan Menu</span></strong><br><strong><span style="font-size: 14px; line-height: 28px;">Option for busy people - 5 ingredients or less ideas</span></strong><br><strong><span style="font-size: 14px; line-height: 28px;">Good mix of recipes so there are some that could serve as mains, some sides, and some breakfast and dessert options.&#160;So without further ado, here are over 65 vegetarian keto recipes that I think you should try.</span></strong></div>
+                                            <div style="font-size:12px;line-height:24px;font-family:Verdana, Geneva, sans-serif;text-align:center;color:#F9FBFB;">
+                                                {{$data['about_3']}}
+                                            </div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
