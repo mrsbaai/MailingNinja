@@ -630,10 +630,12 @@
         $('#getcolor').click(function(){ getColor(); return false; });
 
         $("#color").change(function(){
-            document.getElementById("color").css('background-color', document.getElementById("color").value);
+            color = document.getElementById("color").value;
+            alert(color);
+            document.getElementById("color").css('background-color', color);
         });
 
-   
+
 
         function getColor() {
 
