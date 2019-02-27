@@ -31,8 +31,7 @@
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
 
-                            <br/>
-                            <div class="row  px-5">
+
                                 <br/> <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
@@ -41,7 +40,7 @@
                                     </div>
                                 </a>
                                 <br/>
-                            </div>
+                          
 
 
 
