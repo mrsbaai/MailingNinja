@@ -604,14 +604,14 @@
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
-    dominant = {{$color}}
-    $('#action_1').css('background-color', dominant);
 
-    $('.subs').css('background-color', dominant);
-    $('.purchase').css('border', '3px solid transparent');
-    $('.purchase').css('background', dominant);
     $(document).ready(function(){
         document.getElementById("load").remove();
+        dominant = {{$color}}
+        $('#action_1').css('background-color', dominant);
+        $('.subs').css('background-color', dominant);
+        $('.purchase').css('border', '3px solid transparent');
+        $('.purchase').css('background', dominant);
     });
 
 </script>
