@@ -579,102 +579,8 @@
 
 
 
-<script src="{{ asset('landing/js/color-thief.js') }}"></script>
-<script type="text/javascript">
 
 
-    function lightOrDark(color) {
-
-        // Check the format of the color, HEX or RGB?
-        if (color.match(/^rgb/)) {
-
-            // If HEX --> store the red, green, blue values in separate variables
-            color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-
-            r = color[1];
-            g = color[2];
-            b = color[3];
-        }
-        else {
-
-            // If RGB --> Convert it to HEX: http://gist.github.com/983661
-            color = +("0x" + color.slice(1).replace(
-                    color.length < 5 && /./g, '$&$&'
-                )
-            );
-
-            r = color >> 16;
-            g = color >> 8 & 255;
-            b = color & 255;
-        }
-
-        // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
-        hsp = Math.sqrt(
-            0.299 * (r * r) +
-            0.587 * (g * g) +
-            0.114 * (b * b)
-        );
-
-        // Using the HSP value, determine whether the color is light or dark
-        if (hsp>127.5) {
-
-            return 'light';
-        }
-        else {
-
-            return 'dark';
-        }
-    }
-
-
-    var colorThief = new ColorThief();
-    colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
-
-        if(lightOrDark('rgb('+color[0][0]+','+color[0][1]+','+color[0][2]+')') == 'dark')
-        {
-            a = color[0][0];
-            b = color[0][1];
-            c = color[0][2];
-
-        }
-        else if(lightOrDark('rgb('+color[1][0]+','+color[1][1]+','+color[1][2]+')') == 'dark')
-        {
-            a = color[1][0];
-            b = color[1][1];
-            c = color[1][2];
-        }
-        else if(lightOrDark('rgb('+color[2][0]+','+color[2][1]+','+color[2][2]+')') == 'dark')
-        {
-            a = color[2][0];
-            b = color[2][1];
-            c = color[2][2];
-        }else{
-            a = color[0][0];
-            b = color[0][1];
-            c = color[0][2];
-        }
-
-        dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-
-
-
-
-
-        $('#action_1').css('background-color', dominant);
-
-        $('.subs').css('background-color', dominant);
-        $('.purchase').css('border', '3px solid transparent');
-        $('.purchase').css('background', dominant);
-
-
-
-
-
-
-
-
-    });
-</script>
 
 
 <script>
@@ -698,7 +604,12 @@
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
+    dominant = {{$color}}
+    $('#action_1').css('background-color', dominant);
 
+    $('.subs').css('background-color', dominant);
+    $('.purchase').css('border', '3px solid transparent');
+    $('.purchase').css('background', dominant);
     $(document).ready(function(){
         document.getElementById("load").remove();
     });

@@ -655,7 +655,7 @@
                 }
 
                 dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
-       
+
                 document.getElementById("color").value = dominant;
                 document.getElementById("color").css('background-color', dominant);
 
