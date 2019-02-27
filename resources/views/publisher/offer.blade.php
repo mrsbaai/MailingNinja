@@ -23,18 +23,17 @@
                     <div class="card-body">
                         <div class="row px-4">
                             <p><b>Desctiption:</b> {{$data['description']}}</p>
-                            <p>
+
                                 <br/>
 
 
-                            </p>
                             <h5>Verticals:
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
 
                             <br/>
                             <p>
-                                <br/><br/>
+                                <br/>
 
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="300" alt="{{$data['title']}}">
@@ -60,7 +59,20 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h6></h6>
+
+                                <div class="form-group">
+                                    <h6>Suggested Subjects</h6>
+                                    <textarea class="form-control rounded-0"  rows="10" readonly>
+                                        {{$data['title']}}
+                                        {{$data['title']}}
+                                        
+                                        {{$data['title']}}
+
+
+
+                                    </textarea>
+                                </div>
+
                                 <p>{!! $data['promo'] !!}</p>
                             </div>
                         </div>
