@@ -415,7 +415,7 @@ class publisherController extends Controller
         }else{
             $data = $this->getEmailData(null,$id);
         }
-
+return print_r($data);
         return view('emails.promote')->with('data',$data);
     }
 
