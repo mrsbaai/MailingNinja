@@ -34,7 +34,7 @@
         <br/>
         <br/>
         <br/>
-        <img src="https://c1.staticflickr.com/8/7312/8929493443_55740a7a3e_b.jpg" style="max-width: 500px;"></center>
+        <img src="https://i.imgur.com/ybBBfvt.jpg" style="max-width: 500px;"></center>
     </center>
 
 
