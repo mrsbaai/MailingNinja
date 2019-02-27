@@ -629,11 +629,11 @@
 
         $('#getcolor').click(function(){ getColor(); return false; });
 
-        $(document).ready(function(){
-            $('#color').change(function(){
-                document.getElementById("color").css('background-color', document.getElementById("color").value);
-            });
+        $("#color").change(function(){
+            document.getElementById("color").css('background-color', document.getElementById("color").value);
         });
+
+   
 
         function getColor() {
 
