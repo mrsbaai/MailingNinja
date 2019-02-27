@@ -6,7 +6,7 @@
 
     <div class="content">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
             <div class="col-lg-12">
 
 
@@ -52,42 +52,54 @@
                         </div>
                     </div>
 
+                <div class="card ">
+                    <div class="card-header">
+                        <h5 class="card-title">Offer Price</h5>
+                        <p class="card-category">If you set the price to <b>$0</b> the visitors will be asked for their email to download the product for free, perfect for list building or data cleaning.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
 
+                            <div class="col-lg-9 col-centered">
 
-                    <div class="card ">
-                        <div class="card-header">
-                            <h5 class="card-title">Offer Link</h5>
-                            <p class="card-category">
-                                To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
-                                You can also refer to the offer without "/{email}".
-                            </p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
+                                {{ Form::open(array('action' => 'publisherController@offerSetPrice', 'id' => 'set_price'))}}
 
-                                <div class="col-centered">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text" style="font-size: 110%">Link:</span>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
-                                        </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
+                                    </div>
+                                    <input name="offer_id" value="{{$data['offer_id']}}" hidden>
+                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 300%" required>
 
+                                    <div class="input-group-append">
+                                                <span class="input-group-text p-0 ">
+                                                    <button type="submit" class="btn btn-link" title="Set the price">
+                                                        <i class="nc-icon nc-minimal-right" style="font-size: 300%"></i>&nbsp;&nbsp;
+                                                    </button>
+                                                </span>
                                     </div>
 
                                 </div>
+                                {{Form::close()}}
+
                             </div>
 
-
                         </div>
+
+
+
                     </div>
-            
-            </div>
+                </div>
+
+
+
+
 
             </div>
 
-            <div class="col-lg-6">
+            </div>
+
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Promotional Tools</h5>
@@ -169,45 +181,35 @@
         <div class="row">
 
             <div class="col-lg-6">
-
                 <div class="card ">
                     <div class="card-header">
-                        <h5 class="card-title">Offer Price</h5>
-                        <p class="card-category">If you set the price to <b>$0</b> the visitors will be asked for their email to download the product for free, perfect for list building or data cleaning.</p>
+                        <h5 class="card-title">Offer Link</h5>
+                        <p class="card-category">
+                            To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
+                            You can also refer to the offer without "/{email}".
+                        </p>
                     </div>
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-lg-9 col-centered">
-
-                                {{ Form::open(array('action' => 'publisherController@offerSetPrice', 'id' => 'set_price'))}}
-
+                            <div class="col-centered">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
+                                    <div class="input-group-prepend" >
+                                        <span class="input-group-text" style="font-size: 110%">Link:</span>
                                     </div>
-                                    <input name="offer_id" value="{{$data['offer_id']}}" hidden>
-                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 300%" required>
-
                                     <div class="input-group-append">
-                                                <span class="input-group-text p-0 ">
-                                                    <button type="submit" class="btn btn-link" title="Set the price">
-                                                        <i class="nc-icon nc-minimal-right" style="font-size: 300%"></i>&nbsp;&nbsp;
-                                                    </button>
-                                                </span>
+                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
                                     </div>
 
                                 </div>
-                                {{Form::close()}}
 
                             </div>
+                        </div>
+
 
                     </div>
-
-
-
                 </div>
-            </div>
+
         </div>
 
 
