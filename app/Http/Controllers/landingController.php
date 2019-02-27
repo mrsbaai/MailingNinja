@@ -74,7 +74,7 @@ class landingController extends Controller
     public function test(){
         $view = view('publisher.test')->render();
         header("Content-type: text/html");
-        header("Content-Disposition: attachment; filename=creative");
+        header("Content-Disposition: attachment; filename=creative.htm");
         return $view;
 
     }
