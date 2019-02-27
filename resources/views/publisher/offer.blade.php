@@ -160,11 +160,11 @@
                                         @endif
                                     </div><br/><br/>
                                     <h6>Html E-mail:</h6>
-                                    <a target='_blank' href='/preview/email/{{$data['code']}}' title='Preview HTML Email'>
+                                    <a target='_blank' href='/preview/email/{{$data['link']}}' title='Preview HTML Email'>
                                         <button class="btn btn-primary btn-sm">Preview Html Email</button>
                                     </a>
 
-                                    <a target='_blank' href='/download/email/{{$data['code']}}' title='Download Html Email'>
+                                    <a target='_blank' href='/download/email/{{$data['link']}}' title='Download Html Email'>
                                         <button class="btn btn-primary btn-sm">Download Html Email</button>
                                     </a>
 
