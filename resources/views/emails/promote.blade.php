@@ -316,7 +316,7 @@
                                     <div align="center" class="img-container center  autowidth  fullwidth " style="padding-right: 0px;  padding-left: 0px;">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
                                         <a href="https://mailing.ninja/preview/7" target="_blank">
-                                            <img class="center  autowidth  fullwidth" align="center" border="0" src="https://i.imgur.com/oux4tIZ.jpg" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 588px" width="588">
+                                            <img class="center  autowidth  fullwidth" align="center" border="0" src="{{$data['cover']}}" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;width: 100%;max-width: 588px" width="588">
                                         </a>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
