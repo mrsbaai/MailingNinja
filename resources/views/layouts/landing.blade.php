@@ -127,8 +127,8 @@
             background-color: {{$color}} !important;;
         }
         .purchase{
-            background: {{$color}} !important;;
-            border: 3px solid transparent;
+            background: {{$color}} !important;
+            border: 3px solid transparent !important;
 
         }
     </style>
