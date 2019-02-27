@@ -444,11 +444,11 @@
                     <div class="input-group">
 
 
-                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="font-size: 150%">
+                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="color:white;">
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
-                                <button onclick="getColor()"class="btn btn-link" title="Automatically generate primary color from image">
+                                <button onclick="getColor()" class="btn btn-link" title="Automatically generate primary color from image">
                                     Generate
                                 </button>
                             </span>
@@ -647,6 +647,7 @@
 
                 dominant = "#" + ((1 << 24) + (a << 16) + (b << 8) + c).toString(16).slice(1);
                 document.getElementById("primary_color").value = dominant;
+                document.getElementById("primary_color").css('background-color', dominant);
 
 
             });
