@@ -7,46 +7,85 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
+            <div class="col-lg-12">
+
+
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
                         <span style="float: right">
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <button class="btn btn-primary btn-sm">Preview Landing Page</button>
                                 </a>
                             </span>
-                        <span style="float: left">
+                            <span style="float: left">
 
                         <h5 class="card-title">About: {{$data['title']}}</h5>
                         </span>
 
-                    </div>
-                    <div class="card-body">
-                        <div class="row px-4">
-                            <p><b>Desctiption:</b> {{$data['description']}}</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row px-4">
+                                <p><b>Desctiption:</b> {{$data['description']}}</p>
 
                                 <br/>
 
 
-                            <h5>Verticals:
-                                @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
-                            </h5>
+                                <h5>Verticals:
+                                    @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
+                                </h5>
+
+                            </div>
+
+
+                            <div class="row px-4 text-center ">
+                                <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
+                                    <div class="text-center " style="padding-top: 20px;padding-bottom: 20px;">
+                                        <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
+                                    </div>
+                                </a>
+                                <br/>
+
+                            </div>
+
 
                         </div>
-
-
-                        <div class="row px-4 text-center ">
-                            <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
-                                <div class="text-center " style="padding-top: 20px;padding-bottom: 20px;">
-                                    <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded mx-auto d-block"  width="300" alt="{{$data['title']}}">
-                                </div>
-                            </a>
-                            <br/>
-
-                        </div>
-
-
                     </div>
                 </div>
+                <div class="col-lg-6">
+
+                    <div class="card ">
+                        <div class="card-header">
+                            <h5 class="card-title">Offer Link</h5>
+                            <p class="card-category">
+                                To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
+                                You can also refer to the offer without "/{email}".
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-centered">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" >
+                                            <span class="input-group-text" style="font-size: 110%">Link:</span>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             </div>
 
             <div class="col-lg-6">
@@ -59,13 +98,13 @@
                             <div class="col-md-12">
 
                                 <div class="form-group">
-                                    <h6>Subjects:</h6>
+                                    <h6>E-mail Subjects:</h6>
                                     <div class="card-body bg-light rounded border border-light">
                                         @foreach ($data['subjects'] as $subject)
                                             {{ $subject }} <br/>
                                         @endforeach
                                     </div><br/><br/>
-                                    <h6>Froms:</h6>
+                                    <h6>E-mail From Names:</h6>
                                     <div class="card-body bg-light rounded border border-light">
                                         {{$data['author_name']}}<br/>
                                         {{ config('app.name') }}<br/>
@@ -173,37 +212,7 @@
         </div>
 
 
-            <div class="col-lg-6">
 
-                <div class="card ">
-                    <div class="card-header">
-                        <h5 class="card-title">Offer Link</h5>
-                        <p class="card-category">
-                            To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
-                            You can also refer to the offer without "/{email}".
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-centered">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text" style="font-size: 110%">Link:</span>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
-                                        </div>
-
-                                    </div>
-
-                            </div>
-                         </div>
-
-
-                </div>
-            </div>
-        </div>
 
             <div class="col-lg-6">
                 <div class="card">
