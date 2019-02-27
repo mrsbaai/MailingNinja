@@ -579,8 +579,9 @@
 
 
 
-<script src="{{ asset('landing/js/color-thief.js') }}"></script><script type="text/javascript">
-    
+<script src="{{ asset('landing/js/color-thief.js') }}"></script>
+<script type="text/javascript">
+
 
     function lightOrDark(color) {
 
