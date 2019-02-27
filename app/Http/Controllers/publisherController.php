@@ -404,8 +404,9 @@ class publisherController extends Controller
         return view('emails.promote')->with('data',$data);
     }
 
-    public function test(){
-        $view = view('publisher.test')->render();
+    public function downloadEmail($code){
+        $data = $this->getEmailData($code);
+        $view = view('emails.promote')->with('data',$data)->render();
         header("Content-type: text/html");
         header("Content-Disposition: attachment; filename=creative.htm");
         return $view;
