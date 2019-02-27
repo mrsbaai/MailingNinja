@@ -75,26 +75,24 @@
                                         @if( $data['price'] == 0)
 
                                         @else
-                                            Hello {name}!
+                                            Hello {name}!<br/><br/>
 
-                                            {description}
+                                            {{$data['description']}}<br/><br/>
 
-                                            Read More Here: {link}
+                                            Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            Ebook:
-                                            {title} [{Subtitle}]
+                                            Ebook:<br/>
+                                            {{$data['title']}} [{{$data['subtitle']}}]<br/><br/>
 
-                                            To download this e-book with %40 discount, please follow this link:
+                                            To download this e-book with %40 discount, please follow this link:<br/><br/>
 
-                                            {link}
+                                            https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            See you in the other side.
-                                            Cheers,
-                                            {from}
+                                            See you in the other side.<br/>
+                                            Cheers,<br/>
+                                            {from}<br/><br/>
 
-                                            To UNSUBSCRIBE from this mailing list, please follow this link:
-
-                                            {unsubscribe}
+                                            To UNSUBSCRIBE from this mailing list, please follow this link: https://{{$data['domain']}}/unsubscribe/{email}
 
                                         @endif
                                     </div><br/><br/>
@@ -180,7 +178,7 @@
                                             <span class="input-group-text" style="font-size: 110%">Link:</span>
                                         </div>
                                         <div class="input-group-append">
-                                            <span class="input-group-text" style="font-size: 100%"><b>http://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
+                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
                                         </div>
 
                                     </div>
@@ -246,7 +244,7 @@
                                         <span class="input-group-text" style="font-size: 110%">Unsubscribe:</span>
                                     </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text" style="font-size: 100%"><b>http://{{$data['domain']}}/unsubscribe/{email}</b>&nbsp;&nbsp;</span>
+                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/unsubscribe/{email}</b>&nbsp;&nbsp;</span>
                                     </div>
 
                                 </div>
