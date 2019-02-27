@@ -120,14 +120,14 @@
 
 
         #action_1{
-        background-color: {{$color}};
+        background-color: {{$color}} !important;
 
         }
         .subs{
-            background-color: {{$color}};
+            background-color: {{$color}} !important;;
         }
         .purchase{
-            background: {{$color}};
+            background: {{$color}} !important;;
             border: 3px solid transparent;
 
         }
