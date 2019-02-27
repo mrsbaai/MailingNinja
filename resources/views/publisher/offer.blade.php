@@ -62,8 +62,7 @@
 
                                 <div class="form-group">
                                     <h6>Suggested Subjects</h6>
-
-                                    <div class="border border-light rounded-sm" >
+                                    <div class="well">
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
