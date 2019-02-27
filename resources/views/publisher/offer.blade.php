@@ -14,7 +14,10 @@
                                     <button class="btn btn-primary btn-sm">Preview Landing Page</button>
                                 </a>
                             </span>
+                        <span style="float: left">
+
                         <h5 class="card-title">{{$data['title']}}</h5>
+                        </span>
 
                     </div>
                     <div class="card-body">
@@ -36,6 +39,7 @@
                                 <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                     <img src="{{$data['thumbnail']}}" class="img-thumbnail rounded" width="400" alt="{{$data['title']}}">
                                 </a>
+                                <br/>
 
                             </center>
 
