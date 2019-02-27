@@ -4,7 +4,7 @@
     <input type="text"  id="lg_role" name="lg_role" value="unregistered_costumer" hidden>
     <div class="col-md-2"></div>
     <div class="col-md-8  wow animated fadeInUp" id="contact">
-        <h2 class="heading">Contact Us / <span style="color: #680D0D">Report E-mail Abuse</span></h2><br/>
+        <h2 class="heading">Contact / <span style="color: #680D0D">Report Mailing Abuse</span></h2><br/>
         @include('flash::message')
         <div class="row">
 
