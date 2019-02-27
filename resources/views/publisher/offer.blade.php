@@ -72,7 +72,7 @@
                                     </div><br/><br/>
                                     <h6>Text E-mail:</h6>
                                     <div class="card-body bg-light rounded border border-light">
-                                        @if($price == 0)
+                                        @if( $data['price'] == 0)
 
                                         @else
                                             Hello {name}!
