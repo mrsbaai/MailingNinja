@@ -444,7 +444,7 @@
                     <div class="input-group">
 
 
-                        <input class="form-control" name="color" value="{{$color}}" placeholder="Primary Coloe ex {{$color}}" style="background-color: {{$color}};color:white;">
+                        <input class="form-control" name="color"  id="color" value="{{$color}}" placeholder="Primary Coloe ex {{$color}}" style="background-color: {{$color}};color:white;">
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
