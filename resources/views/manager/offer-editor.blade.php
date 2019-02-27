@@ -448,7 +448,7 @@
 
                         <div class="input-group-append">
                             <span class="input-group-text p-0 ">
-                                <a onclick="getColor()" class="btn btn-link" title="Automatically generate primary color from image">
+                                <a id="getcolor" class="btn btn-link" title="Automatically generate primary color from image">
                                     Generate
                                 </a>
                             </span>
@@ -617,6 +617,7 @@
             }
         }
 
+        $('#getcolor').click(function(){ getColor(); return false; });
         function getColor() {
             var colorThief = new ColorThief();
             colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
