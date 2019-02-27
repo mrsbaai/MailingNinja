@@ -53,7 +53,7 @@
 
                 <div class="card ">
                     <div class="card-header">
-                        <h5 class="card-title">Offer Price</h5>
+                        <h5 class="card-title">Custom Price</h5>
                         <p class="card-category">If you set the price to <b>$0</b> the visitors will be asked for their email to download the product for free, perfect for list building or data cleaning.</p>
                     </div>
                     <div class="card-body">
@@ -238,23 +238,6 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Suppression list</h5>
-                        <p class="card-category">Don't send this offer to any of these E-mails</p>
-
-
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-12 text-center">
-                                    <a class='btn btn-danger' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
-                                       Download Suppression List
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-header">
                         <h5 class="card-title">Unsubscribe Link</h5>
                         <p class="card-category">/{email} is optional</p>
 
@@ -275,6 +258,29 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Suppression list</h5>
+                        <p class="card-category">Don't send this offer to any of these E-mails</p>
+
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12 text-center">
+                                    <a class='btn btn-danger' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
+                                       Download Suppression List
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
     </div>
