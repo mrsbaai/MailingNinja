@@ -12,8 +12,8 @@
                         <h5 class="card-title">{{$data['title']}}</h5>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <p class="card-columns">Desctiption: {{$data['description']}}</p>
+                        <div class="row px-2">
+                            <p class="">Desctiption: {{$data['description']}}</p>
                             <h5>Verticals:
                                 @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                             </h5>
