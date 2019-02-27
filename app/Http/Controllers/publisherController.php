@@ -383,11 +383,20 @@ class publisherController extends Controller
 
     }
 
-    public function getEmailData($code){
-        $link = link::all()->where('link',$code)->first();
-        $offer = offer::where('id', $link['offer_id'])->first();
+    public function getEmailData($code=null,$id=null){
 
-        $data['price'] = $link['price'];
+        if($code){
+            $link = link::all()->where('link',$code)->first();
+            $offer = offer::where('id', $link['offer_id'])->first();
+            $data['price'] = $link['price'];
+        }
+        if($id){
+            $offer = offer::where('id', $id)->first();
+            $data['price'] = $offer['price'];
+        }
+
+        
+
         $data['cover'] = $offer['thumbnail'];
         $data['app_name'] = config('app.name') .".";
         $data['unsubscribe'] = "https://" . config('app.promote_url') . "/unsubscribe";
@@ -396,13 +405,19 @@ class publisherController extends Controller
         $data['about_3'] = $offer['book_about_3'];
         $data['title'] = $offer['title'];
         $data['subtitle'] = $offer['subtitle'];
-        $data['primary_color'] = "#267BB1";
+        $data['primary_color'] = $offer['color'];
 
         return $data;
     }
-    public function previewEmail($code){
+    public function previewEmail($code=null,$id=null){
 
-        $data = $this->getEmailData($code);
+        if($code){
+            $data = $this->getEmailData($code,null);
+        }
+        if($id){
+            $data = $this->getEmailData(null,$id);
+        }
+
         return view('emails.promote')->with('data',$data);
     }
 

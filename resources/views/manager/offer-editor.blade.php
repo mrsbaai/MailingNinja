@@ -417,7 +417,8 @@
                                             <a href="{{$id}}/landing/a" target="BLANK" class="btn btn-outline-default btn-sm">Edit A</a>
                                             <a href="{{$id}}/landing/b" target="BLANK" class="btn btn-outline-default btn-sm">Edit B</a>
                                             <a href="{{$id}}/promo" target="BLANK"  class="btn btn-outline-default btn-sm">Edit Promotional Tools</a>
-                                            <a class="btn btn-outline-primary btn-sm" target="BLANK"  href="/preview/{{$id}}">Preview</a>
+                                            <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/preview/{{$id}}">Preview Landing</a>
+                                            <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/preview/email/id/{{$id}}">Preview Html Email</a>
 
                                             <br/>
 
