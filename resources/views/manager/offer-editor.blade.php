@@ -444,7 +444,7 @@
                     <div class="input-group">
 
 
-                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="font-size: 300%">
+                        <input class="form-control" name="primary_color" value="" placeholder="Primary Coloe ex #FFFFFF" style="font-size: 150%">
 
                         <div class="input-group-append">
                                                 <span class="input-group-text p-0 ">
