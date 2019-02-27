@@ -330,9 +330,9 @@
                 </div>
             </div>
             <div style="background-color:transparent;">
-                <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #F9FBFB;" class="block-grid ">
-                    <div style="border-collapse: collapse;display: table;width: 100%;background-color:#F9FBFB;">
-                        <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 600px;"><tr class="layout-full-width" style="background-color:#F9FBFB;"><![endif]-->
+                <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: white;" class="block-grid ">
+                    <div style="border-collapse: collapse;display: table;width: 100%;background-color:white;">
+                        <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 600px;"><tr class="layout-full-width" style="background-color:hite;"><![endif]-->
 
                         <!--[if (mso)|(IE)]><td align="center" width="600" style=" width:600px; padding-right: 40px; padding-left: 40px; padding-top:40px; padding-bottom:40px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
                         <div class="col num12" style="min-width: 320px;max-width: 600px;display: table-cell;vertical-align: top;">
