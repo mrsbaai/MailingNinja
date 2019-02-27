@@ -391,7 +391,7 @@ class publisherController extends Controller
             $data['price'] = $link['price'];
         }else{
             $offer = offer::where('id', $id)->first();
-            $data['price'] = $offer['price'];
+            $data['price'] = $offer['payout'];
         }
 
 
