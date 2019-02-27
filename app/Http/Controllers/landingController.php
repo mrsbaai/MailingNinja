@@ -242,6 +242,7 @@ class landingController extends Controller
             ->with('code', $code)
             ->with('offers', $related_offers)
             ->with('title', $offer->title)
+            ->with('color', $offer->color)
             ->with('related_url', $related_url)
             ->with('description', $offer->description)
             ->with('price', $price)
