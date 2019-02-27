@@ -348,7 +348,7 @@ class publisherController extends Controller
         $offer = offer::where('id',$id)->first();
 
 
-        $subjects
+        $subjects = "";
 
     }
     public function offer(Request $request, $id){
