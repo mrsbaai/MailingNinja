@@ -606,12 +606,12 @@
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){
-        document.getElementById("load").remove();
         dominant = {{$color}}
         $('#action_1').css('background-color', dominant);
         $('.subs').css('background-color', dominant);
         $('.purchase').css('border', '3px solid transparent');
         $('.purchase').css('background', dominant);
+        document.getElementById("load").remove();
     });
 
 </script>
