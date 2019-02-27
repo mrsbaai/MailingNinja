@@ -73,6 +73,23 @@
                                     <h6>Text E-mail:</h6>
                                     <div class="card-body bg-light rounded border border-light">
                                         @if( $data['price'] == 0)
+                                            Hello {name}!<br/><br/>
+
+                                            {{$data['description']}}<br/><br/>
+
+                                            Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+
+                                            FREE Ebook:<br/>
+                                            {{$data['title']}} [{{$data['subtitle']}}]<br/><br/>
+
+                                            To Download This FREE, Please Follow This Link:<br/><br/>
+
+                                            https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+                                        
+                                            Cheers,<br/>
+                                            {{ config('app.name') }}.<br/><br/>
+
+                                            To unsubscribe from this mailing list: https://{{$data['domain']}}/unsubscribe
 
                                         @else
                                             Hello {name}!<br/><br/>
@@ -81,19 +98,18 @@
 
                                             Read More Here: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            Ebook:<br/>
+                                            The Ebook:<br/>
                                             {{$data['title']}} [{{$data['subtitle']}}]<br/><br/>
 
-                                            To download this e-book with %40 discount, please follow this link:<br/><br/>
+                                            To Download This E-book With %40 Discount, Please Follow This Link:<br/><br/>
 
                                             https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
 
-                                            See you in the other side.<br/>
+
                                             Cheers,<br/>
-                                            {from}<br/><br/>
+                                            {{ config('app.name') }}.<br/><br/>
 
-                                            To UNSUBSCRIBE from this mailing list, please follow this link: https://{{$data['domain']}}/unsubscribe/{email}
-
+                                            To unsubscribe from this mailing list: https://{{$data['domain']}}/unsubscribe
                                         @endif
                                     </div><br/><br/>
                                     <h6>Html E-mail:</h6>
