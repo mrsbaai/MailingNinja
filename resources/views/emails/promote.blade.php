@@ -334,12 +334,21 @@
                                     <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="#507935" fillcolor="#507935"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
                                         <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #507935; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
-                                            <span style="font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 28px; line-height: 56px;"><strong> @if($data['price'] == 0) FREE Download @else Download E-Book (%40 OFF!) @endif </strong></span></span>
+                                            <span style="font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 28px; line-height: 56px;"><strong> @if($data['price'] == 0) FREE Download @else Download E-Book @endif </strong></span></span>
                                         </a>
                                         <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
                                     </div>
 
+                                    @if($data['price'] <> 0)
+                                        <div class="">
+                                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;"><![endif]-->
+                                            <div style="color:red;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                                <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:red;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>(%40 OFF!)</strong></span></p></div>
+                                            </div>
+                                            <!--[if mso]></td></tr></table><![endif]-->
+                                        </div>
 
+                                    @endif
 
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
@@ -508,13 +517,22 @@
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;"><![endif]-->
                                         <div style="color:red;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:red;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>Hurry, offer ends {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}</strong></span></p></div>
+                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:red;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>Hurry, Offer Ends {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}</strong></span></p></div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
 
+                                    <div align="center" class="button-container center " style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;">
+                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top:20px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://mailing.ninja/preview/7" style="height:49pt; v-text-anchor:middle; width:204pt;" arcsize="76%" strokecolor="#507935" fillcolor="#507935"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif; font-size:28px;"><![endif]-->
+                                        <a href="https://mailing.ninja/preview/7" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #507935; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; max-width: 272px; width: 212px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 30px; padding-bottom: 5px; padding-left: 30px; font-family: 'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;mso-border-alt: none">
+                                            <span style="font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 28px; line-height: 56px;"><strong> @if($data['price'] == 0) FREE Download @else Download E-Book @endif </strong></span></span>
+                                        </a>
+                                        <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
+                                    </div>
+
+
                                     <div class="">
-                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
+                                        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 60px; padding-bottom: 10px;"><![endif]-->
                                         <div style="color:#343434;font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
                                             <div style="font-size:12px;line-height:14px;color:#343434;font-family:'Oxygen', 'Trebuchet MS', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px;text-align: center">Made with&#160;♥ by {{$data['app_name']}} © All rights reserved</p></div>
                                         </div>
