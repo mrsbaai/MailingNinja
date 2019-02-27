@@ -343,6 +343,14 @@ class publisherController extends Controller
 
         return redirect(route('promote-offer', ['id' => $offer_id]));
     }
+
+    public function offerSubjects ($id){
+        $offer = offer::where('id',$id)->first();
+
+
+        $subjects
+
+    }
     public function offer(Request $request, $id){
 
         $request->user()->authorizeRoles('publisher');
@@ -375,6 +383,8 @@ class publisherController extends Controller
         $data['price'] = $price;
         $data['link'] = $url;
         $data['title'] = $offer->title;
+        $data['title'] = $offer->subtitle;
+        $data['title'] = $offer->author_name;
         $data['promo'] = $offer->promo;
         $data['thumbnail'] = $offer->thumbnail;
         $data['description'] = $offer->description;

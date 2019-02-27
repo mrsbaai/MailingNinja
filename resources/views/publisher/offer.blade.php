@@ -16,7 +16,7 @@
                             </span>
                         <span style="float: left">
 
-                        <h5 class="card-title">{{$data['title']}}</h5>
+                        <h5 class="card-title">About: {{$data['title']}}</h5>
                         </span>
 
                     </div>
@@ -66,19 +66,18 @@
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
-                                    </div>
+                                    </div><br/><br/>
                                     <h6>Froms:</h6>
                                     <div class="card-body bg-light rounded border border-dark">
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
-                                    </div>
+                                        {{$data['author_name']}}<br/>
+                                        {{ config('app.name') }}<br/>
+                                    </div><br/><br/>
                                     <h6>Text E-mail:</h6>
                                     <div class="card-body bg-light rounded border border-dark">
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
-                                    </div>
+                                    </div><br/><br/>
                                     <h6>Html E-mail:</h6>
                                     <a target='_blank' href='{{$data['preview']}}' title='Preview Landing Page'>
                                         <button class="btn btn-primary btn-sm">Preview Html Email</button>
