@@ -619,6 +619,7 @@
 
         $('#getcolor').click(function(){ getColor(); return false; });
         function getColor() {
+            alert ("ok");
             var colorThief = new ColorThief();
             colorThief.getpaletteAsync("{{ $thumbnail }}",function(color, element){
 
