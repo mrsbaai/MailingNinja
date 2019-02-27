@@ -62,18 +62,18 @@
 
                                 <div class="form-group">
                                     <h6>Subjects:</h6>
-                                    <div class="card-body bg-light rounded border border-dark">
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
-                                        {{$data['title']}}<br/>
+                                    <div class="card-body bg-light rounded border border-light">
+                                        @foreach ($data['subjects'] as $subject)
+                                            {{ $subject }} <br/>
+                                        @endforeach
                                     </div><br/><br/>
                                     <h6>Froms:</h6>
-                                    <div class="card-body bg-light rounded border border-dark">
+                                    <div class="card-body bg-light rounded border border-light">
                                         {{$data['author_name']}}<br/>
                                         {{ config('app.name') }}<br/>
                                     </div><br/><br/>
                                     <h6>Text E-mail:</h6>
-                                    <div class="card-body bg-light rounded border border-dark">
+                                    <div class="card-body bg-light rounded border border-light">
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>
                                         {{$data['title']}}<br/>

@@ -369,7 +369,7 @@ class publisherController extends Controller
             array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF!]");
             array_push($subjects,"Ebook: $title [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
             array_push($subjects,"Ebook:  $subtitle. [Special Offer 40% OFF, The Early Bird Gets the Worm!]");
-            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF, The Early Bird Gets the Worm!]"
+            array_push($subjects,"[Ebook] $title: $subtitle. [Special Offer 20% OFF, The Early Bird Gets the Worm!]");
 
         }
 
