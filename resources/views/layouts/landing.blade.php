@@ -572,7 +572,7 @@
 <script src="{{ asset('landing/js/core.js') }}"></script>
 <script src="{{ asset('landing/js/tooltip.js') }}"></script>
 <script src="{{ asset('landing/js/jquery.form-validator.js') }}"></script>
-
+<script src="{{ asset('landing/js/preloader.js') }}"></script>
 <script src="{{ asset('landing/js/main.js') }}"></script>
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
