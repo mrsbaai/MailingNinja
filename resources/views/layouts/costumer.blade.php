@@ -20,6 +20,11 @@
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
 
     <style>
+        @font-face {
+            font-family: 'Proxima';
+            src: {{ URL::asset('landing/fonts/bootstrap.min.css') }};
+        }
+
         h2{
             font-family: 'Proxima';
             text-transform: capitalize;
