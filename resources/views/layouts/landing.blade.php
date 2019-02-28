@@ -241,7 +241,7 @@
         <div class="container">
 
 
-                <div class="col-md-6" style="padding-bottom: 100px;">
+                <div class="col-md-6 text-center" style="padding-bottom: 100px;">
                     <br/>
                     <div class="book-preview ">
                         <img src="{{ asset('landing/img/kindle.png') }}" class="background-device" alt="">
@@ -262,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 wide wow animated fadeInUp" style="padding-left: 50px;">
+                <div class="col-md-6 text-center wide wow animated fadeInUp" style="padding-left: 50px;">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
