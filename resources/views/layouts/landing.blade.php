@@ -167,7 +167,7 @@
 
         <div class="container" >
 
-            <div class="col-md-6 intro-text">
+            <div class="col-md-6 intro-text hidden-sm hidden-xs">
                 <img class="img-responsive img-fluid" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
 
@@ -260,7 +260,7 @@
 
 
                         </div>
-                    </div>
+                    </div><br/><br/><br/>
                 </div>
                 <div class="col-md-6 wide wow animated fadeInUp">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
