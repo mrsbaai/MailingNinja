@@ -392,6 +392,7 @@ class publisherController extends Controller
         }else{
             $offer = offer::where('id', $id)->first();
             $data['price'] = $offer['payout'];
+            $data['link'] = "https://" . config('app.promote_url') . "/ebook/" . $id;
         }
 
 
@@ -400,7 +401,7 @@ class publisherController extends Controller
         $data['app_name'] = config('app.name') .".";
         $data['unsubscribe'] = "https://" . config('app.promote_url') . "/unsubscribe";
         $data['description'] = $offer['description'];
-        $data['link'] = "https://" . config('app.promote_url') . "/" . $code;
+
         $data['about_3'] = $offer['book_about_3'];
         $data['title'] = $offer['title'];
         $data['subtitle'] = $offer['subtitle'];
