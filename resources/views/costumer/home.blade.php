@@ -1,5 +1,5 @@
 @extends('layouts.costumer')
-
+@include('landing.Wall')
 @section('content')
     <div class="content">
         <div class="row">
@@ -12,6 +12,19 @@
                         {{$table}}
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="heading dominant-color wow animated fadeInUp">You Might Also Like:</h2><br/><br/><br/>
+            @yield('Wall')
+            <div class="col-lg-12 wow animated fadeInUp" >
+                <p class="text-center">
+                    <a id="discover_button" href="/ebooks" class="btn btn-green "  style="background-color: #4C4A48;border-color:#4C4A48; padding: 0px 10px 0px 10px;"  target="_blank">More eBooks...</a>
+                </p>
+
             </div>
         </div>
     </div>

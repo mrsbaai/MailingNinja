@@ -38,8 +38,15 @@ class costumerController extends Controller
 
         return Storage::disk('dropbox')->download($files[0],$name);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
+
+
         $table = app(TableList::class)
             ->setModel(costumerOffers::class)
             ->setRoutes([
@@ -55,6 +62,7 @@ class costumerController extends Controller
         $table->addColumn('title')
             ->setTitle('')
             ->isCustomHtmlElement(function ($entity, $column) {
+
                 $offer = Offer::where('id', $entity->offer_id)->first();
                 return '<span class="uppercase" style = "font-size: 150%">[E-BOOK] [' . $offer->title . ']</span>';
             });
@@ -87,9 +95,11 @@ class costumerController extends Controller
                         . '<a href="' . $paypal_url . '/" class="btn btn-info  float-right">Pay Now [$' . $entity->price . '] [PayPal]</a>';
                 }
             });
+        $offer = costumerOffers::where('costumer_id', Auth::user()->id)->first();
+        $landing = new landingController();
+        $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
 
-
-        return view('costumer.home')->with('table',$table);
+        return view('costumer.home')->with('table',$table)->with('offers',$related_offers);
     }
     public function cancel_product(request $request, $id){
         $res = costumerOffers::where('costumer_id',Auth::user()->id)->where('offer_id',$id)->delete();
