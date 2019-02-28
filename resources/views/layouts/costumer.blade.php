@@ -18,12 +18,27 @@
     <link href="{{ URL::asset('css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
+<style>
+    #load {
+        background-color: #F5F5F5;
+        width:100%;
+        height:2000px;
+    }
+
+</style>
+
+    <noscript>
+        <style type="text/css">
+            #load {visibility : hidden;}
+        </style>
+    </noscript>
 
 
     @yield('header')
 
 </head>
 <body style="background-color: #F4F3EF;">
+<div id="load"></div>
 
 <div class="wrapper " style="background-color: #F4F3EF;">
         <!-- Navbar -->
@@ -148,6 +163,18 @@
 <script>
     $('#flash-overlay-modal').modal();
     $('div.alert').not('.alert-important').delay(15000).fadeOut(450);
+    $(document).ready(function(){
+        if (!('remove' in Element.prototype)) {
+            Element.prototype.remove = function() {
+                if (this.parentNode) {
+                    this.parentNode.removeChild(this);
+                }
+            };
+        }
+
+        document.getElementById("load").remove();
+
+    });
 
 </script>
 </body>
