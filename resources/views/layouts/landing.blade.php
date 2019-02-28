@@ -163,20 +163,20 @@
 <div id="load"></div>
 <div id="wrapper" class="behind">
 
-    <header  id="headerContainer" class="  pb-5">
+    <header  id="headerContainer" >
 
         <div class="container" >
 
-            <div class="col-md-6 intro-text hidden-sm hidden-xs">
+            <div class="col-md-6 intro-text col-sm-12  col-xs-12 ">
                 <img class="img-responsive img-fluid" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
 
 
 
-            <div class="col-md-6  col-sm-12  col-xs-12 intro-text pb-5">
-                <h2 class="heading white" >{{$title}}</h2>
-                <h4 class="white">{{$subtitle}}</h4>
-                <p class ="white justify">{!! $description !!}</p>
+            <div class="col-md-6  col-sm-12  col-xs-12 intro-text">
+                <h2 class="heading white hidden-sm hidden-xs" >{{$title}}</h2>
+                <h4 class="white hidden-sm hidden-xs">{{$subtitle}}</h4>
+                <p class ="white justify hidden-sm hidden-xs">{!! $description !!}</p>
                         @if ($price == 0)
                     <br/>
                     <div class="container" style="padding-left: 15px;">
