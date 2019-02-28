@@ -270,6 +270,7 @@ class landingController extends Controller
             ->with('price', $price)
             ->with('old_price', $old_price)
             ->with('thumbnail', $offer->thumbnail)
+            ->with('cover', $offer->cover)
             ->with('subtitle', $offer->subtitle)
             ->with('images', $images)
             ->with('author_image', $offer->author_image)
