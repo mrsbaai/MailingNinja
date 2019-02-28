@@ -167,15 +167,16 @@
 
         <div class="container" >
 
-            <div class="col-md-6">
+            <div class="col-md-6 intro-text">
                 <img class="img-responsive img-fluid" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
+
+
+
             <div class="col-md-6  intro-text">
                 <h2 class="heading white" >{{$title}}</h2>
                 <h4 class="white">{{$subtitle}}</h4>
                 <p class ="white justify">{!! $description !!}</p>
-
-
                         @if ($price == 0)
                     <br/>
                     <div class="container" style="padding-left: 15px;">
