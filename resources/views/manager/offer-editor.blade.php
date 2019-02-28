@@ -457,6 +457,13 @@
 
                     </div>
 
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">3D cover:</span>
+                        </div>
+                        <input id="cover" type="text" name="$cover" class="form-control"@if( ! empty($cover)) value="{{$cover}}" @endif >
+                    </div>
+
 
                 </div>
                 </div>

@@ -101,6 +101,7 @@ class managerController extends Controller
             'image_7' =>  $request->image_7,
             'image_8' =>  $request->image_8,
             'image_9' =>  $request->image_9,
+            'cover' =>  $request->cover,
             'author_image' =>  $request->author_image,
             'review_name_1' =>  $request->review_name_1,
             'review_content_1' =>  $request->review_content_1,
@@ -401,6 +402,7 @@ class managerController extends Controller
             ->with('image_7', $offer->image_7)
             ->with('image_8', $offer->image_8)
             ->with('image_9', $offer->image_9)
+            ->with('cover', $offer->cover)
             ->with('author_image', $offer->author_image)
             ->with('review_name_1', $offer->review_name_1)
             ->with('review_content_1', $offer->review_content_1)
