@@ -199,11 +199,12 @@
 
 
                         @endif
-                <br/><br/><br/><br/><br/>
+
 
 
 
             </div>
+            <br/><br/><br/><br/><br/> <br/><br/><br/><br/><br/>
         </div>
 
     </header>
@@ -256,7 +257,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 wide wow animated fadeInUp" style="padding-left: 50px;">
+                <div class="col-md-6 wide wow animated fadeInUp" style="padding-left: 80px;">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
