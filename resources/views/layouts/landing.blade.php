@@ -163,7 +163,7 @@
 <div id="load"></div>
 <div id="wrapper" class="behind">
 
-    <header  id="headerContainer" >
+    <header  id="headerContainer" style="height: auto;">
 
         <div class="container" >
 
