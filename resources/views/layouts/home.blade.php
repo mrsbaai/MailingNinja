@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
 
-            <!--<li>
+            <li>
                     <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categories <span class="caret"></span>
                     </a>
@@ -63,7 +63,7 @@
 
                     </div>
 
-                </li>-->
+                </li>
 
                 <li><a href="#contact" class="scrollto">Contact</a></li>
                 <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
