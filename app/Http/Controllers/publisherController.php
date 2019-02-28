@@ -497,15 +497,7 @@ class publisherController extends Controller
             ->isSortable()
             ->setTitle('ID')
             ->isCustomHtmlElement(function ($entity, $column) {
-                if ($entity->is_private == false){
-                    return $entity->id;
-                }else{
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $entity->id;
-                    }else{
-                        return "Disabled";
-                    }
-                }
+                return $entity->id;
 
             });
 
