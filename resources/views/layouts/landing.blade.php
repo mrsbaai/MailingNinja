@@ -212,12 +212,6 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="/"  ><h2 class="heading uppercase" style="margin-top: -5px;">{{ config('app.name') }}<span style="font-size:200%;color:#7cc576;">.</span></h2></a>
             </div>
 
@@ -241,7 +235,7 @@
         <div class="container">
 
 
-                <div class="col-md-6 text-center" style="padding-bottom: 100px;">
+                <div class="col-md-6" style="padding-bottom: 100px;">
                     <br/>
                     <div class="book-preview ">
                         <img src="{{ asset('landing/img/kindle.png') }}" class="background-device" alt="">
@@ -262,7 +256,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 text-center wide wow animated fadeInUp" style="padding-left: 50px;">
+                <div class="col-md-6 wide wow animated fadeInUp" style="padding-left: 50px;">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
