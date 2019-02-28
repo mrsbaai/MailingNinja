@@ -360,18 +360,7 @@
                 <div class="col-sm-6 text-left">
                     <h2 class="heading dominant-color">Reviews</h2>
                 </div>
-                <div class="col-sm-6 text-right text-left-mobile">
-                    <div class="rate-amount">
-                        4/5
-                    </div>
-                    <div class="rating">
-                        <span class="rate active"></span>
-                        <span class="rate active"></span>
-                        <span class="rate active"></span>
-                        <span class="rate active"></span>
-                        <span class="rate"></span>
-                    </div>
-                </div>
+
             </div>
             <div class="row">
                 <div class="owl-reviews">
