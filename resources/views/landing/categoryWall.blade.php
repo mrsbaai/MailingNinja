@@ -6,7 +6,7 @@
 @section('content')
 
     <center>
-        <div class="col-md-12 wow animated fadeInUp"  style="margin-top:-100px;">
+        <div class="col-md-12 wow animated fadeInDown"  style="margin-top:-100px;">
             <h1 class="heading">Selected Collection Of Bestseller <b style="text-transform: capitalize;">“{{$category}}”</b> eBooks:</h1>
 
             <br/><br/> <br/><br/>
