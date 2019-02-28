@@ -241,7 +241,7 @@
         <div class="container">
 
 
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding-bottom: 100px;">
                     <br/>
                     <div class="book-preview ">
                         <img src="{{ asset('landing/img/kindle.png') }}" class="background-device" alt="">
@@ -262,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 wide wow animated fadeInUp" style="padding-top: 100px;">
+                <div class="col-md-6 wide wow animated fadeInUp" style="padding-left: 50px;">
                     @if($book_about_1 !== null && $book_about_1 !== "" )
                         <p class="subheading big justify wow animated fadeInUp ">{!! $book_about_1 !!}</p>
                     @endif
@@ -287,7 +287,7 @@
     <section id="author" class="reviews">
         <div class="container"  >
             <div class="row"  >
-                <div class="col-md-7" >
+                <div class="col-md-8" >
                     <div class="row author" >
                         <div class="col-sm-12 author-name" >
                             <h2 class="heading dominant-color wow animated fadeInUp">About {{ $author_name }}</h2>
@@ -298,14 +298,14 @@
                     </div>
 
                 </div>
-                <div class="col-md-5 wow animated fadeInUp" >
+                <div class="col-md-4 wow animated fadeInUp" >
                 <br/><br/>
 
-                    <span class="pull-right ">
+
                     <div class="thumb">
                         <img src="{{ $author_image }}" style=" width: 100%;height:auto">
                     </div>
-                    </span>
+
 
                 </div>
             </div>
