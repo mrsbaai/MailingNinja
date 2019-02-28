@@ -3,42 +3,42 @@
   display: inline-block;
   box-shadow: 5px 5px 20px #333;
   margin: 20px;
-  height:500px;
+  height:550px;
 }
 
-.book img { vertical-align: middle; height:500px;}
+.book img { vertical-align: middle; height:550px;}
 
-/*
- *  In order for this to work, you must use Modernizer
- *  to detect 3D transform browser support. This will add
- *  a "csstransforms3d" class to the HTML element.
- *
- *  Visit http://modernizr.com/ for installation instructions
- */
-
-.csstransforms3d  .books {
+.books {
   -moz-perspective: 100px;
   -moz-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 100px;
+
+
 }
 
-.csstransforms3d  .book {
+.book {
+  perspective: 6850px;
   position: relative;
   -moz-perspective: 100px;
+
+
   -moz-transform: rotateY(-2deg);
+
   -webkit-transform: perspective(100) rotateY(-1deg);
   outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
   box-shadow: none;
   margin: 0;
 }
 
-.csstransforms3d  .book img {
+.book img {
   position: relative;
   max-width: 100%;
 }
 
-.csstransforms3d  .book:before,
-.csstransforms3d  .book:after {
+.book:before,
+.book:after {
   position: absolute;
   top: 2%;
   height: 96%;
@@ -46,22 +46,26 @@
   z-index: -1;
 }
 
-.csstransforms3d  .book:before {
+.book:before {
   width: 100%;
   left: 6%;
   background-color: gray;
-  box-shadow: 5px 20px 20px black;
+  box-shadow: 5px 20px 20px #333;
+
+
+
 }
 
-.csstransforms3d  .book:after {
-
+.book:after {
 
   transform: translateX(-5px)  rotateY(60deg);
   width: 7%;
   left: 99%;
 
-  background-color: green;
+  background-color: #EFEFEF;
   box-shadow: inset 0px 0px 5px #aaa;
   -moz-transform: rotateY(6deg);
-  -webkit-transform: perspective(100px) rotateY(60deg);
+
+
+
 }
