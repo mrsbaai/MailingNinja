@@ -19,19 +19,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
 
-    <style>
-        @font-face {
-            font-family: 'Proxima';
-            src: {{ URL::asset('landing/fonts/ProximaNova-Regular.otf') }};
-        }
 
-        h2{
-            font-family: 'Proxima';
-            text-transform: capitalize;
-            padding: 5px;
-        }
-
-    </style>
     @yield('header')
 
 </head>

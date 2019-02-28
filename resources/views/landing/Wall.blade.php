@@ -23,6 +23,11 @@
         }
 
 
+        @font-face {
+            font-family: 'Proxima';
+            src: {{ URL::asset('landing/fonts/ProximaNova-Regular.otf') }};
+        }
+
 
         .hovereffect {
             width: 100%;

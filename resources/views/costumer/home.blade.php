@@ -18,7 +18,7 @@
 
     <div class="container">
         <div class="row">
-            <h5 class="card-title" style="padding-top:60px;padding-bottom:40px;">Suggestions:</h5>
+            <h4 class="card-title" style="padding-top:60px;padding-bottom:600px;">Suggestions:</h4>
             @yield('Wall')
             <div class="col-lg-12" >
                 <p class="text-center">
