@@ -26,11 +26,25 @@
         }
     </style>
 
+    <style>
+        #load {
+            background-color: #F5F5F5;
+            width:100%;
+            height:2000px;
+        }
+
+    </style>
+
+    <noscript>
+        <style type="text/css">
+            #load {visibility : hidden;}
+        </style>
+    </noscript>
 
 
 </head>
 <body>
-
+<div id="load"></div>
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -148,6 +162,24 @@
         $('#subscribe-modal').modal();
     }, 30000);
 
+
+</script>
+
+<script>
+    $('#flash-overlay-modal').modal();
+    $('div.alert').not('.alert-important').delay(15000).fadeOut(450);
+    $(document).ready(function(){
+        if (!('remove' in Element.prototype)) {
+            Element.prototype.remove = function() {
+                if (this.parentNode) {
+                    this.parentNode.removeChild(this);
+                }
+            };
+        }
+
+        document.getElementById("load").remove();
+
+    });
 
 </script>
 </body>
