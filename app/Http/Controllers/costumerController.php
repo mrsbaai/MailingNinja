@@ -23,17 +23,14 @@ class costumerController extends Controller
 
     public function ebooks(){
 
-        if(Auth::guest()){
+
 
             $offers = offer::all()->where('is_active', true)->sortByDesc("cpc")->take(200);
 
             return view('costumer.ebooks')
                 ->with('offers', $offers);
 
-        }else{
-            return redirect("/");
-        }
-
+ 
 
 
     }
