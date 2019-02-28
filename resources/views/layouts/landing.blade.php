@@ -606,7 +606,7 @@
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){
-        document.getElementById("load").removeChild();
+        document.getElementById("load").removeChild(this);
     });
 
 </script>
