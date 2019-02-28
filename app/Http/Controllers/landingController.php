@@ -74,13 +74,13 @@ class landingController extends Controller
                 $q->where('vertical', $vertical);
             })->first();
 
+            if($exist){
+                array_push($return_verticals, $vertical);
 
-                array_push($return_verticals, $exist['title']);
-
-
-            return $return_verticals;
+            }
 
         }
+        return $return_verticals;
     }
 
     private function  subscribers_count(){
