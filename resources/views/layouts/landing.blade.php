@@ -191,11 +191,14 @@
                     </div>
 
                         @else
-                        {{ Form::open(array('action' => 'landingController@register'))}}
-                        <input name="code" value="{{$code}}" hidden>
-                    <a href="#book" class="scrollto btn btn-white" style="margin-left: 0px;">About <span class=" hidden-md hidden-sm hidden-xs"> Book</span></a>
-                        <button type="submit" class="btn btn-green purchase" >Purchase<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
-                        {{Form::close()}}
+                            <div class="text-center">
+                                {{ Form::open(array('action' => 'landingController@register'))}}
+                                <input name="code" value="{{$code}}" hidden>
+                                <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">About <span class=" hidden-md hidden-sm hidden-xs"> Book</span></a>
+                                <button type="submit" class="btn btn-green purchase" >Purchase<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
+                                {{Form::close()}}
+                            </div>
+
 
 
                         @endif
