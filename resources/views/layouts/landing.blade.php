@@ -167,15 +167,15 @@
 
         <div class="container" >
 
-            <div class="col-md-6 intro-text col-sm-12  col-xs-12  hidden-sm hidden-xs">
+            <div class="col-md-6 intro-text col-sm-12  col-xs-12 hidden-xs">
                 <img class="img-responsive img-fluid " style=" display:block;margin:auto; max-height: 400px;" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
 
 
 
             <div class="col-md-6  col-sm-12  col-xs-12 intro-text">
-                <h2 class="heading white  hidden-sm hidden-xs">{{$title}}</h2>
-                <h4 class="white  hidden-sm hidden-xs">{{$subtitle}}</h4>
+                <h2 class="heading white  hidden-sm ">{{$title}}</h2>
+                <h4 class="white  hidden-sm ">{{$subtitle}}</h4>
                 <p class ="white justify hidden-sm hidden-xs">{!! $description !!}</p>
                         @if ($price == 0)
                     <br/>
