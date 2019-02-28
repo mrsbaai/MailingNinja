@@ -74,8 +74,8 @@ class landingController extends Controller
                 $q->where('vertical', $vertical);
             })->first();
 
-            
-                array_push($return_verticals, $vertical);
+
+                array_push($return_verticals, $exist['title']);
 
 
             return $return_verticals;
