@@ -174,7 +174,7 @@
 
 
             <div class="col-md-6  col-sm-12  col-xs-12 intro-text">
-                <h2 class="heading white  hidden-sm hidden-xs @endif">{{$title}}</h2>
+                <h2 class="heading white  hidden-sm hidden-xs">{{$title}}</h2>
                 <h4 class="white  hidden-sm hidden-xs">{{$subtitle}}</h4>
                 <p class ="white justify hidden-sm hidden-xs">{!! $description !!}</p>
                         @if ($price == 0)
