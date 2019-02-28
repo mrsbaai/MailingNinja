@@ -168,9 +168,7 @@
         <div class="container" >
 
             <div class="col-md-6 intro-text col-sm-12  col-xs-12 @if($cover == null or $cover == "") hidden-xs @endif">
-
-                <img class="mh-50 img-responsive img-fluid  pl-sm-3 pl-xs-3 pr-sm-3 pr-xs-3" style=" display:block;margin:auto;" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
-
+                <img class="img-responsive img-fluid  pl-sm-3 pl-xs-3 pr-sm-3 pr-xs-3" style=" display:block;margin:auto; max-height: 500px;" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
 
 
