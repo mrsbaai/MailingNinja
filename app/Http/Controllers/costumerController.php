@@ -95,7 +95,7 @@ class costumerController extends Controller
                         . '<a href="' . $paypal_url . '/" class="btn btn-info  float-right">Pay Now [$' . $entity->price . '] [PayPal]</a>';
                 }
             });
-        $offer = costumerOffers::where('costumer_id', Auth::user()->id)->first();
+        $offer = costumerOffers::where('costumer_id', Auth::user()->id)->orderByDesc('id', 'desc')->first();
         $landing = new landingController();
         $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
 
