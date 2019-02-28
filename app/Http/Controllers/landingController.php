@@ -283,7 +283,7 @@ class landingController extends Controller
 
         if(Auth::guest()){
 
-        $offers = offer::all()->sortByDesc("cpc");
+        $offers = offer::all()->where('is_active', true)->sortByDesc("cpc");
 
         return view('landing.home')
             ->with('offers', $offers)
