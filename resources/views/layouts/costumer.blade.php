@@ -22,7 +22,7 @@
     <style>
         @font-face {
             font-family: 'Proxima';
-            src: {{ URL::asset('landing/fonts/bootstrap.min.css') }};
+            src: {{ URL::asset('landing/fonts/ProximaNova-Regular.otf') }};
         }
 
         h2{
