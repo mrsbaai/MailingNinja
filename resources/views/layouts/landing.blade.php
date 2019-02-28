@@ -123,7 +123,7 @@
         }
         .purchase{
             background: {{$color}} !important;
-            border: 3px solid white !important;
+            border: 3px solid {{$color}} !important;
 
         }
     </style>
@@ -191,13 +191,12 @@
                     </div>
 
                         @else
-                            <div class="text-center">
+                            <div class="text-center" style="padding: 200px;">
                                 {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
                                 <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">About <span class=" hidden-md hidden-sm hidden-xs"> Book</span></a>
                                 <button type="submit" class="btn btn-green purchase" >Purchase<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
                                 {{Form::close()}}
-                                <br/><br/><br/><br/>
                             </div>
 
 
