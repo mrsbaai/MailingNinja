@@ -99,7 +99,7 @@
             opacity: 0;
             filter: alpha(opacity=0);
             color: white;
-            font-family: 'Proxima';
+            font-family: 'Proxima' !important;
             text-transform: capitalize;
             padding: 5px;
 
