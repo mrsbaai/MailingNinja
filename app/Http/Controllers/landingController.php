@@ -63,7 +63,24 @@ class landingController extends Controller
     }
 
     private function categories(){
-        return vertical::all()->pluck('vertical');
+
+        $verticals = vertical::all()->pluck('vertical');
+        $return_verticals = array();
+
+        foreach ($verticals as $vertical){
+
+            $exist = offer::whereHas('verticals', function($q) use ($vertical)
+            {
+                $q->where('vertical', $vertical);
+            })->first();
+
+            if($exist){
+                array_push($return_verticals, $vertical);
+
+            }
+            return $return_verticals;
+
+        }
     }
 
     private function  subscribers_count(){
