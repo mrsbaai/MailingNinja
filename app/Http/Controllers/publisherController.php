@@ -486,7 +486,8 @@ class publisherController extends Controller
             ])
             ->addQueryInstructions(function ($query) {
                 $query
-                    ->select('offers.*');
+                    ->select('offers.*')
+                    ->where('is_active',true);
 
             });
 
@@ -548,7 +549,17 @@ class publisherController extends Controller
             ->isSortable()
             ->setTitle('EPC')
             ->isCustomHtmlElement(function ($entity, $column) {
-                return $entity->cpc;
+                $return =  $entity->cpc;
+                if ($entity->is_private == true){
+                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
+                        return $return;
+                    }else{
+                        return "Disabled";
+                    }
+                }else{
+                    return $return;
+                }
+
             })
             ->sortByDefault('desc');
 
