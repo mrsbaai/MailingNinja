@@ -131,6 +131,82 @@
             border: 3px solid {{$color}} !important;
 
         }
+
+
+
+        /* Fallback styles */
+        .book {
+            display: inline-block;
+            box-shadow: 5px 5px 20px #333;
+            margin: 20px;
+            height:550px;
+        }
+
+        .book img { vertical-align: middle; height:550px;}
+
+        .books {
+            -moz-perspective: 100px;
+            -moz-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            perspective: 100px;
+
+
+        }
+
+        .book {
+            perspective: 6850px;
+            position: relative;
+            -moz-perspective: 100px;
+
+
+            -moz-transform: rotateY(-2deg);
+
+            -webkit-transform: perspective(100) rotateY(-1deg);
+            outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+            box-shadow: none;
+            margin: 0;
+        }
+
+        .book img {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .book:before,
+        .book:after {
+            position: absolute;
+            top: 2%;
+            height: 96%;
+            content: ' ';
+            z-index: -1;
+        }
+
+        .book:before {
+            width: 100%;
+            left: 6%;
+            background-color: gray;
+            box-shadow: 5px 20px 20px #333;
+
+
+
+        }
+
+        .book:after {
+
+            transform: translateX(-5px)  rotateY(60deg);
+            width: 7%;
+            left: 99%;
+
+            background-color: #EFEFEF;
+            box-shadow: inset 0px 0px 5px #aaa;
+            -moz-transform: rotateY(6deg);
+
+
+
+
+
+        }
     </style>
 
     <noscript>
