@@ -174,7 +174,7 @@
 
 
             <div class="col-md-6  col-sm-12  col-xs-12 intro-text">
-                <h2 class="heading white pt-sm-3 pt-xs-3 @if($cover != null and $cover != "") hidden-sm hidden-xs @endif">{{$title}}</h2>
+                <h2 class="heading white pt-sm-5 pt-xs-5 @if($cover != null and $cover != "") hidden-sm hidden-xs @endif">{{$title}}</h2>
                 <h4 class="white @if($cover != null and $cover != "") hidden-sm hidden-xs @endif">{{$subtitle}}</h4>
                 <p class ="white justify hidden-sm hidden-xs">{!! $description !!}</p>
                         @if ($price == 0)
