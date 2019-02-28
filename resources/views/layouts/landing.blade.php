@@ -606,8 +606,18 @@
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){
-        document.getElementById("load").removeChild(this);
+        if (!('remove' in Element.prototype)) {
+            Element.prototype.remove = function() {
+                if (this.parentNode) {
+                    this.parentNode.removeChild(this);
+                }
+            };
+        }
+        // Call remove() according to your need
+        document.getElementById("load").remove();
+
     });
+
 
 </script>
 </body>
