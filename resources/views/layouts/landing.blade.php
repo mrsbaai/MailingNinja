@@ -163,7 +163,7 @@
 <div id="load"></div>
 <div id="wrapper" class="behind">
 
-    <header  id="headerContainer" style="height: auto;">
+    <header  id="headerContainer">
 
         <div class="container" >
 
@@ -566,14 +566,13 @@
 
 
 <script src="{{ asset('landing/js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('landing/js/owl.carousel.js') }}"></script>
-<script src="{{ asset('landing/js/lightbox.min.js') }}"></script>
+
 <script src="{{ asset('landing/js/wow.min.js') }}"></script>
 <script src="{{ asset('landing/js/jquery.onepagenav.js') }}"></script>
 <script src="{{ asset('landing/js/core.js') }}"></script>
 <script src="{{ asset('landing/js/tooltip.js') }}"></script>
 <script src="{{ asset('landing/js/jquery.form-validator.js') }}"></script>
-<script src="{{ asset('landing/js/preloader.js') }}"></script>
+
 <script src="{{ asset('landing/js/main.js') }}"></script>
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
