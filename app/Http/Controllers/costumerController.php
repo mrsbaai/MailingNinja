@@ -30,7 +30,7 @@ class costumerController extends Controller
             return view('costumer.ebooks')
                 ->with('offers', $offers);
 
- 
+
 
 
     }

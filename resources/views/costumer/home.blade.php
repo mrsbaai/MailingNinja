@@ -18,10 +18,9 @@
 
     <div class="container">
         <div class="row">
-            <br/><br/>
-            <h2 class="heading ">Suggestions:</h2><br/><br/><br/>
+            <h5 class="card-title" style="padding-top:60px;">My Products</h5>
             @yield('Wall')
-            <div class="col-lg-12 wow animated fadeInUp" >
+            <div class="col-lg-12" >
                 <p class="text-center">
                     <a id="discover_button" href="/ebooks" class="btn"  style="background-color: #4C4A48;border-color:#4C4A48;"  target="_blank">More eBooks...</a>
                 </p>
