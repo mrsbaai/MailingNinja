@@ -222,9 +222,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right main-nav">
-                    <li><a href="#book" class="scrollto">Book</a></li>
-                    <li><a href="#author" class="scrollto">Author</a></li>
-                    <li><a href="#reviews" class="scrollto">Reviews</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#book" class="scrollto">Book</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#author" class="scrollto">Author</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#reviews" class="scrollto">Reviews</a></li>
                     <li><a href="#contact" class="scrollto">Contact</a></li>
                     <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
 
