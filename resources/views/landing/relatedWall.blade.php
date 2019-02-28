@@ -12,10 +12,13 @@
             <br/><br/><br/>
 
         </div>
+        <div class="wow animated fadeInUp" >
+            @yield('Wall')
+            <a href="/" class="btn btn-green " target="_blank">See Top Rated eBooks</a>
+        </div>
 
-        @yield('Wall')
 
-        <a href="/" class="btn btn-green " target="_blank">See Top Rated eBooks</a>
+
 
     </center>
 
