@@ -362,7 +362,7 @@
                 </div>
                 <div class="col-sm-6 text-right text-left-mobile">
                     <div class="rate-amount">
-                        4/5 <span>(16 Reviews)</span>
+                        4/5
                     </div>
                     <div class="rating">
                         <span class="rate active"></span>
