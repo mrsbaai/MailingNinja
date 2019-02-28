@@ -14,7 +14,7 @@ class mailingNinjaController extends Controller
     public function home(Request $request){
 
         if ($request->getHttpHost() == "premiumbooks.net"){
-            return "<h1>This website name has been permanently removed!</h1>";
+            return "<h1>This website has been permanently removed!</h1>";
         }
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;

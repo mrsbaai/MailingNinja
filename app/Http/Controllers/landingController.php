@@ -217,6 +217,11 @@ class landingController extends Controller
             return redirect("/");
         }
 
+        if($offer->is_active == false){
+            return abort(404);
+        }
+
+
         $price = $offer->payout;
         $custom_price = $link->price;
 
