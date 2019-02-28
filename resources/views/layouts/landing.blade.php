@@ -173,7 +173,7 @@
 
 
 
-            <div class="col-md-6  col-sm-12  col-xs-12 intro-text">
+            <div class="col-md-6  col-sm-12  col-xs-12 intro-text pb-5">
                 <h2 class="heading white" >{{$title}}</h2>
                 <h4 class="white">{{$subtitle}}</h4>
                 <p class ="white justify">{!! $description !!}</p>
@@ -204,7 +204,7 @@
 
 
             </div>
-            <br/><br/><br/><br/><br/> <br/><br/><br/><br/><br/>
+
         </div>
 
     </header>
