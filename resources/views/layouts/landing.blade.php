@@ -123,7 +123,7 @@
         }
         .purchase{
             background: {{$color}} !important;
-            border: 3px solid {{$color}} !important;
+            border: 3px solid white !important;
 
         }
     </style>
@@ -225,7 +225,7 @@
                     <li class=" hidden-md hidden-sm hidden-xs"><a href="#book" class="scrollto">Book</a></li>
                     <li class=" hidden-md hidden-sm hidden-xs"><a href="#author" class="scrollto">Author</a></li>
                     <li class=" hidden-md hidden-sm hidden-xs"><a href="#reviews" class="scrollto">Reviews</a></li>
-                    <li><a href="#contact" class="scrollto">Contact</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"> <a href="#contact" class="scrollto">Contact</a></li>
                     <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
 
                     <li><a href="#" class="btn btn-green">@if ($price == 0) Download @else Purchase @endif</a></li>
