@@ -168,7 +168,7 @@
         <div class="container" >
 
             <div class="col-md-6 intro-text col-sm-12  col-xs-12 ">
-                <img class="img-responsive img-fluid" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
+                <img class="img-responsive img-fluid" style="   display:block;margin:auto;" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
             </div>
 
 
