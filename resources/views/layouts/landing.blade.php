@@ -165,11 +165,12 @@
 
     <header  id="headerContainer">
 
-        <div class="container" >
+        <div class="container"  >
 
-            <div class="col-md-6 intro-text col-sm-12  col-xs-12 hidden-xs">
-                <img class="img-responsive img-fluid " style=" display:block;margin:auto; max-height: 60%;" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
-            </div>
+            <div class="col-md-6 intro-text col-sm-12  col-xs-12 hidden-xs hidden-sm">
+
+                <img class="img-responsive img-fluid " style=" display:block;margin:auto; max-height: 500px" src="@if($cover != null and $cover != ""){{ $cover }}@else {{ $thumbnail }} @endif" />
+        </div>
 
 
 
