@@ -51,8 +51,13 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link btn-rotate"
-                               href="/"
+                               href="/members"
                             >My Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rotate"
+                               href="/ebooks"
+                            >Ebooks</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-rotate"

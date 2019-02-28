@@ -62,6 +62,7 @@ Route::post('saveContact', 'ContactController@saveContact');
 //costumer
 
 Route::get('/members', 'costumerController@home')->name('costumer-home');
+Route::get('/ebooks', 'costumerController@ebooks')->name('ebooks');
 Route::get('/members/cancel/{id}', 'costumerController@cancel_product')->name('cancel-product');
 Route::get('/pay/{invoice}', 'PaymentController@RedirectToPayment')->name('paypal-invoice');
 Route::get('/download/{id}', 'costumerController@download')->name('costumer-download');
