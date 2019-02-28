@@ -566,7 +566,8 @@
 
 
 <script src="{{ asset('landing/js/jquery-1.11.1.min.js') }}"></script>
-
+<script src="{{ asset('landing/js/owl.carousel.js') }}"></script>
+<script src="{{ asset('landing/js/lightbox.min.js') }}"></script>
 <script src="{{ asset('landing/js/wow.min.js') }}"></script>
 <script src="{{ asset('landing/js/jquery.onepagenav.js') }}"></script>
 <script src="{{ asset('landing/js/core.js') }}"></script>
