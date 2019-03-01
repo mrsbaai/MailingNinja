@@ -15,9 +15,9 @@ Route::get('/test','landingController@test');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
-Route::get('/preview/email/{code}', 'publisherController@previewEmail');
-Route::get('/preview/email/id/{id}', 'publisherController@previewEmailId');
-Route::get('/download/email/{code}', 'publisherController@downloadEmail');
+Route::get('/preview/email/{code}', 'htmlEmail@previewEmail');
+Route::get('/preview/email/id/{id}', 'htmlEmail@previewEmailId');
+Route::get('/download/email/{code}', 'htmlEmail@downloadEmail');
 
 Route::get('/{code}/tracking/{email}', 'trackingController@open');
 
