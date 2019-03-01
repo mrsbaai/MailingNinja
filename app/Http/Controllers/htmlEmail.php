@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\link;
 use App\offer;
 use Illuminate\Http\Request;
-
+use Spatie\Browsershot\Browsershot;
 class htmlEmail extends Controller
 {
     public function getEmailData($code=null,$id=null){
@@ -66,5 +66,9 @@ class htmlEmail extends Controller
         header("Content-Disposition: attachment; filename=creative.htm");
         return $view;
 
+    }
+
+    public function screenshot(){
+        Browsershot::url('https://example.com')->save(/image.jpg);
     }
 }
