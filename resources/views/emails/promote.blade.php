@@ -231,6 +231,7 @@
         }
     }
 </style>
+@if($is_link == true)
 <!--[if IE]><div class="ie-browser"><![endif]-->
 <!--[if mso]><div class="mso-container"><![endif]-->
 <table class="nl-container" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: {{$data['primary_color']}};width: 100%" cellpadding="0" cellspacing="0">
@@ -276,7 +277,7 @@
                     </div>
                 </div>
             </div>
-            @if($is_link == true)
+
 
             <div style="background-color:transparent;">
                 <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
