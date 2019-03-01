@@ -169,6 +169,13 @@
                                         <button class="btn btn-primary btn-sm">Download Html Email</button>
                                     </a>
 
+                                    <h6>2 Images E-mail:</h6>
+                                    <p>Html email converted in a simple two image links, (Opt-in, Opt-out).</p>
+
+                                    <a target='_blank' href='/download/email/screenshot/{{$data['link']}}' title='Download 2 Images  Email'>
+                                        <button class="btn btn-primary btn-sm">Download 2 Images Email</button>
+                                    </a>
+
                                 </div>
 
                                 <p>{!! $data['promo'] !!}</p>
