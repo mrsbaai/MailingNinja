@@ -170,7 +170,7 @@
                                     </a>
                                     <br/><br/>
                                     <h6>2 Images E-mail:</h6>
-                                    <p>Html email converted in a simple two image links, (Opt-in, Opt-out).</p>
+                                    <p>Html email converted to 2 simple images (Opt-in, Opt-out), for easy inboxing.</p>
 
                                     <a target='_blank' href='/download/email/screenshot/{{$data['link']}}' title='Download 2 Images Email'>
                                         <button class="btn btn-success btn-sm">Download 2 Images Email</button>
