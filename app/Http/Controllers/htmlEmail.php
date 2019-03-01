@@ -71,26 +71,22 @@ class htmlEmail extends Controller
 
     public function screenshot(){
         $client = Client::getInstance();
+        $client->getEngine()->setPath('../bin/phantomjs.exe');
 
-        $width  = 550;
-        $height = 150;
-        $top    = 0;
-        $left   = 0;
 
-        /**
-         * @see JonnyW\PhantomJs\Http\CaptureRequest
-         **/
-        $request = $client->getMessageFactory()->createCaptureRequest('https://mailing.ninja/preview/email/YKBLS/unsubscribe', 'GET');
-        $request->setOutputFile('/file.jpg');
-        $request->setViewportSize($width, $height);
-        $request->setCaptureDimensions($width, $height, $top, $left);
+        $request = $client->getMessageFactory()->createRequest('http://jonnyw.me', 'GET');
 
-        /**
-         * @see JonnyW\PhantomJs\Http\Response
-         **/
+
         $response = $client->getMessageFactory()->createResponse();
 
         // Send the request
         $client->send($request, $response);
+
+        if($response->getStatus() === 200) {
+
+            // Dump the requested page content
+            echo $response->getContent();
+        }
+
     }
 }
