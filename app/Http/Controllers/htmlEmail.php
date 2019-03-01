@@ -37,11 +37,21 @@ class htmlEmail extends Controller
     }
     public function previewEmail($code){
         $data = $this->getEmailData($code,null);
-        return view('emails.promote')->with('data',$data);
+        return view('emails.promote')->with('is_link',true)->with('is_unsubscribe',true)->with('data',$data);
     }
     public function previewEmailId($id=null){
         $data = $this->getEmailData(null,$id);
-        return view('emails.promote')->with('data',$data);
+        return view('emails.promote')->with('is_link',true)->with('is_unsubscribe',true)->with('data',$data);
+    }
+
+    public function previewEmailLink($code){
+        $data = $this->getEmailData($code,null);
+        return view('emails.promote')->with('is_link',true)->with('is_unsubscribe',false)->with('data',$data);
+    }
+
+    public function previewEmailUnsubscribe($code){
+        $data = $this->getEmailData($code,null);
+        return view('emails.promote')->with('is_link',false)->with('is_unsubscribe',true)->with('data',$data);
     }
 
     /**
@@ -51,7 +61,7 @@ class htmlEmail extends Controller
      */
     public function downloadEmail($code){
         $data = $this->getEmailData($code);
-        $view = view('emails.promote')->with('data',$data)->render();
+        $view = view('emails.promote')->with('is_link',true)->with('is_unsubscribe',true)->with('data',$data)->render();
         header("Content-type: text/html");
         header("Content-Disposition: attachment; filename=creative.htm");
         return $view;

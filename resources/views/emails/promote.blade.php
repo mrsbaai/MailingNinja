@@ -276,6 +276,8 @@
                     </div>
                 </div>
             </div>
+            @if($is_link == true)
+
             <div style="background-color:transparent;">
                 <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
                     <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -561,7 +563,7 @@
                                     </div>
 
 
-     
+
 
                                     <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
                             </div>
@@ -570,7 +572,9 @@
                     </div>
                 </div>
             </div>
+            @endif
 
+            @if($is_unsubscribe == true)
             <div style="background-color:transparent;">
                 <div style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
                     <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -596,6 +600,7 @@
                     </div>
                 </div>
             </div>
+
 
 
             <div style="background-color:transparent;">
@@ -635,6 +640,7 @@
                     </div>
                 </div>
             </div>
+                @endif
             <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
         </td>
     </tr>
