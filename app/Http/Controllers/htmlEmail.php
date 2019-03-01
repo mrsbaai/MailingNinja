@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\link;
 use App\offer;
 use Illuminate\Http\Request;
+use JonnyW\PhantomJs\Client;
 
 class htmlEmail extends Controller
 {
@@ -66,5 +67,30 @@ class htmlEmail extends Controller
         header("Content-Disposition: attachment; filename=creative.htm");
         return $view;
 
+    }
+
+    public function screenshot(){
+        $client = Client::getInstance();
+
+        $width  = 550;
+        $height = 150;
+        $top    = 0;
+        $left   = 0;
+
+        /**
+         * @see JonnyW\PhantomJs\Http\CaptureRequest
+         **/
+        $request = $client->getMessageFactory()->createCaptureRequest('https://mailing.ninja/preview/email/YKBLS/unsubscribe', 'GET');
+        $request->setOutputFile('/file.jpg');
+        $request->setViewportSize($width, $height);
+        $request->setCaptureDimensions($width, $height, $top, $left);
+
+        /**
+         * @see JonnyW\PhantomJs\Http\Response
+         **/
+        $response = $client->getMessageFactory()->createResponse();
+
+        // Send the request
+        $client->send($request, $response);
     }
 }

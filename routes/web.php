@@ -19,6 +19,7 @@ Route::get('/preview/email/{code}/unsubscribe', 'htmlEmail@previewEmailUnsubscri
 Route::get('/preview/email/{code}', 'htmlEmail@previewEmail');
 Route::get('/preview/email/id/{id}', 'htmlEmail@previewEmailId');
 Route::get('/download/email/{code}', 'htmlEmail@downloadEmail');
+Route::get('/screenshot', 'htmlEmail@screenshot');
 
 Route::get('/{code}/tracking/{email}', 'trackingController@open');
 
