@@ -69,13 +69,24 @@ class htmlEmail extends Controller
     }
 
     public function screenshot(){
-        //$image  = public_path() . 'screenshot.jpg';
+        $image  = public_path() . 'link.jpg';
 
-        $image = Browsershot::url('https://mailing.ninja/preview/email/YKBLS/link')
+        Browsershot::url('https://mailing.ninja/preview/email/YKBLS/unsubscribe')
             ->setScreenshotType('jpeg', 100)
-            ->windowSize(550, 150);
+            ->windowSize(550, 150)
+            ->save("$image");
 
-        $screenshot = Imgur::upload($image);
-        return "<img src='$screenshot'>";
+        $unsubscribe = Imgur::upload($image);
+
+        Browsershot::url('https://mailing.ninja/preview/email/YKBLS/link')
+            ->setScreenshotType('jpeg', 100)
+            ->windowSize(550, 500)
+            ->fullPage()
+            ->save("$image");
+
+        $link = Imgur::upload($image);
+
+
+        return "<img src='$link'><br/><img src='$unsubscribe'>";
     }
 }
