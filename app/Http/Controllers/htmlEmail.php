@@ -69,9 +69,14 @@ class htmlEmail extends Controller
     }
 
     public function screenshot(){
-        $path  = public_path() . '/image.jpg';
+        $image  = public_path() . 'screenshot.jpg';
 
-        Browsershot::url('https://example.com')->save("$path");
-        return $path;
+        Browsershot::url('https://example.com')
+            ->setScreenshotType('jpeg', 100)
+            ->windowSize(550, 150)
+            ->save("$image");
+
+        $screenshot = Imgur::upload($image);
+        return "<img src='$screenshot'>";
     }
 }
