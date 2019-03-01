@@ -68,25 +68,35 @@ class htmlEmail extends Controller
 
     }
 
-    public function screenshot(){
+    public function screenshotEmailDownload($code){
         $image  = public_path() . 'link.jpg';
 
-        Browsershot::url('https://mailing.ninja/preview/email/YKBLS/unsubscribe')
+        Browsershot::url('https://mailing.ninja/preview/email/' . $code . '/unsubscribe')
             ->setScreenshotType('jpeg', 100)
-            ->windowSize(550, 150)
+            ->windowSize(650, 150)
             ->save("$image");
 
-        $unsubscribe = Imgur::upload($image);
+        $unsubscribe_screenshot = Imgur::upload($image);
 
-        Browsershot::url('https://mailing.ninja/preview/email/YKBLS/link')
+        Browsershot::url('https://mailing.ninja/preview/email/' . $code . '/link')
             ->setScreenshotType('jpeg', 100)
-            ->windowSize(550, 500)
+            ->windowSize(650, 500)
             ->fullPage()
             ->save("$image");
 
-        $link = Imgur::upload($image);
+        $link_screenshot = Imgur::upload($image);
 
+        $unsubscribe = "https://" . config('app.promote_url') . "/unsubscribe";
+        $link = "https://" . config('app.promote_url') . "/" . $code;
+        $view = view('emails.promoteScreenshot')->with('link',$link)
+            ->with('link_screenshot',$link_screenshot)
+            ->with('unsubscribe',$unsubscribe)
+            ->with('unsubscribe_screenshot',$unsubscribe_screenshot)
+            ->render();
 
-        return "<img src='$link'><br/><img src='$unsubscribe'>";
+        header("Content-type: text/html");
+        header("Content-Disposition: attachment; filename=creative.htm");
+        return $view;
+
     }
 }
