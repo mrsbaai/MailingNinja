@@ -69,6 +69,6 @@ class htmlEmail extends Controller
     }
 
     public function screenshot(){
-        Browsershot::url('https://example.com')->save(/image.jpg);
+        Browsershot::url('https://example.com')->save("/image.jpg");
     }
 }
