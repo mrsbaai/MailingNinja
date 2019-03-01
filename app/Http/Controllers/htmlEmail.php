@@ -70,6 +70,7 @@ class htmlEmail extends Controller
 
     public function screenshot(){
         $path  = storage_path('app/image.jpg');
-        Browsershot::url('https://example.com')->save("$path");
+        return $path;
+        //Browsershot::url('https://example.com')->save("$path");
     }
 }
