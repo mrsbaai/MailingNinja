@@ -69,6 +69,9 @@ class htmlEmail extends Controller
     }
 
     public function screenshotEmailDownload($code){
+        $link = link::all()->where('link',$code)->first();
+        $offer = offer::where('id', $link['offer_id'])->first();
+
         $image  = public_path() . 'link.jpg';
 
         Browsershot::url('https://mailing.ninja/preview/email/' . $code . '/unsubscribe')
@@ -92,6 +95,7 @@ class htmlEmail extends Controller
             ->with('link_screenshot',$link_screenshot)
             ->with('unsubscribe',$unsubscribe)
             ->with('unsubscribe_screenshot',$unsubscribe_screenshot)
+            ->with('color',$offer['color'])
             ->render();
 
         header("Content-type: text/html");
