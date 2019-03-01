@@ -389,6 +389,7 @@ class publisherController extends Controller
             $link = link::all()->where('link',$code)->first();
             $offer = offer::where('id', $link['offer_id'])->first();
             $data['price'] = $link['price'];
+            $data['link'] = "https://" . config('app.promote_url') . "/" . $code;
         }else{
             $offer = offer::where('id', $id)->first();
             $data['price'] = $offer['payout'];
