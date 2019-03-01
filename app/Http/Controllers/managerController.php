@@ -67,7 +67,7 @@ class managerController extends Controller
     }
     public function updateOffer(Request $request)
     {
-        $offer = offer::find($request->id););
+        $offer = offer::find($request->id);
         $product_name = $request->id;
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
