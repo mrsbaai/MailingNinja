@@ -5,6 +5,8 @@
 
 
     <meta charset="UTF-8">
+    @include('layouts.tracking')
+    @yield('GoogleAnalytics')
     <title>{{ config('app.name') }}.</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/bootstrap.css') }}">

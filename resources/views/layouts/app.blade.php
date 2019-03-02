@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @include('layouts.tracking')
+    @yield('GoogleAnalytics')
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">

@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include('layouts.tracking')
+    @yield('GoogleAnalytics')
 
     <style>
 

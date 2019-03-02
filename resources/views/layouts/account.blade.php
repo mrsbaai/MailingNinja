@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    @include('layouts.tracking')
+    @yield('GoogleAnalytics')
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Mailing.Ninja :: @yield('title')</title>
@@ -18,7 +20,6 @@
     <link href="{{ URL::asset('css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet" />
-
 
 
 

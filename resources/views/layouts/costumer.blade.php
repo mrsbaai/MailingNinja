@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    @include('layouts.tracking')
+    @yield('GoogleAnalytics')
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>{{ config('app.name') }}.</title>
