@@ -43,10 +43,14 @@
                 @else
                     {{strtoupper(explode(".", Request::getHost())[0])}}<span id="logo_span" style="font-size:250%;color:#7cc576;">.</span>
                 @endif</a>
-
+            <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
         </div>
 
-        <div class="collapse" >
+        <div class="collapse " id="navbarToggler">
             <ul class="navbar-nav ml-auto">
 
                 @guest
