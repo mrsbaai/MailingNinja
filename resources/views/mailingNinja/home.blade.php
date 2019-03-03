@@ -136,7 +136,7 @@
 	                                        <span class="input-group-addon">
 	                                            <i class="nc-icon nc-bulb-63"></i>
 	                                        </span>
-                                        <input type="text" id="lg_subject" name="lg_subject" class="form-control" placeholder="Subject">
+                                        <input type="text" id="lg_subject" name="lg_subject" class="form-control" placeholder="Subject" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -145,12 +145,12 @@
 											<span class="input-group-addon">
 												<i class="nc-icon nc-email-85"></i>
 											</span>
-                                        <input type="text"  id="lg_email" name="lg_email" class="form-control" placeholder="Email">
+                                        <input type="text"  id="lg_email" name="lg_email" class="form-control" placeholder="Email" required>
                                     </div>
                                 </div>
                             </div>
                             <label>Message</label>
-                            <textarea class="form-control" rows="4"  id="lg_message" name="lg_message" placeholder="Tell us your thoughts and feelings..."></textarea>
+                            <textarea class="form-control" rows="4"  id="lg_message" name="lg_message" placeholder="Tell us your thoughts and feelings..." required></textarea>
                             <div class="row text-center">
                                 <div class="col-md-4 ml-auto mr-auto">
                                     <br/>
