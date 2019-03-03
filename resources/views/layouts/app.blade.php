@@ -50,7 +50,7 @@
             </button>
         </div>
 
-        <div class="collapse " id="navbarToggler">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
 
                 @guest
