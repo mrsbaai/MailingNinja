@@ -128,7 +128,7 @@
                         <h2 class="text-center">Keep in touch?</h2><br/>
                         @include('flash::message')
                         {{ Form::open(array('action' => 'ContactController@saveContact'))}}
-                        @csrf
+
                             <input type="text"  id="lg_role" name="lg_role" value="unregistered_publisher" hidden>
                             <div class="row">
                                 <div class="col-md-6">
