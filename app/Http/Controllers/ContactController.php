@@ -59,13 +59,13 @@ class ContactController extends Controller
 
             $fire->fire($is_costumer, $to, $data2,$markdown2, $subject);
 
-            //$contact = new contact();
-            //$contact->email = $email;
-            //$contact->subject = $subject;
-            //$contact->message = $content;
-            //$contact->role = $role;
-            //$contact->created_at = Carbon::now();
-            //$contact->save();
+            $contact = new contact();
+            $contact->email = $email;
+            $contact->subject = $subject;
+            $contact->message = $content;
+            $contact->role = $role;
+            $contact->created_at = Carbon::now();
+            $contact->save();
 
             flash()->message('Thank you! Message sent.')->success();
             return \Redirect::back();

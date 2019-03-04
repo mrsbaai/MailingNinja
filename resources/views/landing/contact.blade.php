@@ -1,6 +1,7 @@
 @section('contact')
 
     {{ Form::open(array('action' => 'ContactController@saveContact'))}}
+    @csrf
     <input type="text"  id="lg_role" name="lg_role" value="unregistered_costumer" hidden>
     <div class="col-md-2"></div>
     <div class="col-md-8  wow animated fadeInUp" id="contact">

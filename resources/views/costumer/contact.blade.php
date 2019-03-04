@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         {{ Form::open(array('action' => 'ContactController@saveContact', 'id' => 'contact-form', 'class' => 'text-left'))}}
-
+                        @csrf
                         <div class="main-login-form">
 
                             <input type="text" id="lg_role" name="lg_role" value="costumer" hidden>
