@@ -113,7 +113,11 @@ class costumerController extends Controller
             });
         $offer = costumerOffers::where('costumer_id', Auth::user()->id)->orderByDesc('id', 'desc')->first();
         $landing = new landingController();
-        $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
+        if ($offer){
+            $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
+        }else{
+            $related_offers = $landing->getRelatedBooks(1)->take(3);
+        }
 
         return view('costumer.home')->with('table',$table)->with('offers',$related_offers);
     }
