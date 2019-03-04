@@ -101,7 +101,7 @@ class landingController extends Controller
     public function getRelatedBooks($offer_id){
 
 
-        $offer = offer::all()->where('id',$offer_id)->first();
+        $offer = offer::all()->where('id',$offer_id)->where('is_active',true)->first();
 
         $verticals = $offer->verticals()->get();
 
@@ -109,7 +109,7 @@ class landingController extends Controller
 
 
 
-        $relateds = offer::where('id', '<>', $offer_id)->with('verticals')
+        $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
             ->whereHas('verticals', function($q) use ($verticals) {
                 $q->where('vertical', $verticals[0]['vertical']);
                 foreach ($verticals as $vertical){
@@ -119,7 +119,7 @@ class landingController extends Controller
             })->orderByDesc('cpc', 'desc')->get();
 
         if (count($relateds) == 0 ){
-            $relateds = offer::all()->orderByDesc('cpc', 'desc')->get();
+            $relateds = offer::all()->where('is_active',true)->orderByDesc('cpc', 'desc')->get();
         }
 
         $relateds->pluck('thumbnail', 'id');
@@ -130,7 +130,7 @@ class landingController extends Controller
     }
     public function showRelatedBooks($offer_id){
 
-        $offer = offer::all()->where('id',$offer_id)->first();
+        $offer = offer::all()->where('id',$offer_id)->where('is_active',true)->first();
 
 
         return view('landing.relatedWall')
@@ -149,7 +149,7 @@ class landingController extends Controller
         $relateds = offer::whereHas('verticals', function($q) use ($category)
         {
             $q->where('vertical', $category);
-        })->orderByDesc('cpc', 'desc')->get();
+        })->where('is_active',true)->orderByDesc('cpc', 'desc')->get();
 
 
 
