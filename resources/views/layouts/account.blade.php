@@ -232,7 +232,7 @@
                 ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Abdelilah
+                </script>, made with <i class="fa fa-heart heart"></i> in Morocco
               </span>
                     </div>
                 </div>
