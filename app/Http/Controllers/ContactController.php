@@ -7,7 +7,7 @@ use App\contact;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use App\user;
-
+use Illuminate\Support\Facades\Validator;
 
 
 class ContactController extends Controller
@@ -29,6 +29,17 @@ class ContactController extends Controller
 
 
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'lg_subject' => 'required|string|max:255',
+            'lg_message' => 'required|string|max:255|min:20',
+            'lg_email' => 'required|string|email|max:255|unique:users',
+
+        ]);
+    }
+
     public function saveContact(){
         $email = Input::get('lg_email');
         $subject = Input::get('lg_subject');
