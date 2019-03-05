@@ -1,27 +1,11 @@
-<style>
-    body {
-        width:100%;
-        height:100%;
-        background-color:{{$color}};
-    }
-    img {
-        max-width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
-
-<body>
-
-<!-- Offer Link-->
-<a href="{{$link}}">
-    <img src='{{$link_screenshot}}'/>
-</a>
-
-<!-- Unsubscribe Link-->
-<a href="{{$unsubscribe}}">
-    <img src='{{$unsubscribe_screenshot}}'/>
-</a>
-
-</body>
+<div style="background-color:{{$color}}; width: 100%">
+    <div style="background-color:{{$color}};" align=center>
+        <a href="{{$link}}">
+            <input id=image1 src="{{$link_screenshot}}" type=image>
+        </a>
+        <br/>
+        <a href="{{$unsubscribe}}">
+            <input id=image2 src="{{$unsubscribe_screenshot}}" type=image>
+        </a>
+    </div>
+</div>
