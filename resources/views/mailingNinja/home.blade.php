@@ -5,7 +5,7 @@
         <div class="filter"></div>
         <div class="container">
             <div class="motto text-center">
-                
+
                 <h1>Mailing Ninja</h1>
                 <h3>Exclusive Offers For <b><u>Traffic Monetization</u></b> & <b><u>E-Mail List Building</u></b></h3>
                 <br />

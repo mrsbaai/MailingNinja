@@ -500,6 +500,7 @@ class publisherController extends Controller
             ->setTitle('EPC')
             ->isCustomHtmlElement(function ($entity, $column) {
                 $return =  $entity->cpc;
+                if ($return ==  0){$return = "-";}
                 if ($entity->is_private == true){
                     if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
                         return $return;
