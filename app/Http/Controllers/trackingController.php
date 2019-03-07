@@ -105,7 +105,7 @@ class trackingController extends Controller
                 }
             }
 
-        
+
         $storagePath = URL::asset('images/tracking.png');
         return Image::make($storagePath)->response();
     }

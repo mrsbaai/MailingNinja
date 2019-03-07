@@ -6,7 +6,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">[Subscribes] {{ $title }} </h5>
+                  <h5 class="card-title">[Subscribes]</h5>
                </div>
                <div class="card-body ">
 
@@ -54,7 +54,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">[Profit] {{ $title }} </h5>
+                  <h5 class="card-title">[Profit]</h5>
                </div>
                <div class="card-body ">
 
@@ -102,7 +102,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">[Leads] {{ $title }} </h5>
+                  <h5 class="card-title">[Leads]</h5>
                </div>
                <div class="card-body ">
 
@@ -149,7 +149,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">[Unique Clicks] {{ $title }} </h5>
+                  <h5 class="card-title">[Unique Clicks]</h5>
                </div>
                <div class="card-body ">
 
@@ -199,7 +199,7 @@
          <div class="col-md-12">
             <div class="card ">
                <div class="card-header ">
-                  <h5 class="card-title">[Total Email Opens] {{ $title }} </h5>
+                  <h5 class="card-title">[Total Email Opens]</h5>
                </div>
                <div class="card-body ">
 
