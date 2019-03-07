@@ -317,11 +317,22 @@ class managerController extends Controller
             ->isSortable()
             ->setStringLimit(20)
             ->isSearchable()
-            ->useForDestroyConfirmation();
+            ->useForDestroyConfirmation()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->is_active){
+                    $color = "green";
+                }else{
+                    $color = "read";
+                }
+                return "<span style='color:$color'></span>";
+            });
 
         $table->addColumn('is_private')
             ->isSortable()
             ->setTitle('Private');
+        $table->addColumn('is_active')
+            ->isSortable()
+            ->setTitle('Active');
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
             ->isSortable()
