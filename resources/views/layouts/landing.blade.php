@@ -301,7 +301,7 @@
                             <p class="small justify muted-light wow animated fadeInUp">
                                 <!-- AddToAny BEGIN -->
                             <div class="text-center">
-                                Share the knowledge:<br/>
+                                Share the knowledge:<br/><br/>
                                 <a href="https://www.addtoany.com/share#url={{url()->current()}}&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:black"></a>
                                 <a href="https://www.addtoany.com/add_to/facebook?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:black"></a>
                                 <a href="https://www.addtoany.com/add_to/twitter?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:black"></a>
