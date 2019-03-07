@@ -322,7 +322,7 @@ class managerController extends Controller
                 if ($entity->is_active){
                     $color = "green";
                 }else{
-                    $color = "read";
+                    $color = "gray";
                 }
                 return "<span style='color:$color'>$entity->title</span>";
             });
