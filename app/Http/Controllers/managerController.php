@@ -312,7 +312,7 @@ class managerController extends Controller
             ->isSearchable()
             ->isSortable()
             ->setTitle('id');
-        $table->addColumn('title')
+        $table->addColumn()
             ->setTitle('Title')
             ->isSortable()
             ->setStringLimit(20)
