@@ -66,7 +66,7 @@
 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
+                                        <div class="input-group-text" style="font-size: 200%"><b>$</b></div>
                                     </div>
                                     <input name="offer_id" value="{{$data['offer_id']}}" hidden>
                                     <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 200%" required>
