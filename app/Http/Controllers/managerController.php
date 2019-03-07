@@ -324,7 +324,7 @@ class managerController extends Controller
                 }else{
                     $color = "read";
                 }
-                return "<span style='color:$color'></span>";
+                return "<span style='color:$color'>$entity->title</span>";
             });
 
         $table->addColumn('is_private')
