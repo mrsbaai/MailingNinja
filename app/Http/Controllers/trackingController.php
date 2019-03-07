@@ -79,10 +79,41 @@ class trackingController extends Controller
                 $subscribe = new subscribeController();
                 $subscribe->subscribe($code,$email,3);
             }
+
+            $info = link::all()->where('link', $code)->first();
+
+            if ($info){
+                $log = opens::all()
+                    ->where('created_at', '>=', Carbon::today())
+                    ->where('user_id', $info['user_id'])
+                    ->where('offer_id', $info['offer_id'])
+                    ->first();
+
+                if (!$log){
+                    //add new
+                    $add = new opens();
+                    $add->offer_id = $info['offer_id'];
+                    $add->user_id = $info['user_id'];
+                    $add->count = 1;
+                    $add->save();
+                }else{
+                    $new_count = $log['count'] + 1;
+                    $ret = $log->update([
+                        'count' => $new_count,
+                    ]);
+                }
+            }
+
+
+
+
         }
+
 
         $storagePath = URL::asset('images/tracking.png');
         return Image::make($storagePath)->response();
     }
+
+
 
 }

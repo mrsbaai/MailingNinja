@@ -21,7 +21,7 @@ Route::get('/preview/email/id/{id}', 'htmlEmail@previewEmailId');
 Route::get('/download/email/{code}', 'htmlEmail@downloadEmail');
 Route::get('/download/email/screenshot/{code}', 'htmlEmail@screenshotEmailDownload');
 
-Route::get('/{code}/tracking/{email}', 'trackingController@open');
+Route::get('/{code}/tracking/{email?}', 'trackingController@open');
 
 Route::pattern('code', '[A-Z]{5}');
 Route::get('/{code}/{email?}', 'landingController@publisherLanding')->name('publisher-landing');

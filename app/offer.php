@@ -50,4 +50,9 @@ class offer extends Model
         return $this->hasMany('App\clicks','offer_id');
     }
 
+    public function opens()
+    {
+        return $this->hasMany('App\opens','offer_id');
+    }
+
 }        

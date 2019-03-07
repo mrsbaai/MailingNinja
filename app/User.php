@@ -63,6 +63,10 @@ class user extends Authenticatable
     {
         return $this->hasMany('App\clicks','user_id');
     }
+    public function opens()
+    {
+        return $this->hasMany('App\opens','user_id');
+    }
 
     public function authorizeRoles($roles)
 
