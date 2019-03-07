@@ -47,13 +47,11 @@ class managerController extends Controller
         }else{
             $thumbnail = null;
         }
-        if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
         $offer = new offer;
         $offer->title = $request->title;
         $offer->subtitle = $request->subtitle;
         $offer->thumbnail = $thumbnail;
-        $offer->is_active = $is_active;
         $offer->is_private = $is_private;
         $offer->payout = $request->payout;
         if(!$offer->save()){
@@ -81,14 +79,12 @@ class managerController extends Controller
             Storage::disk('dropbox')->delete($product_name);
             Storage::disk('dropbox')->put($product_name, $product);
         }
-        if ($request->is_active == "on"){$is_active = 1;}else{$is_active = 0;}
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
         $res = $offer->update([
             'thumbnail' => $thumbnail,
             'title' => $request->title,
             'color' => $request->color,
             'description' => $request->description,
-            'is_active' => $is_active,
             'is_private' => $is_private,
             'payout' => $request->payout,
             'subtitle' =>  $request->subtitle,
@@ -322,9 +318,7 @@ class managerController extends Controller
             ->setStringLimit(20)
             ->isSearchable()
             ->useForDestroyConfirmation();
-        $table->addColumn('is_active')
-            ->isSortable()
-            ->setTitle('Active');
+
         $table->addColumn('is_private')
             ->isSortable()
             ->setTitle('Private');
@@ -386,7 +380,6 @@ class managerController extends Controller
             ->with('color',$offer->color)
             ->with('title', $offer->title)
             ->with('is_private', $offer->is_private)
-            ->with('is_active', $offer->is_active)
             ->with('description', $offer->description)
             ->with('payout', $offer->payout)
             ->with('id', $id)

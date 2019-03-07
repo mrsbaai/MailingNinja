@@ -394,20 +394,10 @@
                                                     {{ Form::checkbox('is_private', null, false, array('id'=>'is_private', 'class'=>'custom-control-input')) }}
                                                 @endif
 
-                                                <label class="custom-control-label" for="is_private">Private offer</label>
+                                                <label class="custom-control-label" for="is_private">Make this offer Private (Add the offer manually to publishers)</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="custom-control custom-checkbox">
 
-                                                @if( ! empty($is_active))
-                                                    {{ Form::checkbox('is_active', null, true, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
-                                                @else
-                                                    {{ Form::checkbox('is_active', null, false, array('id'=>'is_active', 'class'=>'custom-control-input')) }}
-                                                @endif
-                                                <label class="custom-control-label" for="is_active">Active offer</label>
-                                            </div>
-                                        </div>
                                     </div>
                                     <br>
 
