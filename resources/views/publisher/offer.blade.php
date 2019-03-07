@@ -69,12 +69,12 @@
                                         <div class="input-group-text" style="font-size: 300%"><b>$</b></div>
                                     </div>
                                     <input name="offer_id" value="{{$data['offer_id']}}" hidden>
-                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 300%" required>
+                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 200%" required>
 
                                     <div class="input-group-append">
                                                 <span class="input-group-text p-0 ">
                                                     <button type="submit" class="btn btn-link" title="Set the price">
-                                                        <i class="nc-icon nc-minimal-right" style="font-size: 300%"></i>&nbsp;&nbsp;
+                                                        <i class="nc-icon nc-minimal-right" style="font-size: 250%"></i>&nbsp;&nbsp;
                                                     </button>
                                                 </span>
                                     </div>
