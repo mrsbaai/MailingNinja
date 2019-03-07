@@ -409,7 +409,7 @@
                                             <a href="{{$id}}/promo" target="BLANK"  class="btn btn-outline-default btn-sm">Edit Promotional Tools</a>
                                             <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/preview/{{$id}}">Preview Landing</a>
                                             <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/preview/email/id/{{$id}}">Preview Html Email</a>
-                                            <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/download/{{$id}}">DOWNLOAD EBOOK</a>
+                                            <a class="btn btn-outline-default btn-sm" target="BLANK"  href="/manager/download/{{$id}}">DOWNLOAD EBOOK</a>
 
                                             <br/>
 
