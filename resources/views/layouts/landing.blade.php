@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
     @include('layouts.tracking')
+    @include('landing.socialTags')
     @yield('GoogleAnalytics')
+    @yield('socialTags')
 
     <style>
 
