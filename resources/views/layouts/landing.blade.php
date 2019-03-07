@@ -558,6 +558,7 @@
 
 
                 <div class="col-md-12">
+                    <img src="/images/amazon.png"/><br/><br/>
                     <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{ config('app.name') }}.</span> - All rights reserved!</p>
 
                 </div>

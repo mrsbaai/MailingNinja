@@ -321,9 +321,9 @@ class managerController extends Controller
 
         $table->addColumn('is_private')
             ->isSortable()
-            ->setTitle('Private');
+            ->setTitle('P?');
         $table->addColumn('')
-            ->setTitle('Active')
+            ->setTitle('Status')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->is_active){
                     return "<span style='color:green'>[ACTIVE]</span>";
