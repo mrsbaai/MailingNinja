@@ -22,7 +22,7 @@
     <h4><span class="label label-info"><i class="fas fa-envelope fa-md"></i> {{$subscribers_count}} Subscribed</span></h4>
     <br/>
     <!-- AddToAny BEGIN -->
-    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+    <div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center">
         <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
         <a class="a2a_button_facebook"></a>
         <a class="a2a_button_twitter"></a>
@@ -33,7 +33,8 @@
     </div>
     <script async src="https://static.addtoany.com/menu/page.js"></script>
     <!-- AddToAny END -->
-    
+    <br/>
+
 
     <script>
 
