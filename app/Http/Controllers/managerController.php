@@ -667,9 +667,7 @@ class managerController extends Controller
     public function downloadProduct(request $request, $id){
         $request->user()->authorizeRoles('manager');
 
-        if (! $request->hasValidSignature()) {
-            abort(401);
-        }
+
 
         $offer = offer::all()->where('id',$id)->first();
         $name = str_replace(' ', '_', $offer['title']) . "_[The_Password_Is_pbooks].zip";
