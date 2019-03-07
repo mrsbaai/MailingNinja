@@ -557,8 +557,8 @@
 
 
 
-                <div class="col-md-12">
-                    <img style="max-width: 300px;" src="/images/amazon.png"/><br/><br/>
+                <div class="col-md-12  wow animated fadeInUp">
+                    <img style="max-width: 200px;" src="/images/amazon.png"/><br/><br/>
                     <p class="copyright small">Copyright © <script> document.write(new Date().getFullYear())</script> <span class="uppercase">{{ config('app.name') }}.</span> - All rights reserved!</p>
 
                 </div>
