@@ -19,7 +19,7 @@
     <button type="submit" class="btn--subscribe btn--primary btn--inside subs uppercase">Subscribe</button>
     {{ Form::close()}}
 
-    <h4><span class="label label-info"><i class="fas fa-envelope fa-md"></i> {{$subscribers_count}} Subscribed</span></h4>
+    <h4><span class="label"><i class="fas fa-envelope fa-md"></i> {{$subscribers_count}} Subscribed</span></h4>
 
     <br/>
 
