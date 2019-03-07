@@ -75,7 +75,7 @@ class trackingController extends Controller
     }
 
     public function open($code, $email=null){
-        if ($this->ipNew()){
+
             if($email){
                 $subscribe = new subscribeController();
                 $subscribe->subscribe($code,$email,3);
@@ -105,12 +105,7 @@ class trackingController extends Controller
                 }
             }
 
-
-
-
-        }
-
-
+        
         $storagePath = URL::asset('images/tracking.png');
         return Image::make($storagePath)->response();
     }
