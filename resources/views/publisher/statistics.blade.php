@@ -219,18 +219,18 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                      <div id="Clicks7" class="container tab-pane active"><br>
-                        <h5>7 Days Clicks</h5>
+                        <h5>7 Days Opens</h5>
                         {!! $OpenChart7->render() !!}
 
 
                      </div>
                      <div id="Clicks30" class="container tab-pane fade"><br>
-                        <h5>30 Days Clicks</h5>
+                        <h5>30 Days Opens</h5>
                         {!! $OpenChart30->render() !!}
 
                      </div>
                      <div id="Clicks90" class="container tab-pane fade"><br>
-                        <h5>90 Days Clicks</h5>
+                        <h5>90 Days Opens</h5>
                         {!! $OpenChart90->render() !!}
 
 

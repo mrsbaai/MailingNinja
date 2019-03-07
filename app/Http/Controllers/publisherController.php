@@ -870,7 +870,7 @@ class publisherController extends Controller
             ->labels($dates)
             ->datasets([
                 [
-                    "label" => "Clicks",
+                    "label" => "Email Opens",
                     'backgroundColor' => "rgba(38, 185, 154, 0.31)",
                     'borderColor' => "rgba(38, 185, 154, 0.7)",
                     "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
