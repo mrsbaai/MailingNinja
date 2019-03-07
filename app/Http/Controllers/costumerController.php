@@ -37,7 +37,7 @@ class costumerController extends Controller
 
 
     public function download(request $request, $id){
-        $request->user()->authorizeRoles(array('costumer', 'manager', 'admin'));
+        $request->user()->authorizeRoles('costumer');
         if(!costumerOffers::all()->where("costumer_id", Auth::user()->id)->where("offer_id", $id)->where('paid',true)->first()){
             abort(401);
         }

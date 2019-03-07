@@ -117,7 +117,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
 
 
 
-
+    Route::get('/manager/download/{id}', 'managerController@downloadProduct')->name('manager-product-download');
     Route::get('/manager', 'managerController@home')->name('manager-home');
     Route::get('/manager/account', 'managerController@account')->name('manager-account');
     Route::get('/manager/dashboard', 'managerController@home')->name('manager-dashboard');
