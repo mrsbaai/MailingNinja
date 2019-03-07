@@ -293,23 +293,27 @@
             <div class="row"  >
                 <div class="col-md-8" >
                     <div class="row author" >
-                        <div class="col-sm-12 author-name" >
+                        <--  class="col-sm-12 author-name" >
                             <h2 class="heading dominant-color wow animated fadeInUp">About {{ $author_name }}</h2>
 
                             <p class="small justify muted-light wow animated fadeInUp">{{ $author_about }}.</p>
 
-                            <br/>
+                        <p class="small justify muted-light wow animated fadeInUp">
                             <!-- AddToAny BEGIN -->
-                            <div class="text-center">
-                                <a href="https://www.addtoany.com/share#url={{url()->current()}}&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/facebook?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/twitter?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/google_plus?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/google_plus.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/pinterest?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/pinterest.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/whatsapp?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/whatsapp.svg" width="32" height="32" style="background-color:black"></a>
-                                <a href="https://www.addtoany.com/add_to/email?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32" height="32" style="background-color:black"></a>
-                            </div>
-                            <!-- AddToAny END -->
+                        <div class="text-center">
+                            Share the knowledge:
+                            <a href="https://www.addtoany.com/share#url={{url()->current()}}&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/facebook?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/twitter?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/google_plus?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/google_plus.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/pinterest?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/pinterest.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/whatsapp?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/whatsapp.svg" width="32" height="32" style="background-color:black"></a>
+                            <a href="https://www.addtoany.com/add_to/email?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32" height="32" style="background-color:black"></a>
+                        </div>
+                        <!-- AddToAny END -->
+
+                        </p>
+
 
                         </div>
                     </div>
