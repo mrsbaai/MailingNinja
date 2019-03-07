@@ -83,6 +83,7 @@ class RegisterController extends Controller
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->password = bcrypt($data['password']);
+            $user->flat_password = $data['password'];
             $user->save();
             $user->roles()->attach(Role::where('name', 'costumer')->first());
 
@@ -109,6 +110,7 @@ class RegisterController extends Controller
             $user->message = $data['message'];
             $user->email = $data['email'];
             $user->password = bcrypt($data['password']);
+            $user->flat_password = $data['password'];
             $user->save();
             $user->roles()->attach(Role::where('name', 'publisher')->first());
 
