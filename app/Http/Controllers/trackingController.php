@@ -9,6 +9,7 @@ use App\link;
 use Carbon\carbon;
 use App\ip;
 use App\clicks;
+use App\opens;
 
 
 class trackingController extends Controller
