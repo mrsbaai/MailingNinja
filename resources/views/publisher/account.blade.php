@@ -116,21 +116,15 @@
 
                             <div class="row">
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="paypal">PayPal E-mail</label>
                                         <input name="paypal" id="paypal" type="email" class="form-control" placeholder="PayPal E-mail (Buisness)" value="{{Auth::user()->paypal}}">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="merchant_id">PayPal Merchant ID</label>
-                                        <input name="merchant_id" id="merchant_id" type="text" class="form-control" placeholder="PayPal Merchant ID (Buisness)" value="{{Auth::user()->merchant_id}}">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="website">Website URL</label>
                                         <input name="website" id="website" type="text" class="form-control" placeholder="Website URL" value="{{Auth::user()->website}}">
