@@ -265,7 +265,7 @@ class managerController extends Controller
     public function new(Request $request){
         $verticals = vertical::pluck('vertical','id');
         $request->user()->authorizeRoles('manager');
-        return view('manager.offer-editor')->with('color',"green")->with('verticals',$verticals);
+        return view('manager.offer-editor')->with('color',"green")->with('thumbnail',"../images/ebook.png")->with('verticals',$verticals);
     }
     private function nicetime($date)
     {
