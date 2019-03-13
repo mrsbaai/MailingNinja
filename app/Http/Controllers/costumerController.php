@@ -25,7 +25,7 @@ class costumerController extends Controller
 
 
 
-            $offers = offer::all()->where('is_active', true)->sortByDesc("cpc")->take(200);
+            $offers = offer::all()->where('is_active', true)->sortByDesc("epc")->take(200);
 
             return view('costumer.ebooks')
                 ->with('offers', $offers);
@@ -116,7 +116,7 @@ class costumerController extends Controller
         if ($offer){
             $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
         }else{
-            $related_offers = offer::all()->where('is_active', true)->sortByDesc("cpc")->take(3);
+            $related_offers = offer::all()->where('is_active', true)->sortByDesc("epc")->take(3);
 
         }
 

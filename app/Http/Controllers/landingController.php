@@ -116,10 +116,10 @@ class landingController extends Controller
                     $q->orwhere('vertical', $vertical['vertical']);
                 }
 
-            })->orderByDesc('cpc', 'desc')->get();
+            })->orderByDesc('epc', 'desc')->get();
 
         if (count($relateds) == 0 ){
-            $relateds = offer::all()->where('is_active',true)->orderByDesc('cpc', 'desc')->get();
+            $relateds = offer::all()->where('is_active',true)->orderByDesc('epc', 'desc')->get();
         }
 
         $relateds->pluck('thumbnail', 'id');
@@ -149,7 +149,7 @@ class landingController extends Controller
         $relateds = offer::whereHas('verticals', function($q) use ($category)
         {
             $q->where('vertical', $category);
-        })->where('is_active',true)->orderByDesc('cpc', 'desc')->get();
+        })->where('is_active',true)->orderByDesc('epc', 'desc')->get();
 
 
 
@@ -301,7 +301,7 @@ class landingController extends Controller
 
         if(Auth::guest()){
 
-        $offers = offer::all()->where('is_active', true)->sortByDesc("cpc");
+        $offers = offer::all()->where('is_active', true)->sortByDesc("epc");
 
         return view('landing.home')
             ->with('offers', $offers)

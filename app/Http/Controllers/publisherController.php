@@ -503,7 +503,7 @@ class publisherController extends Controller
                     return $return;
                 }
             });
-        $table->addColumn('cpc')
+        $table->addColumn('epc')
             ->isSortable()
             ->setTitle('EPC')
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -715,7 +715,7 @@ class publisherController extends Controller
 
 
             $res = $offer->update([
-                'cpc' => $offer_cpc,
+                'epc' => $offer_cpc,
             ]);
 
         }
