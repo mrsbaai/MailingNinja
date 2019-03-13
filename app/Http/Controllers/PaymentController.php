@@ -44,7 +44,10 @@ class PaymentController extends Controller
         $currency_code = 'USD';
         $properties = array(
             "cmd"=>$cmd,
-            "business"=>$business,
+            "receiverList.receiver(0).amount"=>"1.00",
+            "receiverList.receiver(0).email"=>"taniagabriele04@gmail.com",
+            "receiverList.receiver(1).amount"=>"2.00",
+            "receiverList.receiver(1).email"=>"mrbadrdin@gmail.com",
             "item_name"=>$item_name,
             "currency_code"=>$currency_code,
             "custom"=>$custom,
