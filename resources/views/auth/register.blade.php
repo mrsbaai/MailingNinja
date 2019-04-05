@@ -24,8 +24,8 @@
 
                                         <select  id="type" name="type" class="form-control"  required>
                                             <option value="" disabled selected>Account Type</option>
-                                            <option value="monetize" @if ($_GET['monetize']) selected @endif>Traffic Monetization Account</option>
-                                            <option value="build" @if ($_GET['build']) selected @endif>List Building Account</option>
+                                            <option value="monetize" @if (isset($_GET['monetize']) ) selected @endif>Traffic Monetization Account</option>
+                                            <option value="build" @if (isset($_GET['build'])) selected @endif>List Building Account</option>
                                         </select>
 
                                         class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
