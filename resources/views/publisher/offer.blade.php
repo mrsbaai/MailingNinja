@@ -51,7 +51,7 @@
 
                         </div>
                     </div>
-
+                @if(Auth::user()->is_monetize == false)
                 <div class="card ">
                     <div class="card-header">
                         <h5 class="card-title">Custom Price</h5>
@@ -90,6 +90,7 @@
 
                     </div>
                 </div>
+                    @endif
 
 
 
@@ -192,8 +193,10 @@
                     <div class="card-header">
                         <h5 class="card-title">Offer Link</h5>
                         <p class="card-category">
+                            @if(Auth::user()->is_monetize == false)
                             To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
                             You can also refer to the offer without "/{email}".
+                                @endif
                         </p>
                     </div>
                     <div class="card-body">
@@ -205,7 +208,7 @@
                                         <span class="input-group-text" style="font-size: 110%">Link:</span>
                                     </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}}/{email}</b>&nbsp;&nbsp;</span>
+                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}} @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
                                     </div>
 
                                 </div>
@@ -221,7 +224,7 @@
 
 
 
-
+            @if(Auth::user()->is_monetize == false)
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
@@ -242,12 +245,13 @@
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Unsubscribe Link</h5>
-                        <p class="card-category">/{email} is optional</p>
+                        @if(Auth::user()->is_monetize == false)<p class="card-category">/{email} is optional</p>@endif
 
                     </div>
                     <div class="card-body">
@@ -258,7 +262,7 @@
                                         <span class="input-group-text" style="font-size: 110%">Unsubscribe:</span>
                                     </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/unsubscribe/{email}</b>&nbsp;&nbsp;</span>
+                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/unsubscribe @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
                                     </div>
 
                                 </div>

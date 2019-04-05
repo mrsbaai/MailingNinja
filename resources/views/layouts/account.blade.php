@@ -122,13 +122,14 @@
                         </a>
                     </li>
 
-
+                    @if(Auth::user()->is_monetize == false)
                     <li @if(Route::current()->getName() == 'publisher-subscribers') class="active" @endif>
                         <a href="{{ route('publisher-subscribers') }}">
                             <i class="nc-icon nc-cloud-download-93"></i>
                             <p>E-mails</p>
                         </a>
                     </li>
+                    @endif
                     <li @if(Route::current()->getName() == 'publisher-account') class="active" @endif>
                         <a href="{{ route('publisher-account') }}">
                             <i class="nc-icon nc-badge"></i>
