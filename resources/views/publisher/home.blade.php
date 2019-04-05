@@ -3,7 +3,8 @@
 @section('content')
     <div class="content">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            @if(Auth::user()->publisher_type == "build")
+            <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
@@ -29,7 +30,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            @endif
+            <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
@@ -55,8 +57,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
+                @if(Auth::user()->publisher_type == "build")
+            <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
@@ -82,8 +84,9 @@
                     </div>
                 </div>
             </div>
+                @endif
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">

@@ -22,6 +22,11 @@
 
                                         <input  id="manager" type="text" name="manager" value="@if (isset($manager_id)) {{$manager_id}} @else {{ config('app.main_manager') }} @endif" required hidden>
 
+                                        <select  id="type" name="type"  required>
+                                            <option value="monetize" selected>Traffic Monetization Account</option>
+                                            <option value="build">List Building Account</option>
+                                        </select>
+
                                         <input  placeholder="Company Name (or your name)" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                         @if ($errors->has('name'))

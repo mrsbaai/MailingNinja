@@ -2,6 +2,7 @@
 
 @section('content')
    <div class="content">
+      @if(Auth::user()->publisher_type == "build")
       <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -49,6 +50,7 @@
             </div>
          </div>
       </div>
+      @endif
 
       <div class="row">
          <div class="col-md-12">
