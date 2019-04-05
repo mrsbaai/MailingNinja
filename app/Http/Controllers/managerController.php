@@ -87,6 +87,7 @@ class managerController extends Controller
             'description' => $request->description,
             'is_private' => $is_private,
             'payout' => $request->payout,
+            'cpc' => $request->cpc,
             'subtitle' =>  $request->subtitle,
             'image_1' =>  $request->image_1,
             'image_2' =>  $request->image_2,
@@ -212,7 +213,7 @@ class managerController extends Controller
             ->setTitle(__('Net Amount'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->net_amount. "</b>";
+                return "<b>$". $entity->net_amountN. "</b>";
             });
 
 
@@ -402,6 +403,7 @@ class managerController extends Controller
             ->with('is_private', $offer->is_private)
             ->with('description', $offer->description)
             ->with('payout', $offer->payout)
+            ->with('cpc', $offer->cpc)
             ->with('id', $id)
             ->with('thumbnail', $offer->thumbnail)
             ->with('selected_verticals', $selected_verticals)

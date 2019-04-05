@@ -317,7 +317,7 @@
                                 <div class="container">
 
                                     <div class="row">
-                                        <div class="col-lg-10">
+                                        <div class="col-lg-4">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Title: </span>
@@ -325,8 +325,26 @@
                                                 <input id="title" type="text" name="title" class="form-control"@if( ! empty($title)) value="{{$title}}" @endif required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-2">
+                                        <div class="col-lg-4">
                                             <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">CPC: </span>
+                                                </div>
+
+                                                <input id="cpc" type="text" name="cpc" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
+
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <b>$</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Price: </span>
+                                                </div>
 
 
                                                 <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif required>
