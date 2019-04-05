@@ -237,7 +237,7 @@ class managerController extends Controller
             ->isSearchable()
             ->isCustomHtmlElement(function ($entity, $column) {
 
-                $route = route('global-publisher-stats', ['id' => $entity->publisher_id]);
+                $route = route('publisher-stats', ['id' => $entity->publisher_id]);
                 return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->publisher_id</a>";
             });
 
