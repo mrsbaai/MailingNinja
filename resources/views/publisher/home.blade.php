@@ -3,7 +3,7 @@
 @section('content')
     <div class="content">
         <div class="row">
-            @if(Auth::user()->publisher_type == "build")
+            @if(Auth::user()->is_monetize == false)
             <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-                @if(Auth::user()->publisher_type == "build")
+                @if(Auth::user()->is_monetize == false)
             <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
