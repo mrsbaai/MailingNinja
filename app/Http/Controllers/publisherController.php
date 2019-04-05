@@ -503,24 +503,7 @@ class publisherController extends Controller
                     return $return;
                 }
             });
-        $table->addColumn('epc')
-            ->isSortable()
-            ->setTitle('EPC')
-            ->isCustomHtmlElement(function ($entity, $column) {
-                $return =  $entity->cpc;
-                if ($return <  0.2){$return = "-";}
-                if ($entity->is_private == true){
-                    if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                        return $return;
-                    }else{
-                        return "Disabled";
-                    }
-                }else{
-                    return $return;
-                }
 
-            })
-            ->sortByDefault('desc');
 
 
         $table->addColumn()

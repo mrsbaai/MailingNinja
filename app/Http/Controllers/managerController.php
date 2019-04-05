@@ -208,7 +208,7 @@ class managerController extends Controller
             ->sortByDefault('desc')
             ->setColumnDateFormat('d/m/Y H:i:s');
 
-        $table->addColumn('payedAmount')
+        $table->addColumn('net_amount')
             ->setTitle(__('Net Amount'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
