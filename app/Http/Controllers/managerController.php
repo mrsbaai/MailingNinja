@@ -231,6 +231,16 @@ class managerController extends Controller
                 return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->offer_id</a>";
             });
 
+        $table->addColumn('publisher_id')
+            ->setTitle(__('Publisher Id'))
+
+            ->isSearchable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $route = route('global-publisher-stats', ['id' => $entity->publisher_id]);
+                return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->publisher_id</a>";
+            });
+
 
 
         $table->addColumn('costumer_id')
