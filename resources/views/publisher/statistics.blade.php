@@ -99,7 +99,7 @@
       </div>
 
 
-
+         @if(Auth::user()->is_monetize == false)
       <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -147,6 +147,7 @@
             </div>
          </div>
       </div>
+         @endif
       <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -196,7 +197,7 @@
       </div>
 
 
-
+         @if(Auth::user()->is_monetize == false)
 <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -244,6 +245,7 @@
             </div>
          </div>
       </div>
+            @endif
 
 
 

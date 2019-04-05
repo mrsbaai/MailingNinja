@@ -26,10 +26,15 @@ class PaymentController extends Controller
 
 
         if ($invoice['publisher_id'] == config('app.main_publisher')){
+
             $business = $this->GetInternalPayPal();
         }else{
             $publisher = user::all()->where('id',$invoice['publisher_id'])->first();
-            $business =  $publisher['paypal'];
+            if($publisher['is_monetize'] == false){
+                $business =  $publisher['paypal'];
+            }else{
+                $business = $this->GetInternalPayPal();
+            }
         }
         $amount = $invoice['price'];
         $item_name =  "[E-Book] " . "[" . $offer['title'] . "]";
