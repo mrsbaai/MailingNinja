@@ -27,6 +27,8 @@
                                             <option value="build" @if (isset($_GET['build'])) selected @endif>List Building Account</option>
                                         </select>
 
+                                        <br/>
+
 
                                         <input  placeholder="Company Name (or your name)" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 

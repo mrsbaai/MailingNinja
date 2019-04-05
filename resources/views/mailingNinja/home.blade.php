@@ -9,7 +9,7 @@
                 <h1>Mailing Ninja</h1>
                 <h3>Exclusive Offers For <b><u>Traffic Monetization</u></b> & <b><u>E-Mail List Building</u></b></h3>
                 <br />
-                <a href="/register" class="btn btn-outline-neutral btn-round">Request An Account</a>
+                <a href="/registe?monetize" class="btn btn-outline-neutral btn-round">Request An Account</a>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                                     Automated mailing list generator, from openers, clickers, subscribers, and buyers. Segmented by country and interest.
                                 </p>
                                 <br>
-                                <a href="/register" class="btn btn-sm btn-round btn-danger">Get Started</a>
+                                <a href="/register?build" class="btn btn-sm btn-round btn-danger">Get Started</a>
                             </div>
                         </div>
                     </div>
