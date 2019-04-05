@@ -23,9 +23,12 @@
                                         <input  id="manager" type="text" name="manager" value="@if (isset($manager_id)) {{$manager_id}} @else {{ config('app.main_manager') }} @endif" required hidden>
 
                                         <select  id="type" name="type" class="form-control"  required>
-                                            <option value="monetize" selected>Traffic Monetization Account</option>
-                                            <option value="build">List Building Account</option>
+                                            <option value="" disabled selected>Account Type</option>
+                                            <option value="monetize" @if ($_GET['monetize']) selected @endif>Traffic Monetization Account</option>
+                                            <option value="build" @if ($_GET['build']) selected @endif>List Building Account</option>
                                         </select>
+
+                                        class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
 
                                         <input  placeholder="Company Name (or your name)" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
