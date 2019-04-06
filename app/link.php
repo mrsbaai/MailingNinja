@@ -8,7 +8,7 @@ class link extends Model
 {
 
     protected $table = 'links';
-    protected $fillable = ['user_id', 'offer_id', 'price'];
+    protected $fillable = ['user_id', 'offer_id', 'price', 'cpa', 'cpc'];
 
 
 }

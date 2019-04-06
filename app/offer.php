@@ -9,7 +9,7 @@ class offer extends Model
 {
 
     protected $table = 'offers';
-    protected $fillable = ['cover', 'color', 'cpc', 'offer', 'thumbnail', 'promo', 'title', 'description', 'is_active', 'is_private', 'payout', 'subtitle', 'book_about_1', 'book_about_2', 'book_about_3', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'image_6',  'image_7',  'image_8',  'image_9',  'author_image', 'author_name', 'author_about', 'review_name_1', 'review_content_1', 'review_name_2', 'review_content_2', 'review_name_3', 'review_content_3', 'review_name_4', 'review_content_4', 'review_name_5', 'review_content_5', 'review_name_6', 'review_content_6'];
+    protected $fillable = ['cover', 'color', 'cpc', 'cpa', 'offer', 'thumbnail', 'promo', 'title', 'description', 'is_active', 'is_private', 'payout', 'subtitle', 'book_about_1', 'book_about_2', 'book_about_3', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'image_6',  'image_7',  'image_8',  'image_9',  'author_image', 'author_name', 'author_about', 'review_name_1', 'review_content_1', 'review_name_2', 'review_content_2', 'review_name_3', 'review_content_3', 'review_name_4', 'review_content_4', 'review_name_5', 'review_content_5', 'review_name_6', 'review_content_6'];
 
 
 
