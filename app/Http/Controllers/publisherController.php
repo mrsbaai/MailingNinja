@@ -475,7 +475,11 @@ class publisherController extends Controller
             ->addQueryInstructions(function ($query) {
                 $query
                     ->select('offers.*')
-                    ->where('is_active',true);
+                    ->where('is_active',true)
+                    ->where(function ($query) {
+                    $query->where('cpa', '<>', 0)->orWhere('cpc', '<>', 0);
+                })
+                ;
 
             });
 
