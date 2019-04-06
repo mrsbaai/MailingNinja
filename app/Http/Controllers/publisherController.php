@@ -512,24 +512,6 @@ class publisherController extends Controller
 
             });
 
-if($request->user()->is_monetize == false){
-    $table->addColumn('')
-        ->setTitle(__('Subscribes'))
-        ->isCustomHtmlElement(function ($entity, $column) {
-            $query  = subscriber::latest();
-            $query->where('user_id', Auth::user()->id)->where('offer_id', $entity->id);
-            $return = "<b>".  count($query->get()) . "</b>";
-            if ($entity->is_private == true){
-                if(publisherOffers::where('publisher_id', Auth::user()->id)->where('offer_id', $entity->id)->first()){
-                    return $return;
-                }else{
-                    return "Disabled";
-                }
-            }else{
-                return $return;
-            }
-        });
-}
 
 
 
