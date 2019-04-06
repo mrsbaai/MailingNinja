@@ -345,7 +345,7 @@
                                                         <span class="input-group-text">(CPC Offer?) CPC($): </span>
                                                     </div>
 
-                                                    <input id="cpc" type="text" name="cpc" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
+                                                    <input id="cpc" type="text" name="cpc" onchange="document.getElementById('cpa').value = 0;" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
 
                                                 </div>
                                             </div>
@@ -355,7 +355,7 @@
                                                         <span class="input-group-text">(CPA Offer?) CPA($): </span>
                                                     </div>
 
-                                                    <input id="cpa" type="text" name="cpa" class="form-control" @if( ! empty($cpa)) value="{{$cpa}}" @endif required>
+                                                    <input id="cpa" type="text" name="cpa"  onchange="document.getElementById('cpc').value = 0;" class="form-control" @if( ! empty($cpa)) value="{{$cpa}}" @endif required>
 
                                                 </div>
                                             </div>

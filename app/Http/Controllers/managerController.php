@@ -80,6 +80,7 @@ class managerController extends Controller
             Storage::disk('dropbox')->put($product_name, $product);
         }
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
+
         $res = $offer->update([
             'thumbnail' => $thumbnail,
             'title' => $request->title,
