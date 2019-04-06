@@ -38,7 +38,7 @@ Route::get('/books/{category}', 'landingController@showVerticalBooks');
 
 
 
-Route::get('/check', 'publisherController@refreshCPC');
+Route::get('/check', 'publisherController@refreshEPC');
 
 
 Route::get('/{code}/subscribe/{email}', 'subscribeController@subscribe');
