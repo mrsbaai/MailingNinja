@@ -317,22 +317,12 @@
                                 <div class="container">
 
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-8">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Title: </span>
                                                 </div>
                                                 <input id="title" type="text" name="title" class="form-control"@if( ! empty($title)) value="{{$title}}" @endif required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">CPC($): </span>
-                                                </div>
-
-                                                <input id="cpc" type="text" name="cpc" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
-
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -344,6 +334,30 @@
 
                                                 <input id="payout" type="text" name="payout" class="form-control" @if( ! empty($payout)) value="{{$payout}}" @endif required>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">(CPC Offer?) CPC($): </span>
+                                                    </div>
+
+                                                    <input id="cpc" type="text" name="cpc" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">(CPA Offer?) CPA($): </span>
+                                                    </div>
+
+                                                    <input id="cpa" type="text" name="cpa" class="form-control" @if( ! empty($cpa)) value="{{$cpa}}" @endif required>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

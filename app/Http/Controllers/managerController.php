@@ -88,6 +88,7 @@ class managerController extends Controller
             'is_private' => $is_private,
             'payout' => $request->payout,
             'cpc' => $request->cpc,
+            'cpa' => $request->cpa,
             'subtitle' =>  $request->subtitle,
             'image_1' =>  $request->image_1,
             'image_2' =>  $request->image_2,
@@ -404,6 +405,7 @@ class managerController extends Controller
             ->with('description', $offer->description)
             ->with('payout', $offer->payout)
             ->with('cpc', $offer->cpc)
+            ->with('cpa', $offer->cpa)
             ->with('id', $id)
             ->with('thumbnail', $offer->thumbnail)
             ->with('selected_verticals', $selected_verticals)
