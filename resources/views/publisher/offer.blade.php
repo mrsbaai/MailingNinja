@@ -19,11 +19,25 @@
                             <div class="row px-4">
 
 
+                                @if($data['cpc'] > 0)
+                                    <h6>Offer Type: CPC</h6>
+                                    <h6>Offer Payout: {{$data['cpc']}}</h6>
+                                    <br/><br/>
+                                @endif
+
+
+                                @if($data['cpa'] > 0)
+                                    <h6>Offer Type: CPC</h6>
+                                    <h6>Offer Payout: {{$data['cpc']}}</h6>
+                                    <br/><br/>
+                                @endif
+
+
 
                                 <h6>Verticals:
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach.
                                 </h6>
-                                <br/>
+                                <br/><br/>
 
                             </div>
 

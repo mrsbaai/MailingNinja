@@ -406,16 +406,36 @@ class publisherController extends Controller
         if (!$link){
             $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
             $price =  $offer->payout;
+            $cpa =  $offer->cpa;
+            $cpc =  $offer->cpc;
 
             $newLink = new Link;
             $newLink->offer_id = $id;
             $newLink->user_id = $user_id;
             $newLink->price = $price;
+            $newLink->cpa = $cpa;
+            $newLink->cpc = $cpc;
             $newLink->link = $url;
             $newLink->save();
         }else{
             $url = $link->link;
             $price = $link->price;
+        }
+
+        if ($link->cpc !== $offer->cpc or $link->cpa !== $offer->cpa){
+            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+            $price =  $offer->payout;
+            $cpa =  $offer->cpa;
+            $cpc =  $offer->cpc;
+
+            $newLink = new Link;
+            $newLink->offer_id = $id;
+            $newLink->user_id = $user_id;
+            $newLink->price = $price;
+            $newLink->cpa = $cpa;
+            $newLink->cpc = $cpc;
+            $newLink->link = $url;
+            $newLink->save();
         }
 
         //$domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
