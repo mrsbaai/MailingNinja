@@ -539,6 +539,15 @@ $table->addColumn('')
 
             });
 
+
+        $table->addColumn('updated_at')
+            ->isSortable()
+            ->setTitle('DATE')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $entity->updated_at;
+
+            });
+
 if($request->user()->is_monetize == false){
     $table->addColumn('')
         ->setTitle(__('Subscribes'))
