@@ -512,8 +512,8 @@ class publisherController extends Controller
 
             });
 
-        $table->addColumn('Type')
-            ->isSearchable()
+        $table->addColumn('')
+
             ->isSortable()
             ->setTitle('TYPE')
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -527,8 +527,8 @@ class publisherController extends Controller
 
             });
 
-$table->addColumn('Payout')
-            ->isSearchable()
+$table->addColumn('')
+
             ->isSortable()
             ->setTitle('PAYOUT')
             ->isCustomHtmlElement(function ($entity, $column) {
