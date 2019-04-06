@@ -526,25 +526,13 @@ class publisherController extends Controller
 
             });
 
-$table->addColumn('')
-            ->setTitle('PAYOUT')
-            ->isCustomHtmlElement(function ($entity, $column) {
-                if ($entity->cpc > 0){
-                    Return $entity->cpc;
-                }elseif ($entity->cpa > 0){
-                    Return $entity->cpa;
-                }else{
-                    Return "Direct";
-                }
-
-            });
 
 
-        $table->addColumn('updated_at')
+        $table->addColumn('created_at')
             ->isSortable()
             ->setTitle('DATE')
             ->isCustomHtmlElement(function ($entity, $column) {
-                return $entity->updated_at;
+                return $entity->created_at;
 
             });
 
