@@ -514,7 +514,6 @@ class publisherController extends Controller
 
         $table->addColumn('')
 
-            ->isSortable()
             ->setTitle('TYPE')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->cpc > 0){
@@ -528,8 +527,6 @@ class publisherController extends Controller
             });
 
 $table->addColumn('')
-
-            ->isSortable()
             ->setTitle('PAYOUT')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->cpc > 0){
