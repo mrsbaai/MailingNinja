@@ -512,7 +512,7 @@ class publisherController extends Controller
 
             });
 
-if(Auth::user()->is_monetize == false){
+if($request->user()->is_monetize == false){
     $table->addColumn('')
         ->setTitle(__('Subscribes'))
         ->isCustomHtmlElement(function ($entity, $column) {
