@@ -582,7 +582,7 @@ if($request->user()->is_monetize == false){
 <a class='p-3' target='_blank' href='$promote_route'  title='Show Promotional Links & Tools'><i class='fas fa-fw fa-link'></i></a>";
 
                 if($request->user()->is_monetize == false){
-                    $return = $return . "<a class='p-3' target='_blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>"
+                    $return = $return . "<a class='p-3' target='_blank' href='$download_route'  title='Download Subscribed E-mail List'><i class='fas fa-fw fa-arrow-down'></i></a>";
                 }
                 ;
 
