@@ -449,6 +449,8 @@ class publisherController extends Controller
         $data['link'] = $url;
         $data['title'] = $offer->title;
         $data['subtitle'] = $offer->subtitle;
+        $data['cpc'] = $offer->cpc;
+        $data['cpa'] = $offer->cpa;
         $data['author_name'] = $offer->author_name;
         $data['promo'] = $offer->promo;
         $data['thumbnail'] = $offer->thumbnail;
