@@ -512,21 +512,7 @@ class publisherController extends Controller
 
             });
 
-        $table->addColumn('TYPE')
-
-            ->setTitle('TYPE')
-            ->isCustomHtmlElement(function ($entity, $column) {
-                if ($entity->cpc > 0){
-                    Return "CPC";
-                }elseif ($entity->cpa > 0){
-                    Return "CPA";
-                }else{
-                    Return "-";
-                }
-
-            });
-
-
+       
 if($request->user()->is_monetize == false){
     $table->addColumn('')
         ->setTitle(__('Subscribes'))
