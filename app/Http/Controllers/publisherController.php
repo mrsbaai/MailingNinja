@@ -512,6 +512,36 @@ class publisherController extends Controller
 
             });
 
+        $table->addColumn('Type')
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('TYPE')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return "CPC";
+                }elseif ($entity->cpa > 0){
+                    Return "CPA";
+                }else{
+                    Return "-";
+                }
+
+            });
+
+$table->addColumn('Payout')
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('PAYOUT')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return $entity->cpc;
+                }elseif ($entity->cpa > 0){
+                    Return $entity->cpa;
+                }else{
+                    Return "Direct";
+                }
+
+            });
+
 if($request->user()->is_monetize == false){
     $table->addColumn('')
         ->setTitle(__('Subscribes'))
