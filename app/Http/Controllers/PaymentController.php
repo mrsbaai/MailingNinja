@@ -11,6 +11,7 @@ use App\offer;
 use App\PayPal;
 use App\user;
 use App\sells;
+use App\link;
 use DB;
 use App\Quotation;
 
@@ -159,6 +160,13 @@ class PaymentController extends Controller
 
                         $user = user::all()->where('id', $inv['costumer_id'])->first();
 
+
+
+                        $link = link::all()->where('link', $inv['link'])->first();
+                        $new_income = $link['income'] + $mc_gross;
+                        $ret = $link->update([
+                            'income' => $new_income,
+                        ]);
 
                         $data = array(
                             'email'=>$user['email'],

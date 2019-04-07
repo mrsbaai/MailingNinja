@@ -9,6 +9,8 @@ use App\link;
 use Carbon\carbon;
 use App\ip;
 use App\clicks;
+use App\cpc;
+use App\cpa;
 use App\opens;
 
 
@@ -36,6 +38,18 @@ class trackingController extends Controller
 
 
     }
+
+    public function is_cpc_profit($link){
+        $info = link::all()->where('link', $link)->first();
+
+        $cpc = cpc::all()
+            ->where('user_id', $info['user_id'])
+            ->where('offer_id', $info['offer_id'])
+            ->first();
+
+
+
+    }
     public function click($code, $email){
 
 
@@ -54,7 +68,6 @@ class trackingController extends Controller
                     ->where('user_id', $info['user_id'])
                     ->where('offer_id', $info['offer_id'])
                     ->first();
-
                 if (!$log){
                     //add new
                     $add = new clicks();
@@ -68,6 +81,33 @@ class trackingController extends Controller
                         'count' => $new_count,
                     ]);
                 }
+
+
+                if ($info['cpc'] > 0){
+                    $cpc = cpc::all()
+                        ->where('created_at', '>=', Carbon::today())
+                        ->where('user_id', $info['user_id'])
+                        ->where('offer_id', $info['offer_id'])
+                        ->first();
+                    if (!$cpc){
+                        //add new
+                        $add = new cpc();
+                        $add->offer_id = $info['offer_id'];
+                        $add->user_id = $info['user_id'];
+                        $add->count = 1;
+                        $add->value = $info['cpc'];
+                        $add->save();
+                    }else{
+                        $new_count = $cpc['count'] + 1;
+                        $new_value = $cpc['value'] + $info['cpc'];
+                        $ret = $cpc->update([
+                            'count' => $new_count,
+                            'value' => $new_value,
+                        ]);
+                    }
+
+                }
+
             }
 
 

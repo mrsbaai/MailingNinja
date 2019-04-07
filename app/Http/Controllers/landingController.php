@@ -55,6 +55,7 @@ class landingController extends Controller
         $add->costumer_id = $costumer_id;
         $add->offer_id = $offer_id;
         $add->price = $offer_price;
+        $add->link = $code;
         $add->paid = false;
 
         return $add->save();

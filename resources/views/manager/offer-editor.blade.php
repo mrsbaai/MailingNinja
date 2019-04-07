@@ -338,13 +338,11 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12">
                                             <div class="col-lg-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">(CPC Offer?) CPC($): </span>
                                                     </div>
-
                                                     <input id="cpc" type="text" name="cpc" onchange="document.getElementById('cpa').value = 0;" class="form-control" @if( ! empty($cpc)) value="{{$cpc}}" @endif required>
 
                                                 </div>
@@ -359,7 +357,7 @@
 
                                                 </div>
                                             </div>
-                                        </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
