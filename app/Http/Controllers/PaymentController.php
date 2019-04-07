@@ -10,6 +10,7 @@ use App\costumerOffers;
 use App\offer;
 use App\PayPal;
 use App\user;
+use App\cpa;
 use App\sells;
 use App\link;
 use DB;
@@ -160,14 +161,73 @@ class PaymentController extends Controller
 
                         $user = user::all()->where('id', $inv['costumer_id'])->first();
 
-
-
+                        // update link total income
                         $link = link::all()->where('link', $inv['link'])->first();
                         $new_income = $link['income'] + $mc_gross;
                         $ret = $link->update([
                             'income' => $new_income,
                         ]);
 
+                        // if cpa credit publisher
+
+
+
+
+                        if ($link['cpa'] > 0){
+
+                            // profit protection
+
+                            $query  = sells::latest();
+                            $query->where('publisher_id', $link['user_id'])
+                                ->where('offer_id', $link['offer_id'])
+                                ->where('status','Completed');
+                            $collection = $query->get();
+                            $paypal_profit = 0;
+                            foreach ($collection as $item) {
+                                $paypal_profit = $paypal_profit + $item['net_amount'];
+                            }
+
+                            $paypal_profit = ($paypal_profit * 70) / 100;
+
+                            $query  = cpa::latest();
+                            $query->where('user_id', $link['user_id'])
+                                ->where('offer_id', $link['offer_id']);
+                            $collection = $query->get();
+                            $cpa_profit = 0;
+                            foreach ($collection as $item) {
+                                $cpa_profit = $cpa_profit + $item['value'];
+                            }
+
+                            if($paypal_profit > $cpa_profit) {
+                                $cpa = cpa::all()
+                                    ->where('created_at', '>=', Carbon::today())
+                                    ->where('user_id', $link['user_id'])
+                                    ->where('offer_id', $link['offer_id'])
+                                    ->first();
+                                if (!$cpa){
+                                    //add new
+                                    $add = new cpa();
+                                    $add->offer_id = $link['offer_id'];
+                                    $add->user_id = $link['user_id'];
+                                    $add->count = 1;
+                                    $add->value = $link['cpa'];
+                                    $add->save();
+                                }else{
+                                    $new_count = $cpa['count'] + 1;
+                                    $new_value = $cpa['value'] + $link['cpa'];
+                                    $ret = $cpa->update([
+                                        'count' => $new_count,
+                                        'value' => $new_value,
+                                    ]);
+                                }
+
+                            }
+
+                        }
+
+
+
+                        // send email to costumer
                         $data = array(
                             'email'=>$user['email'],
                             'name'=>$user['name'],

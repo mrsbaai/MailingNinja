@@ -10,6 +10,7 @@ use Carbon\carbon;
 use App\ip;
 use App\clicks;
 use App\cpc;
+use App\sells;
 use App\cpa;
 use App\opens;
 
@@ -82,29 +83,59 @@ class trackingController extends Controller
                     ]);
                 }
 
-
                 if ($info['cpc'] > 0){
-                    $cpc = cpc::all()
-                        ->where('created_at', '>=', Carbon::today())
-                        ->where('user_id', $info['user_id'])
+
+
+                    // cpc profit protection
+
+
+                    $query  = sells::latest();
+                    $query->where('publisher_id', $info['user_id'])
                         ->where('offer_id', $info['offer_id'])
-                        ->first();
-                    if (!$cpc){
-                        //add new
-                        $add = new cpc();
-                        $add->offer_id = $info['offer_id'];
-                        $add->user_id = $info['user_id'];
-                        $add->count = 1;
-                        $add->value = $info['cpc'];
-                        $add->save();
-                    }else{
-                        $new_count = $cpc['count'] + 1;
-                        $new_value = $cpc['value'] + $info['cpc'];
-                        $ret = $cpc->update([
-                            'count' => $new_count,
-                            'value' => $new_value,
-                        ]);
+                        ->where('status','Completed');
+                    $collection = $query->get();
+                    $paypal_profit = 0;
+                    foreach ($collection as $item) {
+                        $paypal_profit = $paypal_profit + $item['net_amount'];
                     }
+
+                    $paypal_profit = ($paypal_profit * 70) / 100;
+
+                    $query  = cpc::latest();
+                    $query->where('user_id', $info['user_id'])
+                        ->where('offer_id', $info['offer_id']);
+                    $collection = $query->get();
+                    $cpc_profit = 0;
+                    foreach ($collection as $item) {
+                        $cpc_profit = $cpc_profit + $item['value'];
+                    }
+
+                    if($paypal_profit > $cpc_profit or $cpc_profit < 5) {
+                        $cpc = cpc::all()
+                            ->where('created_at', '>=', Carbon::today())
+                            ->where('user_id', $info['user_id'])
+                            ->where('offer_id', $info['offer_id'])
+                            ->first();
+                        if (!$cpc){
+                            //add new
+                            $add = new cpc();
+                            $add->offer_id = $info['offer_id'];
+                            $add->user_id = $info['user_id'];
+                            $add->count = 1;
+                            $add->value = $info['cpc'];
+                            $add->save();
+                        }else{
+                            $new_count = $cpc['count'] + 1;
+                            $new_value = $cpc['value'] + $info['cpc'];
+                            $ret = $cpc->update([
+                                'count' => $new_count,
+                                'value' => $new_value,
+                            ]);
+                        }
+                    }
+
+
+
 
                 }
 

@@ -19,18 +19,18 @@
                             <div class="row px-4">
 
                                 @if(Auth::user()->is_monetize == true)
-                                @if($data['cpc'] > 0)
-                                    <h6>Offer Type: CPC</h6>
-                                    <h6>Offer Payout: {{$data['cpc']}}</h6>
-                                    <br/><br/>
-                                @endif
+                                    @if($data['cpc'] > 0)
+                                        <h6>Offer Type: CPC</h6><br/><br/>
+                                        <h6>Offer Payout: {{$data['cpc']}}</h6>
+                                        <br/><br/>
+                                    @endif
 
 
-                                @if($data['cpa'] > 0)
-                                    <h6>Offer Type: CPA</h6>
-                                    <h6>Offer Payout: {{$data['cpa']}}</h6>
-                                    <br/><br/>
-                                @endif
+                                    @if($data['cpa'] > 0)
+                                        <h6>Offer Type: CPA</h6><br/><br/>
+                                        <h6>Offer Payout: {{$data['cpa']}}</h6>
+                                        <br/><br/>
+                                    @endif
                                 @endif
 
 
