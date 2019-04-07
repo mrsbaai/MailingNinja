@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCPAToOffersTable extends Migration
+class RemoveBalanceFromUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCPAToOffersTable extends Migration
      */
     public function up()
     {
-        Schema::table('offers', function (Blueprint $table) {
-            $table->decimal('cpa',4,2)->default(0);
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('balance');
         });
     }
 
@@ -25,8 +25,8 @@ class AddCPAToOffersTable extends Migration
      */
     public function down()
     {
-        Schema::table('offers', function (Blueprint $table) {
-            $table->dropColumn('cpa');
+        Schema::table('users', function (Blueprint $table) {
+            $table->decimal('balance',8,2)->default(0);
         });
     }
 }
