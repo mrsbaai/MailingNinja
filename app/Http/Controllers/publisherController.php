@@ -930,7 +930,7 @@ if($request->user()->is_monetize == false){
             ->labels($dates)
             ->datasets([
                 [
-                    "label" => "Clicks",
+                    "label" => "Profit ($)",
                     'backgroundColor' => "rgba(38, 185, 154, 0.31)",
                     'borderColor' => "rgba(38, 185, 154, 0.7)",
                     "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
