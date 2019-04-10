@@ -116,6 +116,93 @@
             </div>
 
             <div class="col-lg-8">
+                <div class="">
+                    <div class="card ">
+                        <div class="card-header">
+                            <h5 class="card-title">Offer Link</h5>
+                            <p class="card-category">
+                                @if(Auth::user()->is_monetize == false)
+                                    To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
+                                    You can also refer to the offer without "/{email}".
+                                @endif
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-centered">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" >
+                                            <span class="input-group-text" style="font-size: 110%">Link:</span>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}} @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Unsubscribe Link</h5>
+                            @if(Auth::user()->is_monetize == false)<p class="card-category">/{email} is optional</p>@endif
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-centered">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" >
+                                            <span class="input-group-text" style="font-size: 110%">Unsubscribe:</span>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/unsubscribe @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Suppression list</h5>
+                            <p class="card-category">Don't send this offer to any of these E-mails</p>
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group col-md-12 text-center">
+                                        <a class='btn btn-danger' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
+                                            Download Suppression List
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Promotional Tools</h5>
@@ -203,44 +290,8 @@
         </div>
         <div class="row">
 
-            <div class="col-lg-6">
-                <div class="card ">
-                    <div class="card-header">
-                        <h5 class="card-title">Offer Link</h5>
-                        <p class="card-category">
-                            @if(Auth::user()->is_monetize == false)
-                            To track clicks, and <b>download targeted clicks mailing list</b>, replace {email} with the recipient's E-mail address.
-                            You can also refer to the offer without "/{email}".
-                                @endif
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-centered">
-                                <div class="input-group">
-                                    <div class="input-group-prepend" >
-                                        <span class="input-group-text" style="font-size: 110%">Link:</span>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/{{$data['link']}} @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-        </div>
-
-
-
             @if(Auth::user()->is_monetize == false)
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Tracking Email Opens</h5>
@@ -262,54 +313,9 @@
             </div>
             @endif
 
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Unsubscribe Link</h5>
-                        @if(Auth::user()->is_monetize == false)<p class="card-category">/{email} is optional</p>@endif
-
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-centered">
-                                <div class="input-group">
-                                    <div class="input-group-prepend" >
-                                        <span class="input-group-text" style="font-size: 110%">Unsubscribe:</span>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" style="font-size: 100%"><b>https://{{$data['domain']}}/unsubscribe @if(Auth::user()->is_monetize == false)/{email}@endif</b>&nbsp;&nbsp;</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Suppression list</h5>
-                        <p class="card-category">Don't send this offer to any of these E-mails</p>
 
 
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-12 text-center">
-                                    <a class='btn btn-danger' target='_blank' href='{{$data['suppression']}}'  title='Download Subscribed E-mail List'>
-                                       Download Suppression List
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
     </div>
 
 
