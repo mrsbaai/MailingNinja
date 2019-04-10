@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Balance<br/></p>
+                                    <p class="card-category">Balance<br/>(Current)</p>
                                     <p class="card-title">${{Auth::user()->balance}}
                                     <p>
                                 </div>
