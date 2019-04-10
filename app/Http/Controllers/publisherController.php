@@ -152,6 +152,7 @@ class publisherController extends Controller
             });
 
 
+        $user_id  = Auth::user()->id;
         $ClickChart7 = $this->ClickChart($user_id, null, null, 7);
         $ClickChart30 = $this->ClickChart($user_id, null, null, 30);
         $ClickChart90 = $this->ClickChart($user_id, null, null, 90);
