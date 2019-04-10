@@ -108,12 +108,14 @@
                         </a>
                     </li>
 
+                    @if(Auth::user()->is_monetize == false)
                     <li @if(Request::is('*statistics*')) class="active" @endif>
                         <a href="{{ route('publisher-statistics') }}">
                             <i class="nc-icon nc-chart-bar-32"></i>
                             <p>Statistics</p>
                         </a>
                     </li>
+                    @endif
 
                     <li @if(Request::is('*offers*')) class="active" @endif>
                         <a href="{{ route('publisher-offers') }}">

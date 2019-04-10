@@ -42,8 +42,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Net Profit <br/>(Today)</p>
-                                    <p class="card-title">${{$data['profit_today']}}
+                                    <p class="card-category">Balance<br/></p>
+                                    <p class="card-title">${{Auth::user()->balance}}
                                     <p>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> ${{$data['profit_all']}} Lifetime
+                            <i class="fa fa-refresh"></i> <a href="{{ route('publisher-account') }}">Withdraw</a>
                         </div>
                     </div>
                 </div>
