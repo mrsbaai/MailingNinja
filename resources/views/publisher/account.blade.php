@@ -21,12 +21,12 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="card card-user">
+                    <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Withdraw</h5>
+                            <h5 class="card-title">Request a withdraw</h5>
                         </div>
                         <div class="card-body">
-                            <p>Your current balance is: <b>${{Auth::user()->balance}}</b>. The minimum amount for withdraw is $100. To request a withdraw please contact support <a href="{{ route('publisher-support') }}">Here</a></p>
+                            <p>Your current balance is: <b>${{Auth::user()->balance}}</b>. The minimum amount for withdraw is $100. To request a withdraw please <a href="{{ route('publisher-support') }}">contact support here</a></p>
                         </div>
                     </div>
                 </div>
@@ -148,10 +148,9 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <p><b>&nbsp;&nbsp;&nbsp;&nbsp;Important!</b> PayPal Email is required to receive payments from costumers.</p>
 
                             </div>
-n
+
                         {{ Form::close() }}
                     </div>
                 </div>
