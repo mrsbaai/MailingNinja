@@ -247,13 +247,11 @@
             </div>
          </div>
 
-         $cpaChart7 = $this->cpaChart($user_id, null, $offer_id, 7);
-         $cpaChart30= $this->cpaChart($user_id, null, $offer_id, 30);
-         $cpaChart90 = $this->cpaChart($user_id, null, $offer_id, 90);<div class="row">
+         <div class="row">
             <div class="col-md-12">
                <div class="card ">
                   <div class="card-header ">
-                     <h5 class="card-title">[cpa]</h5>
+                     <h5 class="card-title">[CPA]</h5>
                   </div>
                   <div class="card-body ">
 
