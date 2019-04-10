@@ -152,7 +152,32 @@ class publisherController extends Controller
             });
 
 
-        return view('publisher.home')->with('table', $table)->with('data',$data);
+        $ClickChart7 = $this->ClickChart($user_id, null, null, 7);
+        $ClickChart30 = $this->ClickChart($user_id, null, null, 30);
+        $ClickChart90 = $this->ClickChart($user_id, null, null, 90);
+
+
+        $cpcChart7 = $this->cpcChart($user_id, null, null, 7);
+        $cpcChart30= $this->cpcChart($user_id, null, null, 30);
+        $cpcChart90 = $this->cpcChart($user_id, null, null, 90);
+
+        $cpaChart7 = $this->cpaChart($user_id, null, null, 7);
+        $cpaChart30= $this->cpaChart($user_id, null, null, 30);
+        $cpaChart90 = $this->cpaChart($user_id, null, null, 90);
+
+
+        return view('publisher.home')
+            ->with('ClickChart7',$ClickChart7)
+            ->with('ClickChart30',$ClickChart30)
+            ->with('ClickChart90',$ClickChart90)
+            ->with('cpcChart7',$cpcChart7)
+            ->with('cpcChart30',$cpcChart30)
+            ->with('cpcChart90',$cpcChart90)
+            ->with('cpaChart7',$cpaChart7)
+            ->with('cpaChart30',$cpaChart30)
+            ->with('cpaChart90',$cpaChart90)
+            ->with('table', $table)
+            ->with('data',$data);
 
     }
     public function offerSubscribed(Request $request, $id){
