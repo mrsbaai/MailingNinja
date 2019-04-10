@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\cpc;
 use App\opens;
 use App\unsubscribes;
 use Okipa\LaravelBootstrapTableList\TableList;
@@ -296,6 +297,11 @@ class publisherController extends Controller
         $ClickChart30 = $this->ClickChart($user_id, null, $offer_id, 30);
         $ClickChart90 = $this->ClickChart($user_id, null, $offer_id, 90);
 
+
+        $cpcChart7 = $this->cpcChart($user_id, null, $offer_id, 7);
+        $cpcChart30= $this->cpcChart($user_id, null, $offer_id, 30);
+        $cpcChart90 = $this->cpcChart($user_id, null, $offer_id, 90);
+
         $OpenChart7 = $this->OpenChart($user_id, null, $offer_id, 7);
         $OpenChart30 = $this->OpenChart($user_id, null, $offer_id, 30);
         $OpenChart90 = $this->OpenChart($user_id, null, $offer_id, 90);
@@ -311,6 +317,9 @@ class publisherController extends Controller
             ->with('ClickChart7',$ClickChart7)
             ->with('ClickChart30',$ClickChart30)
             ->with('ClickChart90',$ClickChart90)
+            ->with('cpcChart7',$cpcChart7)
+            ->with('cpcChart30',$cpcChart30)
+            ->with('cpcChart90',$cpcChart90)
             ->with('OpenChart7',$OpenChart7)
             ->with('OpenChart30',$OpenChart30)
             ->with('OpenChart90',$OpenChart90)
@@ -854,6 +863,64 @@ if($request->user()->is_monetize == false){
             }
 
             $data[] = $clicks;
+        }
+
+        $chartjs = app()->chartjs
+            ->name($name)
+            ->type('line')
+            ->size(['width' => 350, 'height' => 150])
+            ->labels($dates)
+            ->datasets([
+                [
+                    "label" => "Clicks",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data,
+                ],
+            ])
+            ->options([
+                'scales' => [
+                    'yAxes' => [
+                        [
+                            'ticks' => [
+                                'beginAtZero' => true,
+                                'precision' => 0,
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+        return $chartjs;
+    }
+
+    public function cpcChart ($user_id = null, $vertical_id = null, $offer_id = null, $days = 30){
+
+        $name = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+        $start = Carbon::now()->subDays($days);
+
+        for ($i = 0 ; $i <= $days; $i++) {
+            $date = $start->copy()->addDays($i);
+            $dates[] = $date->format('d/m');
+
+            $query  = cpc::latest();
+
+
+            $query->whereMonth('created_at',$date->format('m'))
+                ->whereDay('created_at',$date->format('d'));
+
+            if ($user_id){$query->where('user_id' , $user_id);}
+            if ($offer_id){$query->where('offer_id' , $offer_id);}
+            $collection = $query->get();
+            $profit = 0;
+            foreach ($collection as $item) {
+                $profit = $profit + $item['count'];
+            }
+
+            $data[] = $profit;
         }
 
         $chartjs = app()->chartjs

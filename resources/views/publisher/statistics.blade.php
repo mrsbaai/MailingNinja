@@ -199,6 +199,54 @@
       </div>
 
 
+         <div class="row">
+            <div class="col-md-12">
+               <div class="card ">
+                  <div class="card-header ">
+                     <h5 class="card-title">[CPC]</h5>
+                  </div>
+                  <div class="card-body ">
+
+                     <!-- Nav tabs -->
+                     <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" data-toggle="tab" href="#cpc7">7 Days</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#cpc30">30 Days</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#cpc90">90 Days</a>
+                        </li>
+                     </ul>
+
+                     <!-- Tab panes -->
+                     <div class="tab-content">
+                        <div id="cpc7" class="container tab-pane active"><br>
+                           <h5>7 Days Profit</h5>
+                           {!! $cpcChart7->render() !!}
+
+
+                        </div>
+                        <div id="cpc30" class="container tab-pane fade"><br>
+                           <h5>30 Days Profit</h5>
+                           {!! $cpcChart30->render() !!}
+
+                        </div>
+                        <div id="cpc90" class="container tab-pane fade"><br>
+                           <h5>90 Days Profit</h5>
+                           {!! $cpcChart90->render() !!}
+
+
+                        </div>
+                     </div>
+
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
          @if(Auth::user()->is_monetize == false)
 <div class="row">
          <div class="col-md-12">
