@@ -13,6 +13,7 @@ use App\cpc;
 use App\sells;
 use App\cpa;
 use App\opens;
+use App\user;
 
 
 class trackingController extends Controller
@@ -40,17 +41,6 @@ class trackingController extends Controller
 
     }
 
-    public function is_cpc_profit($link){
-        $info = link::all()->where('link', $link)->first();
-
-        $cpc = cpc::all()
-            ->where('user_id', $info['user_id'])
-            ->where('offer_id', $info['offer_id'])
-            ->first();
-
-
-
-    }
     public function click($code, $email){
 
 
@@ -111,6 +101,15 @@ class trackingController extends Controller
                     }
 
                     if($paypal_profit > $cpc_profit or $cpc_profit < 5) {
+
+                        // update publisher balance
+                        $publisher = user::all()->where('id', $info['user_id'])->first();
+                        $new_balance = $publisher['balance'] + $info['cpc'];
+                        $ret = $publisher->update([
+                            'balance' => $new_balance,
+                        ]);
+
+                        // log
                         $cpc = cpc::all()
                             ->where('created_at', '>=', Carbon::today())
                             ->where('user_id', $info['user_id'])

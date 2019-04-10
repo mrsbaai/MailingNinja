@@ -168,6 +168,8 @@ class PaymentController extends Controller
                             'income' => $new_income,
                         ]);
 
+
+
                         // if cpa credit publisher
 
 
@@ -198,7 +200,13 @@ class PaymentController extends Controller
                                 $cpa_profit = $cpa_profit + $item['value'];
                             }
 
-                            if($paypal_profit > $cpa_profit) {
+                            if($paypal_profit > $cpa_profit or $mc_gross < 0) {
+                                $publisher = user::all()->where('id', $inv['publisher_id'])->first();
+                                $new_balance = $publisher['balance'] + $link['cpa'];
+                                $ret = $publisher->update([
+                                    'balance' => $new_balance,
+                                ]);
+
                                 $cpa = cpa::all()
                                     ->where('created_at', '>=', Carbon::today())
                                     ->where('user_id', $link['user_id'])
