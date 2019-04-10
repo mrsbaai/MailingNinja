@@ -16,6 +16,22 @@
                 @endif
             </div>
         </div>
+
+        @if(Auth::user()->is_monetize == true)
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-user">
+                        <div class="card-header">
+                            <h5 class="card-title">Withdraw</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Your current balance is: <b>${{Auth::user()->balance}}</b>. The minimum amount for withdraw is $100. To request a withdraw please contact support <a href="{{ route('publisher-support') }}">Here</a></p>
+                        </div>
+                    </div>
+                </div>
+
+        @endif
         <div class="row">
 
             <div class="col-md-12">
@@ -134,12 +150,7 @@
                                 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;Important!</b> PayPal Email is required to receive payments from costumers.</p>
 
                             </div>
-
-                            <div class="row">
-                                <div class="update ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-primary btn-round">Update Info</button>
-                                </div>
-                            </div>
+n
                         {{ Form::close() }}
                     </div>
                 </div>
