@@ -2,7 +2,7 @@
 
 @section('content')
    <div class="content">
-      @if(Auth::user()->publisher_type == "build")
+      @if(Auth::user()->is_monetize == false)
       <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -52,104 +52,9 @@
       </div>
       @endif
 
-         @if(Auth::user()->is_monetize == false)
-      <div class="row">
-         <div class="col-md-12">
-            <div class="card ">
-               <div class="card-header ">
-                  <h5 class="card-title">[Profit]</h5>
-               </div>
-               <div class="card-body ">
-
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#Profit7">7 Days</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#Profit30">30 Days</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#Profit90">90 Days</a>
-                     </li>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                     <div id="Profit7" class="container tab-pane active"><br>
-                        <h5>7 Days Profit</h5>
-                        {!! $ProfitChart7->render() !!}
-
-                     </div>
-                     <div id="Profit30" class="container tab-pane fade"><br>
-                        <h5>30 Days Profit</h5>
-                        {!! $ProfitChart30->render() !!}
-
-                     </div>
-                     <div id="Profit90" class="container tab-pane fade"><br>
-                        <h5>90 Days Profit</h5>
-                        {!! $ProfitChart90->render() !!}
-
-                     </div>
-                  </div>
 
 
-               </div>
-            </div>
-         </div>
-      </div>
 
-         @endif
-
-         @if(Auth::user()->is_monetize == false)
-      <div class="row">
-         <div class="col-md-12">
-            <div class="card ">
-               <div class="card-header ">
-                  <h5 class="card-title">[Leads]</h5>
-               </div>
-               <div class="card-body ">
-
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#Leads7">7 Days</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#Leads30">30 Days</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#Leads90">90 Days</a>
-                     </li>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                     <div id="Leads7" class="container tab-pane active"><br>
-                        <h5>7 Days Leads</h5>
-                        {!! $LeadsChart7->render() !!}
-
-
-                     </div>
-                     <div id="Leads30" class="container tab-pane fade"><br>
-                        <h5>30 Days Leads</h5>
-                        {!! $LeadsChart30->render() !!}
-
-                     </div>
-                     <div id="Leads90" class="container tab-pane fade"><br>
-                        <h5>90 Days Leads</h5>
-                        {!! $LeadsChart90->render() !!}
-
-
-                     </div>
-                  </div>
-
-
-               </div>
-            </div>
-         </div>
-      </div>
-         @endif
       <div class="row">
          <div class="col-md-12">
             <div class="card ">
@@ -198,7 +103,7 @@
          </div>
       </div>
 
-
+         @if(Auth::user()->is_monetize == true)
          <div class="row">
             <div class="col-md-12">
                <div class="card ">
@@ -294,6 +199,7 @@
                </div>
             </div>
          </div>
+         @endif
 
          @if(Auth::user()->is_monetize == false)
 <div class="row">
