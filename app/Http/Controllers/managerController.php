@@ -360,7 +360,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $activate_route = route('global-offer-activate', ['offer_id' => $entity->id]);
-                return  "<a class='p-3'  href='$activate_route'  title='Activate'><h2>Activate</h2></a>";
+                return  "<a class='p-3'  href='$activate_route'  title='Activate'><b>Activate</b></a>";
             });
         $table2->addColumn()
             ->setTitle(__(' '))
@@ -371,7 +371,7 @@ class managerController extends Controller
             });
 
 
-        return view('manager.home')->with('table', $table)->with('table2', $table2)->with('data',$data);;
+        return view('manager.home')->with('table', $table)->with('table2', $table2)->with('data',$data);
     }
 
     public function globalOfferStats(Request $request, $offer_id){
