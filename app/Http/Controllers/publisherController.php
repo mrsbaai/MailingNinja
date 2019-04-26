@@ -450,7 +450,13 @@ class publisherController extends Controller
             $newLink = new Link;
             $newLink->offer_id = $id;
             $newLink->user_id = $user_id;
-            $newLink->price = $price;
+            if (Auth::user()->is_monetize == true){
+                $newLink->price = $price;
+            }else{
+                $newLink->price = 0;
+            }
+
+
             $newLink->cpa = $cpa;
             $newLink->cpc = $cpc;
             $newLink->link = $url;
@@ -460,21 +466,30 @@ class publisherController extends Controller
             $price = $link->price;
         }
 
-        if ($link->cpc !== $offer->cpc or $link->cpa !== $offer->cpa){
-            $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
-            $price =  $offer->payout;
-            $cpa =  $offer->cpa;
-            $cpc =  $offer->cpc;
+            if ($link->cpc !== $offer->cpc or $link->cpa !== $offer->cpa){
 
-            $newLink = new Link;
-            $newLink->offer_id = $id;
-            $newLink->user_id = $user_id;
-            $newLink->price = $price;
-            $newLink->cpa = $cpa;
-            $newLink->cpc = $cpc;
-            $newLink->link = $url;
-            $newLink->save();
-        }
+                $url = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
+                $price =  $offer->payout;
+                $cpa =  $offer->cpa;
+                $cpc =  $offer->cpc;
+
+                $newLink = new Link;
+                $newLink->offer_id = $id;
+                $newLink->user_id = $user_id;
+                if (Auth::user()->is_monetize == true){
+                    $newLink->price = $price;
+                }else{
+                    $newLink->price = 0;
+                }
+
+                $newLink->cpa = $cpa;
+                $newLink->cpc = $cpc;
+                $newLink->link = $url;
+                $newLink->save();
+
+            }
+
+
 
         //$domain  = domain::all()->sortByDesc("created_at")->where('status',"Active")->where('type',"Promotional")->first();
 
