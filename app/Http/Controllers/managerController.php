@@ -132,6 +132,9 @@ class managerController extends Controller
     }
     public function home(Request $request){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_admin == false){
+            return Redirect::route('offers-manage');
+        }
         $date = Carbon::now();
         $query  = subscriber::latest();
 
@@ -265,6 +268,9 @@ class managerController extends Controller
     }
     public function globalStats(Request $request){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_admin == false){
+            return Redirect::route('offers-manage');
+        }
         $publisherController = new publisherController;
         return $publisherController->statistics($request, null,  null);
 
@@ -542,6 +548,9 @@ class managerController extends Controller
     }
     public function destroyPublisher(Request $request){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         $res = user::where('id',$request->id)->delete();
         if ($res){
             flash("Publisher deleted!")->success();
@@ -552,6 +561,9 @@ class managerController extends Controller
     }
     public function publishers(Request $request){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         $table = app(TableList::class)
             ->setModel(user::class)
             ->setRoutes([
@@ -612,7 +624,9 @@ class managerController extends Controller
     }
 
     public function assignOffer(Request $request){
-
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         if (null != Offer::find($request->offer_id)){
             $user = User::find($request->publisher_id);
             $user->offers()->attach($request->offer_id);
@@ -627,6 +641,9 @@ class managerController extends Controller
 
     public function publisherPrivateOffers(Request $request, $id){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
 
         $user = User::where('id',$id)->first();
         $title = $user['name'];
@@ -668,11 +685,17 @@ class managerController extends Controller
 
     public function publisherStats(Request $request, $id){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         $publisherController = new publisherController;
         return $publisherController->statistics($request, null,  $id);
     }
     public function activePublisher(Request $request, $id, $status){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         $publisher= user::where('id', $id)->where('manager_id', Auth::user()->id)->first();
         $res = $publisher->update([
             'is_active' => $status,
@@ -695,6 +718,9 @@ class managerController extends Controller
     }
     public function publisher(Request $request, $id){
         $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_offer_manager == true){
+            return Redirect::route('offers-manage');
+        }
         $countries = country::pluck('name','code');
         $user = User::where('id',$id)->first();
 

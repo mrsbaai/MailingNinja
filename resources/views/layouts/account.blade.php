@@ -72,13 +72,14 @@
                         </a>
                     </li>
 
-
+                        @if(Auth::user()->is_offer_manager == false)
                     <li @if( Route::current()->getName() == 'manage-publishers' or Route::current()->getName() == 'edit-publisher' or  Route::current()->getName() == 'publisher-private-offers'  or Route::current()->getName() == 'publisher-offer-destroy') class="active" @endif>
                         <a href="{{ route('manage-publishers') }}">
                             <i class="nc-icon nc-badge"></i>
                             <p>Manage Publishers</p>
                         </a>
                     </li>
+                        @endif
                     <li @if(Route::current()->getName() == 'manager-account') class="active" @endif>
                         <a href="{{ route('manager-account') }}">
                             <i class="nc-icon nc-circle-10"></i>
