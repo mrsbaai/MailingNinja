@@ -26,7 +26,7 @@
                             <h5 class="card-title">Request a withdraw</h5>
                         </div>
                         <div class="card-body">
-                            <p>Your current balance is: <b>${{Auth::user()->balance}}</b>. The minimum amount for withdraw is $100. To request a withdraw please <a href="{{ route('publisher-support') }}">contact support here</a></p>
+                            <p>Your current balance is: <b>${{Auth::user()->balance}}</b>. The minimum amount for withdraw is $100. To request a withdraw please <a href="{{ route('publisher-support') }}">contact support here</a>.</p>
                         </div>
                     </div>
                 </div>
