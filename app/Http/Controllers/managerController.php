@@ -346,7 +346,7 @@ class managerController extends Controller
 
             });
 
-        $table->addColumn('Type')
+        $table->addColumn('TYPE')
 
             ->setTitle('TYPE')
             ->isCustomHtmlElement(function ($entity, $column) {
@@ -360,7 +360,7 @@ class managerController extends Controller
 
             });
 
-        $table->addColumn('Payout')
+        $table->addColumn('PAYOUT')
             ->setTitle('PAYOUT')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->cpc > 0){
@@ -373,7 +373,6 @@ class managerController extends Controller
 
             });
 
-        $table->addColumn('price');
 
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
