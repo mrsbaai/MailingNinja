@@ -371,7 +371,7 @@ class managerController extends Controller
             });
 
 
-        return view('manager.home')->with('table', $table)->with('data',$data);;
+        return view('manager.home')->with('table', $table)->with('table2', $table2)->with('data',$data);;
     }
 
     public function globalOfferStats(Request $request, $offer_id){
