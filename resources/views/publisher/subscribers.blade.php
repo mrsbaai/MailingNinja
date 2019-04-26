@@ -65,7 +65,7 @@
                            <select class="form-control form-control-lg custom-select" id="type" name="type">
                               <option value="" selected>All</option>
                               <option value="0">Subscribers</option>
-                              <option value="1">Buyers</option>
+                              <!--<option value="1">Buyers</option> -->
                               <option value="2">Clickers</option>
                               <option value="3">Openers</option>
                            </select>
