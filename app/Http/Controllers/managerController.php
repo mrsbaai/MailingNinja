@@ -359,8 +359,8 @@ class managerController extends Controller
             ->setTitle(__(' '))
             ->isCustomHtmlElement(function ($entity, $column) {
 
-                $stats_route = route('global-offer-activate', ['offer_id' => $entity->id]);
-                return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
+                $activate_route = route('global-offer-activate', ['offer_id' => $entity->id]);
+                return  "<a class='p-3' target='blank' href='$activate_route'  title='Activate'><h2>Activate</h2></a>";
             });
         $table2->addColumn()
             ->setTitle(__(' '))
