@@ -155,7 +155,7 @@
             <div class="col-md-12">
                 <div class="card card-user">
                     <div class="card-header">
-                        <h5 class="card-title">Sign up Message -
+                        <h5 class="card-title">Sign up Message - {{$data['type']}}
 
                         </h5>
                     </div>
