@@ -102,11 +102,9 @@ class landingController extends Controller
     public function getRelatedBooks($offer_id){
 
 
-        $offer = offer::all()->where('id',$offer_id)->where('is_active',true)->first();
+        $offer = offer::all()->where('id',$offer_id)->first();
 
         $verticals = $offer->verticals()->get();
-
-
 
 
 
