@@ -249,7 +249,7 @@ class landingController extends Controller
         }else{
             $old_price = 100/60*$custom_price;
 
-            $old_price = (($custom_price * 40) / 100) + $custom_price;
+    ;
             $old_price = intval($old_price);
         }
         //if ($custom_price < $price){ $old_price = $price;}
