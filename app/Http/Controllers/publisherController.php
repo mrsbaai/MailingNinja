@@ -564,7 +564,7 @@ class publisherController extends Controller
                 }
 
             });
-            if(auth::user()->is_monetize = true){
+            if( Auth::user()->is_monetize == 1){
                 $table->addColumn('TYPE')
 
                     ->setTitle('TYPE')
@@ -580,7 +580,7 @@ class publisherController extends Controller
                     });
             }
 
-        if(auth::user()->is_monetize = true){
+        if( Auth::user()->is_monetize == 1){
             $table->addColumn('PAYOUT')
                 ->setTitle('PAYOUT')
                 ->isCustomHtmlElement(function ($entity, $column) {
