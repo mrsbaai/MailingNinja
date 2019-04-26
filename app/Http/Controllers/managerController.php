@@ -345,6 +345,36 @@ class managerController extends Controller
                 }
 
             });
+
+        $table->addColumn('Type')
+
+            ->setTitle('TYPE')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return "CPC";
+                }elseif ($entity->cpa > 0){
+                    Return "CPA";
+                }else{
+                    Return "-";
+                }
+
+            });
+
+        $table->addColumn('Payout')
+            ->setTitle('PAYOUT')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return $entity->cpc;
+                }elseif ($entity->cpa > 0){
+                    Return $entity->cpa;
+                }else{
+                    Return "Direct";
+                }
+
+            });
+
+        $table->addColumn('price');
+
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
             ->isSortable()
