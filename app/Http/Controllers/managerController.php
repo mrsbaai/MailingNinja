@@ -254,7 +254,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $route = route('global-offer-stats', ['id' => $entity->offer_id]);
-                return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->offer_id</a>";
+                return "<a class='p-3' target='_blank' href='$route' title='Show Offer Statistics'>$entity->offer_id</a>";
             });
 
         $table->addColumn('publisher_id')
@@ -264,7 +264,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $route = route('publisher-stats', ['id' => $entity->publisher_id]);
-                return "<a class='p-3' target='blank' href='$route' title='Show Offer Statistics'>$entity->publisher_id</a>";
+                return "<a class='p-3' target='_blank' href='$route' title='Show Offer Statistics'>$entity->publisher_id</a>";
             });
 
 
@@ -367,7 +367,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $preview_route = route('preview', ['offer_id' => $entity->id]);
-                return  "<a class='p-3' target='blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
+                return  "<a class='p-3' target='_blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
             });
 
 
@@ -520,7 +520,7 @@ class managerController extends Controller
                 ->isCustomHtmlElement(function ($entity, $column) {
 
                     $stats_route = route('global-offer-stats', ['offer_id' => $entity->id]);
-                    return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
+                    return  "<a class='p-3' target='_blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
                 });
 
         }
@@ -530,7 +530,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $preview_route = route('preview', ['offer_id' => $entity->id]);
-                return  "<a class='p-3' target='blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
+                return  "<a class='p-3' target='_blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
             });
 
         return view('manager.offers')->with('table',$table);
@@ -731,8 +731,8 @@ class managerController extends Controller
                 $stats_route = route('publisher-stats', ['id' => $entity->id]);
 
                 return "
-<a class='p-3' target='blank' href='$stats_route'  title='Show Publishers Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
-<a class='p-3' target='blank' href='$offers_route'  title='Edit Publishers Private Offers'><i class='fas fa-fw fa-link'></i></a>
+<a class='p-3' target='_blank' href='$stats_route'  title='Show Publishers Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>
+<a class='p-3' target='_blank' href='$offers_route'  title='Edit Publishers Private Offers'><i class='fas fa-fw fa-link'></i></a>
                         
                        ";
             });
