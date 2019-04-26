@@ -368,10 +368,13 @@ class managerController extends Controller
                 }elseif ($entity->cpa > 0){
                     Return $entity->cpa;
                 }else{
-                    Return "Direct";
+                    Return "-";
                 }
 
             });
+
+        $table->addColumn('payout')
+            ->setTitle('Price');
 
 
         $table->addColumn('updated_at')
