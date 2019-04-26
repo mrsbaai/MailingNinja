@@ -49,6 +49,8 @@ class managerController extends Controller
         }
         if ($request->is_private == "on"){$is_private = 1;}else{$is_private = 0;}
         $offer = new offer;
+
+        $offer->manager_id = Auth::user()->id;
         $offer->title = $request->title;
         $offer->subtitle = $request->subtitle;
         $offer->thumbnail = $thumbnail;
@@ -319,7 +321,11 @@ class managerController extends Controller
                 'create'     => ['alias' => 'offers-new', 'parameters' => []],
                 'edit'       => ['alias' => 'offers-edit', 'parameters' => []],
                 'destroy'    => ['alias' => 'offers-destroy', 'parameters' => []],
-            ]);
+            ])
+            ->addQueryInstructions(function ($query) {
+                $query->select('offers.*')
+                    ->where('manager_id', Auth::user()->id);
+            });
 // we add some columns to the table list
         $table->addColumn('id')
             ->isSearchable()
@@ -375,7 +381,6 @@ class managerController extends Controller
 
         $table->addColumn('payout')
             ->setTitle('Price');
-
 
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
