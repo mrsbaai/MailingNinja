@@ -148,6 +148,7 @@ Route::group(array('domain' => 'premiumbooks.net'), function() {
     Route::post('/manager/publishers/offers', 'managerController@assignOffer')->name('assign-offers');
     Route::get('/manager/statistics', 'managerController@globalStats')->name('manager-statistics');
     Route::get('/manager/offers/stats/{offer_id}', 'managerController@globalOfferStats')->name('global-offer-stats');
+    Route::get('/manager/offers/activate/{offer_id}', 'managerController@globalOfferActivate')->name('global-offer-activate');
 
 //summernote store route
     Route::post('/manager/offers/new','managerController@storeOffer')->name('store-offer');

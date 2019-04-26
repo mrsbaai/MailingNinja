@@ -130,6 +130,24 @@ class managerController extends Controller
         }
         return Redirect::route('offers-edit', $offer->id);
     }
+    public function globalOfferActivate(Request $request){
+        $request->user()->authorizeRoles('manager');
+        if (Auth::user()->is_admin == false){
+            return Redirect::route('offers-manage');
+        }
+
+        $offer = offer::find($request->offer_id);
+        $res = $offer->update([
+            'is_active' => true,
+        ]);
+        if ($res){
+            flash("Offer 'ID: $request->offer_id' Activated.")->success();
+        }else{
+            flash("Error Activating offer 'ID: $request->offer_id'.")->error();
+        }
+        return Redirect::route('manager-dashboard');
+
+    }
     public function home(Request $request){
         $request->user()->authorizeRoles('manager');
         if (Auth::user()->is_admin == false){
@@ -255,6 +273,102 @@ class managerController extends Controller
             ->setTitle('costumer_id')
             ->setStringLimit(10)
             ->isSearchable();
+
+
+        /// pending offers table
+        ///
+        $table2 = app(TableList::class)
+            ->setModel(Offer::class)
+            ->setRoutes([
+                'index' => ['alias' => 'offers-manage', 'parameters' => []],
+                'create'     => ['alias' => 'offers-new', 'parameters' => []],
+                'edit'       => ['alias' => 'offers-edit', 'parameters' => []],
+                'destroy'    => ['alias' => 'offers-destroy', 'parameters' => []],
+            ]);
+
+            $table2->addQueryInstructions(function ($query) {
+                $query->select('offers.*')
+                    ->where('is_active', false);
+            });
+
+// we add some columns to the table list
+        $table2->addColumn('id')
+            ->isSearchable()
+            ->isSortable()
+            ->setTitle('id');
+        $table2->addColumn('title')
+            ->setTitle('Title')
+            ->isSortable()
+            ->setStringLimit(20)
+            ->isSearchable()
+            ->useForDestroyConfirmation();
+
+        $table2->addColumn('is_private')
+            ->isSortable()
+            ->setTitle('P?');
+        $table2->addColumn('')
+            ->setTitle('Status')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->is_active){
+                    return "<span style='color:green'>[ACTIVE]</span>";
+                }else{
+                    return "<span style='color:gray'>[PENDING]</span>";
+                }
+
+            });
+
+        $table2->addColumn('TYPE')
+
+            ->setTitle('TYPE')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return "CPC";
+                }elseif ($entity->cpa > 0){
+                    Return "CPA";
+                }else{
+                    Return "-";
+                }
+
+            });
+
+        $table2->addColumn('PAYOUT')
+            ->setTitle('PAYOUT')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                if ($entity->cpc > 0){
+                    Return $entity->cpc;
+                }elseif ($entity->cpa > 0){
+                    Return $entity->cpa;
+                }else{
+                    Return "-";
+                }
+
+            });
+
+        $table2->addColumn('payout')
+            ->setTitle('Price');
+
+        $table2->addColumn('updated_at')
+            ->setTitle('Last Update')
+            ->isSortable()
+            ->sortByDefault()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return $this->nicetime($entity->updated_at) ;
+            });
+
+        $table2->addColumn()
+            ->setTitle(__(' '))
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $stats_route = route('global-offer-activate', ['offer_id' => $entity->id]);
+                return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
+            });
+        $table2->addColumn()
+            ->setTitle(__(' '))
+            ->isCustomHtmlElement(function ($entity, $column) {
+
+                $preview_route = route('preview', ['offer_id' => $entity->id]);
+                return  "<a class='p-3' target='blank' href='$preview_route'  title='Preview Offer'><i class='fas fa-fw fa-eye'></i></a>";
+            });
 
 
         return view('manager.home')->with('table', $table)->with('data',$data);;
@@ -400,13 +514,17 @@ class managerController extends Controller
                 return $this->nicetime($entity->updated_at) ;
             });
 
-        $table->addColumn()
-            ->setTitle(__(' '))
-            ->isCustomHtmlElement(function ($entity, $column) {
+        if (Auth::user()->is_admin == true){
+            $table->addColumn()
+                ->setTitle(__(' '))
+                ->isCustomHtmlElement(function ($entity, $column) {
 
-                $stats_route = route('global-offer-stats', ['offer_id' => $entity->id]);
-                return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
-            });
+                    $stats_route = route('global-offer-stats', ['offer_id' => $entity->id]);
+                    return  "<a class='p-3' target='blank' href='$stats_route'  title='Show Offer Statistics'><i class='fas fa-fw fa-chart-bar'></i></a>";
+                });
+
+        }
+
         $table->addColumn()
             ->setTitle(__(' '))
             ->isCustomHtmlElement(function ($entity, $column) {
