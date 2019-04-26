@@ -66,47 +66,7 @@
 
                         </div>
                     </div>
-                @if(Auth::user()->is_monetize == false)
-                <div class="card ">
-                    <div class="card-header">
-                        <h5 class="card-title">Custom Price</h5>
-                        <p class="card-category">If you set the price to <b>$0</b> the visitors will be asked for their email to download the product for free, perfect for list building or data cleaning.</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-lg-9 col-centered">
-
-                                {{ Form::open(array('action' => 'publisherController@offerSetPrice', 'id' => 'set_price'))}}
-
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text" style="font-size: 200%"><b>$</b></div>
-                                    </div>
-                                    <input name="offer_id" value="{{$data['offer_id']}}" hidden>
-                                    <input class="form-control" name="price" value="{{$data['price']}}" placeholder="Price" type="number" step=".01"style="font-size: 200%" required>
-
-                                    <div class="input-group-append">
-                                                <span class="input-group-text p-0 ">
-                                                    <button type="submit" class="btn btn-link" title="Set the price">
-                                                        <i class="nc-icon nc-minimal-right" style="font-size: 250%"></i>&nbsp;&nbsp;
-                                                    </button>
-                                                </span>
-                                    </div>
-
-                                </div>
-                                {{Form::close()}}
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                </div>
-                    @endif
-
+                
 
 
 
