@@ -329,7 +329,7 @@ class managerController extends Controller
                     ->where('manager_id', Auth::user()->id);
             });
         }
-        
+
 // we add some columns to the table list
         $table->addColumn('id')
             ->isSearchable()

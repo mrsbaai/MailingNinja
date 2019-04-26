@@ -49,6 +49,7 @@
         <div class="sidebar-wrapper">
             @if (Auth::user()->hasRole('manager'))
                 <ul class="nav">
+                    @if(Auth::user()->is_admin == true)
                     <li @if(Route::current()->getName() == 'manager-dashboard' or Route::current()->getName() == 'manager-home') class="active" @endif>
                         <a href="{{ route('manager-dashboard') }}">
                             <i class="nc-icon nc-bank"></i>
@@ -62,6 +63,8 @@
                             <p>Statistics</p>
                         </a>
                     </li>
+
+                    @endif
                     <li @if(Route::current()->getName() == 'offers-new' or Route::current()->getName() == 'offers-destroy' or Route::current()->getName() == 'offers-edit' or Route::current()->getName() == 'offers-edit-promo' or Route::current()->getName() == 'offers-manage' or Route::current()->getName() == 'store-offer' or Route::current()->getName() == 'update-offer' or Route::current()->getName() == 'update-landing' or Route::current()->getName() == 'update-promo') class="active" @endif>
                         <a href="{{ route('offers-manage') }}">
                             <i class="nc-icon nc-bulb-63"></i>
