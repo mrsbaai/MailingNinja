@@ -235,7 +235,7 @@ class landingController extends Controller
             return redirect("/");
         }
 
-        if($offer->is_active == false){
+        if($offer->is_active == false and $type <> "preview"){
             return abort(404);
         }
 
