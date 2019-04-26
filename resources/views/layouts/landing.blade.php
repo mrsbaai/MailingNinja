@@ -543,7 +543,7 @@
         <div class="container">
             <div class="col-sm-12 text-center text-center-mobile">
 
-
+                @if (Request::route()->getName() <> "preview")
                 <div id="subscribe-modal" class="modal fade flash-modal">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -556,7 +556,7 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
 
 
 

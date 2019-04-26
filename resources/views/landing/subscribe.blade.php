@@ -1,6 +1,7 @@
 
 
 @section('subscribe')
+    @if (Request::route()->getName() <> "preview")
     <style>
         .modal-content {
             background-color: #F5F5F5;
@@ -31,4 +32,5 @@
         }, 30000);
 
     </script>
+    @endif
 @endsection
