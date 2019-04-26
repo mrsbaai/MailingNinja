@@ -190,13 +190,13 @@
 
                                             {{$data['description']}}<br/><br/>
 
-                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/@if(Auth::user()->is_monetize == false){email}@endif<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
 
                                             To Download This E-book for FREE, Please Follow This Link:<br/><br/>
 
-                                            https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+                                            https://{{$data['domain']}}/{{$data['link']}}/@if(Auth::user()->is_monetize == false){email}@endif<br/><br/>
 
                                             Cheers,<br/>
                                             {{ config('app.name') }}.<br/><br/>
@@ -208,13 +208,13 @@
 
                                             {{$data['description']}}<br/><br/>
 
-                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+                                            Read More: https://{{$data['domain']}}/{{$data['link']}}/@if(Auth::user()->is_monetize == false){email}@endif<br/><br/>
 
                                             {{$data['about_1']}}<br/><br/>
 
                                             To Download This E-book With %40 Discount, Please Follow This Link:<br/><br/>
 
-                                            https://{{$data['domain']}}/{{$data['link']}}/{email}<br/><br/>
+                                            https://{{$data['domain']}}/{{$data['link']}}/@if(Auth::user()->is_monetize == false){email}@endif<br/><br/>
 
 
                                             Cheers,<br/>

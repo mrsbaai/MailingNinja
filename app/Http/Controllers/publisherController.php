@@ -21,6 +21,7 @@ use App\link;
 use App\publisherOffers;
 use Illuminate\Support\Facades\Input;
 use Response;
+use App\Http\Controllers\trackingController;
 
 
 
@@ -33,6 +34,8 @@ class publisherController extends Controller
     }
     public function home(Request $request){
         $request->user()->authorizeRoles('publisher');
+        $track = new trackingController();
+        $track->ipNew();
         return $this->dashboard($request);
 
     }
