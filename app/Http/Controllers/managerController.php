@@ -360,7 +360,7 @@ class managerController extends Controller
             ->isCustomHtmlElement(function ($entity, $column) {
 
                 $activate_route = route('global-offer-activate', ['offer_id' => $entity->id]);
-                return  "<a class='p-3' target='blank' href='$activate_route'  title='Activate'><h2>Activate</h2></a>";
+                return  "<a class='p-3'  href='$activate_route'  title='Activate'><h2>Activate</h2></a>";
             });
         $table2->addColumn()
             ->setTitle(__(' '))
