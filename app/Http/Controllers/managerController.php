@@ -321,11 +321,15 @@ class managerController extends Controller
                 'create'     => ['alias' => 'offers-new', 'parameters' => []],
                 'edit'       => ['alias' => 'offers-edit', 'parameters' => []],
                 'destroy'    => ['alias' => 'offers-destroy', 'parameters' => []],
-            ])
-            ->addQueryInstructions(function ($query) {
+            ]);
+
+        if (Auth::user()->is_admin == false){
+            $table->addQueryInstructions(function ($query) {
                 $query->select('offers.*')
                     ->where('manager_id', Auth::user()->id);
             });
+        }
+        
 // we add some columns to the table list
         $table->addColumn('id')
             ->isSearchable()
