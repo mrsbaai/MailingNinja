@@ -660,6 +660,12 @@ class managerController extends Controller
         if (isset($user->manager->id)){
 
         if ($user->manager->id == Auth::user()->id){
+if($user['is_monetize'] == true){
+    $data['type'] = "Magnetization Account";
+}else{
+    $data['type'] = "List Building Account";
+}
+
             $data['id'] = $id;
             $data['name'] = $user['name'];
             $data['first_name'] = $user['first_name'];

@@ -232,10 +232,10 @@
                     </nav>
                     <div class="credits ml-auto">
               <span class="copyright">
-                ©
+                Mailing Ninja ©
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, Made with <i class="fa fa-heart heart"></i> in Morocco
+                </script>, Made with <i class="fa fa-heart heart"></i>
               </span>
                     </div>
                 </div>
