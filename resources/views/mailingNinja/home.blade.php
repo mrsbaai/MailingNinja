@@ -32,7 +32,7 @@
                                     </div>
                                 </a>
                                 <p class="card-description text-center">
-                                    Automated mailing list generator, from openers, clickers, subscribers, and buyers. Segmented by country and interest.
+                                    Automated mailing list generator, from openers, clickers, subscribers, and buyers. Download lists segmented by country and interest.
                                 </p>
                                 <br>
                                 <a href="/register?build" class="btn btn-sm btn-round btn-danger">Get Started</a>
@@ -51,7 +51,7 @@
                                     </div>
                                 </a>
                                 <p class="card-description text-center">
-                                    Send your traffic to our high converting landing pages and get paid directly from costumers to your PayPal.
+                                    Send your mailing traffic to our high converting landing pages and get maximum revenue from any mailing list.
                                 </p>
                                 <br>
                                 <a href="/register" class="btn btn-sm btn-round btn-danger">Get Started</a>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">Build Mailing Lists</h4>
-                                <p>Give any of our digital products for free, and generate high quality subscribers. This service is Free.</p>
+                                <p>Use our free digital products giveaways, and generate high quality subscriber lists.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a><br/><br/><br/>
                             </div>
                         </div>
@@ -87,8 +87,8 @@
                                 <i class="nc-icon nc-bulb-63"></i>
                             </div>
                             <div class="description">
-                                <h4 class="info-title">Customizable Price</h4>
-                                <p>Customize the price of the products to hit the sweet spot price point for your audience.</p>
+                                <h4 class="info-title">Exclusive Offers</h4>
+                                <p>Exclusive highly converting CPC & CPA offers.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a><br/><br/><br/>
                             </div>
                         </div>
@@ -96,11 +96,11 @@
                     <div class="col-md-4">
                         <div class="info">
                             <div class="icon icon-danger">
-                                <i class="nc-icon nc-money-coins"></i>
+                                <i class="nc-icon nc-globe"></i>
                             </div>
                             <div class="description">
-                                <h4 class="info-title">PayPal Direct</h4>
-                                <p class="description">Get payed directly from costumers to your PayPal account. In real time. You only pay us a small commission at the end of the month.</p>
+                                <h4 class="info-title">Worldwide</h4>
+                                <p class="description">We have digital product offers for most countries in the world.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a><br/><br/><br/>
                             </div>
                         </div>
