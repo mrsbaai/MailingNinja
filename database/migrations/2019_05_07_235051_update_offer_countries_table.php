@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfferCountriesTable extends Migration
+class UpdateOfferCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,8 @@ class CreateOfferCountriesTable extends Migration
      */
     public function up()
     {
+
+        Schema::dropIfExists('offer_countries');
         Schema::create('offer_countries', function (Blueprint $table) {
             $table->integer('offer_id')->unsigned();
             $table->foreign('offer_id')->references('id')->on('offers');
@@ -24,7 +26,7 @@ class CreateOfferCountriesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *a
+     *
      * @return void
      */
     public function down()
