@@ -21,6 +21,16 @@ class managerController extends Controller
     {
         $this->middleware('auth');
     }
+    public function test(){
+
+        $offer = offer::find(3);
+
+
+        $offer->countries()->sync(array("us","uk"));
+        return $offer->countries()->get();
+
+
+    }
     private function prossHTML($content){
         $dom = new \domdocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);

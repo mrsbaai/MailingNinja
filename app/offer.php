@@ -19,16 +19,18 @@ class offer extends Model
         return $this->belongsToMany('App\vertical', 'offer_vertical', 'offer_id', 'vertical_id');
     }
 
+    public function countries()
+    {
+        return $this->belongsToMany('App\country', 'offer_countries', 'offer_id', 'country_code');
+    }
+
 
     public function users()
     {
         return $this->belongsToMany('App\user', 'publisher_offers', 'offer_id', 'user_id');
     }
 
-    public function countries()
-    {
-        return $this->belongsToMany('App\country', 'offer_countries', 'offer_id', 'countries_id');
-    }
+
 
     public function subscribes()
     {

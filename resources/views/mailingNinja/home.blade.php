@@ -76,7 +76,7 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">Build Mailing Lists</h4>
-                                <p>Use our free digital products giveaways, and generate high quality subscriber lists.</p>
+                                <p>Use our free digital products giveaways, and generate quality mailing lists.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a><br/><br/><br/>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="description">
                                 <h4 class="info-title">Exclusive Offers</h4>
-                                <p>Exclusive highly converting CPC & CPA offers.</p>
+                                <p>Exclusive high converting CPC & CPA offers.</p>
                                 <a href="#pkp" class="btn btn-link btn-danger">See more</a><br/><br/><br/>
                             </div>
                         </div>
