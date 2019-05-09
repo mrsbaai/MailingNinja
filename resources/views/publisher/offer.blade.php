@@ -19,6 +19,8 @@
                             <div class="row">
 
                                 <div class="card-body bg-light rounded border border-light">
+                                    <b>ID: {{$data['offer_id']}}</b>
+                                    <br/><br/>
                                     <b>Verticals:
                                         @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
                                     </b>
@@ -32,16 +34,16 @@
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
 
-                                            <b>Offer Type: CPC</b><br/><br/>
-                                            <b>Offer Payout: {{$data['cpc']}}</b></br><br/>
+                                            <b>Type: CPC</b><br/><br/>
+                                            <b>Payout: {{$data['cpc']}}</b></br><br/>
 
 
 
                                     @endif
 
                                     @if($data['cpa'] > 0)
-                                                <b>Offer Type: CPA</b><br/><br/>
-                                                <b>Offer Payout: {{$data['cpa']}}</b><br/><br/>
+                                                <b>Type: CPA</b><br/><br/>
+                                                <b>Payout: {{$data['cpa']}}</b><br/><br/>
                                     @endif
                                 @endif
 
