@@ -135,8 +135,8 @@ class managerController extends Controller
             'book_about_3' =>  $request->book_about_3,
         ]);
         $offer->verticals()->sync($request->get('verticals'));
-        $codes = country::whereIn('code', $request->get('countries'))->get()->pluck('id')->toarray();
-        $offer->countries()->sync($codes);
+        
+        $offer->countries()->sync($request->get('countries'));
         if ($res){
             flash("Updated: " . $request->title)->success();
         }else{
@@ -413,7 +413,7 @@ class managerController extends Controller
     }
     public function new(Request $request){
         $verticals = vertical::pluck('vertical','id');
-        $countries = vertical::pluck('name','code');
+        $countries = vertical::pluck('name','id');
         $request->user()->authorizeRoles('manager');
         return view('manager.offer-editor')
             ->with('color',"green")
@@ -579,12 +579,12 @@ class managerController extends Controller
     }
     public function edit(Request $request, $id){
         $verticals = vertical::pluck('vertical','id');
-        $countries = country::pluck('name','code');
+        $countries = country::pluck('name','id');
         $request->user()->authorizeRoles('manager');
         $offer = offer::all()->where('id',$id)->first();
         $selected_verticals = $offer->verticals()->get();
         $selected_countries = $offer->countries()->get();
-        return  $selected_countries ;
+
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
             ->with('countries',$countries)
