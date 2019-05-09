@@ -530,21 +530,22 @@
 
 @section('footer')
 
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.multi-select.js') }}"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ URL::asset('js/core/popper.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.multi-select.js') }}"></script>
 
     <!--  Notifications Plugin    -->
     <script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap-notify.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
     <script>
-
+        $('#pre-selected-options').multiSelect();
         $(document).ready( function() {
-            $('#pre-selected-options').multiSelect();
+
             $(document).on('change', '.btn-file :file', function() {
                 var input = $(this),
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
