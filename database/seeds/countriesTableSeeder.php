@@ -250,6 +250,7 @@ class countriesTableSeeder extends Seeder
             array('code' => 'ZR', 'name' => 'Zaire'),
             array('code' => 'ZM', 'name' => 'Zambia'),
             array('code' => 'ZW', 'name' => 'Zimbabwe'),
+            array('code' => 'WORLD', 'name' => 'WORLD'),
         );
         DB::table('countries')->insert($countries);
     }

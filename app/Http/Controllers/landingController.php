@@ -160,7 +160,7 @@ class landingController extends Controller
 
 
         return view('landing.relatedWall')
-            ->with('offers', $this->getRelatedBooks($offer_id))
+            ->with('offers', $this->getRelatedBooks($offer_id, $this->myLocation()))
             ->with('categories', $this->categories())
             ->with('subscribers_count', $this->subscribers_count())
             ->with('title', $offer['title']);
@@ -204,7 +204,17 @@ class landingController extends Controller
             $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
             $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
         }
-        Return $country_code = Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
+
+        $location = Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
+
+        if ($location == null or $location == ""){
+            return "world";
+
+        }else{
+            return $location;
+        }
+
+
 
     }
     public function publisherLanding($code, $email=null,Request $request){
@@ -306,7 +316,7 @@ class landingController extends Controller
 
         $related_url = "/related/" . $offer->id;
 
-        $related_offers = $this->getRelatedBooks($offer->id)->take(3);
+        $related_offers = $this->getRelatedBooks($offer->id, $this->myLocation())->take(3);
 
         return view('layouts.landing')
             ->with('code', $code)
