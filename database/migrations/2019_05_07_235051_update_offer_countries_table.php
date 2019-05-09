@@ -14,8 +14,9 @@ class UpdateOfferCountriesTable extends Migration
     public function up()
     {
 
-        Schema::dropIfExists('offer_countries');
+
         Schema::create('offer_countries', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('offer_id')->unsigned();
             $table->foreign('offer_id')->references('id')->on('offers');
             $table->string('code')->unsigned();
