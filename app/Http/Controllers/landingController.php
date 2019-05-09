@@ -138,9 +138,9 @@ class landingController extends Controller
                         }
 
                     })->orderByDesc('epc', 'desc')->get();
-                
+
                 if (count($relateds) == 0 ){
-                    $relateds = offer::where('is_active',true)->orderByDesc('epc', 'desc')->get();
+                    $relateds = offer::where('is_active',true)->where('id', '<>', $offer_id)->orderByDesc('epc', 'desc')->get();
                 }
             }
         }
