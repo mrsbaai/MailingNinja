@@ -23,9 +23,9 @@
                                         @foreach($data['countries'] as $key => $country)@if ($key != key($data['countries'])), @endif{{ $country['code'] }}@endforeach
                                         <br/>
                                     </b>
-                                </div>
+                        
                                 <br/>
-                                <div class="card-body bg-light rounded border border-light">
+
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
 
@@ -41,10 +41,7 @@
                                                 <b>Offer Payout: <br/>{{$data['cpa']}}</b><br/>
                                     @endif
                                 @endif
-                                </div>
 
-
-                                <div class="card-body bg-light rounded border border-light">
                                 <b>Verticals:<br/>
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
                                 </b>
