@@ -19,38 +19,38 @@
                             <div class="row">
 
                                 <div class="card-body bg-light rounded border border-light">
-                                    <b>Countries:<br/>
-                                        @foreach($data['countries'] as $key => $country)@if ($key != key($data['countries'])), @endif{{ $country['code'] }}@endforeach
-                                        <br/>
+                                    <b>Verticals:
+                                        @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
                                     </b>
-                        
-                                <br/>
+                                    <br/><br/>
+                                    <b>Countries:
+                                        @foreach($data['countries'] as $key => $country)@if ($key != key($data['countries'])), @endif{{ $country['code'] }}@endforeach
+                                    </b>
+
+                                <br/><br/>
 
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
 
-                                            <b>Offer Type: <br/>CPC</b><br/>
-                                            <b>Offer Payout: <br/>{{$data['cpc']}}</b></br>
+                                            <b>Offer Type: CPC</b><br/><br/>
+                                            <b>Offer Payout: {{$data['cpc']}}</b></br><br/>
 
 
 
                                     @endif
 
                                     @if($data['cpa'] > 0)
-                                                <b>Offer Type: <br/>CPA</b><br/>
-                                                <b>Offer Payout: <br/>{{$data['cpa']}}</b><br/>
+                                                <b>Offer Type: CPA</b><br/><br/>
+                                                <b>Offer Payout: {{$data['cpa']}}</b><br/><br/>
                                     @endif
                                 @endif
 
-                                <b>Verticals:<br/>
-                                    @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
-                                </b>
                                 </div>
                                 <br/><br/>
 
                             </div>
 
-                            <br/><br/><br/><br/>
+                            <br/><br/>
                             <div class="row">
                                 <br/>
                                 <div class="col-centered">
