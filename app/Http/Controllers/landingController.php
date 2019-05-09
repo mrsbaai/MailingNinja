@@ -108,8 +108,6 @@ class landingController extends Controller
 
         $verticals = $offer->verticals()->get();
 
-
-
         $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
             ->whereHas('countries', function ($query) use ($country){
                 $query->where('code', $country);
@@ -122,9 +120,33 @@ class landingController extends Controller
 
             })->orderByDesc('epc', 'desc')->get();
 
+
         if (count($relateds) == 0 ){
-            $relateds = offer::where('is_active',true)->orderByDesc('epc', 'desc')->get();
+
+            $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)
+                ->whereHas('countries', function ($query) use ($country){
+                    $query->where('code', $country);
+                })->orderByDesc('epc', 'desc')->get();
+
+            if (count($relateds) == 0 ){
+
+                $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
+                    ->whereHas('verticals', function($q) use ($verticals) {
+                        $q->where('vertical', $verticals[0]['vertical']);
+                        foreach ($verticals as $vertical){
+                            $q->orwhere('vertical', $vertical['vertical']);
+                        }
+
+                    })->orderByDesc('epc', 'desc')->get();
+                
+                if (count($relateds) == 0 ){
+                    $relateds = offer::where('is_active',true)->orderByDesc('epc', 'desc')->get();
+                }
+            }
         }
+
+
+
 
         $relateds->pluck('thumbnail', 'id');
 
