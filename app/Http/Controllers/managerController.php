@@ -26,7 +26,7 @@ class managerController extends Controller
         $offer = offer::find(3);
 
 
-        //$offer->countries()->sync(array("US","UK"));
+        $offer->countries()->sync(array("US","UK"));
         return $offer->countries()->get();
 
 
