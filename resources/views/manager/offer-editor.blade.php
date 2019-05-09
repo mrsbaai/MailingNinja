@@ -405,20 +405,11 @@
 
                                     <div class="form-group">
 
-                                        <div class="col-md-12">
-
-                                            <select class="mdb-select colorful-select dropdown-primary md-form" multiple searchable="Search here..">
-                                                <option value="" disabled selected>Choose your country</option>
-                                                <option value="1">USA</option>
-                                                <option value="2">Germany</option>
-                                                <option value="3">France</option>
-                                                <option value="4">Poland</option>
-                                                <option value="5">Japan</option>
-                                            </select>
-                                            <label class="mdb-main-label">Label example</label>
-                                            <button class="btn-save btn btn-primary btn-sm">Save</button>
-
-                                        </div>
+                                        <select class="selectpicker countrypicker" multiple></select>
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </select>
                                     </div>
 
                                     <br>
@@ -535,7 +526,13 @@
 
 @section('footer')
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ URL::asset('js/core/popper.min.js') }}"></script>
