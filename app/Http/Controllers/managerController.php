@@ -24,7 +24,7 @@ class managerController extends Controller
     public function test(){
 
         $codes = country::whereIn('code', array("US","MA"))->get()->pluck('id')->toarray();
-return $codes;
+
         $offer = offer::find(3);
 
         $offer->countries()->sync($codes);
