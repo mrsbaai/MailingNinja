@@ -16,7 +16,7 @@
                             <h5 class="card-title">{{$data['title']}}</h5>
                         </div>
                         <div class="card-body">
-                            <div class="row px-4">
+                            <div class="row">
 
                                 <div class="card-body bg-light rounded border border-light">
                                     <b>Countries:<br/>
@@ -29,16 +29,16 @@
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
 
-                                            <b>Offer Type: CPC</b><br/>
-                                            <br>Offer Payout: {{$data['cpc']}}</br>
+                                            <b>Offer Type: <br/>CPC</b><br/>
+                                            <b>Offer Payout: <br/>{{$data['cpc']}}</b></br>
 
 
 
                                     @endif
 
                                     @if($data['cpa'] > 0)
-                                                <b>Offer Type: CPA</b><br/>
-                                                <b>Offer Payout: {{$data['cpa']}}</b><br/>
+                                                <b>Offer Type: <br/>CPA</b><br/>
+                                                <b>Offer Payout: <br/>{{$data['cpa']}}</b><br/>
                                     @endif
                                 @endif
                                 </div>
