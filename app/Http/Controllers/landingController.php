@@ -111,7 +111,7 @@ class landingController extends Controller
 
 
         $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
-            ->whereHas('country', function ($query) use ($country){
+            ->whereHas('countries', function ($query) use ($country){
                 $query->where('code', $country);
             })
             ->whereHas('verticals', function($q) use ($verticals) {
