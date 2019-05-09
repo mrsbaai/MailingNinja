@@ -18,40 +18,36 @@
                         <div class="card-body">
                             <div class="row px-4">
 
-                                <div class="row">
-                                    <h6>Countries:
+                                <div class="card-body bg-light rounded border border-light">
+                                    <b>Countries:<br/>
                                         @foreach($data['countries'] as $key => $country)@if ($key != key($data['countries'])), @endif{{ $country['code'] }}@endforeach
-
-                                    </h6>
+                                        <br/>
+                                    </b>
                                 </div>
-
+                                <br/>
+                                <div class="card-body bg-light rounded border border-light">
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
-                                        <div class="row">
-                                            <h6>Offer Type: CPC</h6>
-                                        </div>
-                                        <div class="row">
-                                            <h6>Offer Payout: {{$data['cpc']}}</h6>
-                                        </div>
+
+                                            <b>Offer Type: CPC</b><br/>
+                                            <br>Offer Payout: {{$data['cpc']}}</br>
+
 
 
                                     @endif
 
                                     @if($data['cpa'] > 0)
-                                            <div class="row">
-                                                <h6>Offer Type: CPA</h6>
-                                            </div>
-                                            <div class="row">
-                                                <h6>Offer Payout: {{$data['cpa']}}</h6>
-                                            </div>
+                                                <b>Offer Type: CPA</b><br/>
+                                                <b>Offer Payout: {{$data['cpa']}}</b><br/>
                                     @endif
                                 @endif
+                                </div>
 
 
-                                <div class="row">
-                                <h6>Verticals:
+                                <div class="card-body bg-light rounded border border-light">
+                                <b>Verticals:<br/>
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
-                                </h6>
+                                </b>
                                 </div>
                                 <br/><br/>
 
