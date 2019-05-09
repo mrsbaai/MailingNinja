@@ -23,13 +23,13 @@ class managerController extends Controller
     }
     public function test(){
 
-        $test=country::select('id')->where('code', array("UK","US"))->get()->toarray();
-        return $test;
+        $codes =country::select('id')->whereIn('code', array("UK","US"))->get()->toarray();
+        return $codes;
         $offer = offer::find(3);
 
 
 
-        $offer->countries()->sync(array(5,6));
+        $offer->countries()->sync($codes);
         return $offer->countries()->get();
 
 
