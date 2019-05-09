@@ -136,6 +136,7 @@ class managerController extends Controller
         ]);
         $offer->verticals()->sync($request->get('verticals'));
         $codes = country::whereIn('code', $request->get('countries'))->get()->pluck('id')->toarray();
+        return $codes;
         $offer->countries()->sync($codes);
         if ($res){
             flash("Updated: " . $request->title)->success();
