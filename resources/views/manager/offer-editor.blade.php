@@ -403,6 +403,17 @@
 
                                     <br>
 
+                                    <div class="form-group">
+
+                                        <select class="selectpicker" multiple data-live-search="true">
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </select>
+                                    </div>
+
+                                    <br>
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="custom-control custom-checkbox">
