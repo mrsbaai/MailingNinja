@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use URL;
+use Location;
 
 class landingController extends Controller
 {
@@ -171,13 +172,28 @@ class landingController extends Controller
         return $this->landing(null,$id,null, "host", $request);
 
     }
+
+    private function myLocation(){
+        if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+            $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+            $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
+        }
+        Return $country_code = Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
+
+    }
     public function publisherLanding($code, $email=null,Request $request){
 
+     
         $link = link::all()->where('link',$code)->first();
         $offer = offer::all()->where('id',$link->offer_id)->first();
-        //return $offer->countries()->get()->pluck('code')->toarray();
+        $allowed_countries = $offer->countries()->get()->pluck('code')->toarray();
 
-        return $this->landing($code,null,$email, "publisher", $request);
+        if (in_array($this->myLocation(), $allowed_countries)) {
+            return $this->landing($code,null,$email, "publisher", $request);
+        }else{
+            return "kaka";
+        }
+
 
     }
 

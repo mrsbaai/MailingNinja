@@ -9,7 +9,7 @@
                 <h1>Mailing Ninja</h1>
                 <h3>Exclusive Offers For <b><u>Traffic Monetization</u></b> & <b><u>E-Mail List Building</u></b></h3>
                 <br />
-                <a href="/registe?monetize" class="btn btn-outline-neutral btn-round">Request An Account</a>
+                <a href="/register?monetize" class="btn btn-outline-neutral btn-round">Request An Account</a>
             </div>
         </div>
     </div>

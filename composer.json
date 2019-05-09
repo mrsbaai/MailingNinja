@@ -17,7 +17,8 @@
         "okipa/laravel-bootstrap-table-list": "^2.0",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
         "spatie/browsershot": "^3.26",
-        "stevebauman/location": "^3.0"
+        "stevebauman/location": "^3.0",
+        "torann/geoip": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
