@@ -241,7 +241,9 @@ class landingController extends Controller
         if (in_array($this->myLocation(), $allowed_countries)) {
             return $this->landing($code,null,$email, "publisher", $request);
         }else{
-            return "kaka";
+            $related_offer = $this->getRelatedBooks($offer->id, $link->offer_id)->take(1);
+            return redirect("/ebook/" . $related_offer['id']);
+
         }
 
 
