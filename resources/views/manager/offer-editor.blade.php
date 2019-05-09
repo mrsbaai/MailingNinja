@@ -517,7 +517,7 @@
 
 @section('header')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
-  
+   <link href="{{ URL::asset('css/multi-select.css') }}" rel="stylesheet">
    <style>
 
 
