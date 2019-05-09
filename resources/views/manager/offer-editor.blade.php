@@ -508,7 +508,7 @@
 @endsection
 
 @section('title')
-    @if(empty($id)) New Offer @else Edit Offer @endif
+    @if(empty($id)) New Offer @else Edit Offer {{$id}}@endif
 @endsection
 
 @section('header')

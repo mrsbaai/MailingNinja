@@ -582,7 +582,7 @@ class managerController extends Controller
         $request->user()->authorizeRoles('manager');
         $offer = offer::all()->where('id',$id)->first();
         $selected_verticals = $offer->verticals()->get();
-        $selected_countries = $offer->$countries()->get();
+        $selected_countries = $offer->countries()->get();
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
             ->with('countries',$countries)
