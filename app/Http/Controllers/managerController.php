@@ -72,7 +72,7 @@ class managerController extends Controller
             return back()->withInput();
         }else{
             $offer->verticals()->sync($request->get('verticals'));
-            $offer->countries()->sync($request->get("US"));
+            $offer->countries()->sync($request->get(1));
             flash("Created: " . $request->title)->success();
             return Redirect::route('offers-edit', $offer->id);
         }
@@ -135,7 +135,8 @@ class managerController extends Controller
             'book_about_3' =>  $request->book_about_3,
         ]);
         $offer->verticals()->sync($request->get('verticals'));
-        $offer->countries()->sync($request->get('countries'));
+        $codes = country::whereIn('code', $request->get('countries'))->get()->pluck('id')->toarray();
+        $offer->countries()->sync($codes);
         if ($res){
             flash("Updated: " . $request->title)->success();
         }else{
