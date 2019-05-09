@@ -409,8 +409,10 @@
                                             <option value='elem_2'>elem 2</option>
                                             <option value='elem_3'>elem 3</option>
                                             <option value='elem_4' selected>elem 4</option>
+                                            ...
                                             <option value='elem_100'>elem 100</option>
                                         </select>
+
                                     </div>
 
                                     <br>
@@ -540,9 +542,9 @@
     <script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
     <script>
-        $('#pre-selected-options').multiSelect();
-        $(document).ready( function() {
 
+        $(document).ready( function() {
+            $('#pre-selected-options').multiSelect();
             $(document).on('change', '.btn-file :file', function() {
                 var input = $(this),
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
