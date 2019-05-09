@@ -18,8 +18,8 @@ class UpdateOfferCountriesTable extends Migration
         Schema::create('offer_countries', function (Blueprint $table) {
             $table->integer('offer_id')->unsigned();
             $table->foreign('offer_id')->references('id')->on('offers');
-            $table->string('country_code')->unsigned();
-            $table->foreign('country_code')->references('code')->on('countries');
+            $table->string('code')->unsigned();
+            $table->foreign('code')->references('code')->on('countries');
 
         });
     }
