@@ -135,7 +135,7 @@ class managerController extends Controller
             'book_about_3' =>  $request->book_about_3,
         ]);
         $offer->verticals()->sync($request->get('verticals'));
-        
+
         $offer->countries()->sync($request->get('countries'));
         if ($res){
             flash("Updated: " . $request->title)->success();

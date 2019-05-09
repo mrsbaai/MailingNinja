@@ -18,26 +18,41 @@
                         <div class="card-body">
                             <div class="row px-4">
 
+                                <div class="row">
+                                    <h6>Countries:
+                                        @foreach($data['countries'] as $key => $country)@if ($key != key($data['countries'])), @endif{{ $country['code'] }}@endforeach
+
+                                    </h6>
+                                </div>
+
                                 @if(Auth::user()->is_monetize == true)
                                     @if($data['cpc'] > 0)
-                                        <h6>Offer Type: CPC</h6><br/><br/>
-                                        <h6>Offer Payout: {{$data['cpc']}}</h6>
-                                        <br/><br/>
+                                        <div class="row">
+                                            <h6>Offer Type: CPC</h6>
+                                        </div>
+                                        <div class="row">
+                                            <h6>Offer Payout: {{$data['cpc']}}</h6>
+                                        </div>
+
+
                                     @endif
 
-
                                     @if($data['cpa'] > 0)
-                                        <h6>Offer Type: CPA</h6><br/><br/>
-                                        <h6>Offer Payout: {{$data['cpa']}}</h6>
-                                        <br/><br/>
+                                            <div class="row">
+                                                <h6>Offer Type: CPA</h6>
+                                            </div>
+                                            <div class="row">
+                                                <h6>Offer Payout: {{$data['cpa']}}</h6>
+                                            </div>
                                     @endif
                                 @endif
 
 
-
+                                <div class="row">
                                 <h6>Verticals:
                                     @foreach($data['verticals'] as $key => $vertical)@if ($key != key($data['verticals'])), @endif{{ $vertical['vertical'] }}@endforeach
                                 </h6>
+                                </div>
                                 <br/><br/>
 
                             </div>

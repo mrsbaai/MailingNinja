@@ -501,6 +501,7 @@ class publisherController extends Controller
         $data['domain']  = config('app.promote_url');
 
         $data['verticals'] = $offer->verticals()->get();
+        $data['verticals'] = $offer->countries()->get();
         $data['price'] = $price;
         $data['link'] = $url;
         $data['title'] = $offer->title;
