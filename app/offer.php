@@ -21,7 +21,7 @@ class offer extends Model
 
     public function countries()
     {
-        return $this->belongsToMany('App\country', 'offer_countries', 'offer_id', 'code');
+        return $this->belongsToMany('App\country', 'offer_countries', 'offer_id', 'country_id');
     }
 
 
