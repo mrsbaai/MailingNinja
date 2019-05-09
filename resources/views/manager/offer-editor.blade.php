@@ -405,15 +405,11 @@
                                     <br>
 
                                     <div class="form-group">
-                                        <h4>Countries</h4>
+                                        <h4>Countries:</h4>
 
-                                        <select id='countries' multiple='multiple'>
-                                            <option value='elem_1' selected>elem 1</option>
-                                            <option value='elem_2'>elem 2</option>
-                                            <option value='elem_3'>elem 3</option>
-                                            <option value='elem_4' selected>elem 4</option>
-                                            <option value='elem_100'>elem 100</option>
-                                        </select>
+                                        @if( empty($selected_countries)) {{$selected_countries = null}} @endif
+                                        {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+
 
                                     </div>
 

@@ -72,6 +72,7 @@ class managerController extends Controller
             return back()->withInput();
         }else{
             $offer->verticals()->sync($request->get('verticals'));
+            $offer->countries()->sync($request->get("US"));
             flash("Created: " . $request->title)->success();
             return Redirect::route('offers-edit', $offer->id);
         }
@@ -134,6 +135,7 @@ class managerController extends Controller
             'book_about_3' =>  $request->book_about_3,
         ]);
         $offer->verticals()->sync($request->get('verticals'));
+        $offer->countries()->sync($request->get('countries'));
         if ($res){
             flash("Updated: " . $request->title)->success();
         }else{
@@ -410,8 +412,13 @@ class managerController extends Controller
     }
     public function new(Request $request){
         $verticals = vertical::pluck('vertical','id');
+        $countries = vertical::pluck('name','code');
         $request->user()->authorizeRoles('manager');
-        return view('manager.offer-editor')->with('color',"green")->with('thumbnail',"../images/ebook.png")->with('verticals',$verticals);
+        return view('manager.offer-editor')
+            ->with('color',"green")
+            ->with('thumbnail',"../images/ebook.png")
+            ->with('verticals',$verticals)
+            ->with('countries',$countries);
     }
     private function nicetime($date)
     {
@@ -571,11 +578,14 @@ class managerController extends Controller
     }
     public function edit(Request $request, $id){
         $verticals = vertical::pluck('vertical','id');
+        $countries = country::pluck('name','code');
         $request->user()->authorizeRoles('manager');
         $offer = offer::all()->where('id',$id)->first();
         $selected_verticals = $offer->verticals()->get();
+        $selected_countries = $offer->$countries()->get();
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
+            ->with('countries',$countries)
             ->with('color',$offer->color)
             ->with('title', $offer->title)
             ->with('is_private', $offer->is_private)
@@ -585,6 +595,7 @@ class managerController extends Controller
             ->with('cpa', $offer->cpa)
             ->with('id', $id)
             ->with('thumbnail', $offer->thumbnail)
+            ->with('selected_countries', $selected_countries)
             ->with('selected_verticals', $selected_verticals)
             ->with('subtitle', $offer->subtitle)
             ->with('image_1', $offer->image_1)
