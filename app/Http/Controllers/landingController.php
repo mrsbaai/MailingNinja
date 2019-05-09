@@ -172,7 +172,12 @@ class landingController extends Controller
 
     }
     public function publisherLanding($code, $email=null,Request $request){
-        return $this->landing($code,null,$email, "publisher", $request);
+
+        $link = link::all()->where('link',$code)->first();
+        $offer = offer::all()->where('id',$link->offer_id)->first();
+        return $offer->countries()->get()->pluck('code')->toarray();
+
+        //return $this->landing($code,null,$email, "publisher", $request);
 
     }
 
