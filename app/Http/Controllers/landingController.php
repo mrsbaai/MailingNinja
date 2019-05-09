@@ -175,9 +175,9 @@ class landingController extends Controller
 
         $link = link::all()->where('link',$code)->first();
         $offer = offer::all()->where('id',$link->offer_id)->first();
-        return $offer->countries()->get()->pluck('code')->toarray();
+        //return $offer->countries()->get()->pluck('code')->toarray();
 
-        //return $this->landing($code,null,$email, "publisher", $request);
+        return $this->landing($code,null,$email, "publisher", $request);
 
     }
 
