@@ -393,10 +393,10 @@
 
 
                                     @endif
-
+                                    <br/>
 
                                     <div class="form-group">
-                                        <h2>Verticals</h2>
+                                        <h4>Verticals:</h4>
                                         @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
                                         {!! Form::select('verticals[]', $verticals, $selected_verticals, ['id' => 'verticals', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
@@ -405,7 +405,7 @@
                                     <br>
 
                                     <div class="form-group">
-                                        <h2>Countries</h2>
+                                        <h4>Countries</h4>
 
                                         <select id='countries' multiple='multiple'>
                                             <option value='elem_1' selected>elem 1</option>
@@ -517,7 +517,7 @@
 
 @section('header')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
-   <link href="{{ URL::asset('css/multi-select.css') }}" rel="stylesheet">
+  
    <style>
 
 
