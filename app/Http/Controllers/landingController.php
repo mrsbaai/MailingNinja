@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\country;
 use App\subscriber;
 use App\vertical;
 use Illuminate\Http\Request;
@@ -100,7 +101,7 @@ class landingController extends Controller
 
 
 
-    public function getRelatedBooks($offer_id){
+    public function getRelatedBooks($offer_id, $country = "US"){
 
 
         $offer = offer::all()->where('id',$offer_id)->first();
@@ -110,6 +111,9 @@ class landingController extends Controller
 
 
         $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
+            ->whereHas('country', function ($query) use ($country){
+                $query->where('code', $country);
+            })
             ->whereHas('verticals', function($q) use ($verticals) {
                 $q->where('vertical', $verticals[0]['vertical']);
                 foreach ($verticals as $vertical){
@@ -183,7 +187,7 @@ class landingController extends Controller
     }
     public function publisherLanding($code, $email=null,Request $request){
 
-     
+
         $link = link::all()->where('link',$code)->first();
         $offer = offer::all()->where('id',$link->offer_id)->first();
         $allowed_countries = $offer->countries()->get()->pluck('code')->toarray();
