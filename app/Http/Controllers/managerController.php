@@ -23,7 +23,10 @@ class managerController extends Controller
     }
     public function test(){
 
+        $test=country::select('id')->where('code', array("UK","US"))->get()->toarray();
+        return $test;
         $offer = offer::find(3);
+
 
 
         $offer->countries()->sync(array(5,6));
