@@ -551,7 +551,6 @@ class publisherController extends Controller
             });
 
         $table->addColumn('countries')
-            ->isSearchable()
             ->setTitle('Countries')
             ->isCustomHtmlElement(function ($entity, $column) {
                 $offer = offer::find($entity->id);
