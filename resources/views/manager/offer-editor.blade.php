@@ -396,20 +396,22 @@
 
 
                                     <div class="form-group">
+                                        <h2>Verticals</h2>
                                         @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
-                                        {!! Form::select('verticals[]', $verticals, $selected_verticals, ['multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+                                        {!! Form::select('verticals[]', $verticals, $selected_verticals, ['id' => 'verticals', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
                                     </div>
 
                                     <br>
 
                                     <div class="form-group">
-                                        <select id='pre-selected-options' multiple='multiple'>
+                                        <h2>Countries</h2>
+
+                                        <select id='countries' multiple='multiple'>
                                             <option value='elem_1' selected>elem 1</option>
                                             <option value='elem_2'>elem 2</option>
                                             <option value='elem_3'>elem 3</option>
                                             <option value='elem_4' selected>elem 4</option>
-                                            ...
                                             <option value='elem_100'>elem 100</option>
                                         </select>
 
@@ -543,7 +545,8 @@
     <script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
     <script>
-        $('#pre-selected-options').multiSelect();
+        $('#verticals').multiSelect();
+        $('#countries').multiSelect();
         $(document).ready( function() {
 
             $(document).on('change', '.btn-file :file', function() {
