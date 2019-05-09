@@ -121,7 +121,7 @@ class landingController extends Controller
                     $q->orwhere('vertical', $vertical['vertical']);
                 }
 
-            })->orderByDesc('epc', 'desc')->get();
+            })->get();
 
         if (count($relateds) == 0 ){
             $relateds = offer::all()->where('is_active',true)->orderByDesc('epc', 'desc')->get();
