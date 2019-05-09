@@ -242,7 +242,7 @@ class landingController extends Controller
             return $this->landing($code,null,$email, "publisher", $request);
         }else{
             $related_offer = $this->getRelatedBooks($offer->id, $link->offer_id)->take(1);
-            return redirect("/ebook/" . $related_offer['id']);
+            return redirect("/ebook/" . $related_offer['0']['id']);
 
         }
 
