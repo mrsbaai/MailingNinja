@@ -540,5 +540,10 @@
       }
     });
 };
+    $('#select-english').click(function(){
+        alert('Selecting English Countries');
 
+        $('#countries').multiSelect('select', ['5','10','20']);
+
+    });
 }(window.jQuery);

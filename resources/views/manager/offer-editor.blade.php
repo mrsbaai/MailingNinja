@@ -547,14 +547,9 @@
 
 
         $('#verticals').multiSelect();
+        $('#countries').multiSelect();
 
 
-        $('#select-english').click(function(){
-            alert('Selecting English Countries');
-
-            $('#countries').multiSelect('select', ['5','10','20']);
-
-        });
         $(document).ready( function() {
 
             $(document).on('change', '.btn-file :file', function() {
