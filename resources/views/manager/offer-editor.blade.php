@@ -337,6 +337,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if( ! empty($id))
+
                                     <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="input-group">
@@ -359,6 +361,7 @@
                                             </div>
 
                                     </div>
+                                    @endif
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="input-group">
@@ -403,6 +406,7 @@
                                     </div>
 
                                     <br>
+                                    @if( ! empty($id))
 
                                     <div class="form-group">
                                         <h4>Countries:</h4>
@@ -419,6 +423,7 @@
 
 
                                     </div>
+                                    @endif
 
                                     <br>
 
@@ -464,6 +469,7 @@
                     </div>
 
                 </div>
+                    @if( ! empty($id))
 
                 <div class="col-lg-3">
 
@@ -496,6 +502,8 @@
 
 
                 </div>
+
+                    @endif
                 </div>
 
 
