@@ -547,6 +547,7 @@
         $('#countries').multiSelect();
 
         $('#select-english').click(function(){
+            alert('clicked');
             $('#countries').multiSelect('select', ['5', '50', '60']);
             return false;
         });
