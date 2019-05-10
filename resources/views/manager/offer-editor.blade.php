@@ -407,12 +407,13 @@
                                     <div class="form-group">
                                         <h4>Countries:</h4>
 
-
-                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-english'>Select English Countries</a><br/>
-                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-spanish'>Select Spanish Countries</a><br/>
-                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-french'>Select French Speaking Countries</a><br/>
-                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-russian'>Select Russian Speaking Countries</a><br/>
-                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-arab'>Select Arabic Speaking Countries</a><br/><br/>
+                                        <div class="form-group col-md-12 text-center">
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-english'> English </a>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-spanish'> Spanish </a>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-french'> French </a>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-russian'> Russian  </a>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-arab'> Arabic  </a><br/>
+                                        </div>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => 'multiple', 'class' => 'custom-select long', 'size' => '12']) !!}
 

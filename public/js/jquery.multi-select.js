@@ -541,7 +541,7 @@
     });
 };
     $('#select-english').click(function(){
-        $('#countries').multiSelect('select', ['2','15','104','155','226']);
+        $('#countries').multiSelect('select', ['1','2','15','104','155','226']);
 
     });
     $('#select-spanish').click(function(){
