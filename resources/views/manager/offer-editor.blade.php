@@ -545,10 +545,10 @@
     <script>
         $('#verticals').multiSelect();
         $('#countries').multiSelect();
-
+        $('#countries').multiSelect('select', ['5','9','10']);
         $('#select-english').click(function(){
             alert('clicked');
-            $('#countries').multiSelect('select', ['5', '50', '60']);
+            $('#countries').multiSelect('select', ['1','2','3']);
             return false;
         });
         $(document).ready( function() {
