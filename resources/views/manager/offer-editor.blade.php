@@ -548,11 +548,11 @@
 
         $('#verticals').multiSelect();
         $('#countries').multiSelect();
-   
+
         $('#select-english').click(function(){
 
-            jQuery('#countries').multiSelect('select', ['1','2','3']);
-            return false;
+            $('#countries').multiSelect('select', ['5','10','20']);
+
         });
         $(document).ready( function() {
 
