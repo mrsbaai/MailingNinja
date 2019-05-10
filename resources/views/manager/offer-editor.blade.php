@@ -408,7 +408,7 @@
                                         <h4>Countries:</h4>
 
 
-                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="">Select Top English</a><br/>
+                                        <a href='#' id='select-english'>Select English Countries</a><br/>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => 'multiple', 'class' => 'custom-select long', 'size' => '12']) !!}
 
@@ -545,7 +545,11 @@
     <script>
         $('#verticals').multiSelect();
         $('#countries').multiSelect();
-        $('#countries').multiSelect('select', ['5','30','40']);
+
+        $('#select-english').click(function(){
+            $('#countries').multiSelect('select', ['5', '50', '60']);
+            return false;
+        });
         $(document).ready( function() {
 
             $(document).on('change', '.btn-file :file', function() {
