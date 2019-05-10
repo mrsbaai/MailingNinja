@@ -413,7 +413,7 @@
                                             }
                                         </script>
 
-                                        <button class="btn btn-outline-default btn-sm" onclick="english()">Select Top English</button><br/>
+                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="english()">Select Top English</a><br/>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
