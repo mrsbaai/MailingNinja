@@ -408,7 +408,11 @@
                                         <h4>Countries:</h4>
 
 
-                                        <a href='#' id='select-english'>Select English Countries</a><br/>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-english'>Select English Countries</a><br/>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-spanish'>Select Spanish Countries</a><br/>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-french'>Select French Speaking Countries</a><br/>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-russian'>Select Russian Speaking Countries</a><br/>
+                                        <a href='#' class="btn btn-outline-default btn-sm" id='select-arab'>Select Arabic Speaking Countries</a><br/><br/>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => 'multiple', 'class' => 'custom-select long', 'size' => '12']) !!}
 

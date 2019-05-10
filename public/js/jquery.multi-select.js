@@ -541,9 +541,23 @@
     });
 };
     $('#select-english').click(function(){
-        alert('Selecting English Countries');
+        $('#countries').multiSelect('select', ['2','15','104','155','226']);
 
-        $('#countries').multiSelect('select', ['5','10','20']);
+    });
+    $('#select-spanish').click(function(){
+        $('#countries').multiSelect('select', ['199','174','166','156','140','96','90','65','61','54','52','12']);
+
+    });
+    $('#select-french').click(function(){
+        $('#countries').multiSelect('select', ['2','23','74','94','126','129','143','208']);
+
+    });
+    $('#select-russian').click(function(){
+        $('#countries').multiSelect('select', ['22','111','117','179']);
+
+    });
+    $('#select-arab').click(function(){
+        $('#countries').multiSelect('select', ['64','187','225']);
 
     });
 }(window.jQuery);
