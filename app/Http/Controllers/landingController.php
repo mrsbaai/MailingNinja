@@ -143,12 +143,8 @@ class landingController extends Controller
                 if (count($relateds) == 0 ){
 
                     $relateds = offer::where('id', '<>', $offer_id)->where('is_active',true)->with('verticals')
-                        ->whereHas('verticals', function($q) use ($verticals) {
-                            $q->where('vertical', $verticals[0]['vertical']);
-                            foreach ($verticals as $vertical){
-                                $q->orwhere('vertical', $vertical['vertical']);
-                            }
-
+                        ->whereHas('countries', function ($query){
+                            $query->where('code', 'WORLD');
                         })->orderByDesc('epc', 'desc')->get();
 
                     if (count($relateds) == 0 ){
