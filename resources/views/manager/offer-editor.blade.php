@@ -408,7 +408,10 @@
                                         <h4>Countries:</h4>
                                         <script>
                                             function english() {
-                                                $("#countries").val(["2", "3", "4"]);
+                                                var values="1,2,3";
+                                                $.each(values.split(","), function(i,e){
+                                                    $("#strings option[value='" + e + "']").prop("selected", true);
+                                                });
                                             }
                                         </script>
 
