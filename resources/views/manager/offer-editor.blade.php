@@ -398,7 +398,7 @@
                                     <div class="form-group">
                                         <h4>Verticals:</h4>
                                         @if( empty($selected_verticals)) {{$selected_verticals = null}} @endif
-                                        {!! Form::select('verticals[]', $verticals, $selected_verticals, ['id' => 'verticals', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+                                        {!! Form::select('verticals[]', $verticals, $selected_verticals, ['id' => 'verticals', 'multiple' => 'multiple', 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
                                     </div>
 
@@ -408,9 +408,9 @@
                                         <h4>Countries:</h4>
 
 
-                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="$('#countries').multiSelect('select', ['1','30','40']);">Select Top English</a><br/>
+                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="">Select Top English</a><br/>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
-                                        {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12']) !!}
+                                        {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => 'multiple', 'class' => 'custom-select long', 'size' => '12']) !!}
 
 
                                     </div>
@@ -545,6 +545,7 @@
     <script>
         $('#verticals').multiSelect();
         $('#countries').multiSelect();
+        $('#countries').multiSelect('select', ['5','30','40']);
         $(document).ready( function() {
 
             $(document).on('change', '.btn-file :file', function() {
