@@ -603,10 +603,7 @@
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
 
-    $(window).bind('beforeunload', function(){
-        return 'Are you sure you want to leave?';
-    });
-    
+
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){

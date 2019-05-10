@@ -413,7 +413,7 @@ class managerController extends Controller
     }
     public function new(Request $request){
         $verticals = vertical::pluck('vertical','id');
-        $countries = vertical::pluck('name','id');
+        $countries = country::pluck('name','id');
         $request->user()->authorizeRoles('manager');
         return view('manager.offer-editor')
             ->with('color',"green")
