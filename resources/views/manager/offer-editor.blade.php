@@ -407,17 +407,16 @@
                                     <div class="form-group">
                                         <h4>Countries:</h4>
                                         <script>
-                                            function english() {
-                                                var values="1,2,3";
+                                            function country_group(values) {
                                                 $.each(values.split(","), function(i,e){
                                                     $("#strings option[value='" + e + "']").prop("selected", true);
                                                 });
                                             }
                                         </script>
 
-                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="english()">Select Top English</a><br/>
+                                        <a class="btn btn-outline-default btn-sm" href="#" onclick="country_group('1,2,3')">Select Top English</a><br/>
                                         @if( empty($selected_countries)) {{$selected_countries = null}} @endif
-                                        {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
+                                        {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12']) !!}
 
 
                                     </div>
