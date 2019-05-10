@@ -160,9 +160,20 @@
 
 </head>
 
+<script type="text/javascript">
+    function con() {
+        var answer = confirm("do you want to check our other products")
+        if (answer){
 
+            alert("bye");
+        }
+        else{
+            window.location = "http://www.example.com";
+        }
+    }
+</script>
 
-<body>
+<body onunload="con();">
 
 <div id="load"></div>
 <div id="wrapper" class="behind">
