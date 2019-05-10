@@ -407,7 +407,7 @@
                                     <div class="form-group">
                                         <h4>Countries:</h4>
 
-                                        @if( empty($selected_countries)) {{$selected_countries = null}} @endif
+                                        @if( empty($selected_countries)) {{$selected_countries = array('2', '15', '104', '155', '226')}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
 
