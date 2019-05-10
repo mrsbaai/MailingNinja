@@ -536,18 +536,19 @@
     <script type="text/javascript" src="{{ URL::asset('js/core/popper.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.multi-select.js') }}"></script>
+
 
     <!--  Notifications Plugin    -->
     <script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap-notify.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.multi-select.js') }}"></script>
     <script>
         $('#verticals').multiSelect();
         $('#countries').multiSelect();
         $('#countries').multiSelect('select', ['5','9','10']);
         $('#select-english').click(function(){
-            alert('clicked');
+       
             $('#countries').multiSelect('select', ['1','2','3']);
             return false;
         });
