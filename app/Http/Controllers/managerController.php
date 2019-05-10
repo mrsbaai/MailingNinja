@@ -485,12 +485,12 @@ class managerController extends Controller
             ->isSortable()
             ->setTitle('P?');
         $table->addColumn('')
-            ->setTitle('Status')
+            ->setTitle('St')
             ->isCustomHtmlElement(function ($entity, $column) {
                 if ($entity->is_active){
-                    return "<span style='color:green'>[ACTIVE]</span>";
+                    return "<span style='color:green'>[A]</span>";
                 }else{
-                    return "<span style='color:gray'>[PENDING]</span>";
+                    return "<span style='color:gray'>[P]</span>";
                 }
 
             });
@@ -524,6 +524,16 @@ class managerController extends Controller
 
         $table->addColumn('payout')
             ->setTitle('Price');
+
+        $table->addColumn('countries')
+            ->setTitle('Countries')
+            ->isCustomHtmlElement(function ($entity, $column) {
+                $offer = offer::find($entity->id);
+                $countries = $offer->countries()->get()->pluck('code')->toarray();
+                return implode(', ', $countries);
+
+
+            });
 
         $table->addColumn('updated_at')
             ->setTitle('Last Update')
