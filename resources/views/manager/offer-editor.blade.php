@@ -408,8 +408,7 @@
                                         <h4>Countries:</h4>
                                         <script>
                                             function english() {
-                                                document.getElementById("countries").selectedIndex = "2";
-                                                document.getElementById("countries").selectedIndex = "3";
+                                                $("#countries").val(["2", "3", "4"]);
                                             }
                                         </script>
 
