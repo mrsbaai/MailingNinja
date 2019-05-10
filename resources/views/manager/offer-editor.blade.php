@@ -406,8 +406,15 @@
 
                                     <div class="form-group">
                                         <h4>Countries:</h4>
+                                        <script>
+                                            function english() {
+                                                document.getElementById("countries").selectedIndex = "2";
+                                                document.getElementById("countries").selectedIndex = "3";
+                                            }
+                                        </script>
 
-                                        @if( empty($selected_countries)) {{$selected_countries = array('US', 'GB', 'CA', 'AU', 'NZ')}} @endif
+                                        <button class="btn btn-outline-default btn-sm" onclick="english()">Select Top English</button><br/>
+                                        @if( empty($selected_countries)) {{$selected_countries = null}} @endif
                                         {!! Form::select('countries[]', $countries, $selected_countries, ['id' => 'countries', 'multiple' => true, 'class' => 'custom-select long', 'size' => '12', 'required' => 'required']) !!}
 
 
@@ -508,7 +515,7 @@
 @endsection
 
 @section('title')
-    @if(empty($id)) New Offer @else Edit Offer {{$id}}@endif
+    @if(empty($id)) New Offer @else Edit Offer @endif
 @endsection
 
 @section('header')
