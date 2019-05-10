@@ -160,20 +160,8 @@
 
 </head>
 
-<script type="text/javascript">
-    function con() {
-        var answer = confirm("do you want to check our other products")
-        if (answer){
 
-            alert("bye");
-        }
-        else{
-            window.location = "http://www.example.com";
-        }
-    }
-</script>
-
-<body onunload="con();">
+<body>
 
 <div id="load"></div>
 <div id="wrapper" class="behind">
@@ -614,6 +602,11 @@
 <script src="{{ asset('landing/js/main.js') }}"></script>
 <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script>
 <script>
+
+    $(window).bind('beforeunload', function(){
+        return 'Are you sure you want to leave?';
+    });
+    
     $('#flash-overlay-modal').modal();
 
     $(document).ready(function(){
