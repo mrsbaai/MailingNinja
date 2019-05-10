@@ -409,7 +409,7 @@
                                         <script>
                                             function country_group(values) {
                                                 $.each(values.split(","), function(i,e){
-                                                    $("#strings option[value='" + e + "']").prop("selected", true);
+                                                    $("#countries option[value='" + e + "']").prop("selected", true);
                                                 });
                                             }
                                         </script>
