@@ -196,9 +196,9 @@ class managerController extends Controller
 
         $query  = sells::latest();
         $query
-            ->where('publisher_id',config('app.main_publisher'))
             ->where('net_amount','>','0')
             ->where('status','Completed');
+
 
 
         $query->whereMonth('Created_at',$date->format('m'))

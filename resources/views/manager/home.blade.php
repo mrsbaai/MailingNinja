@@ -127,7 +127,7 @@
                 </div>
             </div>
         </div>
-
+    @if(Auth::user()->is_admin == true)
         <div class="row">
             <div class="col-md-12">
 
@@ -141,6 +141,7 @@
                 </div>
             </div>
         </div>
+    @endif
 
 
 

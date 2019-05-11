@@ -94,7 +94,7 @@ class costumerController extends Controller
             $this->addProductToCostumer($code, Auth::user()->id);
             \Cookie::queue(\Cookie::forget('pre_code'));
 
-        
+
 
         }
         $table = app(TableList::class)
