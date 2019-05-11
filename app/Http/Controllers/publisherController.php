@@ -464,6 +464,10 @@ class publisherController extends Controller
             $newLink->cpc = $cpc;
             $newLink->link = $url;
             $newLink->save();
+            $link = Link::where("user_id",$user_id)->where("offer_id",$id)->first();
+            $url = $link->link;
+            $price = $link->price;
+
         }else{
             $url = $link->link;
             $price = $link->price;
