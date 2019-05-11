@@ -114,7 +114,7 @@ class costumerController extends Controller
         $offer = costumerOffers::where('costumer_id', Auth::user()->id)->orderByDesc('id', 'desc')->first();
         $landing = new landingController();
         if ($offer){
-            $related_offers = $landing->getRelatedBooks($offer->offer_id)->take(3);
+            $related_offers = $landing->getRelatedBooks($offer->offer_id, $landing->myLocation())->take(3);
         }else{
             $related_offers = offer::all()->where('is_active', true)->sortByDesc("epc")->take(3);
 
