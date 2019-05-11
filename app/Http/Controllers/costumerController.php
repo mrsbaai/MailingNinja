@@ -7,6 +7,7 @@ use App\costumerOffers;
 use App\offer;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Cookie;
 use Okipa\LaravelBootstrapTableList\TableList;
 use App\link;
 use Illuminate\Support\Facades\URL;
@@ -86,6 +87,7 @@ class costumerController extends Controller
         if(request()->cookie("pre_code") != null and request()->cookie("pre_code") != ""){
             $code = request()->cookie("pre_code");
             $this->addProductToCostumer($code, Auth::user()->id);
+            Cookie::forget("pre_code");
         }
         $table = app(TableList::class)
             ->setModel(costumerOffers::class)
