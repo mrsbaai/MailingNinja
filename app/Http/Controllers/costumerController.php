@@ -68,7 +68,7 @@ class costumerController extends Controller
         $offer_id = $offer['offer_id'];
         $offer_price = $offer['price'];
 
-        $co = costumerOffers::where('costumer_id', $costumer_id)->where('$offer_id', $offer_id)->first();
+        $co = costumerOffers::where('costumer_id', $costumer_id)->where('offer_id', $offer_id)->first();
         if ($co == null){
             $add = new costumerOffers();
             $add->publisher_id = $publisher_id;
