@@ -983,7 +983,7 @@ if($request->user()->is_monetize == false){
             $collection = $query->get();
             $profit = 0;
             foreach ($collection as $item) {
-                $profit = $profit + $item['count'];
+                $profit = $profit + $item['value'];
             }
 
             $data[] = $profit;
@@ -1042,7 +1042,7 @@ if($request->user()->is_monetize == false){
             $collection = $query->get();
             $profit = 0;
             foreach ($collection as $item) {
-                $profit = $profit + $item['count'];
+                $profit = $profit + $item['value'];
             }
 
             $data[] = $profit;
