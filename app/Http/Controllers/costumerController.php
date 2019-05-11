@@ -95,7 +95,6 @@ class costumerController extends Controller
 
             $cookie = \Cookie::forget('pre_code');
 
-            $v = Response::make('cookie has bee deleted')->withCookie($cookie);
 
         }
         $table = app(TableList::class)
