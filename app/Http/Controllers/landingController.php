@@ -63,16 +63,22 @@ class landingController extends Controller
         $publisher_id = $offer['user_id'];
         $offer_id = $offer['offer_id'];
         $offer_price = $offer['price'];
+        
+        $co = costumerOffers::where('costumer_id', $costumer_id)->where('$offer_id', $offer_id)->first();
+        if ($co == null){
+            $add = new costumerOffers();
+            $add->publisher_id = $publisher_id;
+            $add->costumer_id = $costumer_id;
+            $add->offer_id = $offer_id;
+            $add->price = $offer_price;
+            $add->link = $code;
+            $add->paid = false;
 
-        $add = new costumerOffers();
-        $add->publisher_id = $publisher_id;
-        $add->costumer_id = $costumer_id;
-        $add->offer_id = $offer_id;
-        $add->price = $offer_price;
-        $add->link = $code;
-        $add->paid = false;
+            return $add->save();
+        }
 
-        return $add->save();
+        return false;
+
 
 
     }
