@@ -10,6 +10,7 @@ use App\offer;
 use App\link;
 use App\costumerOffers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
@@ -20,11 +21,15 @@ class landingController extends Controller
 {
 
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function Register(Request $request){
 
             if (null !== Input::get('code')){
                 $code = Input::get('code');
+
             }else{
                 $code = "";
             }
@@ -33,6 +38,12 @@ class landingController extends Controller
             }else{
                 $email = "";
             }
+
+        Cookie::queue("pre_code", $code,120);
+
+
+
+
 
         if(Auth::check() and $request->user()->roles()->first()->name == "costumer"){
             $this->addProductToCostumer($code, Auth::user()->id);

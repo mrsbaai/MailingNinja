@@ -8,7 +8,7 @@ use App\offer;
 use Illuminate\Support\Facades\Auth;
 
 use Okipa\LaravelBootstrapTableList\TableList;
-
+use App\link;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 
@@ -59,10 +59,34 @@ class costumerController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
+
+    public static function addProductToCostumer($code,$costumer_id){
+        $offer = link::all()->where('link',$code)->first();
+        $publisher_id = $offer['user_id'];
+        $offer_id = $offer['offer_id'];
+        $offer_price = $offer['price'];
+
+        $add = new costumerOffers();
+        $add->publisher_id = $publisher_id;
+        $add->costumer_id = $costumer_id;
+        $add->offer_id = $offer_id;
+        $add->price = $offer_price;
+        $add->link = $code;
+        $add->paid = false;
+
+        return $add->save();
+
+
+    }
+
     public function home(request $request){
         $request->user()->authorizeRoles('costumer');
 
-
+        if(request()->cookie("pre_code") != null and request()->cookie("pre_code") != ""){
+            $code = request()->cookie("pre_code");
+            $this->addProductToCostumer($code, Auth::user()->id);
+        }
         $table = app(TableList::class)
             ->setModel(costumerOffers::class)
             ->setRoutes([

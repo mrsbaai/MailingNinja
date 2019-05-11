@@ -71,6 +71,8 @@
                                     </form>
 
                                     <div class="card-footer text-center">
+                                        <br/>
+
                                         <a href="{{ route('login') }}" class="btn btn-link">Already Have An Account? Login Here.</a>
                                     </div>
 
