@@ -218,7 +218,7 @@ class landingController extends Controller
         $location = Location::get($_SERVER['REMOTE_ADDR'])->countryCode;
 
         if ($location == null or $location == ""){
-            return "world";
+            return "WORLD";
 
         }else{
             return $location;
