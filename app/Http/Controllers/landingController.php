@@ -39,8 +39,9 @@ class landingController extends Controller
             return redirect()->route('costumer-home');
 
         }else{
-
-            return view('auth.buy')->with('code', $code)->with('email', $email);
+            $countries = country::pluck('name','code');
+            $selected_country = $this->myLocation();
+            return view('auth.buy')->with('code', $code)->with('email', $email)->with('countries',$countries)->with('selected_country',$selected_country);
         }
 
 
