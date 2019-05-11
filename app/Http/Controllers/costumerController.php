@@ -92,10 +92,9 @@ class costumerController extends Controller
         if(request()->cookie("pre_code") != null and request()->cookie("pre_code") != ""){
             $code = request()->cookie("pre_code");
             $this->addProductToCostumer($code, Auth::user()->id);
+            \Cookie::queue(\Cookie::forget('pre_code'));
 
-            $cookie = \Cookie::forget('pre_code');
-
-            $v = \Response::make('cookie has bee deleted')->withCookie($cookie);
+        
 
         }
         $table = app(TableList::class)
