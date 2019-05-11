@@ -234,7 +234,8 @@ class landingController extends Controller
         $offer = offer::all()->where('id',$link->offer_id)->first();
         $allowed_countries = $offer->countries()->get()->pluck('code')->toarray();
 
-        if (in_array($this->myLocation(), $allowed_countries)) {
+
+        if (in_array($this->myLocation(), $allowed_countries) or in_array("WORLD", $allowed_countries)) {
             return $this->landing($code,null,$email, "publisher", $request);
         }else{
             $related_offer = $this->getRelatedBooks($offer->id, $link->offer_id)->take(1);
