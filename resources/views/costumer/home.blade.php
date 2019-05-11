@@ -15,8 +15,7 @@
             </div>
         </div>
     </div>
-
-    <h4 class="card-title" style="padding-top:60px;padding-bottom:60px;">Suggestions:</h4><br/><br/><br/>
+    
     @yield('Wall')
     <div class="col-lg-12" >
         <p class="text-center">
