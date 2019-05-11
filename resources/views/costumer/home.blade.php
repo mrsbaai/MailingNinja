@@ -16,18 +16,13 @@
         </div>
     </div>
 
+    <h4 class="card-title" style="padding-top:60px;padding-bottom:60px;">Suggestions:</h4><br/><br/><br/>
     @yield('Wall')
-    <div class="container">
-        <div class="row">
-            <h4 class="card-title" style="padding-top:60px;padding-bottom:60px;">Suggestions:</h4><br/><br/><br/>
+    <div class="col-lg-12" >
+        <p class="text-center">
+            <a id="discover_button" href="/ebooks" class="btn"  style="background-color: #4C4A48;border-color:#4C4A48;"  target="_blank">More eBooks...</a>
+        </p>
 
-            <div class="col-lg-12" >
-                <p class="text-center">
-                    <a id="discover_button" href="/ebooks" class="btn"  style="background-color: #4C4A48;border-color:#4C4A48;"  target="_blank">More eBooks...</a>
-                </p>
-
-            </div>
-        </div>
     </div>
 @endsection
 
