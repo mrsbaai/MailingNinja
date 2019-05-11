@@ -566,7 +566,7 @@ class managerController extends Controller
     }
     public function destroyOffer(Request $request){
         $request->user()->authorizeRoles('manager');
-        $offer = offer::offer::where('id',$request->id)->first();
+        $offer = offer::where('id',$request->id)->first();
         $offer->countries()->delete();
         $res = offer::where('id',$request->id)->delete();
         if ($res){
