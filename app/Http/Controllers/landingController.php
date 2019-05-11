@@ -209,7 +209,7 @@ class landingController extends Controller
 
     }
 
-    private function myLocation(){
+    public function myLocation(){
         if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
             $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
             $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
