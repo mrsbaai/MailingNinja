@@ -491,7 +491,7 @@
 
                     <div class="col-md-9 text-center h2" style="padding-top:80px;padding-left:150px;" >
                         <h1 class="heading" style="font-size: 40px; color: #313131; font-weight: bold;"><blink>Free Download,<br/>
-                                Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
+                                Until {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
                             </blink></h1><br/>
                         <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
                     </div>
@@ -506,7 +506,7 @@
                 @else
                     <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
                         <h1 class="heading"style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Special Offer!<br/>
-                                Until {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}
+                                Until {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
                             </blink></h1><br/>
                         <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
 

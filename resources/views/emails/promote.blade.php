@@ -541,7 +541,7 @@
                                     <div class="">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;"><![endif]-->
                                         <div style="color:red;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:120%; padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;">
-                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:red;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>Hurry, Offer Ends {{ Carbon\Carbon::tomorrow()->format('l d M Y') }}</strong></span></p></div>
+                                            <div style="font-size:12px;line-height:14px;font-family:Tahoma, Verdana, Segoe, sans-serif;color:red;text-align:left;"><p style="margin: 5px;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 20px; line-height: 24px;"><strong>Hurry, Offer Ends {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}</strong></span></p></div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
