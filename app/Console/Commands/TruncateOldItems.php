@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\link;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class TruncateOldItems extends Command
