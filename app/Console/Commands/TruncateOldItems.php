@@ -40,11 +40,11 @@ class TruncateOldItems extends Command
     public function handle()
     {
 
-        $this->info( "start"  . "\n");
+
         Link::where('created_at', '<', Carbon::now()->subDays(14)->toDateTimeString())->each(function ($item) {
-            $this->info( "delete"  . "\n");
+
             $item->delete();
         });
-        $this->info( "end"  . "\n");
+
     }
 }
