@@ -41,7 +41,7 @@ class TruncateOldItems extends Command
     {
 
 
-        Link::where('created_at', '<', Carbon::now()->subDays(14)->toDateTimeString())->each(function ($item) {
+        Link::where('created_at', '<', Carbon::now()->subDays(10)->toDateTimeString())->each(function ($item) {
 
             $item->delete();
         });
