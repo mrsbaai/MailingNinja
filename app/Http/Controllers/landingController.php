@@ -249,6 +249,10 @@ class landingController extends Controller
 
 
         $link = link::all()->where('link',$code)->first();
+
+        if ($link == null){
+            return abort(404);
+        }
         $offer = offer::all()->where('id',$link->offer_id)->first();
         $allowed_countries = $offer->countries()->get()->pluck('code')->toarray();
 
