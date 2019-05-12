@@ -72,7 +72,12 @@ class landingController extends Controller
             $add->offer_id = $offer_id;
             $add->price = $offer_price;
             $add->link = $code;
-            $add->paid = false;
+            if ($offer_price == 0){
+                $add->paid = true;
+            }else{
+                $add->paid = false;
+            }
+
 
             return $add->save();
         }
