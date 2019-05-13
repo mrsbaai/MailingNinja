@@ -601,7 +601,7 @@ class managerController extends Controller
         $selected_verticals = $offer->verticals()->get();
         $selected_countries = $offer->countries()->get();
 
-        $languages = array("English"=>"en", "French"=>"fr");
+        $languages = array("en"=>"English", "fr"=>"French");
 
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
