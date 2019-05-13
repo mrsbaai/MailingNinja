@@ -412,7 +412,7 @@
                                         <h4>Language:</h4>
 
                                         @if( empty($selected_language)) {{$selected_language = null}} @endif
-                                        {!! Form::select('countries[]', s, $selected_language, ['id' => 'language', 'name' => 'language', 'class' => 'form-control custom-select', 'required' => 'required']) !!}
+                                        {!! Form::select('languages[]', $languages, $selected_language, ['id' => 'language', 'name' => 'language', 'class' => 'form-control custom-select', 'required' => 'required']) !!}
 
 
 
