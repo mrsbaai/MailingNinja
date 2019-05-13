@@ -5,7 +5,7 @@
     <input type="text"  id="lg_role" name="lg_role" value="unregistered_costumer" hidden>
     <div class="col-md-2"></div>
     <div class="col-md-8  wow animated fadeInUp" id="contact">
-        <h2 class="heading">Contact / <span style="color: #680D0D">Report Mailing Abuse</span></h2><br/>
+        <h2 class="heading">@lang('landing.contact') / <span style="color: #680D0D">@lang('landing.report')</span></h2><br/>
         @include('flash::message')
         <div class="row">
 
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right" style="padding-top:18px;">
-                <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" style="background-color: #4C4A48;border-color:#4C4A48;"value="Send">
+                <input id="send_btn" type="submit" class="btn--subscribe btn--primary btn--inside" style="background-color: #4C4A48;border-color:#4C4A48;"value="@lang('landing.send')">
             </div>
         </div>
     </div>

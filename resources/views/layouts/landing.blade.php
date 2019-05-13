@@ -187,8 +187,8 @@
                         <div class="row" >
                             {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
-                                <input name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('Your free eBook will be sent by e-mail.')" oninput="setCustomValidity('')" />
-                                <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >Download eBook</button>
+                                <input name="email" type="email" class="form__field" placeholder="Your E-Mail Address" required oninvalid="this.setCustomValidity('@lang("landing.yourebooksent").')" oninput="setCustomValidity('')" />
+                                <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_1" >@lang('landing.download') eBook</button>
                             {{ Form::close()}}
 
                         </div>
@@ -199,7 +199,7 @@
                                 {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
                                 <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">@lang('landing.about') <span class=" hidden-md hidden-sm hidden-xs"> eBook</span></a>
-                                <button type="submit" class="btn btn-green purchase" >@lang('landing.purchase')<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
+                                <button type="submit" class="btn btn-green purchase" >@lang('landing.purchase')<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(@lang('landing.only') ${{$price}})</span></button>
                                 {{Form::close()}}
                             </div>
                     <div  style="height: 80px;"></div>
@@ -293,14 +293,14 @@
                 <div class="col-md-8" >
                     <div class="row author" >
                         <div class="col-sm-12 author-name" >
-                            <h2 class="heading dominant-color wow animated fadeInUp">About {{ $author_name }}</h2>
+                            <h2 class="heading dominant-color wow animated fadeInUp">@lang('landing.about') {{ $author_name }}</h2>
 
                             <p class="small justify muted-light wow animated fadeInUp">{{ $author_about }}.</p>
 
                             <p class="small justify muted-light wow animated fadeInUp">
                                 <!-- AddToAny BEGIN -->
                             <div class="text-center">
-                                Share the knowledge:<br/><br/>
+                                @lang('landing.share'):<br/><br/>
                                 <a href="https://www.addtoany.com/share#url={{url()->current()}}&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:black"></a>
                                 <a href="https://www.addtoany.com/add_to/facebook?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:black"></a>
                                 <a href="https://www.addtoany.com/add_to/twitter?linkurl={{url()->current()}}&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:black"></a>
@@ -349,7 +349,7 @@
 
         <div class="container">
             <div class="row">
-                <h2 class="heading dominant-color wow animated fadeInUp">@lang('landing.peoplewho')</h2><br/><br/><br/>
+                <h2 class="heading dominant-color wow animated fadeInUp">@lang('landing.peoplewho'):</h2><br/><br/><br/>
                 @yield('Wall')
                 <div class="col-lg-12 wow animated fadeInUp" >
                     <p class="text-center">
@@ -490,25 +490,25 @@
                 @if ($price == 0)
 
                     <div class="col-md-9 text-center h2" style="padding-top:80px;padding-left:150px;" >
-                        <h1 class="heading" style="font-size: 40px; color: #313131; font-weight: bold;"><blink>Free Download,<br/>
-                                Until {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
+                        <h1 class="heading" style="font-size: 40px; color: #313131; font-weight: bold;"><blink>@lang('landing.freedownload'),<br/>
+                                @lang('landing.until') {{ Carbon\Carbon::tomorrow()->addDays(3)->format('d M Y') }}
                             </blink></h1><br/>
-                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  Free!</span></h1><br/>
+                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;">  @lang('landing.free')!</span></h1><br/>
                     </div>
                 <div class="col-md-9 text-center h2" style="padding-top:20px;padding-left:150px;" >
                     {{ Form::open(array('action' => 'landingController@register'))}}
                         <input name="code" value="{{$code}}" hidden>
                         <input type="email" name="email" class="form__field" placeholder="Your E-Mail Address" required />
-                        <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">Download Now</button>
+                        <button type="submit" class="btn--subscribe btn--primary btn--inside uppercase" id="action_2">@lang('landing.downloadnow')</button>
                     {{ Form::close() }}
-                    <span class="subheading big justify h2">(Available in PDF & EPUB)</span>
+                    <span class="subheading big justify h2">(@lang('landing.availablein') PDF & EPUB)</span>
                 </div>
                 @else
                     <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
-                        <h1 class="heading"style="font-size: 50px; color: #313131; font-weight: bold;"><blink>Special Offer!<br/>
-                                Until {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
+                        <h1 class="heading"style="font-size: 50px; color: #313131; font-weight: bold;"><blink>@lang('landing.specialoffer')!<br/>
+                                @lang('landing.until') {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
                             </blink></h1><br/>
-                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> Only ${{ $price  }}</span></h1><br/>
+                        <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> @lang('landing.only') ${{ $price  }}</span></h1><br/>
 
                         <div class='info-form'>
                             {{ Form::open(array('action' => 'landingController@register'))}}
@@ -517,7 +517,7 @@
 
                             {{Form::close()}}
                         </div>
-                        <span class="subheading big justify h2">(Available in PDF & EPUB)</span>
+                        <span class="subheading big justify h2">(@lang('landing.availablein') PDF & EPUB)</span>
                     </div>
                 @endif
 
