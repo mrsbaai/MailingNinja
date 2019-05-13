@@ -8,7 +8,7 @@ return [
     'author' => 'Auteur(e)',
     'reviews' => 'Avis',
     'contact' => 'Contact',
-    'about' => 'À propos',
+    'about' => 'À Propos',
     'peoplewho' => 'Les personnes qui ont acheté cet e-book ont aussi aimé',
     'more' => 'Plus',
     'location1 ' => 'Tampa, Florida',

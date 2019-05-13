@@ -287,6 +287,22 @@
 
 
 
+
+
+    @if($book_about_3 !== null && $book_about_3 !== "" )
+        <section class="infobook">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 check-green text-center">
+                        <p class="wow animated fadeInUp check-green text-center"><em>{!! $book_about_3 !!}</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+
     <section id="author" class="reviews">
         <div class="container"  >
             <div class="row"  >
@@ -318,7 +334,7 @@
 
                 </div>
                 <div class="col-md-4 wow animated fadeInUp" >
-                <br/><br/>
+                    <br/><br/>
 
 
                     <div class="thumb">
@@ -330,20 +346,6 @@
             </div>
         </div>
     </section>
-
-
-    @if($book_about_3 !== null && $book_about_3 !== "" )
-        <section class="infobook">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 check-green text-center">
-                        <p class="wow animated fadeInUp check-green text-center"><em>{!! $book_about_3 !!}</em></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
 
     <section class="about">
 
