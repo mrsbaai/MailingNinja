@@ -379,7 +379,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_1 }}</h4>
-                            <h6 class="subheading muted reviewer-city">@lang('landing.location_a')</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.reviews')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
