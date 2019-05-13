@@ -411,13 +411,10 @@
                                     <div class="form-group">
                                         <h4>Language:</h4>
 
-                                        <select name="language">
-                                            <option value ="en">English</option>
-                                            <option value ="sp">Spanish</option>
-                                            <option value ="fr">French</option>
-                                            <option value ="ru">Russian</option>
-                                            <option value ="ar">Arabic</option>
-                                        </select>
+                                        @if( empty($selected_language)) {{$selected_language = null}} @endif
+                                        {!! Form::select('countries[]', s, $selected_language, ['id' => 'language', 'name' => 'language', 'class' => 'form-control custom-select', 'required' => 'required']) !!}
+
+
 
                                     </div>
 
