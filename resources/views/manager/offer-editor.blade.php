@@ -409,6 +409,19 @@
                                     @if( ! empty($id))
 
                                     <div class="form-group">
+                                        <h4>Language:</h4>
+
+                                        <select name="language">
+                                            <option value ="en">English</option>
+                                            <option value ="sp">Spanish</option>
+                                            <option value ="fr">French</option>
+                                            <option value ="ru">Russian</option>
+                                            <option value ="ar">Arabic</option>
+                                        </select>
+
+                                    </div>
+
+                                        <div class="form-group">
                                         <h4>Countries:</h4>
 
                                         <div class="form-group col-md-12 text-center">

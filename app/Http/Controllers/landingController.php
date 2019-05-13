@@ -274,6 +274,13 @@ class landingController extends Controller
     }
 
 
+    /**
+     * @param null $code
+     * @param null $id
+     * @param null $email
+     * @param $type
+     * @param Request $request
+     */
     private function landing($code=null, $id=null, $email=null, $type, Request $request){
 
         $link = null;
@@ -357,6 +364,8 @@ class landingController extends Controller
         $related_url = "/related/" . $offer->id;
 
         $related_offers = $this->getRelatedBooks($offer->id, $this->myLocation())->take(3);
+        App::setLocale($offer->language);
+
 
         return view('layouts.landing')
             ->with('code', $code)
