@@ -147,7 +147,7 @@ class PaymentController extends Controller
             if ($mc_gross > 0){
                 $net_amount = $mc_gross - $mc_fee;
             }
-            $checkLog = sells::where('operation_id', $txn_id)->first();
+            $checkLog = sells::where('operation_id', $txn_id)->where('status', $payment_status)->first();
             if ($checkLog !== null) {
                 Log::error("PayPal operation: $txn_id Already exist");
                 return;
