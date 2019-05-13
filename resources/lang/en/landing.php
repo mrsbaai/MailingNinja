@@ -11,7 +11,7 @@ return [
     'about' => 'About',
     'peoplewho' => 'People Who Purchased This E-book Also Liked',
     'more' => 'More Ebooks',
-    'location1 ' => 'Tampa, Florida',
+    'location_a ' => 'Tampa, Florida',
     'location2 ' => 'Los Angeles, California',
     'location3 ' => 'Dallas, Texas',
     'location4 ' => 'Tucson, Arizona',
