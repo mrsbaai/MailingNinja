@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use URL;
 use Location;
+use App;
 
 class landingController extends Controller
 {
