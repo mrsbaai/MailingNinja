@@ -606,7 +606,7 @@ class managerController extends Controller
         return view('manager.offer-editor')
             ->with('verticals',$verticals)
             ->with('languages',$languages)
-            ->with('selectedlanguage',$offer->language)
+            ->with('selected_language',$offer->language)
             ->with('countries',$countries)
             ->with('color',$offer->color)
             ->with('title', $offer->title)
