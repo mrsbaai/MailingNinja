@@ -198,8 +198,8 @@
                             <div class="text-center">
                                 {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
-                                <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">@lang('landing.about') <span class=" hidden-md hidden-sm hidden-xs"> eBook</span></a>
-                                <button type="submit" class="btn btn-green purchase" >@lang('landing.purchase')<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(@lang('landing.only') ${{$price}})</span></button>
+                                <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">@lang('landing.about')</a>
+                                <button type="submit" class="btn btn-green purchase" >@lang('landing.download')<span class="price">(@lang('landing.only') ${{$price}})</span></button>
                                 {{Form::close()}}
                             </div>
                     <div  style="height: 80px;"></div>
