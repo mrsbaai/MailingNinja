@@ -252,7 +252,7 @@ class managerController extends Controller
             ->setTitle(__('Status'))
             ->isSortable()
             ->isCustomHtmlElement(function ($entity, $column) {
-                return "<b>$". $entity->status. "</b>";
+                return "<b>". $entity->status. "</b>";
             });
 
         $table->addColumn('net_amount')
