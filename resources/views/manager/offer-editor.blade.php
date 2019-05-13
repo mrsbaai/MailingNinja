@@ -375,7 +375,12 @@
 
                                     @if( ! empty($id))
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
+                                                @if( empty($selected_language)) {{$selected_language = null}} @endif
+                                                {!! Form::select('languages[]', $languages, $selected_language, ['id' => 'language', 'name' => 'language', 'class' => 'form-control custom-select', 'required' => 'required']) !!}
+
+                                            </div>
+                                            <div class="col-lg-4">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" data-preview="#preview" name="thumbnail" id="thumbnail">
@@ -383,7 +388,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="product" id="product">
@@ -407,16 +412,6 @@
 
                                     <br>
                                     @if( ! empty($id))
-
-                                    <div class="form-group">
-                                        <h4>Language:</h4>
-
-                                        @if( empty($selected_language)) {{$selected_language = null}} @endif
-                                        {!! Form::select('languages[]', $languages, $selected_language, ['id' => 'language', 'name' => 'language', 'class' => 'form-control custom-select', 'required' => 'required']) !!}
-
-
-
-                                    </div>
 
                                         <div class="form-group">
                                         <h4>Countries:</h4>
