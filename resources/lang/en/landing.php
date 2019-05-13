@@ -2,7 +2,7 @@
 
 return [
 
-    'purchase' => 'buy',
+    'purchase' => 'Purchase',
 
 
 ];

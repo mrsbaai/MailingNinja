@@ -198,7 +198,7 @@
                             <div class="text-center">
                                 {{ Form::open(array('action' => 'landingController@register'))}}
                                 <input name="code" value="{{$code}}" hidden>
-                                <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">About <span class=" hidden-md hidden-sm hidden-xs"> Book</span></a>
+                                <a href="#book" class="scrollto btn btn-white hidden-xs" style="margin-left: 0px;">@lang('landing.about') <span class=" hidden-md hidden-sm hidden-xs"> eBook</span></a>
                                 <button type="submit" class="btn btn-green purchase" >@lang('landing.purchase')<span class=" hidden-md hidden-sm hidden-xs"> eBook</span><span class="price">(Only ${{$price}})</span></button>
                                 {{Form::close()}}
                             </div>
@@ -227,13 +227,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right main-nav">
-                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#book" class="scrollto">Book</a></li>
-                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#author" class="scrollto">Author</a></li>
-                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#reviews" class="scrollto">Reviews</a></li>
-                    <li class=" hidden-md hidden-sm hidden-xs"> <a href="#contact" class="scrollto">Contact</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#book" class="scrollto">@lang('landing.book')</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#author" class="scrollto">@lang('landing.author')</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"><a href="#reviews" class="scrollto">@lang('landing.reviews')</a></li>
+                    <li class=" hidden-md hidden-sm hidden-xs"> <a href="#contact" class="scrollto">@lang('landing.contact')</a></li>
                     <li><a class="scrollto" href="{{ route('login') }}">{{ __(' Login') }}</a></li>
 
-                    <li><a href="#" class="btn btn-green">@if ($price == 0) Download @else Purchase @endif</a></li>
+                    <li><a href="#" class="btn btn-green">@if ($price == 0) @lang('landing.download') @else @lang('landing.purchase') @endif</a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -349,11 +349,11 @@
 
         <div class="container">
             <div class="row">
-                <h2 class="heading dominant-color wow animated fadeInUp">People Who Purchased This E-book Also Liked:</h2><br/><br/><br/>
+                <h2 class="heading dominant-color wow animated fadeInUp">@lang('landing.peoplewho')</h2><br/><br/><br/>
                 @yield('Wall')
                 <div class="col-lg-12 wow animated fadeInUp" >
                     <p class="text-center">
-                        <a id="discover_button" href="{{$related_url}}" class="btn btn-green "  style="background-color: #4C4A48;border-color:#4C4A48; padding: 0px 10px 0px 10px;"  target="_blank">More eBooks...</a>
+                        <a id="discover_button" href="{{$related_url}}" class="btn btn-green "  style="background-color: #4C4A48;border-color:#4C4A48; padding: 0px 10px 0px 10px;"  target="_blank">@lang('landing.more')...</a>
                     </p>
 
                 </div>
@@ -366,7 +366,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <h2 class="heading dominant-color">Reviews</h2>
+                    <h2 class="heading dominant-color">@lang('landing.reviews')</h2>
                 </div>
 
             </div>
@@ -377,7 +377,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_1 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Tampa, Florida</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location1')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -393,7 +393,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_2 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Los Angeles, California</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location2')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -409,7 +409,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_3 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Dallas, Texas</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location3')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -425,7 +425,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_4 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Tucson, Arizona</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location4')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -441,7 +441,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_5 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Wichita, Kansas</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location5')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
@@ -457,7 +457,7 @@
                     <div class="item">
                         <div class="review text-center wow animated fadeInUp">
                             <h4 class="subheading reviewer-name">{{ $review_name_6 }}</h4>
-                            <h6 class="subheading muted reviewer-city">Huntington, New York</h6>
+                            <h6 class="subheading muted reviewer-city">@lang('landing.location6')</h6>
                             <div class="rating">
                                 <span class="rate active"></span>
                                 <span class="rate active"></span>
