@@ -238,9 +238,7 @@ class managerController extends Controller
                 'index' => ['alias' => 'publisher-home', 'parameters' => []],
             ])
             ->addQueryInstructions(function ($query) {
-                $query->select('sell_log.*')
-                    ->where('net_amount', '>', '0')
-                    ->where('status', 'Completed');
+                $query->select('sell_log.*');
             });
 
 
@@ -249,6 +247,13 @@ class managerController extends Controller
             ->setTitle('Date')
             ->sortByDefault('desc')
             ->setColumnDateFormat('d/m/Y H:i:s');
+
+        $table->addColumn('status')
+            ->setTitle(__('Status'))
+            ->isSortable()
+            ->isCustomHtmlElement(function ($entity, $column) {
+                return "<b>$". $entity->status. "</b>";
+            });
 
         $table->addColumn('net_amount')
             ->setTitle(__('Net Amount'))
