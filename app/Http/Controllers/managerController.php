@@ -98,6 +98,7 @@ class managerController extends Controller
         $res = $offer->update([
             'thumbnail' => $thumbnail,
             'title' => $request->title,
+            'language' => $request->language,
             'color' => $request->color,
             'description' => $request->description,
             'is_private' => $is_private,
