@@ -508,7 +508,7 @@
                 @else
                     <div class="col-md-9 text-center h2" style="padding-top:120px;padding-left:150px;" >
                         <h1 class="heading"style="font-size: 50px; color: #313131; font-weight: bold;"><blink>@lang('landing.specialoffer')!<br/>
-                                @lang('landing.until') {{ Carbon\Carbon::tomorrow()->addDays(3)->format('l d M Y') }}
+                                @lang('landing.until') {{ Carbon\Carbon::tomorrow()->addDays(3)->format('d M Y') }}
                             </blink></h1><br/>
                         <h1 class="heading"><span style="font-size: 50px; color: #B30504;"><strike>${{ $old_price  }}</strike></span><span style="font-size: 50px; color: #7CC576;"> @lang('landing.only') ${{ $price  }}</span></h1><br/>
 
