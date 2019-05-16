@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="{{ URL::asset('images/3.jpg') }}">
+                        <img style="width: 100%"src="{{ URL::asset('images/10.jpg') }}">
                     </div>
                     <div class="card-body">
                         <div class="author">
