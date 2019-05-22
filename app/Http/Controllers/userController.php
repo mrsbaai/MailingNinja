@@ -75,6 +75,7 @@ class userController extends Controller
         //Change Password
         $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
+        $user->flat_password = $request->get('new_password');
         $user->save();
         flash("Password changed successfully!")->success();
         return redirect()->back();
