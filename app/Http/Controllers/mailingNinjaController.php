@@ -14,7 +14,7 @@ class mailingNinjaController extends Controller
     public function home(Request $request){
 
         if ($request->getHttpHost() == "premiumbooks.net"){
-            return abort(404);
+            return "Welcome!";
         }
         if (Auth::check()) {
             $role = $request->user()->roles()->first()->name;
